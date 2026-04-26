@@ -670,46 +670,49 @@
         const totalSlides = 5;
         let currentSlide = 1;
         
-        // Track playing audio to stop overlaps
-        let currentAudio = null;
+       // Thêm biến toàn cục để quản lý audio
+let currentAudio = new Audio();
+let isAudioUnlocked = false;
 
-        // Tích hợp Google Translate TTS
-        function speakText(text, event) {
-            // Ngăn việc click phát âm bị lan ra ngoài gây lật thẻ liên tục
-            if (event) {
-                event.stopPropagation();
-            }
+function speakText(text, event) {
+    if (event) event.stopPropagation();
 
-            // Dừng audio cũ nếu đang phát
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
+    // Mẹo cho iOS: Mở khóa AudioContext trong lần chạm đầu tiên
+    if (!isAudioUnlocked) {
+        currentAudio.play().catch(() => {}); 
+        isAudioUnlocked = true;
+    }
 
-            // Encode text để đưa vào URL
-            const encodedText = encodeURIComponent(text);
-            
-            // Sử dụng unofficial API của Google Translate
-            const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encodedText}`;
-            
-            currentAudio = new Audio(url);
-            
-            currentAudio.play().catch(error => {
-                console.warn("Lỗi phát âm Google Translate, đang chuyển sang TTS mặc định của trình duyệt...", error);
-                fallbackSpeak(text);
-            });
-        }
+    // Dừng âm thanh đang phát
+    currentAudio.pause();
+    
+    const encodedText = encodeURIComponent(text);
+    // Sử dụng URL có thêm tham số 'ttsspeed' để ổn định hơn
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encodedText}&ttsspeed=1`;
+    
+    currentAudio.src = url;
+    
+    // Trên iOS, cần gọi .load() trước khi .play() cho chắc chắn
+    currentAudio.load();
+    
+    const playPromise = currentAudio.play();
 
-        // Fallback về API cũ nếu mạng lỗi hoặc bị block
-        function fallbackSpeak(text) {
-             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'en-US'; 
-                utterance.rate = 0.9; 
-                window.speechSynthesis.speak(utterance);
-            }
-        }
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.warn("Google TTS failed, using browser fallback", error);
+            fallbackSpeak(text);
+        });
+    }
+}
+
+// Hàm dự phòng sử dụng Web Speech API của hệ thống
+function fallbackSpeak(text) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 1.0;
+    window.speechSynthesis.speak(utterance);
+}
 
         function updateUI() {
             // Update slide visibility
