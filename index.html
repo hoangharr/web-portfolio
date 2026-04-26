@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>English Academic Deck</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght,ital@6..72,400,0;6..72,600,0;6..72,700,0;6..72,400,1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed": "#000767",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#705e00",
+                        "tertiary-fixed-dim": "#c4c6d2",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#fdd835",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#9597a2",
+                        "tertiary": "#181b23",
+                        "on-surface-variant": "#454652",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#e8c41d",
+                        "on-tertiary-fixed": "#181b24",
+                        "on-secondary-fixed": "#221b00",
+                        "surface-container": "#eeeeee",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "surface-tint": "#4c56af",
+                        "on-primary-container": "#8690ee",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#705d00",
+                        "background": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "outline": "#767683",
+                        "primary-container": "#1a237e",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#434750",
+                        "surface-dim": "#dadada",
+                        "tertiary-container": "#2c3039",
+                        "surface-container-low": "#f3f3f3",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffe16e",
+                        "tertiary-fixed": "#e0e2ee",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#544600",
+                        "inverse-primary": "#bdc2ff",
+                        "outline-variant": "#c6c5d4",
+                        "on-primary-fixed-variant": "#343d96",
+                        "primary": "#000666",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "primary-fixed": "#e0e0ff",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-highest": "#e2e2e2",
+                        "academic-gold": "#705d00",
+                        "academic-gold-light": "#FFF9C4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "element-gap": "16px",
+                        "container-padding": "64px",
+                        "unit": "8px",
+                        "section-gap": "48px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "quote": ["Newsreader"],
+                        "h1": ["Newsreader"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h3": ["Newsreader"],
+                        "h2": ["Newsreader"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { min-height: max(884px, 100dvh); }
+        .academic-gold-accent { border-left: 4px solid #705d00; }
+        .zebra-striping tr:nth-child(even) { background-color: #f3f3f3; }
+        .pro-tip-bg { background-color: #FFF9C4; }
+        
+        /* Slide Transitions */
+        .slide-section { display: none; }
+        .slide-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        /* Flip Card CSS */
+        .flip-card {
+            perspective: 1000px;
+            cursor: pointer;
+            min-height: 220px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 0.5rem;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #fdd835; 
+            border: 2px solid #705e00;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden flex flex-col">
+
+    <div class="fixed top-0 left-0 w-full h-1 bg-surface-container-highest z-[60]">
+        <div id="progress-fill" class="h-full bg-secondary-container transition-all duration-300" style="width: 20%;"></div>
+    </div>
+
+    <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-16 h-20 bg-white border-t-4 border-amber-400 border-b border-gray-200">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-indigo-900" data-icon="school">school</span>
+            <h1 class="font-serif text-2xl font-bold tracking-tight text-indigo-950">Work & Career</h1>
+        </div>
+        <div class="flex items-center gap-8">
+            <nav class="hidden md:flex gap-6">
+                <span class="text-indigo-900 font-bold font-serif antialiased cursor-pointer">Module 1</span>
+                <span class="text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded">Vocabulary</span>
+                <span class="text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded">Practice</span>
+            </nav>
+            <span class="material-symbols-outlined text-indigo-900 cursor-pointer" data-icon="more_vert">more_vert</span>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-28 pb-28 px-container-padding flex items-center justify-center w-full max-w-[1440px] mx-auto min-h-screen">
+        
+        <section id="slide-1" class="slide-section active w-full">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+                <div class="md:col-span-6 flex flex-col gap-section-gap">
+                    <div>
+                        <span class="font-label-caps text-label-caps text-secondary mb-unit block">MODULE INTRODUCTION</span>
+                        <h2 class="font-h1 text-h1 text-primary mb-element-gap">Work & Career - Level B2</h2>
+                        <p class="font-quote text-quote text-on-surface-variant italic">"Essential Vocabulary for Aptis Writing & Speaking"</p>
+                    </div>
+                    <div class="flex flex-col gap-element-gap">
+                        <div class="grid grid-cols-1 gap-element-gap">
+                            <div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+                                <span class="material-symbols-outlined text-primary">assignment</span>
+                                <div>
+                                    <p class="font-body-md font-bold text-primary">Job Applications</p>
+                                    <p class="font-body-md text-on-surface-variant text-sm">Formal letters, CVs, and professional summaries.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+                                <span class="material-symbols-outlined text-primary">report_problem</span>
+                                <div>
+                                    <p class="font-body-md font-bold text-primary">Complaints</p>
+                                    <p class="font-body-md text-on-surface-variant text-sm">Managing workplace disputes and formal grievances.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+                                <span class="material-symbols-outlined text-primary">person</span>
+                                <div>
+                                    <p class="font-body-md font-bold text-primary">Personal Descriptions</p>
+                                    <p class="font-body-md text-on-surface-variant text-sm">Discussing roles, responsibilities, and career goals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="academic-gold-accent bg-[#FFF9C4]/30 p-element-gap relative border border-[#E0E0E0]">
+                        <span class="material-symbols-outlined text-secondary absolute top-2 right-2">lightbulb</span>
+                        <p class="font-body-md font-bold text-secondary uppercase text-xs mb-1">Academic Insight</p>
+                        <p class="font-body-md text-on-surface italic">Focus on "action verbs" to demonstrate competence in your writing tasks.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-6 relative group">
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-sm border border-outline-variant">
+                        <img alt="Professional workplace setting" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"/>
+                        <div class="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 shadow-xl border border-outline-variant max-w-xs hidden lg:block">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span class="font-label-caps text-label-caps text-on-surface">APTIS ALIGNED</span>
+                        </div>
+                        <p class="font-body-md text-on-surface-variant text-sm">This module specifically addresses the B2 performance descriptors for lexical range and accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-2" class="slide-section w-full">
+            <header class="mb-section-gap">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <p class="font-label-caps text-label-caps text-secondary mb-2">VOCABULARY BUILDING</p>
+                        <h2 class="font-h2 text-h2 text-on-surface">1. Key Collocations</h2>
+                        <div class="w-16 h-1 bg-secondary-container mt-4"></div>
+                    </div>
+                    <p class="text-sm font-label-caps text-outline animate-pulse hidden md:block">CLICK CARDS TO FLIP & LISTEN</p>
+                </div>
+            </header>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Pursue a career path', event)">
+                    <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flip-card-front bg-white p-gutter border border-outline-variant flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-unit mb-element-gap">
+                                    <span class="material-symbols-outlined text-primary">moving</span>
+                                    <span class="font-label-caps text-label-caps text-outline">CAREER GROWTH</span>
+                                </div>
+                                <h3 class="font-h3 text-h3 text-primary-container mb-unit flex justify-between items-center">
+                                    Pursue a career path
+                                    <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
+                                </h3>
+                                <p class="text-body-md text-on-surface-variant">To follow a specific professional direction or series of jobs over time.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="material-symbols-outlined text-4xl text-on-secondary-container mb-2">translate</span>
+                            <h3 class="font-h3 text-h3 text-on-secondary-container">Theo đuổi con đường sự nghiệp</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card md:col-span-1" onclick="this.classList.toggle('flipped'); speakText('Gain hands-on experience', event)">
+                    <div class="flip-card-inner shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flip-card-front bg-tertiary-fixed border-2 border-secondary-container p-gutter flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-unit mb-element-gap">
+                                    <span class="material-symbols-outlined text-secondary">front_hand</span>
+                                    <span class="font-label-caps text-label-caps text-on-secondary-fixed-variant">PRACTICAL SKILLS</span>
+                                </div>
+                                <h3 class="font-h3 text-h3 text-on-primary-fixed mb-unit flex justify-between items-center">
+                                    Gain hands-on experience
+                                    <span class="material-symbols-outlined text-on-primary-fixed/40 text-lg">volume_up</span>
+                                </h3>
+                                <p class="text-body-md text-on-tertiary-fixed-variant">Learning by doing the actual work rather than just studying the theory.</p>
+                            </div>
+                            <div class="mt-element-gap">
+                                <span class="inline-flex items-center px-3 py-1 bg-secondary-container text-on-secondary-container text-label-caps font-bold">ESSENTIAL</span>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="material-symbols-outlined text-4xl text-on-secondary-container mb-2">translate</span>
+                            <h3 class="font-h3 text-h3 text-on-secondary-container">Tích lũy kinh nghiệm thực tế</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Meet a deadline', event)">
+                    <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flip-card-front bg-white p-gutter border border-outline-variant flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-unit mb-element-gap">
+                                    <span class="material-symbols-outlined text-primary">alarm</span>
+                                    <span class="font-label-caps text-label-caps text-outline">TIME MANAGEMENT</span>
+                                </div>
+                                <h3 class="font-h3 text-h3 text-primary-container mb-unit flex justify-between items-center">
+                                    Meet a deadline
+                                    <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
+                                </h3>
+                                <p class="text-body-md text-on-surface-variant">To finish a task or project by the agreed-upon time or date.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="material-symbols-outlined text-4xl text-on-secondary-container mb-2">translate</span>
+                            <h3 class="font-h3 text-h3 text-on-secondary-container">Hoàn thành đúng hạn</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Work under pressure', event)">
+                    <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flip-card-front bg-white p-gutter border border-outline-variant flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-unit mb-element-gap">
+                                    <span class="material-symbols-outlined text-primary">bolt</span>
+                                    <span class="font-label-caps text-label-caps text-outline">RESILIENCE</span>
+                                </div>
+                                <h3 class="font-h3 text-h3 text-primary-container mb-unit flex justify-between items-center">
+                                    Work under pressure
+                                    <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
+                                </h3>
+                                <p class="text-body-md text-on-surface-variant">To perform effectively while dealing with difficult or stressful situations.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="material-symbols-outlined text-4xl text-on-secondary-container mb-2">translate</span>
+                            <h3 class="font-h3 text-h3 text-on-secondary-container">Làm việc dưới áp lực</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card md:col-span-1" onclick="this.classList.toggle('flipped'); speakText('Achieve a work-life balance', event)">
+                    <div class="flip-card-inner shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flip-card-front bg-primary-container p-gutter text-white flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-unit mb-element-gap">
+                                    <span class="material-symbols-outlined text-secondary-container">balance</span>
+                                    <span class="font-label-caps text-label-caps text-on-primary-container">WELL-BEING</span>
+                                </div>
+                                <h3 class="font-h3 text-h3 text-white mb-unit flex justify-between items-center">
+                                    Achieve a work-life balance
+                                    <span class="material-symbols-outlined text-white/40 text-lg">volume_up</span>
+                                </h3>
+                                <p class="text-body-md text-on-primary-container">Managing time between professional responsibilities and personal life.</p>
+                            </div>
+                            <div class="mt-element-gap">
+                                <span class="inline-flex items-center px-3 py-1 bg-white/10 text-white text-label-caps">HIGH PRIORITY</span>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="material-symbols-outlined text-4xl text-on-secondary-container mb-2">translate</span>
+                            <h3 class="font-h3 text-h3 text-on-secondary-container">Đạt được sự cân bằng công việc - cuộc sống</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Job satisfaction', event)">
+                    <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flip-card-front bg-white p-gutter border border-outline-variant flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-unit mb-element-gap">
+                                    <span class="material-symbols-outlined text-primary">sentiment_satisfied</span>
+                                    <span class="font-label-caps text-label-caps text-outline">FULFILLMENT</span>
+                                </div>
+                                <h3 class="font-h3 text-h3 text-primary-container mb-unit flex justify-between items-center">
+                                    Job satisfaction
+                                    <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
+                                </h3>
+                                <p class="text-body-md text-on-surface-variant">The feeling of pleasure and fulfillment that a person derives from their job.</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="material-symbols-outlined text-4xl text-on-secondary-container mb-2">translate</span>
+                            <h3 class="font-h3 text-h3 text-on-secondary-container">Sự hài lòng với công việc</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-section-gap academic-gold-accent pro-tip-bg p-gutter relative max-w-2xl mx-auto md:mx-0">
+                <span class="material-symbols-outlined absolute top-4 right-4 text-secondary text-3xl">lightbulb</span>
+                <p class="font-label-caps text-label-caps text-secondary mb-unit">PRO-TIP</p>
+                <p class="font-body-md text-on-surface italic">"Hands-on experience" is highly valued by recruiters. Use it in your CV to describe internships, volunteer work, or practical projects.</p>
+            </div>
+        </section>
+
+        <section id="slide-3" class="slide-section w-full">
+            <div class="mb-section-gap">
+                <h2 class="font-h1 text-h1 text-primary mb-2">2. Synonyms (B2 Level)</h2>
+                <p class="font-body-lg text-body-lg text-outline">Elevate your vocabulary by replacing common A1/A2 words with professional B2-level alternatives. <span class="italic text-primary">Click on any B2 word to hear its pronunciation.</span></p>
+            </div>
+            <div class="w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+                <table class="w-full border-collapse text-left">
+                    <thead>
+                        <tr class="bg-primary text-on-primary">
+                            <th class="p-6 font-h3 text-h3 border-b border-white/10 w-1/2">Basic Word</th>
+                            <th class="p-6 font-h3 text-h3 border-b border-white/10 w-1/2 flex items-center gap-2">
+                                B2 Equivalent <span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-body-md text-body-md">
+                        <tr class="bg-white border-b border-gray-100">
+                            <td class="p-6 text-primary font-semibold">Job/Work</td>
+                            <td class="p-6 bg-secondary-container/5 text-academic-gold font-bold leading-loose">
+                                <span onclick="speakText('Occupation', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Occupation">Occupation <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Profession', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Profession">Profession <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Employment', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Employment">Employment <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span>
+                            </td>
+                        </tr>
+                        <tr class="bg-primary-container/5 border-b border-gray-100">
+                            <td class="p-6 text-primary font-semibold">Good at</td>
+                            <td class="p-6 bg-secondary-container/10 text-academic-gold font-bold leading-loose">
+                                <span onclick="speakText('Proficient in', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Proficient in">Proficient in <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Competent at', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Competent at">Competent at <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span>
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b border-gray-100">
+                            <td class="p-6 text-primary font-semibold">Salary</td>
+                            <td class="p-6 bg-secondary-container/5 text-academic-gold font-bold leading-loose">
+                                <span onclick="speakText('Income', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Income">Income <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Remuneration', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Remuneration">Remuneration <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Earnings', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Earnings">Earnings <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span>
+                            </td>
+                        </tr>
+                        <tr class="bg-primary-container/5 border-b border-gray-100">
+                            <td class="p-6 text-primary font-semibold">Colleagues</td>
+                            <td class="p-6 bg-secondary-container/10 text-academic-gold font-bold leading-loose">
+                                <span onclick="speakText('Co-workers', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Co-workers">Co-workers <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Peers', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Peers">Peers <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span>
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="p-6 text-primary font-semibold">Boss</td>
+                            <td class="p-6 bg-secondary-container/5 text-academic-gold font-bold leading-loose">
+                                <span onclick="speakText('Employer', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Employer">Employer <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Supervisor', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Supervisor">Supervisor <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span> / 
+                                <span onclick="speakText('Management', event)" class="cursor-pointer hover:text-primary-container hover:underline transition-all inline-flex items-center gap-1 group" title="Listen to Management">Management <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">volume_up</span></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-section-gap p-gutter pro-tip-bg border-l-4 border-academic-gold relative rounded-r-lg max-w-4xl">
+                <span class="material-symbols-outlined absolute top-4 right-4 text-academic-gold">lightbulb</span>
+                <h4 class="font-h3 text-h3 text-academic-gold mb-2">Pro-Tip: Precision Matters</h4>
+                <p class="font-body-md text-body-md text-on-surface">In a corporate environment, using <strong class="text-primary">"Remuneration"</strong> instead of "Salary" signals a higher level of professional literacy, especially during contract negotiations or formal interviews.</p>
+            </div>
+            <div class="mt-section-gap grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+                <div class="h-64 rounded-xl overflow-hidden relative group">
+                    <img alt="Professional Workspace" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"/>
+                    <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors"></div>
+                </div>
+                <div class="flex flex-col gap-element-gap">
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary p-2 bg-primary-container/10 rounded-lg">ink_pen</span>
+                        <div>
+                            <span class="font-label-caps text-label-caps text-outline uppercase">Practice Task</span>
+                            <p class="font-body-md text-body-md mt-1">Rewrite your current bio using at least three B2 equivalents from the table above.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary p-2 bg-primary-container/10 rounded-lg">ear_sound</span>
+                        <div>
+                            <span class="font-label-caps text-label-caps text-outline uppercase">Listen for nuance</span>
+                            <p class="font-body-md text-body-md mt-1">Listen to the upcoming audio clip and identify which synonym for "Boss" is used by the CEO.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-4" class="slide-section w-full">
+            <div class="flex flex-col gap-section-gap">
+                <div class="flex justify-between items-end">
+                    <div class="space-y-2">
+                        <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Section 03</span>
+                        <h2 class="font-h1 text-h1 text-primary">3. Auxiliary Adverbs</h2>
+                    </div>
+                    <div class="hidden lg:block">
+                        <img class="w-48 h-32 object-cover rounded-xl shadow-sm border border-outline-variant" src="https://images.unsplash.com/photo-1583161484724-43485ba83c5d?auto=format&fit=crop&w=400&q=80"/>
+                    </div>
+                </div>
+                <div class="grid grid-cols-12 gap-gutter items-start">
+                    <div class="col-span-12 lg:col-span-5 flex flex-col gap-element-gap">
+                        <div class="p-8 bg-white border border-outline-variant rounded-xl shadow-sm">
+                            <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                                Adverbs of degree or intensity function as <span class="text-primary font-bold">auxiliary modifiers</span>. In professional English, they elevate your language from basic descriptions to precise, impactful statements.
+                            </p>
+                            <div class="pro-tip-bg academic-gold-accent p-6 relative rounded-r-lg">
+                                <span class="material-symbols-outlined absolute top-4 right-4 text-secondary">lightbulb</span>
+                                <h4 class="font-label-caps text-label-caps text-secondary mb-2">PRO-TIP: PRECISION</h4>
+                                <p class="font-body-md text-body-md text-on-surface italic">Avoid overusing "very." Instead, use specific auxiliary adverbs like "Consistently" to demonstrate reliability over time.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-7 grid grid-cols-2 gap-element-gap">
+                        <div class="bg-primary-container p-8 rounded-full flex flex-col items-center justify-center text-center aspect-square shadow-sm">
+                            <div class="bg-on-primary-container/20 p-3 rounded-full mb-4">
+                                <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+                            </div>
+                            <h3 class="font-h3 text-h3 text-white mb-2 italic">Highly</h3>
+                            <div class="h-px w-12 bg-on-primary-container mb-4"></div>
+                            <ul class="text-on-primary-container space-y-2">
+                                <li class="font-body-md">Highly skilled</li>
+                                <li class="font-body-md">Highly motivated</li>
+                            </ul>
+                        </div>
+                        <div class="bg-surface-container-highest p-8 rounded-xl border border-outline-variant flex flex-col justify-center shadow-sm">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-primary">sync</span>
+                                <h3 class="font-h3 text-h3 text-primary">Consistently</h3>
+                            </div>
+                            <p class="font-quote text-quote text-on-surface-variant border-l-2 border-primary pl-4 py-2">"Consistently meet targets"</p>
+                            <p class="mt-4 text-xs font-label-caps text-outline uppercase">Applied Context: Performance Reviews</p>
+                        </div>
+                        <div class="col-span-2 bg-white p-10 border border-outline-variant rounded-xl flex items-center justify-between shadow-sm">
+                            <div class="space-y-4 max-w-md">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+                                    <h3 class="font-h3 text-h3 text-on-surface">Extremely</h3>
+                                </div>
+                                <p class="font-body-lg text-body-lg text-on-surface-variant">Use to emphasize high-pressure environments or exceptional requirements.</p>
+                                <div class="inline-block px-4 py-2 bg-surface-container-low border border-outline-variant rounded">
+                                    <span class="font-body-md text-primary font-bold">"Extremely demanding job"</span>
+                                </div>
+                            </div>
+                            <div class="hidden md:block">
+                                <img class="w-64 h-40 object-cover rounded-lg shadow" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl border border-outline-variant mt-unit shadow-sm">
+                    <table class="w-full text-left border-collapse bg-white">
+                        <thead>
+                            <tr class="bg-primary text-white">
+                                <th class="p-6 font-h3 text-h3">Adverb</th>
+                                <th class="p-6 font-h3 text-h3">Function</th>
+                                <th class="p-6 font-h3 text-h3">Professional Phrase</th>
+                            </tr>
+                        </thead>
+                        <tbody class="zebra-striping">
+                            <tr>
+                                <td class="p-6 font-bold text-primary">Highly</td>
+                                <td class="p-6 text-on-surface-variant italic">Modifies Ability/Trait</td>
+                                <td class="p-6 font-body-md">"He is a <span class="text-primary font-semibold underline decoration-secondary decoration-2">highly</span> effective leader."</td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 font-bold text-primary">Consistently</td>
+                                <td class="p-6 text-on-surface-variant italic">Modifies Frequency/Action</td>
+                                <td class="p-6 font-body-md">"The team <span class="text-primary font-semibold underline decoration-secondary decoration-2">consistently</span> delivers results."</td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 font-bold text-primary">Extremely</td>
+                                <td class="p-6 text-on-surface-variant italic">Modifies Magnitude/State</td>
+                                <td class="p-6 font-body-md">"Managing this project is <span class="text-primary font-semibold underline decoration-secondary decoration-2">extremely</span> complex."</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-5" class="slide-section w-full">
+            <div class="mb-section-gap">
+                <h2 class="font-h1 text-h1 text-primary-container mb-2">Mini-Challenge</h2>
+                <div class="w-24 h-1 bg-secondary-container"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+                <div class="lg:col-span-5 flex flex-col gap-element-gap">
+                    <div class="p-8 bg-white border border-surface-container rounded-xl shadow-sm">
+                        <p class="font-label-caps text-label-caps text-outline uppercase mb-4">Task</p>
+                        <p class="font-h3 text-h3 text-on-surface mb-6">Translate this sentence into English:</p>
+                        <div class="p-6 bg-surface-container-low rounded-lg border-l-4 border-primary-container italic">
+                            <p class="font-quote text-quote text-primary-container">
+                                "Tôi đang tìm kiếm một công việc mà tôi có thể có được kinh nghiệm thực tế và đạt được sự cân bằng giữa công việc và cuộc sống."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="academic-gold-accent pro-tip-bg p-6 rounded-lg relative overflow-hidden shadow-sm">
+                        <span class="material-symbols-outlined absolute top-4 right-4 text-secondary opacity-40 text-4xl">lightbulb</span>
+                        <h4 class="font-body-lg text-body-lg font-bold text-secondary mb-2">Academic Tip</h4>
+                        <p class="font-body-md text-body-md text-on-secondary-container">
+                            Remember to use <strong>"practical experience"</strong> or <strong>"hands-on experience"</strong> for 'kinh nghiệm thực tế'. Look for the relative pronoun <strong>"where"</strong> or <strong>"that"</strong> to connect your clauses.
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 flex flex-col gap-element-gap">
+                    <div class="bg-white border border-surface-container rounded-xl p-8 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary">ink_pen</span>
+                            <h3 class="font-h3 text-h3">Your Translation</h3>
+                        </div>
+                        <textarea id="user-translation" class="w-full h-48 p-6 font-body-lg text-body-lg bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all placeholder:text-outline/50 outline-none resize-none" placeholder="Type your English translation here..."></textarea>
+                        
+                        <div class="mt-8 flex justify-between items-center">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-surface-container-highest text-label-caps font-label-caps rounded-full flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">timer</span> 02:45
+                                </span>
+                                <span class="px-3 py-1 bg-surface-container-highest text-label-caps font-label-caps rounded-full flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">auto_stories</span> Intermediate
+                                </span>
+                            </div>
+                            <button onclick="checkAnswer()" class="bg-primary-container text-on-primary font-label-caps text-label-caps px-8 py-4 rounded-full flex items-center gap-2 hover:bg-primary transition-all active:scale-95 shadow-md">
+                                Check Answer
+                                <span class="material-symbols-outlined">done_all</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="feedback-section" class="hidden bg-surface-container-low border border-primary-container p-6 rounded-xl animate-[fadeIn_0.5s_ease-out]">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="material-symbols-outlined text-primary-container">verified</span>
+                            <h4 class="font-h3 text-h3 text-primary-container">Reference Answer</h4>
+                        </div>
+                        <p class="font-body-lg text-on-surface">
+                            "I am looking for a job where I can gain <span class="font-bold text-primary underline decoration-secondary decoration-2">hands-on experience</span> and achieve a <span class="font-bold text-primary underline decoration-secondary decoration-2">work-life balance</span>."
+                        </p>
+                        <p id="empty-warning" class="hidden text-error text-sm font-label-caps mt-3">
+                            * Please try typing your own answer above to practice effectively!
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-element-gap">
+                        <div class="bg-primary-container p-6 rounded-xl text-white relative overflow-hidden h-32 flex items-end shadow-sm">
+                            <span class="material-symbols-outlined absolute -top-4 -right-4 text-8xl opacity-10">work</span>
+                            <p class="font-body-md text-body-md">Vocab focus: <br/><strong>Work-life balance</strong></p>
+                        </div>
+                        <div class="relative rounded-xl overflow-hidden h-32 group shadow-sm">
+                            <img alt="Modern minimalist office workspace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <p class="absolute bottom-4 left-4 text-white font-body-md text-sm">Visual Prompt: Career Goals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-16 py-4 bg-white border-t border-gray-200">
+        <button id="btn-prev" onclick="changeSlide(-1)" class="flex flex-col items-center justify-center text-indigo-900/60 hover:text-amber-500 transition-all active:scale-95 duration-100">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span class="font-serif text-xs font-medium uppercase tracking-widest mt-1">Previous</span>
+        </button>
+        <button onclick="goToSlide(1)" class="flex flex-col items-center justify-center text-amber-600 font-bold scale-105 hover:text-amber-500 transition-all active:scale-95 duration-100">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+            <span class="font-serif text-xs font-medium uppercase tracking-widest mt-1">Modules</span>
+        </button>
+        <button id="btn-next" onclick="changeSlide(1)" class="flex flex-col items-center justify-center text-indigo-900/60 hover:text-amber-500 transition-all active:scale-95 duration-100">
+            <span class="material-symbols-outlined">arrow_forward</span>
+            <span class="font-serif text-xs font-medium uppercase tracking-widest mt-1">Next</span>
+        </button>
+    </footer>
+
+    <script>
+        const totalSlides = 5;
+        let currentSlide = 1;
+        
+        // Track playing audio to stop overlaps
+        let currentAudio = null;
+
+        // Tích hợp Google Translate TTS
+        function speakText(text, event) {
+            // Ngăn việc click phát âm bị lan ra ngoài gây lật thẻ liên tục
+            if (event) {
+                event.stopPropagation();
+            }
+
+            // Dừng audio cũ nếu đang phát
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            // Encode text để đưa vào URL
+            const encodedText = encodeURIComponent(text);
+            
+            // Sử dụng unofficial API của Google Translate
+            const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encodedText}`;
+            
+            currentAudio = new Audio(url);
+            
+            currentAudio.play().catch(error => {
+                console.warn("Lỗi phát âm Google Translate, đang chuyển sang TTS mặc định của trình duyệt...", error);
+                fallbackSpeak(text);
+            });
+        }
+
+        // Fallback về API cũ nếu mạng lỗi hoặc bị block
+        function fallbackSpeak(text) {
+             if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US'; 
+                utterance.rate = 0.9; 
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function updateUI() {
+            // Update slide visibility
+            for(let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if(i === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            }
+
+            // Update progress bar width
+            const progressBar = document.getElementById('progress-fill');
+            const percentage = (currentSlide / totalSlides) * 100;
+            progressBar.style.width = `${percentage}%`;
+
+            // Update button states
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            
+            btnPrev.disabled = currentSlide === 1;
+            btnNext.disabled = currentSlide === totalSlides;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if(newSlide >= 1 && newSlide <= totalSlides) {
+                currentSlide = newSlide;
+                // Dừng phát âm nếu chuyển qua slide khác
+                if(currentAudio) currentAudio.pause();
+                updateUI();
+            }
+        }
+
+        function goToSlide(slideNum) {
+            if(slideNum >= 1 && slideNum <= totalSlides) {
+                currentSlide = slideNum;
+                if(currentAudio) currentAudio.pause();
+                updateUI();
+            }
+        }
+
+        // Logic for Check Answer in Slide 5
+        function checkAnswer() {
+            const userInput = document.getElementById('user-translation').value.trim();
+            const feedbackSection = document.getElementById('feedback-section');
+            const warningText = document.getElementById('empty-warning');
+            
+            feedbackSection.classList.remove('hidden');
+            
+            if(userInput === "") {
+                warningText.classList.remove('hidden');
+            } else {
+                warningText.classList.add('hidden');
+            }
+        }
+
+        // Initialize state on load
+        document.addEventListener('DOMContentLoaded', updateUI);
+    </script>
+</body>
+</html>
