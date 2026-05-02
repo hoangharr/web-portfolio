@@ -942,23 +942,26 @@
                 <!-- Term 3 -->
                 <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Continuous professional development', event, '/kənˈtɪn.ju.əs prəˈfeʃ.ən.əl dɪˈvel.əp.mənt/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flip-card-front bg-primary-container p-6 border border-primary-container flex flex-col justify-between hover:border-secondary transition-all duration-300 rounded-lg" style="transform: rotateY(0deg);">
-                            <span class="material-symbols-outlined absolute top-2 right-2 text-white text-6xl opacity-10 pointer-events-none">trending_up</span>
-                            <div class="z-10 relative">
-                                <div class="flex justify-between items-start mb-element-gap">
-                                    <span class="material-symbols-outlined text-secondary-container text-3xl md:text-4xl">history_edu</span>
-                                    <span class="text-[10px] md:text-xs font-label-caps text-secondary-container border border-secondary-container px-2 py-1">CORE</span>
-                                </div>
-                                <h3 class="font-h3 text-xl md:text-h3 text-white mb-2 flex flex-col items-start gap-1">
-                                    <div class="flex justify-between items-center w-full">
-                                        <span>Continuous professional development (CPD)</span>
-                                        <span class="material-symbols-outlined text-white/40 text-lg">volume_up</span>
+                        <!-- Fix UI: Removed relative from here -->
+                        <div class="flip-card-front bg-primary-container p-6 border border-primary-container flex flex-col justify-between hover:border-secondary transition-all duration-300 rounded-lg overflow-hidden">
+                            <span class="material-symbols-outlined absolute -bottom-4 right-2 text-white text-8xl opacity-10 pointer-events-none">trending_up</span>
+                            <div class="z-10 h-full flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-element-gap">
+                                        <span class="material-symbols-outlined text-secondary-container text-3xl md:text-4xl">history_edu</span>
+                                        <span class="text-[10px] md:text-xs font-label-caps text-secondary-container border border-secondary-container px-2 py-1">CORE</span>
                                     </div>
-                                    <span class="ipa-display hidden text-sm text-secondary-container font-bold font-body-md tracking-wider"></span>
-                                </h3>
-                            </div>
-                            <div class="border-t border-white/20 pt-4 mt-4 z-10 relative">
-                                <p class="text-xs md:text-sm text-white/80 leading-relaxed">Essential for maintaining high standards in the corporate sector.</p>
+                                    <h3 class="font-h3 text-xl md:text-h3 text-white mb-2 flex flex-col items-start gap-1">
+                                        <div class="flex justify-between items-center w-full">
+                                            <span>Continuous professional development (CPD)</span>
+                                            <span class="material-symbols-outlined text-white/40 text-lg">volume_up</span>
+                                        </div>
+                                        <span class="ipa-display hidden text-sm text-secondary-container font-bold font-body-md tracking-wider"></span>
+                                    </h3>
+                                </div>
+                                <div class="border-t border-white/20 pt-4 mt-4">
+                                    <p class="text-xs md:text-sm text-white/80 leading-relaxed">Essential for maintaining high standards in the corporate sector.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="flip-card-back">
@@ -995,7 +998,7 @@
                     </div>
                 </div>
                 <!-- Term 5 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('To enroll in a course', event, '/ɪnˈrəʊl ɪn ə kɔːs/')">
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Enroll in a course', event, '/ɪnˈrəʊl ɪn ə kɔːs/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
                         <div class="flip-card-front bg-white p-6 border border-gray-200 flex flex-col justify-between hover:border-primary-container transition-all duration-300 rounded-lg">
                             <div>
@@ -1005,7 +1008,7 @@
                                 </div>
                                 <h3 class="font-h3 text-xl md:text-h3 text-primary mb-2 flex flex-col items-start gap-1">
                                     <div class="flex justify-between items-center w-full">
-                                        <span>To enroll in a course</span>
+                                        <span>Enroll in a course</span>
                                         <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
                                     </div>
                                     <span class="ipa-display hidden text-sm text-secondary font-bold font-body-md tracking-wider"></span>
@@ -1022,7 +1025,7 @@
                     </div>
                 </div>
                 <!-- Term 6 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('To meet the requirements', event, '/miːt ðə rɪˈkwaɪə.mənts/')">
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Meet the requirements', event, '/miːt ðə rɪˈkwaɪə.mənts/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
                         <div class="flip-card-front bg-white p-6 border border-gray-200 flex flex-col justify-between hover:border-primary-container transition-all duration-300 rounded-lg">
                             <div>
@@ -1032,7 +1035,7 @@
                                 </div>
                                 <h3 class="font-h3 text-xl md:text-h3 text-primary mb-2 flex flex-col items-start gap-1">
                                     <div class="flex justify-between items-center w-full">
-                                        <span>To meet the requirements</span>
+                                        <span>Meet the requirements</span>
                                         <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
                                     </div>
                                     <span class="ipa-display hidden text-sm text-secondary font-bold font-body-md tracking-wider"></span>
@@ -1057,6 +1060,22 @@
                     When discussing your career path, use "acquire" instead of "get" for a more professional tone. "Acquire" suggests an active, intentional process of learning that is highly valued in academic and corporate environments.
                 </p>
             </div>
+            <div class="mt-section-gap overflow-hidden rounded-lg border border-gray-200">
+<div class="bg-primary text-white p-4">
+<h4 class="font-serif font-bold">Contextual Application: Formal vs. Informal</h4>
+</div>
+<div class="zebra-stripe p-4 flex items-center justify-between">
+<span class="font-body-md text-on-surface">"I'm taking a class"</span>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+<span class="font-body-md font-bold text-primary">"I have enrolled in a course"</span>
+</div>
+<div class="zebra-stripe p-4 flex items-center justify-between">
+<span class="font-body-md text-on-surface">"I'm learning new stuff"</span>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+<span class="font-body-md font-bold text-primary">"I am acquiring professional skills"</span>
+</div>
+</div>
+</div>
         </section>
 
         <!-- Slide 13: Paraphrasing (Synonyms with IPA) -->
@@ -1175,10 +1194,31 @@
                             <p class="text-sm md:text-body-md font-body-md text-on-surface border-b border-outline-variant pb-3 md:pb-4">
                                 "I wish our university <span class="text-primary font-bold">offered</span> more hands-on workshops for students."
                             </p>
+                            <p class="text-body-md font-body-md text-on-surface italic text-outline">
+                                Used to express a desire for a current situation to be different.
+                            </p>
                         </div>
                     </div>
                 </section>
             </div>
+            
+            <!-- Bảng Contextual Application được thêm vào cuối phần Grammar -->
+            <!-- Comparison Mini-Table -->
+<section class="mt-section-gap overflow-hidden rounded-lg border border-outline-variant">
+<div class="bg-primary p-4">
+<h4 class="text-white font-serif font-bold">Usage Comparison</h4>
+</div>
+<div class="grid grid-cols-2 divide-x divide-outline-variant">
+<div class="p-6 bg-white">
+<p class="font-bold text-primary mb-2">Second Conditional</p>
+<p class="text-body-md">Focuses on a hypothetical condition and its potential result.</p>
+</div>
+<div class="p-6 bg-surface-container-low">
+<p class="font-bold text-primary mb-2">Wish Structure</p>
+<p class="text-body-md">Focuses solely on the regret or desire regarding the current state.</p>
+</div>
+</div>
+</section>
         </section>
 
         <!-- Slide 15: Aptis Practice 1 (Grammar Selection & Upgrade) -->
@@ -1194,6 +1234,7 @@
                         <h3 class="font-h3 text-lg md:text-h3 text-primary">Task 1: Grammar Selection</h3>
                     </div>
                     <div class="space-y-6 md:space-y-section-gap flex-grow">
+                        <!-- Câu hỏi 1 -->
                         <div class="space-y-3 md:space-y-element-gap">
                             <p class="font-body-lg text-sm md:text-base text-on-surface font-medium italic">1. "If the government ________ more in vocational training, the skills gap would narrow significantly."</p>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4" id="mcq-q1">
@@ -1216,6 +1257,32 @@
                             </div>
                             <div class="mt-4 flex justify-end">
                                 <button id="btn-check-q1" onclick="checkMCQ('q1')" disabled class="bg-primary-container text-on-primary-container px-6 py-2 md:px-8 md:py-3 text-xs md:text-sm font-label-caps rounded-full opacity-50 cursor-not-allowed transition-all duration-150 w-full sm:w-auto">CHECK ANSWER</button>
+                            </div>
+                        </div>
+
+                        <!-- Câu hỏi 2 -->
+                        <div class="space-y-3 md:space-y-element-gap">
+                            <p class="font-body-lg text-sm md:text-base text-on-surface font-medium italic">2. "I wish I ________ more opportunities to acquire specialized knowledge during my undergraduate years."</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4" id="mcq-q2">
+                                <button onclick="selectMCQ(this, 'q2')" class="mcq-option flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded hover:bg-secondary-container/10 transition-colors text-left group">
+                                    <span class="font-body-md text-sm md:text-base text-on-surface">A. have</span>
+                                    <span class="material-symbols-outlined text-outline group-hover:text-primary text-sm md:text-base icon-state">radio_button_unchecked</span>
+                                </button>
+                                <button onclick="selectMCQ(this, 'q2')" class="mcq-option flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded hover:bg-secondary-container/10 transition-colors text-left group">
+                                    <span class="font-body-md text-sm md:text-base text-on-surface">B. am having</span>
+                                    <span class="material-symbols-outlined text-outline group-hover:text-primary text-sm md:text-base icon-state">radio_button_unchecked</span>
+                                </button>
+                                <button onclick="selectMCQ(this, 'q2')" data-correct="true" class="mcq-option flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded hover:bg-secondary-container/10 transition-colors text-left group">
+                                    <span class="font-body-md text-sm md:text-base text-on-surface">C. had</span>
+                                    <span class="material-symbols-outlined text-outline group-hover:text-primary text-sm md:text-base icon-state">radio_button_unchecked</span>
+                                </button>
+                                <button onclick="selectMCQ(this, 'q2')" class="mcq-option flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded hover:bg-secondary-container/10 transition-colors text-left group">
+                                    <span class="font-body-md text-sm md:text-base text-on-surface">D. will have</span>
+                                    <span class="material-symbols-outlined text-outline group-hover:text-primary text-sm md:text-base icon-state">radio_button_unchecked</span>
+                                </button>
+                            </div>
+                            <div class="mt-4 flex justify-end">
+                                <button id="btn-check-q2" onclick="checkMCQ('q2')" disabled class="bg-primary-container text-on-primary-container px-6 py-2 md:px-8 md:py-3 text-xs md:text-sm font-label-caps rounded-full opacity-50 cursor-not-allowed transition-all duration-150 w-full sm:w-auto">CHECK ANSWER</button>
                             </div>
                         </div>
                     </div>
