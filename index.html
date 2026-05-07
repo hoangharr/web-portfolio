@@ -228,6 +228,72 @@
             background-position-y: 5px;
             padding-right: 1.5rem;
         }
+        /* ===== DARK MODE OVERRIDES (REFINED) ===== */
+        /* 1. Màu nền chính (Slate 900) - Xám tối êm dịu */
+        html.dark body, html.dark main, html.dark .bg-surface, html.dark .bg-background {
+            background-color: #0f172a !important; 
+            color: #f8fafc !important;
+        }
+        
+        /* 2. Các khối nổi (Cards, Header, Footer) (Slate 800) - Sáng hơn nền một chút để tạo độ sâu */
+        html.dark header, html.dark footer, html.dark #modules-content,
+        html.dark .bg-white, html.dark .bg-surface-container-low, html.dark .bg-surface-container-highest,
+        html.dark .flip-card-front.bg-white, html.dark tr.bg-white, html.dark tr.bg-surface-container-low,
+        html.dark .drop-zone {
+            background-color: #1e293b !important; 
+            border-color: #334155 !important;
+            color: #f8fafc !important;
+        }
+
+        /* 3. Xử lý Text - Giảm độ chói */
+        html.dark .text-on-surface { color: #f8fafc !important; }
+        html.dark .text-on-surface-variant, html.dark .text-outline { color: #94a3b8 !important; }
+        
+        /* 4. Đổi màu chữ xanh đậm (Primary) sang màu xanh nhạt (Indigo 400) cho dễ đọc trên nền tối */
+        html.dark .text-indigo-900, html.dark .text-indigo-950, 
+        html.dark .text-primary, html.dark .text-primary-container {
+            color: #818cf8 !important;
+        }
+        html.dark .border-primary { border-color: #818cf8 !important; }
+        html.dark .bg-primary { background-color: #4f46e5 !important; }
+
+        /* 5. Khung Pro-tip và Academic Insight (Vàng/Nâu tối) */
+        html.dark .pro-tip-bg, html.dark [class*="bg-[#FFF9C4]"] {
+            background-color: #422006 !important; /* Nền nâu tối */
+            border-color: #b45309 !important;
+        }
+        html.dark .text-secondary, html.dark .text-secondary-container, html.dark .text-academic-gold {
+            color: #fbbf24 !important; /* Chữ vàng sáng */
+        }
+        html.dark .flip-card-back {
+            background-color: #b45309 !important;
+            border-color: #fbbf24 !important;
+        }
+        
+        /* 6. Viền chung mỏng nhẹ (Slate 700) */
+        html.dark .border-outline-variant, html.dark .border-gray-200, html.dark .border-gray-100 {
+            border-color: #334155 !important;
+        }
+
+        /* 7. Input, Textarea, Select */
+        html.dark textarea, html.dark select {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-color: #475569 !important;
+        }
+        /* Đổi icon mũi tên của thẻ select sang màu trắng */
+        html.dark select {
+            background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") !important;
+        }
+
+        /* 8. Hover và các dải màu xen kẽ trong bảng */
+        html.dark tr.bg-primary-container\/5, html.dark tr.bg-tertiary-fixed\/30 {
+            background-color: #334155 !important;
+        }
+        html.dark .mcq-option:hover, html.dark [class*="vocab-option-"]:hover {
+            background-color: #334155 !important;
+            border-color: #818cf8 !important;
+        }
     </style>
 </head>
 
@@ -247,14 +313,18 @@
         </div>
         <div class="flex items-center gap-4 md:gap-8">
             <nav class="hidden md:flex gap-6">
-                <span class="text-indigo-900 font-bold font-serif antialiased cursor-pointer">Lesson</span>
-                <span
-                    class="text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded">Vocabulary</span>
-                <span
-                    class="text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded">Practice</span>
+                <span id="nav-vocab" onclick="navigateToSection('vocabulary')"
+                    class="nav-item text-indigo-900 font-bold font-serif antialiased cursor-pointer px-2 rounded transition-colors">Vocabulary</span>
+                <span id="nav-grammar" onclick="navigateToSection('grammar')"
+                    class="nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded">Grammar</span>
+                <span id="nav-exercise" onclick="navigateToSection('exercise')"
+                    class="nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded">Exercise</span>
             </nav>
-            <span class="material-symbols-outlined text-indigo-900 cursor-pointer"
-                data-icon="account_circle">account_circle</span>
+            <button onclick="toggleDarkMode()"
+                class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
+                title="Chuyển chế độ Sáng/Tối">
+                <span id="theme-icon" class="material-symbols-outlined">light_mode</span>
+            </button>
         </div>
     </header>
 
@@ -691,10 +761,6 @@
                         <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Section
                             03</span>
                         <h2 class="font-h1 text-2xl md:text-h1 text-primary">3. Auxiliary Adverbs</h2>
-                    </div>
-                    <div class="hidden lg:block">
-                        <img class="w-48 h-32 object-cover rounded-xl shadow-sm border border-outline-variant"
-                            src="https://images.unsplash.com/photo-1583161484724-43485ba83c5d?auto=format&fit=crop&w=400&q=80" />
                     </div>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter items-start">
@@ -2781,10 +2847,34 @@
             // Update Header Title based on current Module
             const headerTitle = document.getElementById('header-title');
             if (headerTitle) {
-                if (currentSlide <= 10) {
+                if (currentSlide <= 7) { // Đã sửa lại thành 7 vì Module 2 bắt đầu từ slide 8
                     headerTitle.innerText = "Work & Career";
                 } else {
                     headerTitle.innerText = "Education";
+                }
+            }
+
+            // Update Navigation Tab Active States
+            const navVocab = document.getElementById('nav-vocab');
+            const navGrammar = document.getElementById('nav-grammar');
+            const navExercise = document.getElementById('nav-exercise');
+
+            if (navVocab && navGrammar && navExercise) {
+                const inactiveClass = "nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded";
+                const activeClass = "nav-item text-indigo-900 font-bold font-serif antialiased cursor-pointer px-2 rounded transition-colors";
+
+                // Reset tất cả về trạng thái ẩn
+                navVocab.className = inactiveClass;
+                navGrammar.className = inactiveClass;
+                navExercise.className = inactiveClass;
+
+                // Highlight theo Slide hiện tại
+                if ([2, 3, 9, 10].includes(currentSlide)) {
+                    navVocab.className = activeClass;
+                } else if ([4, 5, 11].includes(currentSlide)) {
+                    navGrammar.className = activeClass;
+                } else if ((currentSlide >= 6 && currentSlide <= 7) || currentSlide >= 12) {
+                    navExercise.className = activeClass;
                 }
             }
 
@@ -2809,7 +2899,21 @@
                 updateUI();
             }
         }
+        function navigateToSection(section) {
+            // Xác định xem đang ở Module 1 (slide 1-7) hay Module 2 (slide 8-16)
+            const isModule1 = currentSlide <= 7;
+            let targetSlide = 1;
 
+            if (section === 'vocabulary') {
+                targetSlide = isModule1 ? 2 : 9;
+            } else if (section === 'grammar') {
+                targetSlide = isModule1 ? 4 : 11;
+            } else if (section === 'exercise') {
+                targetSlide = isModule1 ? 6 : 12;
+            }
+
+            goToSlide(targetSlide);
+        }
         // Toggle Modules Menu
         function toggleModulesMenu() {
             const menu = document.getElementById('modules-menu');
@@ -3254,6 +3358,36 @@
                 container.appendChild(container.children[Math.random() * i | 0]);
             }
         }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.innerText = 'light_mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.innerText = 'dark_mode';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Tự động áp dụng theme đã lưu khi load trang
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                document.addEventListener('DOMContentLoaded', () => {
+                    const icon = document.getElementById('theme-icon');
+                    if (icon) icon.innerText = 'dark_mode';
+                });
+            }
+        })();
     </script>
 </body>
 
