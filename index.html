@@ -164,7 +164,7 @@
         }
         
         /* Custom Select for Reading */
-        select.reading-blank {
+        select.reading-blank, select.reading-blank-2 {
             -webkit-appearance: none;
             -moz-appearance: none;
             background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
@@ -198,9 +198,6 @@
 
     <main class="flex-grow pt-28 pb-28 px-4 md:px-container-padding flex items-center justify-center w-full max-w-[1440px] mx-auto min-h-screen">
         
-        <!-- ========================================== -->
-        <!-- MODULE 1: Work & Career (Slides 1-10)      -->
-        <!-- ========================================== -->
         <section id="slide-1" class="slide-section active w-full">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-gutter items-center">
                 <div class="md:col-span-6 flex flex-col gap-6 md:gap-section-gap">
@@ -807,11 +804,6 @@
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- MODULE 2: Education (Slides 11-16)         -->
-        <!-- ========================================== -->
-
-        <!-- Slide 11: Module Intro Education -->
         <section id="slide-11" class="slide-section w-full">
             <div class="mb-8 inline-block">
                 <span class="bg-primary text-on-primary font-label-caps text-label-caps px-4 py-1 tracking-widest rounded-full">MODULE 2 INTRODUCTION</span>
@@ -874,7 +866,6 @@
             </div>
         </section>
 
-        <!-- Slide 12: Advanced Vocabulary (Flashcards with IPA) -->
         <section id="slide-12" class="slide-section w-full">
             <div class="mb-8 md:mb-section-gap">
                 <span class="text-secondary font-label-caps uppercase tracking-widest mb-2 block text-xs md:text-sm">Vocabulary Building</span>
@@ -885,7 +876,6 @@
             <p class="text-sm font-label-caps text-outline animate-pulse mb-4 text-center md:text-right">TAP CARDS TO FLIP & LISTEN</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-gutter items-stretch">
-                <!-- Term 1 -->
                 <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Academic discipline', event, '/ˌæk.əˈdem.ɪk ˈdɪs.ə.plɪn/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
                         <div class="flip-card-front bg-white p-6 border border-gray-200 flex flex-col justify-between hover:border-primary-container transition-all duration-300 rounded-lg">
@@ -912,7 +902,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Term 2 -->
                 <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Distance learning', event, '/ˈdɪs.təns ˌlɜː.nɪŋ/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
                         <div class="flip-card-front bg-white p-6 border border-gray-200 flex flex-col justify-between hover:border-primary-container transition-all duration-300 rounded-lg">
@@ -939,10 +928,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Term 3 -->
                 <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Continuous professional development', event, '/kənˈtɪn.ju.əs prəˈfeʃ.ən.əl dɪˈvel.əp.mənt/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
-                        <!-- Fix UI: Removed relative from here -->
                         <div class="flip-card-front bg-primary-container p-6 border border-primary-container flex flex-col justify-between hover:border-secondary transition-all duration-300 rounded-lg overflow-hidden">
                             <span class="material-symbols-outlined absolute -bottom-4 right-2 text-white text-8xl opacity-10 pointer-events-none">trending_up</span>
                             <div class="z-10 h-full flex flex-col justify-between">
@@ -970,7 +957,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Term 4 -->
                 <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Acquire knowledge or skills', event, '/əˈkwaɪər ˈnɒl.ɪdʒ/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
                         <div class="flip-card-front bg-white p-6 border border-gray-200 flex flex-col justify-between hover:border-primary-container transition-all duration-300 rounded-lg">
@@ -997,8 +983,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Term 5 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Enroll in a course', event, '/ɪnˈrəʊl ɪn ə kɔːs/')">
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('To enroll in a course', event, '/ɪnˈrəʊl ɪn ə kɔːs/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
                         <div class="flip-card-front bg-white p-6 border border-gray-200 flex flex-col justify-between hover:border-primary-container transition-all duration-300 rounded-lg">
                             <div>
@@ -1008,7 +993,7 @@
                                 </div>
                                 <h3 class="font-h3 text-xl md:text-h3 text-primary mb-2 flex flex-col items-start gap-1">
                                     <div class="flex justify-between items-center w-full">
-                                        <span>Enroll in a course</span>
+                                        <span>To enroll in a course</span>
                                         <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
                                     </div>
                                     <span class="ipa-display hidden text-sm text-secondary font-bold font-body-md tracking-wider"></span>
@@ -1024,8 +1009,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Term 6 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('Meet the requirements', event, '/miːt ðə rɪˈkwaɪə.mənts/')">
+                <div class="flip-card" onclick="this.classList.toggle('flipped'); speakText('To meet the requirements', event, '/miːt ðə rɪˈkwaɪə.mənts/')">
                     <div class="flip-card-inner shadow-sm hover:shadow-md transition-shadow">
                         <div class="flip-card-front bg-white p-6 border border-gray-200 flex flex-col justify-between hover:border-primary-container transition-all duration-300 rounded-lg">
                             <div>
@@ -1035,7 +1019,7 @@
                                 </div>
                                 <h3 class="font-h3 text-xl md:text-h3 text-primary mb-2 flex flex-col items-start gap-1">
                                     <div class="flex justify-between items-center w-full">
-                                        <span>Meet the requirements</span>
+                                        <span>To meet the requirements</span>
                                         <span class="material-symbols-outlined text-outline/40 text-lg">volume_up</span>
                                     </div>
                                     <span class="ipa-display hidden text-sm text-secondary font-bold font-body-md tracking-wider"></span>
@@ -1060,25 +1044,8 @@
                     When discussing your career path, use "acquire" instead of "get" for a more professional tone. "Acquire" suggests an active, intentional process of learning that is highly valued in academic and corporate environments.
                 </p>
             </div>
-            <div class="mt-section-gap overflow-hidden rounded-lg border border-gray-200">
-<div class="bg-primary text-white p-4">
-<h4 class="font-serif font-bold">Contextual Application: Formal vs. Informal</h4>
-</div>
-<div class="zebra-stripe p-4 flex items-center justify-between">
-<span class="font-body-md text-on-surface">"I'm taking a class"</span>
-<span class="material-symbols-outlined text-outline">arrow_forward</span>
-<span class="font-body-md font-bold text-primary">"I have enrolled in a course"</span>
-</div>
-<div class="zebra-stripe p-4 flex items-center justify-between">
-<span class="font-body-md text-on-surface">"I'm learning new stuff"</span>
-<span class="material-symbols-outlined text-outline">arrow_forward</span>
-<span class="font-body-md font-bold text-primary">"I am acquiring professional skills"</span>
-</div>
-</div>
-</div>
         </section>
 
-        <!-- Slide 13: Paraphrasing (Synonyms with IPA) -->
         <section id="slide-13" class="slide-section w-full">
             <section class="mb-6 md:mb-section-gap">
                 <span class="text-secondary font-label-caps mb-2 block text-xs md:text-sm">VOCABULARY UPGRADE</span>
@@ -1138,9 +1105,26 @@
                     </p>
                 </div>
             </section>
+
+            <section class="mt-8 md:mt-section-gap">
+                <div class="overflow-hidden rounded-lg border border-outline-variant shadow-sm">
+                    <div class="bg-[#000051] text-white p-4 md:p-6">
+                        <h4 class="font-serif font-bold text-lg md:text-xl">Contextual Application: Formal vs. Informal</h4>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 md:p-6 bg-[#F0F0F8] border-b border-white gap-4">
+                        <span class="font-serif text-base md:text-lg text-on-surface sm:w-[40%]">"I'm taking a class"</span>
+                        <span class="material-symbols-outlined text-outline hidden sm:block">arrow_forward</span>
+                        <span class="font-serif text-base md:text-lg font-bold text-[#000051] sm:w-[50%]">"I have enrolled in a course"</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 md:p-6 bg-white gap-4">
+                        <span class="font-serif text-base md:text-lg text-on-surface sm:w-[40%]">"I'm learning new stuff"</span>
+                        <span class="material-symbols-outlined text-outline hidden sm:block">arrow_forward</span>
+                        <span class="font-serif text-base md:text-lg font-bold text-[#000051] sm:w-[50%]">"I am acquiring professional skills"</span>
+                    </div>
+                </div>
+            </section>
         </section>
 
-        <!-- Slide 14: Grammar Unit - Hypothetical Situations -->
         <section id="slide-14" class="slide-section w-full">
             <header class="mb-6 md:mb-section-gap">
                 <div class="flex items-center gap-2 md:gap-element-gap mb-2 md:mb-unit">
@@ -1202,26 +1186,23 @@
                 </section>
             </div>
             
-            <!-- Bảng Contextual Application được thêm vào cuối phần Grammar -->
-            <!-- Comparison Mini-Table -->
-<section class="mt-section-gap overflow-hidden rounded-lg border border-outline-variant">
-<div class="bg-primary p-4">
-<h4 class="text-white font-serif font-bold">Usage Comparison</h4>
-</div>
-<div class="grid grid-cols-2 divide-x divide-outline-variant">
-<div class="p-6 bg-white">
-<p class="font-bold text-primary mb-2">Second Conditional</p>
-<p class="text-body-md">Focuses on a hypothetical condition and its potential result.</p>
-</div>
-<div class="p-6 bg-surface-container-low">
-<p class="font-bold text-primary mb-2">Wish Structure</p>
-<p class="text-body-md">Focuses solely on the regret or desire regarding the current state.</p>
-</div>
-</div>
-</section>
+            <section class="mt-section-gap overflow-hidden rounded-lg border border-outline-variant">
+                <div class="bg-primary p-4">
+                    <h4 class="text-white font-serif font-bold">Usage Comparison</h4>
+                </div>
+                <div class="grid grid-cols-2 divide-x divide-outline-variant">
+                    <div class="p-6 bg-white">
+                        <p class="font-bold text-primary mb-2">Second Conditional</p>
+                        <p class="text-body-md">Focuses on a hypothetical condition and its potential result.</p>
+                    </div>
+                    <div class="p-6 bg-surface-container-low">
+                        <p class="font-bold text-primary mb-2">Wish Structure</p>
+                        <p class="text-body-md">Focuses solely on the regret or desire regarding the current state.</p>
+                    </div>
+                </div>
+            </section>
         </section>
 
-        <!-- Slide 15: Aptis Practice 1 (Grammar Selection & Upgrade) -->
         <section id="slide-15" class="slide-section w-full">
             <header class="mb-6 md:mb-section-gap">
                 <h2 class="font-h1 text-2xl md:text-h1 text-primary mb-2 md:mb-4">Aptis Practice: Education</h2>
@@ -1234,7 +1215,6 @@
                         <h3 class="font-h3 text-lg md:text-h3 text-primary">Task 1: Grammar Selection</h3>
                     </div>
                     <div class="space-y-6 md:space-y-section-gap flex-grow">
-                        <!-- Câu hỏi 1 -->
                         <div class="space-y-3 md:space-y-element-gap">
                             <p class="font-body-lg text-sm md:text-base text-on-surface font-medium italic">1. "If the government ________ more in vocational training, the skills gap would narrow significantly."</p>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4" id="mcq-q1">
@@ -1260,7 +1240,6 @@
                             </div>
                         </div>
 
-                        <!-- Câu hỏi 2 -->
                         <div class="space-y-3 md:space-y-element-gap">
                             <p class="font-body-lg text-sm md:text-base text-on-surface font-medium italic">2. "I wish I ________ more opportunities to acquire specialized knowledge during my undergraduate years."</p>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4" id="mcq-q2">
@@ -1330,7 +1309,6 @@
             </div>
         </section>
 
-        <!-- Slide 16: Aptis Practice 2 (Reading Part 2) -->
         <section id="slide-16" class="slide-section w-full">
             <section class="mt-8 md:mt-12 mb-6 md:mb-section-gap">
                 <div class="flex flex-col gap-1 md:gap-2">
@@ -1401,9 +1379,309 @@
             </section>
         </section>
 
+        <section id="slide-17" class="slide-section w-full">
+            <div class="mb-8 md:mb-section-gap">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="bg-primary text-white text-xs font-label-caps px-3 py-1 rounded-sm tracking-widest uppercase">Module: Education</span>
+                </div>
+                <h2 class="font-h1 text-2xl md:text-h1 text-primary mb-4 md:mb-element-gap">Education Practice: Vocabulary</h2>
+                <p class="font-body-lg text-sm md:text-body-lg text-on-surface-variant max-w-3xl italic font-serif">
+                    "Choose the most appropriate academic term to complete the sentences."
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter">
+                <div class="lg:col-span-8 space-y-6 md:space-y-gutter">
+                    <section class="bg-white p-6 md:p-8 border border-outline-variant shadow-sm rounded-lg" id="vocab-container-vq1">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-primary text-white font-bold rounded-full text-sm">1</span>
+                            <p class="font-h3 text-lg md:text-h3 leading-relaxed text-on-surface">
+                                "Biology is a demanding academic <span class="border-b-2 border-secondary-container px-2 md:px-4 inline-block min-w-[80px] md:min-w-[120px] text-center text-primary font-bold">_________</span> that requires a lot of research."
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 ml-0 md:ml-12">
+                            <button onclick="selectVocab(this, 'vq1')" class="vocab-option-vq1 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">A.</span> subject</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq1')" data-correct="true" class="vocab-option-vq1 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">B.</span> discipline</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq1')" class="vocab-option-vq1 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">C.</span> field</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq1')" class="vocab-option-vq1 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">D.</span> sector</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="bg-white p-6 md:p-8 border border-outline-variant shadow-sm rounded-lg" id="vocab-container-vq2">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-primary text-white font-bold rounded-full text-sm">2</span>
+                            <p class="font-h3 text-lg md:text-h3 leading-relaxed text-on-surface">
+                                "To be accepted into the Master's program, candidates must <span class="border-b-2 border-secondary-container px-2 md:px-4 inline-block min-w-[80px] md:min-w-[120px] text-center text-primary font-bold">_________</span> all the entry requirements."
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 ml-0 md:ml-12">
+                            <button onclick="selectVocab(this, 'vq2')" data-correct="true" class="vocab-option-vq2 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">A.</span> meet</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq2')" class="vocab-option-vq2 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">B.</span> get</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq2')" class="vocab-option-vq2 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">C.</span> fill</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq2')" class="vocab-option-vq2 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">D.</span> achieve</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="bg-white p-6 md:p-8 border border-outline-variant shadow-sm rounded-lg" id="vocab-container-vq3">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-primary text-white font-bold rounded-full text-sm">3</span>
+                            <p class="font-h3 text-lg md:text-h3 leading-relaxed text-on-surface">
+                                "Many professionals choose <span class="border-b-2 border-secondary-container px-2 md:px-4 inline-block min-w-[80px] md:min-w-[120px] text-center text-primary font-bold">_________</span> learning because they can study while working full-time."
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 ml-0 md:ml-12">
+                            <button onclick="selectVocab(this, 'vq3')" class="vocab-option-vq3 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">A.</span> far</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq3')" class="vocab-option-vq3 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">B.</span> remote</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq3')" data-correct="true" class="vocab-option-vq3 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">C.</span> distance</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                            <button onclick="selectVocab(this, 'vq3')" class="vocab-option-vq3 flex items-center justify-between p-3 md:p-4 border border-outline-variant rounded-lg hover:border-primary transition-all text-left bg-white group">
+                                <span class="font-body-md text-sm md:text-base text-on-surface group-hover:text-primary"><span class="font-bold mr-2">D.</span> away</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary icon-state text-sm md:text-base">radio_button_unchecked</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <div class="flex justify-end pt-4 md:pt-6">
+                        <button id="btn-check-vocab" onclick="checkVocabAll()" disabled class="bg-primary text-white font-bold py-3 px-8 md:py-4 md:px-12 rounded-lg opacity-50 cursor-not-allowed transition-all shadow-md flex items-center gap-3 w-full sm:w-auto justify-center">
+                            Check Answers
+                            <span class="material-symbols-outlined text-sm md:text-base">done_all</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col gap-6 md:gap-gutter">
+                    <div class="bg-[#FFF9C4] border-l-4 border-secondary p-4 md:p-6 rounded-lg relative overflow-hidden">
+                        <span class="material-symbols-outlined absolute top-4 right-4 text-secondary opacity-30 text-3xl md:text-4xl">lightbulb</span>
+                        <h4 class="font-bold text-primary flex items-center gap-2 mb-2 md:mb-4 text-sm md:text-base">
+                            Academic Tip
+                        </h4>
+                        <p class="font-body-md text-sm md:text-base text-on-surface italic leading-relaxed pr-6 md:pr-0">
+                            In academic English, <strong>"discipline"</strong> is often used as a more formal synonym for "field of study" or "subject." For example, "Sociology is a fascinating social science discipline."
+                        </p>
+                    </div>
+
+                    <div class="bg-primary-container text-white p-6 md:p-8 rounded-lg">
+                        <h4 class="font-h3 text-xl md:text-h3 mb-2 md:mb-4">Education Context</h4>
+                        <p class="mb-4 md:mb-6 opacity-90 text-sm md:text-base">Higher education uses specific terminology for administrative and academic processes.</p>
+                        <ul class="space-y-2 md:space-y-3">
+                            <li class="flex items-center gap-2 md:gap-3">
+                                <span class="material-symbols-outlined text-secondary-container text-sm md:text-base">check_circle</span>
+                                <span class="text-sm md:text-base">Entry Requirements</span>
+                            </li>
+                            <li class="flex items-center gap-2 md:gap-3">
+                                <span class="material-symbols-outlined text-secondary-container text-sm md:text-base">check_circle</span>
+                                <span class="text-sm md:text-base">Enrollment Procedure</span>
+                            </li>
+                            <li class="flex items-center gap-2 md:gap-3">
+                                <span class="material-symbols-outlined text-secondary-container text-sm md:text-base">check_circle</span>
+                                <span class="text-sm md:text-base">Curriculum Design</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="border border-outline-variant rounded-lg overflow-hidden">
+                        <div class="bg-primary p-3 md:p-4">
+                            <h5 class="text-white font-serif font-bold text-sm md:text-base">Formal vs. Informal</h5>
+                        </div>
+                        <table class="w-full text-xs md:text-sm text-left">
+                            <tbody>
+                                <tr class="bg-white border-b border-outline-variant">
+                                    <td class="p-3 font-bold border-r border-outline-variant text-on-surface">Informal</td>
+                                    <td class="p-3 italic text-on-surface-variant">"Finish the course"</td>
+                                </tr>
+                                <tr class="bg-surface-container-low border-b border-outline-variant">
+                                    <td class="p-3 font-bold border-r border-outline-variant text-on-surface">Formal</td>
+                                    <td class="p-3 italic text-on-surface-variant">"Complete the curriculum"</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="p-3 font-bold border-r border-outline-variant text-on-surface">Professional</td>
+                                    <td class="p-3 italic text-on-surface-variant">"Achieve qualification"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-18" class="slide-section w-full">
+            <section class="mt-8 md:mt-12 mb-6 md:mb-section-gap">
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <span class="font-label-caps text-[10px] md:text-xs text-secondary uppercase tracking-widest">Education Practice</span>
+                    <h1 class="font-h1 text-2xl md:text-h1 text-primary leading-none">Reading Part 2</h1>
+                    <p class="font-body-lg text-sm md:text-base text-outline mt-1 md:mt-2">Fill in the blanks with the correct words: <span class="font-semibold text-primary">(A) acquire | (B) essential | (C) recognized | (D) enrolled</span></p>
+                </div>
+            </section>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter items-start">
+                <div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant p-6 md:p-10 rounded-xl shadow-sm">
+                    <article class="font-body-lg text-sm md:text-lg leading-[2.5] md:leading-[2.2] text-on-surface">
+                        After I (4) 
+                        <select class="reading-blank-2 inline-block min-w-[120px] border-b-2 border-primary-fixed-dim bg-primary-fixed/10 px-2 py-1 mx-1 text-center text-primary font-bold outline-none cursor-pointer rounded transition-colors" data-correct="enrolled" onchange="checkReadingReady2()">
+                            <option value="" disabled selected>__________</option>
+                            <option value="acquire">acquire</option>
+                            <option value="essential">essential</option>
+                            <option value="recognized">recognized</option>
+                            <option value="enrolled">enrolled</option>
+                        </select>
+                        in the course, I realized that self-study is (5) 
+                        <select class="reading-blank-2 inline-block min-w-[120px] border-b-2 border-primary-fixed-dim bg-primary-fixed/10 px-2 py-1 mx-1 text-center text-primary font-bold outline-none cursor-pointer rounded transition-colors" data-correct="essential" onchange="checkReadingReady2()">
+                            <option value="" disabled selected>__________</option>
+                            <option value="acquire">acquire</option>
+                            <option value="essential">essential</option>
+                            <option value="recognized">recognized</option>
+                            <option value="enrolled">enrolled</option>
+                        </select> 
+                        for success. The program helps students (6) 
+                        <select class="reading-blank-2 inline-block min-w-[120px] border-b-2 border-primary-fixed-dim bg-primary-fixed/10 px-2 py-1 mx-1 text-center text-primary font-bold outline-none cursor-pointer rounded transition-colors" data-correct="acquire" onchange="checkReadingReady2()">
+                            <option value="" disabled selected>__________</option>
+                            <option value="acquire">acquire</option>
+                            <option value="essential">essential</option>
+                            <option value="recognized">recognized</option>
+                            <option value="enrolled">enrolled</option>
+                        </select> 
+                        specialized knowledge that is widely (7) 
+                        <select class="reading-blank-2 inline-block min-w-[120px] border-b-2 border-primary-fixed-dim bg-primary-fixed/10 px-2 py-1 mx-1 text-center text-primary font-bold outline-none cursor-pointer rounded transition-colors" data-correct="recognized" onchange="checkReadingReady2()">
+                            <option value="" disabled selected>__________</option>
+                            <option value="acquire">acquire</option>
+                            <option value="essential">essential</option>
+                            <option value="recognized">recognized</option>
+                            <option value="enrolled">enrolled</option>
+                        </select> 
+                        by international employers.
+                    </article>
+                    
+                    <div class="mt-8 flex justify-end">
+                        <button id="btn-check-reading-2" onclick="checkReading2()" disabled class="bg-secondary-fixed text-on-secondary-fixed px-6 py-2 md:px-8 md:py-3 text-xs md:text-sm font-label-caps rounded-full opacity-50 cursor-not-allowed transition-all duration-150 w-full sm:w-auto">CHECK ANSWERS</button>
+                    </div>
+                </div>
+
+                <aside class="lg:col-span-4 flex flex-col gap-6 md:gap-gutter">
+                    <div class="bg-[#FFF9C4]/30 border border-secondary/20 border-l-4 border-l-secondary p-6 rounded-xl shadow-sm relative overflow-hidden">
+                        <span class="material-symbols-outlined absolute top-4 right-4 text-secondary opacity-30 text-3xl md:text-4xl">lightbulb</span>
+                        <h3 class="font-h3 text-lg md:text-xl text-on-secondary-container mb-2">Pro-Tip</h3>
+                        <p class="font-body-md text-sm md:text-base text-on-secondary-fixed-variant pr-6 md:pr-0">
+                            Look for collocations and context clues to determine the right academic word. Pay attention to prepositions like "in" or "by" which often follow specific verbs.
+                        </p>
+                    </div>
+                    <div class="relative rounded-xl overflow-hidden h-48 md:h-64 border border-outline-variant shadow-sm group">
+                        <img alt="Education Practice Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80"/>
+                        <div class="absolute inset-0 bg-primary/10"></div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="slide-19" class="slide-section w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter">
+                <div class="lg:col-span-7 flex flex-col gap-6 md:gap-section-gap">
+                    <div>
+                        <h2 class="font-h2 text-2xl md:text-h2 text-primary mb-2">Education Practice: Writing Part 4</h2>
+                        <p class="font-body-lg text-sm md:text-body-lg text-on-surface-variant">Formal Correspondence Module</p>
+                    </div>
+                    
+                    <div class="bg-white border border-outline-variant p-4 md:p-8 rounded-xl shadow-sm">
+                        <div class="flex items-center gap-2 md:gap-unit mb-3 md:mb-element-gap">
+                            <span class="material-symbols-outlined text-primary">description</span>
+                            <span class="font-label-caps text-[10px] md:text-xs text-outline uppercase tracking-widest">The Situation</span>
+                        </div>
+                        <p class="font-quote text-base md:text-quote text-tertiary italic leading-relaxed border-l-4 border-primary pl-4 py-1">
+                            "You are attending an English course for Master's preparation. However, the study materials are outdated. Write a short message (30-50 words) to the center using 'I wish...' or 'If I were...' and the vocabulary learned."
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-2 md:gap-4">
+                        <div class="flex justify-between items-end">
+                            <label class="font-label-caps text-[10px] md:text-xs text-primary uppercase tracking-widest">Your Response</label>
+                            <span class="text-[10px] md:text-xs text-outline font-label-caps">Word Count: <span class="font-bold text-primary" id="word-counter">0</span> / 50</span>
+                        </div>
+                        <div class="relative">
+                            <textarea id="writing-input-text" class="w-full p-4 md:p-6 font-body-md text-sm md:text-base border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary bg-white resize-none outline-none shadow-inner" placeholder="Begin your message here..." rows="8"></textarea>
+                            <div class="absolute bottom-4 right-4 opacity-20 pointer-events-none">
+                                <span class="material-symbols-outlined text-2xl md:text-4xl">edit_note</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-6 md:gap-gutter">
+                    <div class="bg-[#FFF9C4]/30 border-l-4 border-secondary-fixed-dim p-4 md:p-6 rounded-r-xl shadow-sm">
+                        <div class="flex items-center gap-2 mb-3 md:mb-4">
+                            <span class="material-symbols-outlined text-secondary">lightbulb</span>
+                            <span class="font-label-caps text-[10px] md:text-xs text-secondary uppercase tracking-widest">B2 Writing Tip</span>
+                        </div>
+                        <p class="font-body-md text-sm md:text-base text-on-surface mb-3 md:mb-4">
+                            To achieve higher marks in the Writing component, elevate your tone by using sophisticated adverbs to qualify your adjectives.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-sm text-primary mt-1">chevron_right</span>
+                                <span class="font-body-md text-sm md:text-base"><strong class="text-primary italic">highly beneficial</strong> (instead of 'good')</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-sm text-primary mt-1">chevron_right</span>
+                                <span class="font-body-md text-sm md:text-base"><strong class="text-primary italic">extremely challenging</strong> (instead of 'hard')</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-primary-container text-white p-4 md:p-6 rounded-xl shadow-sm">
+                        <h3 class="font-h3 text-lg md:text-xl text-white mb-3 md:mb-4 border-b border-white/20 pb-2">Key Vocabulary</h3>
+                        <div class="grid grid-cols-2 gap-2 text-[10px] md:text-xs font-label-caps tracking-wider">
+                            <div class="bg-white/10 p-2 rounded text-center">CURRICULUM</div>
+                            <div class="bg-white/10 p-2 rounded text-center">OBSOLETE</div>
+                            <div class="bg-white/10 p-2 rounded text-center">ACADEMIC</div>
+                            <div class="bg-white/10 p-2 rounded text-center">PRACTITIONER</div>
+                            <div class="bg-white/10 p-2 rounded text-center">PEDAGOGY</div>
+                            <div class="bg-white/10 p-2 rounded text-center">RESOURCES</div>
+                        </div>
+                    </div>
+
+                    <div class="relative h-48 md:h-64 rounded-xl overflow-hidden border border-outline-variant shadow-sm group">
+                        <img alt="Academic Library Environment" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-4 md:p-6">
+                            <p class="font-label-caps text-[10px] md:text-xs uppercase text-white/80 tracking-widest mb-1">Contextual Reference</p>
+                            <p class="font-serif italic text-white text-sm md:text-base">Advanced Academic Preparation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Unified Footer Navigation -->
     <footer class="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center px-4 md:px-16 py-3 md:py-4 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
         <button id="btn-prev" onclick="changeSlide(-1)" class="flex flex-col items-center justify-center text-indigo-900/60 hover:text-amber-500 transition-all active:scale-95 duration-100">
             <span class="material-symbols-outlined">arrow_back</span>
@@ -1419,7 +1697,6 @@
         </button>
     </footer>
 
-    <!-- Modules Menu Overlay -->
     <div id="modules-menu" class="fixed inset-0 bg-black/50 z-[100] hidden flex items-end md:items-center justify-center transition-opacity">
         <div class="bg-white w-full md:w-[400px] rounded-t-2xl md:rounded-2xl p-6 transform translate-y-full transition-transform duration-300 shadow-2xl" id="modules-content">
             <div class="flex justify-between items-center mb-6">
@@ -1446,7 +1723,7 @@
     </div>
 
     <script>
-        const totalSlides = 16; 
+        const totalSlides = 19; 
         let currentSlide = 1;
         let currentAudio = null;
 
@@ -1625,9 +1902,11 @@
             btn.querySelector('span').classList.add('font-bold', 'text-primary');
 
             const checkBtn = document.getElementById(`btn-check-${qId}`);
-            checkBtn.disabled = false;
-            checkBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-            checkBtn.classList.add('hover:scale-95');
+            if(checkBtn) {
+                checkBtn.disabled = false;
+                checkBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                checkBtn.classList.add('hover:scale-95');
+            }
         }
 
         function checkMCQ(qId) {
@@ -1638,25 +1917,28 @@
                 const icon = opt.querySelector('.icon-state');
                 const textSpan = opt.querySelector('span');
                 
-                if (opt.getAttribute('data-correct') === 'true') {
-                    opt.classList.remove('border-outline-variant', 'border-primary', 'bg-primary/5');
-                    opt.classList.add('border-2', 'border-green-600', 'bg-green-50');
-                    icon.innerText = 'check_circle';
-                    icon.classList.remove('text-primary', 'text-outline');
-                    icon.classList.add('text-green-600');
-                    textSpan.classList.add('font-bold', 'text-green-700');
-                    textSpan.classList.remove('text-primary');
-                } else if (opt.getAttribute('data-selected') === 'true') {
-                    opt.classList.remove('border-primary', 'bg-primary/5');
-                    opt.classList.add('border-2', 'border-red-500', 'bg-red-50');
-                    icon.innerText = 'cancel';
-                    icon.classList.remove('text-primary', 'text-outline');
-                    icon.classList.add('text-red-500');
-                    textSpan.classList.add('font-bold', 'text-red-700');
-                    textSpan.classList.remove('text-primary');
+                if (opt.getAttribute('data-selected') === 'true') {
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.classList.remove('border-outline-variant', 'border-primary', 'bg-primary/5');
+                        opt.classList.add('border-2', 'border-green-600', 'bg-green-50');
+                        icon.innerText = 'check_circle';
+                        icon.classList.remove('text-primary', 'text-outline');
+                        icon.classList.add('text-green-600');
+                        textSpan.classList.add('font-bold', 'text-green-700');
+                        textSpan.classList.remove('text-primary');
+                    } else {
+                        opt.classList.remove('border-primary', 'bg-primary/5');
+                        opt.classList.add('border-2', 'border-red-500', 'bg-red-50');
+                        icon.innerText = 'cancel';
+                        icon.classList.remove('text-primary', 'text-outline');
+                        icon.classList.add('text-red-500');
+                        textSpan.classList.add('font-bold', 'text-red-700');
+                        textSpan.classList.remove('text-primary');
+                    }
                 }
             });
-            document.getElementById(`btn-check-${qId}`).style.display = 'none';
+            const checkBtn = document.getElementById(`btn-check-${qId}`);
+            if(checkBtn) checkBtn.style.display = 'none';
         }
 
         // Reading Part 2 Logic (Slide 16)
@@ -1667,7 +1949,7 @@
                 if (!b.value) allFilled = false;
             });
             const btn = document.getElementById('btn-check-reading');
-            if (allFilled) {
+            if (allFilled && btn) {
                 btn.disabled = false;
                 btn.classList.remove('opacity-50', 'cursor-not-allowed');
                 btn.classList.add('hover:scale-95');
@@ -1688,6 +1970,106 @@
             document.getElementById('btn-check-reading').style.display = 'none';
         }
 
+        // Logic for Slide 17 (Vocab All)
+        function selectVocab(btn, qId) {
+            const container = document.getElementById(`vocab-container-${qId}`);
+            if(container.classList.contains('answered')) return;
+
+            const options = document.querySelectorAll(`.vocab-option-${qId}`);
+            options.forEach(opt => {
+                opt.classList.remove('border-2', 'border-primary', 'bg-primary/5');
+                opt.classList.add('border-outline-variant', 'bg-white');
+                const icon = opt.querySelector('.icon-state');
+                icon.innerText = 'radio_button_unchecked';
+                icon.classList.remove('text-primary');
+                opt.removeAttribute('data-selected');
+                opt.querySelector('span:last-child')?.classList.remove('font-bold', 'text-primary');
+            });
+
+            btn.classList.remove('border-outline-variant', 'bg-white');
+            btn.classList.add('border-2', 'border-primary', 'bg-primary/5');
+            btn.setAttribute('data-selected', 'true');
+            const icon = btn.querySelector('.icon-state');
+            icon.innerText = 'radio_button_checked';
+            icon.classList.add('text-primary');
+
+            const q1Answered = document.querySelector('.vocab-option-vq1[data-selected="true"]');
+            const q2Answered = document.querySelector('.vocab-option-vq2[data-selected="true"]');
+            const q3Answered = document.querySelector('.vocab-option-vq3[data-selected="true"]');
+
+            const checkBtn = document.getElementById('btn-check-vocab');
+            if (q1Answered && q2Answered && q3Answered && checkBtn) {
+                checkBtn.disabled = false;
+                checkBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                checkBtn.classList.add('hover:scale-95', 'hover:bg-primary-container');
+            }
+        }
+
+        function checkVocabAll() {
+            ['vq1', 'vq2', 'vq3'].forEach(qId => {
+                const container = document.getElementById(`vocab-container-${qId}`);
+                if(container) container.classList.add('answered');
+                
+                const options = document.querySelectorAll(`.vocab-option-${qId}`);
+                options.forEach(opt => {
+                    const icon = opt.querySelector('.icon-state');
+                    const textSpan = opt.querySelector('span:first-child');
+
+                    if (opt.getAttribute('data-selected') === 'true') {
+                        if (opt.getAttribute('data-correct') === 'true') {
+                            opt.classList.remove('border-outline-variant', 'border-primary', 'bg-primary/5', 'bg-white');
+                            opt.classList.add('border-2', 'border-green-600', 'bg-green-50');
+                            icon.innerText = 'check_circle';
+                            icon.classList.remove('text-primary', 'text-outline');
+                            icon.classList.add('text-green-600');
+                            textSpan.classList.add('font-bold', 'text-green-700');
+                            textSpan.classList.remove('text-primary');
+                        } else {
+                            opt.classList.remove('border-primary', 'bg-primary/5', 'bg-white');
+                            opt.classList.add('border-2', 'border-red-500', 'bg-red-50');
+                            icon.innerText = 'cancel';
+                            icon.classList.remove('text-primary', 'text-outline');
+                            icon.classList.add('text-red-500');
+                            textSpan.classList.add('font-bold', 'text-red-700');
+                            textSpan.classList.remove('text-primary');
+                        }
+                    }
+                });
+            });
+            const btn = document.getElementById('btn-check-vocab');
+            if(btn) btn.style.display = 'none';
+        }
+
+        // Logic for Slide 18 (Reading All)
+        function checkReadingReady2() {
+            const blanks = document.querySelectorAll('.reading-blank-2');
+            let allFilled = true;
+            blanks.forEach(b => {
+                if (!b.value) allFilled = false;
+            });
+            const btn = document.getElementById('btn-check-reading-2');
+            if (allFilled && btn) {
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                btn.classList.add('hover:scale-95');
+            }
+        }
+
+        function checkReading2() {
+            const blanks = document.querySelectorAll('.reading-blank-2');
+            blanks.forEach(b => {
+                b.disabled = true;
+                b.classList.remove('text-primary', 'bg-primary-fixed/10', 'border-primary-fixed-dim');
+                if (b.value === b.getAttribute('data-correct')) {
+                    b.classList.add('text-green-700', 'bg-green-100', 'border-green-500');
+                } else {
+                    b.classList.add('text-red-700', 'bg-red-100', 'border-red-500');
+                }
+            });
+            const btn = document.getElementById('btn-check-reading-2');
+            if(btn) btn.style.display = 'none';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             updateUI();
             
@@ -1696,14 +2078,33 @@
             if (upgradeInput) {
                 upgradeInput.addEventListener('input', function() {
                     const btn = document.getElementById('btn-check-upgrade');
-                    if (this.value.trim().length > 0) {
-                        btn.disabled = false;
-                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                        btn.classList.add('hover:scale-95');
+                    if(btn) {
+                        if (this.value.trim().length > 0) {
+                            btn.disabled = false;
+                            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                            btn.classList.add('hover:scale-95');
+                        } else {
+                            btn.disabled = true;
+                            btn.classList.add('opacity-50', 'cursor-not-allowed');
+                            btn.classList.remove('hover:scale-95');
+                        }
+                    }
+                });
+            }
+
+            // Word counter cho Slide 19 (Writing)
+            const writingInput2 = document.getElementById('writing-input-text');
+            const counter2 = document.getElementById('word-counter');
+            if (writingInput2 && counter2) {
+                writingInput2.addEventListener('input', function() {
+                    const words = this.value.trim().split(/\s+/).filter(w => w.length > 0);
+                    counter2.innerText = words.length;
+                    if (words.length > 50) {
+                        counter2.classList.add('text-error');
+                        counter2.classList.remove('text-primary');
                     } else {
-                        btn.disabled = true;
-                        btn.classList.add('opacity-50', 'cursor-not-allowed');
-                        btn.classList.remove('hover:scale-95');
+                        counter2.classList.remove('text-error');
+                        counter2.classList.add('text-primary');
                     }
                 });
             }
