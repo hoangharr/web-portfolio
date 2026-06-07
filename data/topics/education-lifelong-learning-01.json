@@ -1,0 +1,360 @@
+{
+  "id": "education-lifelong-learning-01",
+  "title": "Education & Lifelong Learning",
+  "level": "B2",
+  "subtitle": "Essential Vocabulary & Grammar for Aptis B2",
+  "themeIcon": "school",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "Module 2 Introduction",
+      "title": "Education & Lifelong Learning",
+      "quote": "Essential Vocabulary & Grammar for Aptis B2",
+      "features": [
+        {
+          "icon": "menu_book",
+          "title": "Advanced Vocabulary",
+          "description": "Master Level B2 lexical sets focused on academic environments."
+        },
+        {
+          "icon": "sync_alt",
+          "title": "Paraphrasing",
+          "description": "Developing synonyms and structural variety for higher scores."
+        },
+        {
+          "icon": "psychology",
+          "title": "Hypothetical Situations",
+          "description": "Conditional structures for discussing educational choices."
+        },
+        {
+          "icon": "assignment_turned_in",
+          "title": "Aptis Practice Tasks",
+          "description": "Direct application to examination formats and criteria."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80",
+        "alt": "Academic environment"
+      },
+      "badge": {
+        "icon": "verified",
+        "title": "APTIS ALIGNED",
+        "text": "This module focuses on B2 academic vocabulary, grammar control, and formal writing tasks."
+      },
+      "tip": {
+        "title": "B2 Proficiency Tip",
+        "text": "For the Aptis B2 level, examiners look for collocations and idiomatic expressions related to learning. Instead of just saying \"learn something,\" try \"acquire a new skill\" or \"pursue academic excellence.\""
+      }
+    },
+    {
+      "id": "advanced-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Building",
+      "title": "1. Advanced Vocabulary",
+      "description": "Tap cards to flip and listen.",
+      "cards": [
+        {
+          "term": "Academic discipline",
+          "definition": "Ex: Psychology is a complex academic discipline involving the study of the mind.",
+          "translation": "Mot nganh hoc/mon hoc thuat",
+          "icon": "school",
+          "category": "Noun",
+          "variant": "default"
+        },
+        {
+          "term": "Distance learning",
+          "definition": "Ex: Distance learning has become essential for working professionals worldwide.",
+          "translation": "Hoc tu xa",
+          "icon": "laptop_mac",
+          "category": "Phrase",
+          "variant": "default"
+        },
+        {
+          "term": "Continuous professional development (CPD)",
+          "definition": "Essential for maintaining high standards in the corporate sector.",
+          "translation": "Phat trien chuyen mon lien tuc",
+          "icon": "history_edu",
+          "category": "Core",
+          "variant": "primary"
+        },
+        {
+          "term": "Acquire knowledge/skills",
+          "definition": "Ex: Workshops are a great way to acquire practical industry skills.",
+          "translation": "Tiep thu kien thuc/ky nang",
+          "icon": "psychology",
+          "category": "Verb",
+          "variant": "default"
+        },
+        {
+          "term": "To enroll in a course",
+          "definition": "Ex: Students must enroll in the course before the semester begins.",
+          "translation": "Dang ky mot khoa hoc",
+          "icon": "assignment_turned_in",
+          "category": "Action",
+          "variant": "default"
+        },
+        {
+          "term": "To meet the requirements",
+          "definition": "Ex: Does he meet the requirements for this senior management position?",
+          "translation": "Dap ung cac yeu cau",
+          "icon": "verified",
+          "category": "Criteria",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip: Academic Verbs",
+        "text": "When discussing your career path, use \"acquire\" instead of \"get\" for a more professional tone."
+      }
+    },
+    {
+      "id": "paraphrasing",
+      "type": "synonyms",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Upgrade",
+      "title": "2. Paraphrasing (Synonyms)",
+      "description": "Click B2 words to hear pronunciation and compare formal alternatives.",
+      "rows": [
+        {
+          "basic": "Students",
+          "advanced": ["Learners", "Candidates", "Participants"]
+        },
+        {
+          "basic": "Teacher",
+          "advanced": ["Educator", "Instructor", "Tutor"]
+        },
+        {
+          "basic": "Difficult",
+          "advanced": ["Challenging", "Demanding", "Sophisticated"]
+        },
+        {
+          "basic": "Important",
+          "advanced": ["Crucial", "Essential", "Vital"]
+        }
+      ],
+      "practiceTasks": [
+        {
+          "icon": "keyboard_double_arrow_down",
+          "label": "Formal vs. Informal",
+          "text": "\"I'm taking a class\" -> \"I have enrolled in a course\""
+        },
+        {
+          "icon": "keyboard_double_arrow_down",
+          "label": "Formal vs. Informal",
+          "text": "\"I'm learning new stuff\" -> \"I am acquiring professional skills\""
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip: Precision Matters",
+        "text": "While these words are synonyms, they carry different nuances. Use \"Crucial\" for high-stakes situations, and \"Essential\" for necessary components of a process."
+      }
+    },
+    {
+      "id": "hypothetical-situations",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar Unit",
+      "title": "3. Hypothetical Situations",
+      "description": "Mastering the nuances of imaginary scenarios and expressing desires within professional academic contexts.",
+      "points": [
+        {
+          "title": "Conditionals Type 2",
+          "icon": "school",
+          "function": "If + S + V-past, S + would/could + V-inf",
+          "examples": ["If I had more spare time, I would enroll in an advanced data science course."]
+        },
+        {
+          "title": "Wish structures",
+          "icon": "history_edu",
+          "function": "S + wish + S + V-past",
+          "examples": ["I wish our university offered more hands-on workshops for students."]
+        }
+      ],
+      "table": {
+        "headers": ["Structure", "Focus", "Usage"],
+        "rows": [
+          ["Second Conditional", "Hypothetical condition and potential result", "If I had more time, I would enroll."],
+          ["Wish Structure", "Regret or desire about the current state", "I wish the course offered more workshops."]
+        ]
+      },
+      "tip": {
+        "title": "Academic Pro-Tip",
+        "text": "In formal writing, we often use \"were\" instead of \"was\" for all subjects in the if clause."
+      }
+    },
+    {
+      "id": "education-practice-grammar",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Aptis Practice",
+      "title": "Education Grammar Selection",
+      "description": "Refine grammatical precision and advanced writing skills.",
+      "questions": [
+        {
+          "id": "edu-gq1",
+          "prompt": "\"If the government ________ more in vocational training, the skills gap would narrow significantly.\"",
+          "options": ["invests", "invested", "would invest", "had invested"],
+          "correct": 1
+        },
+        {
+          "id": "edu-gq2",
+          "prompt": "\"I wish I ________ more opportunities to acquire specialized knowledge during my undergraduate years.\"",
+          "options": ["have", "am having", "had", "will have"],
+          "correct": 2
+        }
+      ],
+      "tip": {
+        "title": "Sentence Upgrade",
+        "text": "Original: \"The course is very difficult. I want more teachers to help me.\" Upgrade: \"This academic discipline is exceptionally challenging, and it would be highly beneficial if more tutors were available to support the learners.\""
+      }
+    },
+    {
+      "id": "digital-education-reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Advanced Reading Skills",
+      "title": "Practice: Reading Part 2",
+      "description": "Text completion: assessing contextual coherence.",
+      "passage": {
+        "title": "Exercise 2.4: Digital Education",
+        "options": ["requirements", "acquire", "distance", "essential"],
+        "parts": [
+          "In the modern world, ",
+          { "blank": "edu-r1" },
+          " learning has become increasingly popular due to its flexibility. It allows students to ",
+          { "blank": "edu-r2" },
+          " new skills without attending a traditional classroom. However, it is ",
+          { "blank": "edu-r3" },
+          " for learners to stay self-motivated to meet all the academic ",
+          { "blank": "edu-r4" },
+          " of the course."
+        ],
+        "blanks": [
+          { "id": "edu-r1", "correct": "distance" },
+          { "id": "edu-r2", "correct": "acquire" },
+          { "id": "edu-r3", "correct": "essential" },
+          { "id": "edu-r4", "correct": "requirements" }
+        ]
+      },
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Look for collocations. The word \"learning\" is often paired with \"distance\" or \"blended\" in an academic context."
+      }
+    },
+    {
+      "id": "education-vocabulary-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Module: Education",
+      "title": "Education Practice: Vocabulary",
+      "description": "Choose the most appropriate academic term to complete the sentences.",
+      "questions": [
+        {
+          "id": "edu-vq1",
+          "prompt": "\"Biology is a demanding academic _________ that requires a lot of research.\"",
+          "options": ["subject", "discipline", "field", "sector"],
+          "correct": 1
+        },
+        {
+          "id": "edu-vq2",
+          "prompt": "\"To be accepted into the Master's program, candidates must _________ all the entry requirements.\"",
+          "options": ["meet", "get", "fill", "achieve"],
+          "correct": 0
+        },
+        {
+          "id": "edu-vq3",
+          "prompt": "\"Many professionals choose _________ learning because they can study while working full-time.\"",
+          "options": ["far", "remote", "distance", "away"],
+          "correct": 2
+        },
+        {
+          "id": "edu-vq4",
+          "prompt": "\"Internships provide an excellent opportunity for students to _________ practical skills before graduating.\"",
+          "options": ["collect", "acquire", "hold", "gather"],
+          "correct": 1
+        },
+        {
+          "id": "edu-vq5",
+          "prompt": "\"Make sure to _________ in the advanced grammar course before the registration deadline.\"",
+          "options": ["enroll", "apply", "enter", "join"],
+          "correct": 0
+        },
+        {
+          "id": "edu-vq6",
+          "prompt": "\"The company highly values employees who demonstrate a commitment to continuous professional _________.\"",
+          "options": ["growing", "advancing", "development", "progression"],
+          "correct": 2
+        }
+      ],
+      "tip": {
+        "title": "Academic Tip",
+        "text": "In academic English, \"discipline\" is often used as a more formal synonym for \"field of study\" or \"subject.\""
+      }
+    },
+    {
+      "id": "education-reading-part-2",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Education Practice",
+      "title": "Reading Part 2",
+      "description": "Fill in the blanks with the correct words: acquire | continuous | discipline | enrolled | essential | meet | recognized",
+      "passage": {
+        "title": "Education Practice Passage",
+        "options": ["acquire", "continuous", "discipline", "enrolled", "essential", "meet", "recognized"],
+        "parts": [
+          "After I ",
+          { "blank": "edu-r2-1" },
+          " in the course, I realized that self-study is ",
+          { "blank": "edu-r2-2" },
+          " for success. The program helps students ",
+          { "blank": "edu-r2-3" },
+          " specialized knowledge that is widely ",
+          { "blank": "edu-r2-4" },
+          " by international employers. Furthermore, maintaining a commitment to ",
+          { "blank": "edu-r2-5" },
+          " professional development is vital in today's fast-paced economy. Therefore, I also plan to pursue a more advanced academic ",
+          { "blank": "edu-r2-6" },
+          " once I ",
+          { "blank": "edu-r2-7" },
+          " all the current graduation requirements."
+        ],
+        "blanks": [
+          { "id": "edu-r2-1", "correct": "enrolled" },
+          { "id": "edu-r2-2", "correct": "essential" },
+          { "id": "edu-r2-3", "correct": "acquire" },
+          { "id": "edu-r2-4", "correct": "recognized" },
+          { "id": "edu-r2-5", "correct": "continuous" },
+          { "id": "edu-r2-6", "correct": "discipline" },
+          { "id": "edu-r2-7", "correct": "meet" }
+        ]
+      },
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Look for collocations and context clues. Pay attention to prepositions like \"in\" or \"by\" which often follow specific verbs."
+      }
+    },
+    {
+      "id": "education-writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Formal Correspondence Module",
+      "title": "Education Practice: Writing Part 4",
+      "description": "Write a short formal response using the vocabulary learned.",
+      "prompt": {
+        "situation": "You are attending an English course for Master's preparation. However, the study materials are outdated. Write a short message (30-50 words) to the center using \"I wish...\" or \"If I were...\" and the vocabulary learned.",
+        "placeholder": "Begin your message here...",
+        "minWords": 30,
+        "maxWords": 50,
+        "referenceAnswer": "I wish the study materials were more up to date. If I were responsible for the course, I would provide more academic resources and practical guidance to help learners acquire the skills they need.",
+        "focus": ["curriculum", "obsolete", "academic", "practitioner", "pedagogy", "resources"]
+      },
+      "tip": {
+        "title": "B2 Writing Tip",
+        "text": "To achieve higher marks in the Writing component, elevate your tone by using sophisticated adverbs to qualify your adjectives, such as highly beneficial or extremely challenging."
+      }
+    }
+  ]
+}

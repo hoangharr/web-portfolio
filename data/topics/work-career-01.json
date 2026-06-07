@@ -1,0 +1,348 @@
+{
+  "id": "work-career-01",
+  "title": "Work & Career",
+  "level": "B2",
+  "subtitle": "Essential Vocabulary for Aptis Writing & Speaking",
+  "themeIcon": "work",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "Module Introduction",
+      "title": "Work & Career - Level B2",
+      "quote": "Essential Vocabulary for Aptis Writing & Speaking",
+      "features": [
+        {
+          "icon": "assignment",
+          "title": "Job Applications",
+          "description": "Formal letters, CVs, and professional summaries."
+        },
+        {
+          "icon": "report_problem",
+          "title": "Complaints",
+          "description": "Managing workplace disputes and formal grievances."
+        },
+        {
+          "icon": "person",
+          "title": "Personal Descriptions",
+          "description": "Discussing roles, responsibilities, and career goals."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80",
+        "alt": "Professional workplace setting"
+      },
+      "badge": {
+        "icon": "verified",
+        "title": "APTIS ALIGNED",
+        "text": "This module specifically addresses the B2 performance descriptors for lexical range and accuracy."
+      },
+      "tip": {
+        "title": "Academic Insight",
+        "text": "Focus on action verbs to demonstrate competence in your writing tasks."
+      }
+    },
+    {
+      "id": "key-collocations",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Building",
+      "title": "1. Key Collocations",
+      "description": "Click cards to flip and listen.",
+      "cards": [
+        {
+          "term": "Pursue a career path",
+          "definition": "To follow a specific professional direction or series of jobs over time.",
+          "translation": "Theo duoi con duong su nghiep",
+          "icon": "moving",
+          "category": "Career Growth",
+          "variant": "default"
+        },
+        {
+          "term": "Gain hands-on experience",
+          "definition": "Learning by doing the actual work rather than just studying the theory.",
+          "translation": "Tich luy kinh nghiem thuc te",
+          "icon": "front_hand",
+          "category": "Practical Skills",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "Meet a deadline",
+          "definition": "To finish a task or project by the agreed-upon time or date.",
+          "translation": "Hoan thanh dung han",
+          "icon": "alarm",
+          "category": "Time Management",
+          "variant": "default"
+        },
+        {
+          "term": "Work under pressure",
+          "definition": "To perform effectively while dealing with difficult or stressful situations.",
+          "translation": "Lam viec duoi ap luc",
+          "icon": "bolt",
+          "category": "Resilience",
+          "variant": "default"
+        },
+        {
+          "term": "Achieve a work-life balance",
+          "definition": "Managing time between professional responsibilities and personal life.",
+          "translation": "Dat duoc su can bang cong viec - cuoc song",
+          "icon": "balance",
+          "category": "Well-being",
+          "badge": "High Priority",
+          "variant": "primary"
+        },
+        {
+          "term": "Job satisfaction",
+          "definition": "The feeling of pleasure and fulfillment that a person derives from their job.",
+          "translation": "Su hai long voi cong viec",
+          "icon": "sentiment_satisfied",
+          "category": "Fulfillment",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "\"Hands-on experience\" is highly valued by recruiters. Use it in your CV to describe internships, volunteer work, or practical projects."
+      }
+    },
+    {
+      "id": "synonyms",
+      "type": "synonyms",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Upgrade",
+      "title": "2. Synonyms (B2 Level)",
+      "description": "Elevate your vocabulary by replacing common A1/A2 words with professional B2-level alternatives.",
+      "rows": [
+        {
+          "basic": "Job/Work",
+          "advanced": ["Occupation", "Profession", "Employment"]
+        },
+        {
+          "basic": "Good at",
+          "advanced": ["Proficient in", "Competent at"]
+        },
+        {
+          "basic": "Salary",
+          "advanced": ["Income", "Remuneration", "Earnings"]
+        },
+        {
+          "basic": "Colleagues",
+          "advanced": ["Co-workers", "Peers"]
+        },
+        {
+          "basic": "Boss",
+          "advanced": ["Employer", "Supervisor", "Management"]
+        }
+      ],
+      "practiceTasks": [
+        {
+          "icon": "ink_pen",
+          "label": "Practice Task",
+          "text": "Rewrite your current bio using at least three B2 equivalents from the table above."
+        },
+        {
+          "icon": "ear_sound",
+          "label": "Listen for nuance",
+          "text": "Listen for which synonym for \"Boss\" is used in a professional conversation."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+        "alt": "Professional workspace"
+      },
+      "tip": {
+        "title": "Pro-Tip: Precision Matters",
+        "text": "In a corporate environment, using \"Remuneration\" instead of \"Salary\" signals a higher level of professional literacy, especially during contract negotiations or formal interviews."
+      }
+    },
+    {
+      "id": "auxiliary-adverbs",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 03",
+      "title": "3. Auxiliary Adverbs",
+      "description": "Adverbs of degree or intensity function as auxiliary modifiers. In professional English, they elevate basic descriptions to precise, impactful statements.",
+      "points": [
+        {
+          "title": "Highly",
+          "icon": "star",
+          "function": "Modifies ability or trait",
+          "examples": ["Highly skilled", "Highly motivated", "He is a highly effective leader."]
+        },
+        {
+          "title": "Consistently",
+          "icon": "sync",
+          "function": "Modifies frequency or action",
+          "examples": ["Consistently meet targets", "The team consistently delivers results."]
+        },
+        {
+          "title": "Extremely",
+          "icon": "priority_high",
+          "function": "Modifies magnitude or state",
+          "examples": ["Extremely demanding job", "Managing this project is extremely complex."]
+        }
+      ],
+      "table": {
+        "headers": ["Adverb", "Function", "Professional Phrase"],
+        "rows": [
+          ["Highly", "Modifies Ability/Trait", "He is a highly effective leader."],
+          ["Consistently", "Modifies Frequency/Action", "The team consistently delivers results."],
+          ["Extremely", "Modifies Magnitude/State", "Managing this project is extremely complex."]
+        ]
+      },
+      "tip": {
+        "title": "Pro-Tip: Precision",
+        "text": "Avoid overusing \"very.\" Instead, use specific auxiliary adverbs like \"consistently\" to demonstrate reliability over time."
+      }
+    },
+    {
+      "id": "sentence-completion",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 1",
+      "title": "Sentence Completion",
+      "description": "Choose the best word or phrase to complete each workplace sentence.",
+      "questions": [
+        {
+          "id": "m1q1",
+          "prompt": "\"To succeed in marketing, you need to ________ a clear career path early on.\"",
+          "options": ["follow", "pursue", "trace", "walk"],
+          "correct": 1
+        },
+        {
+          "id": "m1q2",
+          "prompt": "\"Internships are the best way to gain ________ experience before graduating.\"",
+          "options": ["hands-on", "theoretical", "remote", "manual"],
+          "correct": 0
+        },
+        {
+          "id": "m1q3",
+          "prompt": "\"Our team is ________ motivated to achieve the annual targets.\"",
+          "options": ["absolutely", "widely", "completely", "highly"],
+          "correct": 3
+        },
+        {
+          "id": "m1q4",
+          "prompt": "\"Managing this project requires the ability to work well under ________.\"",
+          "options": ["pressure", "weight", "control", "force"],
+          "correct": 0
+        },
+        {
+          "id": "m1q5",
+          "prompt": "\"Many employees struggle to achieve a healthy work-life ________.\"",
+          "options": ["equality", "status", "balance", "center"],
+          "correct": 2
+        },
+        {
+          "id": "m1q6",
+          "prompt": "\"You must ________ the deadline if you want to keep this client.\"",
+          "options": ["finish", "catch", "accomplish", "meet"],
+          "correct": 3
+        }
+      ]
+    },
+    {
+      "id": "matching-lab",
+      "type": "drag-drop",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 2",
+      "title": "Work Synonym Matching Lab",
+      "description": "Drag each professional synonym to the correct basic word group.",
+      "targets": [
+        { "id": "salary", "label": "Salary" },
+        { "id": "boss", "label": "Boss" },
+        { "id": "colleagues", "label": "Colleagues" },
+        { "id": "good-at", "label": "Good at" },
+        { "id": "job", "label": "Job" }
+      ],
+      "items": [
+        { "id": "drag-1", "text": "Proficient in", "match": "good-at" },
+        { "id": "drag-2", "text": "Co-workers", "match": "colleagues" },
+        { "id": "drag-3", "text": "Income", "match": "salary" },
+        { "id": "drag-4", "text": "Proficient at", "match": "none" },
+        { "id": "drag-5", "text": "Employer", "match": "boss" },
+        { "id": "drag-6", "text": "Occupation", "match": "job" },
+        { "id": "drag-7", "text": "Remuneration", "match": "salary" },
+        { "id": "drag-8", "text": "Salaryman", "match": "none" },
+        { "id": "drag-9", "text": "Supervisor", "match": "boss" },
+        { "id": "drag-10", "text": "Profession", "match": "job" },
+        { "id": "drag-11", "text": "Peers", "match": "colleagues" },
+        { "id": "drag-12", "text": "Competent at", "match": "good-at" },
+        { "id": "drag-13", "text": "Earnings", "match": "salary" },
+        { "id": "drag-14", "text": "Competent in", "match": "none" },
+        { "id": "drag-15", "text": "Employment", "match": "job" },
+        { "id": "drag-16", "text": "Bosses", "match": "none" },
+        { "id": "drag-17", "text": "Management", "match": "boss" }
+      ]
+    },
+    {
+      "id": "reading-workplace",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Practice Part 3",
+      "title": "Reading Part 2: Workplace Development",
+      "description": "Complete the passage using the most appropriate workplace vocabulary.",
+      "passage": {
+        "title": "Career Development in a Modern Company",
+        "options": ["balance", "deadline", "hands-on", "highly", "occupation", "pressure"],
+        "parts": [
+          "For many young professionals, choosing an ",
+          { "blank": "r1" },
+          " is only the first step. They often look for roles where they can gain ",
+          { "blank": "r2" },
+          " experience and become ",
+          { "blank": "r3" },
+          " skilled in a specific area. However, modern workplaces can be demanding. Employees may need to work under ",
+          { "blank": "r4" },
+          " and still meet every ",
+          { "blank": "r5" },
+          ". To stay healthy and productive, they should also protect their work-life ",
+          { "blank": "r6" },
+          "."
+        ],
+        "blanks": [
+          { "id": "r1", "correct": "occupation" },
+          { "id": "r2", "correct": "hands-on" },
+          { "id": "r3", "correct": "highly" },
+          { "id": "r4", "correct": "pressure" },
+          { "id": "r5", "correct": "deadline" },
+          { "id": "r6", "correct": "balance" }
+        ]
+      },
+      "questions": [
+        {
+          "id": "rq1",
+          "prompt": "What is the passage mainly about?",
+          "options": ["Changing schools", "Professional growth and workplace demands", "Salary negotiation", "Office design"],
+          "correct": 1
+        }
+      ],
+      "tip": {
+        "title": "Reading Tip",
+        "text": "Look for collocations around each blank: gain hands-on experience, work under pressure, meet a deadline, and work-life balance."
+      }
+    },
+    {
+      "id": "writing-career",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Practice Part 4",
+      "title": "Writing Part 4: Career Goals",
+      "description": "Write a short formal response using the vocabulary from this lesson.",
+      "prompt": {
+        "situation": "You are applying for an internship at an international company. Write a short message explaining why you want the position and what kind of experience you hope to gain.",
+        "placeholder": "Begin your message here...",
+        "minWords": 30,
+        "maxWords": 50,
+        "referenceAnswer": "I am applying for this internship because I want to gain hands-on experience in a professional environment. I am highly motivated, able to work under pressure, and eager to pursue a clear career path in international business.",
+        "focus": ["hands-on experience", "highly motivated", "career path", "work under pressure"]
+      },
+      "tip": {
+        "title": "B2 Writing Tip",
+        "text": "Use precise collocations and one auxiliary adverb, such as highly motivated or consistently reliable, to raise the formality of your response."
+      }
+    }
+  ]
+}

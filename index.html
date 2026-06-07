@@ -11,6 +11,7 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
+    <link rel="manifest" href="/manifest.json">
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -307,7 +308,7 @@
     <header
         class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-16 h-20 bg-white border-t-4 border-amber-400 border-b border-gray-200">
         <div class="flex items-center gap-2 md:gap-4">
-            <span class="material-symbols-outlined text-indigo-900" data-icon="school">school</span>
+            <span class="material-symbols-outlined text-indigo-900" data-icon="lesson-theme">school</span>
             <h1 id="header-title" class="font-serif text-lg md:text-2xl font-bold tracking-tight text-indigo-950">Work &
                 Career</h1>
         </div>
@@ -330,6 +331,7 @@
 
     <main
         class="flex-grow pt-28 pb-28 px-4 md:px-container-padding flex items-center justify-center w-full max-w-[1440px] mx-auto min-h-screen">
+<<<<<<< HEAD
 
         <section id="slide-1" class="slide-section active w-full">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-gutter items-center">
@@ -2744,6 +2746,9 @@
                 <p class="font-body-md text-on-surface-variant italic">Xem video ngắn này để củng cố thêm kiến thức về chủ đề Education.</p>
             </div>
         </section>
+=======
+        <div id="lesson-root" class="w-full"></div>
+>>>>>>> 9e163a3 (refactor)
     </main>
 
     <footer
@@ -2775,28 +2780,13 @@
                     class="text-on-surface-variant hover:text-error transition-colors"><span
                         class="material-symbols-outlined">close</span></button>
             </div>
-            <div class="flex flex-col gap-4">
-                <button onclick="selectModule(1)"
-                    class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all text-left">
-                    <span class="material-symbols-outlined text-primary text-3xl">work</span>
-                    <div>
-                        <p class="font-bold text-primary text-base">Module 1</p>
-                        <p class="text-sm text-on-surface-variant">Work & Career</p>
-                    </div>
-                </button>
-                <button onclick="selectModule(8)"
-                    class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all text-left">
-                    <span class="material-symbols-outlined text-primary text-3xl">school</span>
-                    <div>
-                        <p class="font-bold text-primary text-base">Module 2</p>
-                        <p class="text-sm text-on-surface-variant">Education & Lifelong Learning</p>
-                    </div>
-                </button>
-            </div>
+            <div id="modules-list" class="flex flex-col gap-4"></div>
         </div>
     </div>
 
+    <script src="js/engine.js"></script>
     <script>
+<<<<<<< HEAD
         const totalSlides = 17;
         let currentSlide = 1;
         let currentAudio = null;
@@ -3363,56 +3353,13 @@
                         item.classList.add('bg-red-50', 'border-red-500', 'text-red-700');
                     }
                 });
+=======
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+>>>>>>> 9e163a3 (refactor)
             });
         }
-
-        function resetMatching() {
-            const container = document.getElementById('draggables-container');
-            document.querySelectorAll('.drop-zone').forEach(zone => {
-                Array.from(zone.children).forEach(item => {
-                    item.classList.remove('bg-green-100', 'border-green-500', 'text-green-800', 'bg-red-50', 'border-red-500', 'text-red-700');
-                    item.classList.add('bg-white', 'border-primary', 'text-primary');
-                    container.appendChild(item);
-                });
-                zone.classList.add('border-dashed');
-                zone.classList.remove('border-solid', 'border-primary');
-            });
-
-            // Xáo trộn vị trí lại ở trong danh sách kéo sau khi reset
-            for (let i = container.children.length; i >= 0; i--) {
-                container.appendChild(container.children[Math.random() * i | 0]);
-            }
-        }
-
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                icon.innerText = 'light_mode';
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-                icon.innerText = 'dark_mode';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Tự động áp dụng theme đã lưu khi load trang
-        (function () {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                document.addEventListener('DOMContentLoaded', () => {
-                    const icon = document.getElementById('theme-icon');
-                    if (icon) icon.innerText = 'dark_mode';
-                });
-            }
-        })();
     </script>
 </body>
 
