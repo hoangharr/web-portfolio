@@ -355,6 +355,12 @@ function renderReading(section) {
             `;
           }).join("")}
         </article>
+        ${section.video ? `
+          <div class="mt-6">
+            ${section.video.type === 'iframe' ? `<div class="aspect-video rounded-lg overflow-hidden border border-outline-variant"><iframe src="${escapeHtml(section.video.src)}" title="${escapeHtml(section.video.title || 'Video')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe></div>` : ''}
+            ${section.video.caption ? `<p class="mt-2 text-sm text-on-surface-variant">${escapeHtml(section.video.caption)}</p>` : ''}
+          </div>
+        ` : ''}
       </div>
       <div class="col-span-12 xl:col-span-4 flex flex-col gap-6 md:gap-8">
         ${renderTip(section.tip)}

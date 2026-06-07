@@ -335,6 +335,12 @@
         "title": "Pro-Tip",
         "text": "Look for collocations and context clues. Pay attention to prepositions like \"in\" or \"by\" which often follow specific verbs."
       }
+    ,
+      "video": {
+        "type": "iframe",
+        "src": "https://www.youtube.com/embed/z7Qp9Q_Br88",
+        "title": "Education - short reel"
+      }
     },
     {
       "id": "education-writing",
