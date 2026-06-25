@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "learn.hoangdm.com" }],
+      "destination": "/english.html"
+    }
+  ]
+}
