@@ -148,6 +148,18 @@
         background-color: #334155;
         color: #94a3b8;
       }
+      /* Hero dark mode */
+      html.dark h1.font-serif { color: #e2e8f0; }
+      html.dark .text-amber-600 { color: #fbbf24; }
+      html.dark .text-amber-800 { color: #fcd34d; }
+      html.dark .bg-indigo-50 { background-color: #1e2a4a !important; }
+      html.dark .border-indigo-200 { border-color: #3730a3 !important; }
+      html.dark .bg-amber-50 { background-color: #3b2800 !important; }
+      html.dark .border-amber-200 { border-color: #92400e !important; }
+      html.dark .border-amber-400 { border-color: #f59e0b !important; }
+      html.dark .text-slate-800 { color: #e2e8f0 !important; }
+      html.dark .text-slate-600 { color: #94a3b8 !important; }
+      html.dark .text-slate-500 { color: #64748b !important; }
     </style>
   </head>
 
@@ -174,42 +186,55 @@
     <main class="pt-16">
 
       <!-- Hero -->
-      <section id="about" class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-24 section-fade">
-        <!-- Avatar placeholder -->
-        <div class="w-16 h-16 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center mb-6">
-          <span class="material-symbols-outlined text-indigo-900 text-3xl">person</span>
+      <section id="about" class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-28 section-fade">
+
+        <p class="text-xs font-semibold uppercase tracking-widest text-amber-600 mb-8">Hà Nội, Việt Nam</p>
+
+        <h1 class="font-serif text-5xl md:text-6xl font-bold text-indigo-950 mb-4 leading-none tracking-tight">
+          Đỗ Minh<br>Hoàng
+        </h1>
+
+        <!-- Tagline với amber underline accent -->
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-900 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1">
+            <span class="material-symbols-outlined" style="font-size:15px">terminal</span>
+            Fullstack Developer
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-amber-800 bg-amber-50 border border-amber-200 rounded-full px-3 py-1">
+            <span class="material-symbols-outlined" style="font-size:15px">description</span>
+            Patent Translator
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-900 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1">
+            <span class="material-symbols-outlined" style="font-size:15px">school</span>
+            English Educator
+          </span>
         </div>
 
-        <h1 class="font-serif text-3xl md:text-4xl font-semibold text-indigo-950 mb-2 leading-tight">
-          Đỗ Minh Hoàng
-        </h1>
-        <p class="font-serif text-lg text-on-surface-variant mb-1">
-          Fullstack Developer · Patent Translator · English Educator
-        </p>
-        <p class="text-sm text-outline mb-6">Hà Nội, Việt Nam</p>
-
-        <p class="text-base text-on-surface leading-relaxed mb-2 max-w-xl">
-          I build web applications, translate technical patents, and help Vietnamese learners navigate academic English.
-        </p>
-        <p class="text-sm text-on-surface-variant leading-relaxed mb-8 max-w-xl">
-          Tôi xây dựng ứng dụng web, dịch bằng sáng chế kỹ thuật và hỗ trợ người Việt học tiếng Anh học thuật.
-        </p>
+        <!-- Bio với left accent border -->
+        <div class="border-l-4 border-amber-400 pl-5 mb-8 max-w-xl">
+          <p class="text-base font-medium text-slate-800 leading-relaxed mb-1">
+            I build web applications, translate technical patents, and help Vietnamese learners navigate academic English.
+          </p>
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Tôi xây dựng ứng dụng web, dịch bằng sáng chế kỹ thuật và hỗ trợ người Việt học tiếng Anh học thuật.
+          </p>
+        </div>
 
         <!-- Social links -->
         <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/hoangharr" target="_blank" rel="noopener"
-            class="social-btn flex items-center gap-2 text-sm text-indigo-900 border border-outline-variant rounded-full px-4 py-2 bg-white">
-            <span class="material-symbols-outlined text-base" style="font-size:18px">code</span>
+          <a href="https://github.com/hoangdm" target="_blank" rel="noopener"
+            class="social-btn flex items-center gap-2 text-sm font-medium text-indigo-900 border border-indigo-200 rounded-full px-4 py-2 bg-indigo-50">
+            <span class="material-symbols-outlined" style="font-size:17px">code</span>
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/hoang-do-minh/" target="_blank" rel="noopener"
-            class="social-btn flex items-center gap-2 text-sm text-indigo-900 border border-outline-variant rounded-full px-4 py-2 bg-white">
-            <span class="material-symbols-outlined text-base" style="font-size:18px">work</span>
+          <a href="https://linkedin.com/in/hoangdm" target="_blank" rel="noopener"
+            class="social-btn flex items-center gap-2 text-sm font-medium text-indigo-900 border border-indigo-200 rounded-full px-4 py-2 bg-indigo-50">
+            <span class="material-symbols-outlined" style="font-size:17px">work</span>
             LinkedIn
           </a>
-          <a href="https://www.facebook.com/hoangdm95" target="_blank" rel="noopener"
-            class="social-btn flex items-center gap-2 text-sm text-indigo-900 border border-outline-variant rounded-full px-4 py-2 bg-white">
-            <span class="material-symbols-outlined text-base" style="font-size:18px">people</span>
+          <a href="https://facebook.com/hoangdm" target="_blank" rel="noopener"
+            class="social-btn flex items-center gap-2 text-sm font-medium text-indigo-900 border border-indigo-200 rounded-full px-4 py-2 bg-indigo-50">
+            <span class="material-symbols-outlined" style="font-size:17px">people</span>
             Facebook
           </a>
         </div>
@@ -219,31 +244,31 @@
 
       <!-- What I Do -->
       <section id="skills" class="max-w-3xl mx-auto px-4 md:px-8 py-12 section-fade">
-        <p class="text-xs font-semibold uppercase tracking-widest text-outline mb-6">What I do / Tôi làm gì</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">What I do / Tôi làm gì</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
           <div class="card card-hover bg-white border border-outline-variant rounded-xl p-5">
-            <span class="material-symbols-outlined text-indigo-900 mb-3 block" style="font-size:28px">terminal</span>
+            <span class="material-symbols-outlined text-indigo-800 mb-3 block" style="font-size:28px">terminal</span>
             <h3 class="font-serif font-semibold text-indigo-950 mb-1">Fullstack Development</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">React, Node.js, PostgreSQL/PostGIS, GIS web apps, REST APIs.</p>
+            <p class="text-sm text-slate-600 leading-relaxed">React, Node.js, PostgreSQL/PostGIS, GIS web apps, REST APIs.</p>
           </div>
 
           <div class="card card-hover bg-white border border-outline-variant rounded-xl p-5">
-            <span class="material-symbols-outlined text-indigo-900 mb-3 block" style="font-size:28px">description</span>
+            <span class="material-symbols-outlined text-indigo-800 mb-3 block" style="font-size:28px">description</span>
             <h3 class="font-serif font-semibold text-indigo-950 mb-1">Patent Translation</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">EN ↔ VI technical & legal IP documents. Engineering and technology domains.</p>
+            <p class="text-sm text-slate-600 leading-relaxed">EN ↔ VI technical & legal IP documents. Engineering and technology domains.</p>
           </div>
 
           <div class="card card-hover bg-white border border-outline-variant rounded-xl p-5">
-            <span class="material-symbols-outlined text-indigo-900 mb-3 block" style="font-size:28px">school</span>
+            <span class="material-symbols-outlined text-indigo-800 mb-3 block" style="font-size:28px">school</span>
             <h3 class="font-serif font-semibold text-indigo-950 mb-1">English Teaching</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">Academic English, APTIS preparation, online one-on-one and group sessions.</p>
+            <p class="text-sm text-slate-600 leading-relaxed">Academic English, APTIS preparation, online one-on-one and group sessions.</p>
           </div>
 
           <div class="card card-hover bg-white border border-outline-variant rounded-xl p-5">
-            <span class="material-symbols-outlined text-indigo-900 mb-3 block" style="font-size:28px">security</span>
+            <span class="material-symbols-outlined text-indigo-800 mb-3 block" style="font-size:28px">security</span>
             <h3 class="font-serif font-semibold text-indigo-950 mb-1">Security & AI</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed">Cybersecurity research, AI-powered tool development, practical automation.</p>
+            <p class="text-sm text-slate-600 leading-relaxed">Cybersecurity research, AI-powered tool development, practical automation.</p>
           </div>
 
         </div>
@@ -253,7 +278,7 @@
 
       <!-- Projects -->
       <section id="projects" class="max-w-3xl mx-auto px-4 md:px-8 py-12 section-fade">
-        <p class="text-xs font-semibold uppercase tracking-widest text-outline mb-6">Projects</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">Projects</p>
         <div class="flex flex-col gap-4">
 
           <!-- Live project -->
@@ -261,9 +286,9 @@
             <div>
               <div class="flex items-center gap-2 mb-1">
                 <h3 class="font-serif font-semibold text-indigo-950">English Academic Deck</h3>
-                <span class="text-xs bg-surface-container-low text-on-surface-variant border border-outline-variant rounded-full px-2 py-0.5">Live</span>
+                <span class="text-xs bg-indigo-50 text-indigo-700 border border-indigo-100 rounded-full px-2 py-0.5">Live</span>
               </div>
-              <p class="text-sm text-on-surface-variant leading-relaxed">Vocabulary & grammar learning app for academic English. PWA, dark mode, topic modules.</p>
+              <p class="text-sm text-slate-600 leading-relaxed">Vocabulary & grammar learning app for academic English. PWA, dark mode, topic modules.</p>
               <div class="flex flex-wrap gap-2 mt-3">
                 <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">HTML/JS</span>
                 <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">Tailwind</span>
@@ -277,10 +302,10 @@
           <div class="card bg-surface-container-low border border-dashed border-outline-variant rounded-xl p-5 flex justify-between items-start opacity-70">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-serif font-semibold text-on-surface-variant">APTIS Prep</h3>
-                <span class="badge-coming text-xs bg-surface-container text-outline border border-outline-variant rounded-full px-2 py-0.5">Coming soon</span>
+                <h3 class="font-serif font-semibold text-slate-600">APTIS Prep</h3>
+                <span class="badge-coming text-xs bg-surface-container text-slate-500 border border-outline-variant rounded-full px-2 py-0.5">Coming soon</span>
               </div>
-              <p class="text-sm text-outline leading-relaxed">Full APTIS practice platform — listening, reading, writing, speaking components with AI feedback.</p>
+              <p class="text-sm text-slate-500 leading-relaxed">Full APTIS practice platform — listening, reading, writing, speaking components with AI feedback.</p>
             </div>
           </div>
 
@@ -288,10 +313,10 @@
           <div class="card bg-surface-container-low border border-dashed border-outline-variant rounded-xl p-5 flex justify-between items-start opacity-70">
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-serif font-semibold text-on-surface-variant">Patent Glossary EN↔VI</h3>
-                <span class="badge-coming text-xs bg-surface-container text-outline border border-outline-variant rounded-full px-2 py-0.5">Coming soon</span>
+                <h3 class="font-serif font-semibold text-slate-600">Patent Glossary EN↔VI</h3>
+                <span class="badge-coming text-xs bg-surface-container text-slate-500 border border-outline-variant rounded-full px-2 py-0.5">Coming soon</span>
               </div>
-              <p class="text-sm text-outline leading-relaxed">AI-assisted technical term lookup for patent translators. Engineering & technology domains.</p>
+              <p class="text-sm text-slate-500 leading-relaxed">AI-assisted technical term lookup for patent translators. Engineering & technology domains.</p>
             </div>
           </div>
 
@@ -302,10 +327,10 @@
 
       <!-- Contact -->
       <section id="contact" class="max-w-3xl mx-auto px-4 md:px-8 py-12 section-fade">
-        <p class="text-xs font-semibold uppercase tracking-widest text-outline mb-2">Get in touch / Liên hệ</p>
-        <p class="text-base text-on-surface-variant mb-6 leading-relaxed">
+        <p class="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-2">Get in touch / Liên hệ</p>
+        <p class="text-base text-slate-700 mb-6 leading-relaxed">
           Open to freelance translation work, dev collaboration, or English teaching inquiries.<br>
-          <span class="text-sm text-outline">Sẵn sàng nhận dự án dịch thuật, hợp tác phát triển phần mềm, hoặc yêu cầu dạy tiếng Anh.</span>
+          <span class="text-sm text-slate-500">Sẵn sàng nhận dự án dịch thuật, hợp tác phát triển phần mềm, hoặc yêu cầu dạy tiếng Anh.</span>
         </p>
 
         <form id="contact-form" onsubmit="handleSubmit(event)" class="flex flex-col gap-4 max-w-lg">
@@ -400,7 +425,7 @@
         // Mở mailto — đơn giản, không lộ email qua HTML
         const subject = encodeURIComponent(`[hoangdm.com] Message from ${name}`);
         const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
-        window.location.href = `mailto:gigabyte.rp@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:YOUR_EMAIL@gmail.com?subject=${subject}&body=${body}`;
 
         const status = document.getElementById("cf-status");
         status.textContent = "Đang mở ứng dụng email của bạn...";
