@@ -394,15 +394,22 @@
             >Exercise</span
           >
         </nav>
-        <button
-          onclick="toggleDarkMode()"
-          class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
-          title="Chuyển chế độ Sáng/Tối"
-        >
-          <span id="theme-icon" class="material-symbols-outlined"
-            >light_mode</span
+        <div class="flex items-center gap-1 border-l pl-2 md:pl-4 border-gray-200 dark:border-slate-700">
+          <a
+            href="/"
+            class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
+            title="Về trang chủ"
           >
-        </button>
+            <span class="material-symbols-outlined">home</span>
+          </a>
+          <button
+            onclick="toggleDarkMode()"
+            class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
+            title="Chuyển chế độ Sáng/Tối"
+          >
+            <span id="theme-icon" class="material-symbols-outlined">light_mode</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -484,7 +491,17 @@
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").catch(() => {});
+          navigator.serviceWorker.register("/sw.js").then(reg => {
+            reg.addEventListener("updatefound", () => {
+              const newWorker = reg.installing;
+              if (!newWorker) return;
+              newWorker.addEventListener("statechange", () => {
+                if (newWorker.state === "activated" && navigator.serviceWorker.controller) {
+                  window.location.reload();
+                }
+              });
+            });
+          }).catch(() => {});
         });
       }
     </script>
