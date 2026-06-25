@@ -187,16 +187,29 @@
       <!-- Hero -->
       <section id="about" class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-28 section-fade">
 
-        <p class="text-xs font-semibold uppercase tracking-widest text-amber-600 mb-8">
-          <span class="lang-en">Hanoi, Vietnam</span>
-          <span class="lang-vi">Hà Nội, Việt Nam</span>
-        </p>
+        <!-- Khối chứa cả Địa chỉ, Tên và Ảnh ngang hàng -->
+        <div class="flex items-center justify-between gap-4 mb-6">
+          <!-- Bên trái: Địa chỉ + Tên -->
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-amber-600 mb-8 mt-5">
+              <span class="lang-en">Hanoi, Vietnam</span>
+              <span class="lang-vi">Hà Nội, Việt Nam</span>
+            </p>
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-indigo-950 leading-snug sm:leading-normal md:leading-[1.3] tracking-tight">
+              <span class="lang-vi">Đỗ Minh<br>Hoàng</span>
+              <span class="lang-en">Hoàng<br>Đỗ Minh</span>
+            </h1>
+          </div>
 
-        <!-- Tên tự động đảo dựa theo ngôn ngữ -->
-        <h1 class="font-serif text-5xl md:text-6xl font-bold text-indigo-950 mb-4 leading-none tracking-tight">
-          <span class="lang-vi">Đỗ Minh<br>Hoàng</span>
-          <span class="lang-en">Hoàng<br>Đỗ Minh</span>
-        </h1>
+          <!-- Bên phải: Ảnh tách nền (đã tăng size để cao bằng cụm chữ) -->
+          <div class="flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48">
+            <img 
+              src="/public/avatar.png" 
+              alt="Đỗ Minh Hoàng" 
+              class="w-full h-full object-contain dark:brightness-90 transition-all"
+            />
+          </div>
+        </div>
 
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-8">
