@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SLD Preview</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f8f7;color:#1a1a18;height:100dvh;display:flex;flex-direction:column}
+#app{display:flex;height:100dvh;overflow:hidden}
+
+/* Sidebar */
+.sidebar{width:340px;min-width:340px;display:flex;flex-direction:column;border-right:1px solid #e5e5e3;background:#fff;overflow:hidden}
+.sidebar-header{padding:10px 14px;border-bottom:1px solid #e5e5e3;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.sidebar-title{font-size:14px;font-weight:600;color:#1a1a18}
+
+/* Header Navigation Actions */
+.header-actions{display:flex;gap:4px;align-items:center;margin-left:8px}
+.header-actions a, .header-actions button{color:#666;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;border:none;background:none;cursor:pointer;transition:background .15s,color .15s}
+.header-actions a:hover, .header-actions button:hover{background:#f0f0ee;color:#1a1a18}
+
+.sidebar-actions{display:flex;gap:6px;margin-left:auto}
+.btn{font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid #d0d0ce;background:#fff;color:#1a1a18;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn:hover{background:#f0f0ee}
+.btn-primary{background:#1a1a18;color:#fff;border-color:#1a1a18;font-size:12px;padding:5px 14px}
+.btn-primary:hover{background:#333}
+
+.section{border-bottom:1px solid #e5e5e3;flex-shrink:0}
+.section-label{font-size:10px;font-weight:700;color:#aaa;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px 4px}
+textarea{width:100%;resize:none;border:none;outline:none;font-family:'SF Mono',Monaco,monospace;font-size:11px;color:#1a1a18;background:#fff;padding:6px 10px 8px;line-height:1.6}
+#sldInput{height:220px}
+#geojsonInput{height:110px}
+
+.geojson-tabs{display:flex;border-bottom:1px solid #e5e5e3}
+.gtab{font-size:11px;padding:5px 12px;cursor:pointer;color:#999;border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.gtab.active{color:#1a1a18;border-bottom-color:#1a1a18;font-weight:600}
+
+.apply-row{padding:8px 14px;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.error-msg{font-size:11px;color:#dc2626;flex:1}
+
+/* Rules panel */
+.rules-panel{flex:1;overflow-y:auto;padding:8px 0}
+.rule-item{padding:7px 14px;display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid #f0f0ee;cursor:pointer;transition:background .1s}
+.rule-item:hover{background:#f8f8f7}
+.rule-item.active{background:#f0f0ee}
+.rule-swatch{width:22px;height:22px;flex-shrink:0;border-radius:4px;border:1px solid #e5e5e3;margin-top:1px}
+.rule-info{flex:1;min-width:0}
+.rule-name{font-size:12px;font-weight:500;color:#1a1a18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rule-desc{font-size:11px;color:#999;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.empty-rules{padding:24px 14px;font-size:12px;color:#aaa;text-align:center}
+
+/* Map */
+.map-wrap{flex:1;position:relative;min-width:0}
+#map{width:100%;height:100%}
+.info-box{position:absolute;bottom:14px;right:14px;z-index:1000;background:#fff;border:1px solid #e5e5e3;border-radius:8px;padding:10px 14px;font-size:12px;max-width:220px;pointer-events:none;display:none;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.info-title{font-weight:600;font-size:12px;color:#1a1a18;margin-bottom:5px}
+
+/* ===== SYSTEM DARK MODE OVERRIDES ===== */
+html.dark body{background:#0f172a;color:#f8fafc}
+html.dark .sidebar{background:#1e293b;border-right-color:#334155}
+html.dark .sidebar-header{border-bottom-color:#334155;background:#1e293b}
+html.dark .sidebar-title{color:#f8fafc}
+html.dark .header-actions a, html.dark .header-actions button{color:#94a3b8}
+html.dark .header-actions a:hover, html.dark .header-actions button:hover{background:#334155;color:#fbbf24}
+html.dark .section{border-bottom-color:#334155}
+html.dark textarea{background:#1e293b;color:#f8fafc}
+html.dark .geojson-tabs{border-bottom-color:#334155}
+html.dark .gtab{color:#64748b}
+html.dark .gtab.active{color:#fbbf24;border-bottom-color:#fbbf24}
+html.dark #dropGeo{border-color:#475569}
+html.dark #dropGeo:hover{background:#064e3b}
+html.dark .apply-row{background:#1e293b;border-bottom-color:#334155}
+html.dark .btn{border-color:#475569;background:#1e293b;color:#f8fafc}
+html.dark .btn:hover{background:#334155}
+html.dark .btn-primary{background:#f8fafc;color:#0f172a;border-color:#f8fafc}
+html.dark .btn-primary:hover{background:#e2e8f0}
+html.dark .rule-item{border-bottom-color:#334155}
+html.dark .rule-item:hover{background:#0f172a}
+html.dark .rule-item.active{background:#334155}
+html.dark .rule-name{color:#f8fafc}
+html.dark .info-box{background:#1e293b;border-color:#334155}
+html.dark .info-box * {color:#f8fafc}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">SLD Preview</span>
+      <div class="header-actions">
+        <a href="/" title="Về trang chủ"><span class="material-symbols-outlined" style="font-size:18px">home</span></a>
+        <button onclick="toggleDarkMode()" title="Chuyển chế độ Sáng/Tối"><span id="theme-icon" class="material-symbols-outlined" style="font-size:18px">light_mode</span></button>
+      </div>
+      <div class="sidebar-actions">
+        <button class="btn" onclick="loadExample()">Example</button>
+        <button class="btn" onclick="clearAll()">Clear</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">SLD / XML</div>
+      <textarea id="sldInput" spellcheck="false" placeholder='<?xml version="1.0" ?><StyledLayerDescriptor>...</StyledLayerDescriptor>'></textarea>
+    </div>
+
+    <div class="section">
+      <div class="section-label">GeoJSON</div>
+      <div class="geojson-tabs">
+        <button class="gtab active" onclick="switchGeoTab('paste',this)">Paste</button>
+        <button class="gtab" onclick="switchGeoTab('upload',this)">Upload SHP/ZIP</button>
+        <button class="gtab" onclick="switchGeoTab('sample',this)">Use sample</button>
+      </div>
+      <div id="geoPane-paste">
+        <textarea id="geojsonInput" spellcheck="false" placeholder='{"type":"FeatureCollection","features":[...]}'></textarea>
+      </div>
+      <div id="geoPane-upload" style="display:none;padding:8px 14px">
+        <div id="dropGeo" style="border:1.5px dashed #ddd;border-radius:6px;padding:14px;text-align:center;cursor:pointer;position:relative;transition:background .15s" ondragover="onDragOver(event,'dropGeo')" ondragleave="onDragLeave('dropGeo')" ondrop="onDropGeo(event)">
+          <input type="file" accept=".zip,.shp" onchange="onGeoFileChange(event)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%"/>
+          <div style="font-size:20px;color:#ccc">📂</div>
+          <div style="font-size:11px;color:#999;margin-top:4px"><strong style="color:#555;display:block">Drop .zip here</strong>.shp + .dbf + .prj</div>
+        </div>
+      </div>
+      <div id="geoPane-sample" style="display:none;padding:8px 14px">
+        <div style="display:flex;gap:6px">
+          <button class="btn" onclick="useSample('polygon')">Polygon</button>
+          <button class="btn" onclick="useSample('line')">Line</button>
+        </div>
+        <div id="sampleInfo" style="font-size:11px;color:#059669;margin-top:6px;display:none"></div>
+      </div>
+    </div>
+
+    <div class="apply-row">
+      <button class="btn btn-primary" onclick="applyStyle()">Apply</button>
+      <span id="err-msg" class="error-msg"></span>
+    </div>
+
+    <div class="section-label">Rules</div>
+    <div class="rules-panel" id="rulesPanel">
+      <div class="empty-rules">Apply an SLD to see rules here</div>
+    </div>
+  </div>
+
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="info-box" id="info-box"><div class="info-title">Properties</div><table id="info-table"></table></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/shpjs@4.0.4/dist/shp.js"></script>
+<script>
+// ─── Dark Mode Handler ───────────────────────────────────────────────────────
+function toggleDarkMode() {
+  const isDark = document.documentElement.classList.toggle("dark");
+  document.getElementById("theme-icon").textContent = isDark ? "dark_mode" : "light_mode";
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  if(window.tileLayer) {
+    window.tileLayer.setUrl(isDark ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png');
+  }
+}
+const isDarkInit = localStorage.getItem("theme") === "dark";
+if (isDarkInit) { document.documentElement.classList.add("dark"); }
+
+// ─── Map setup ───────────────────────────────────────────────────────────────
+const map = L.map('map',{zoomControl:true,attributionControl:true}).setView([21.03,105.83],13);
+window.tileLayer = L.tileLayer(isDarkInit ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+  maxZoom:19, attribution:'&copy; CARTO &copy; OSM'
+}).addTo(map);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const icon = document.getElementById("theme-icon");
+  if (icon && isDarkInit) icon.textContent = "dark_mode";
+});
+
+let styledLayer = null; let parsedGeoJSON = null; let geoMode = 'paste';
+
+function switchGeoTab(mode, btn){
+  geoMode = mode; document.querySelectorAll('.gtab').forEach(t=>t.classList.remove('active')); btn.classList.add('active');
+  ['paste','upload','sample'].forEach(m=>{ document.getElementById('geoPane-'+m).style.display = m===mode?'block':'none'; });
+}
+function onDragOver(e,id){ e.preventDefault(); document.getElementById(id).style.background='rgba(0,0,0,0.05)'; }
+function onDragLeave(id){ document.getElementById(id).style.background=''; }
+function onDropGeo(e){ e.preventDefault(); const f=e.dataTransfer.files[0]; if(f) processGeoFile(f); }
+function onGeoFileChange(e){ const f=e.target.files[0]; if(f) processGeoFile(f); }
+
+async function processGeoFile(file){
+  try {
+    const buf = await file.arrayBuffer(); let gj = await shp(buf); if(Array.isArray(gj)) gj = gj[0];
+    parsedGeoJSON = gj; document.getElementById('sampleInfo').textContent = `✓ Loaded ${file.name}`; document.getElementById('sampleInfo').style.display='block';
+  } catch(err){ alert('SHP parse error: '+err.message); }
+}
+
+const SAMPLES = {
+  polygon: {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"landuse":"residential","name":"Khu Dân Cư"},"geometry":{"type":"Polygon","coordinates":[[[105.82,21.02],[105.84,21.02],[105.84,21.04],[105.82,21.04],[105.82,21.02]]]}}]}
+};
+function useSample(type){ parsedGeoJSON = SAMPLES[type]; document.getElementById('sampleInfo').textContent = `✓ Loaded ${type} sample`; document.getElementById('sampleInfo').style.display='block'; }
+
+function parseSLD(xmlStr){
+  const parser = new DOMParser(); const doc = parser.parseFromString(xmlStr,'text/xml');
+  if(doc.querySelector('parsererror')) throw new Error('Invalid XML');
+  const rules = [];
+  doc.querySelectorAll('Rule').forEach(rule=>{
+    const name = rule.querySelector('Name')?.textContent || 'Rule';
+    let fill = rule.querySelector('CssParameter[name="fill"]')?.textContent || '#cbd5e1';
+    let stroke = rule.querySelector('CssParameter[name="stroke"]')?.textContent || '#64748b';
+    rules.push({ name, fill, stroke });
+  });
+  return rules;
+}
+
+function applyStyle(){
+  const sldStr = document.getElementById('sldInput').value.trim(); if(!sldStr) return;
+  let rules = parseSLD(sldStr); if(!rules.length) return;
+  let gj = parsedGeoJSON || JSON.parse(document.getElementById('geojsonInput').value);
+
+  if(styledLayer) map.removeLayer(styledLayer);
+  styledLayer = L.geoJSON(gj, {
+    style: () => ({ fillColor: rules[0].fill, color: rules[0].stroke, weight: 2, fillOpacity: 0.6 })
+  }).addTo(map);
+  map.fitBounds(styledLayer.getBounds());
+}
+function clearAll() { if(styledLayer) map.removeLayer(styledLayer); document.getElementById('sldInput').value=''; document.getElementById('geojsonInput').value=''; }
+function loadExample() {
+  document.getElementById('sldInput').value = `<?xml version="1.0" ?><Rule><Name>Sample</Name><PolygonSymbolizer><Fill><CssParameter name="fill">#3b82f6</CssParameter></Fill><Stroke><CssParameter name="stroke">#1d4ed8</CssParameter></Stroke></PolygonSymbolizer></Rule>`;
+  useSample('polygon'); applyStyle();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Coordinate Transformer</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f8f7;color:#1a1a18;height:100dvh;display:flex;flex-direction:column}
+#app{display:flex;height:100dvh;overflow:hidden}
+.sidebar{width:380px;min-width:380px;display:flex;flex-direction:column;border-right:1px solid #e5e5e3;background:#fff;overflow:hidden}
+.header{padding:10px 14px;border-bottom:1px solid #e5e5e3;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.title{font-size:14px;font-weight:600}
+.map-wrap{flex:1;position:relative;min-width:0}
+#map{width:100%;height:100%}
+
+/* Header Navigation Actions */
+.header-actions{margin-left:auto;display:flex;gap:4px;align-items:center}
+.header-actions a, .header-actions button{color:#666;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:none;background:none;cursor:pointer;transition:background .15s,color .15s}
+.header-actions a:hover, .header-actions button:hover{background:#f0f0ee;color:#1a1a18}
+
+/* Mode tabs */
+.mode-tabs{display:flex;border-bottom:1px solid #e5e5e3;flex-shrink:0}
+.mtab{flex:1;font-size:12px;padding:8px 4px;cursor:pointer;color:#999;border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit;font-weight:500;transition:color .15s}
+.mtab.active{color:#1a1a18;border-bottom-color:#1a1a18}
+
+/* CRS selectors */
+.crs-row{display:grid;grid-template-columns:1fr 36px 1fr;gap:0;border-bottom:1px solid #e5e5e3;flex-shrink:0;align-items:stretch}
+.crs-col{display:flex;flex-direction:column}
+.crs-label{font-size:10px;font-weight:700;color:#aaa;letter-spacing:.05em;text-transform:uppercase;padding:5px 10px 3px}
+select{width:100%;border:none;outline:none;font-family:inherit;font-size:12px;color:#1a1a18;background:#fff;padding:4px 10px 7px;cursor:pointer;appearance:none;-webkit-appearance:none}
+select:hover{background:#f8f8f7}
+.swap-col{display:flex;align-items:center;justify-content:center;border-left:1px solid #e5e5e3;border-right:1px solid #e5e5e3;cursor:pointer;background:#fff;transition:background .15s;font-size:16px;color:#666}
+.swap-col:hover{background:#f0f0ee}
+
+/* Single mode */
+.single-body{padding:12px 14px;flex-shrink:0;border-bottom:1px solid #e5e5e3}
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.field-wrap{display:flex;flex-direction:column;gap:3px}
+.field-label{font-size:10px;color:#aaa;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+input[type=text]{width:100%;border:1px solid #e5e5e3;border-radius:6px;padding:6px 9px;font-family:'SF Mono',Monaco,monospace;font-size:12px;color:#1a1a18;outline:none;background:#fff;transition:border-color .15s}
+input[type=text]:focus{border-color:#1a1a18}
+.result-box {display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;background:#f8f8f7;border-radius:6px;padding:8px 10px}
+.res-field{display:flex;flex-direction:column;gap:2px}
+.res-label{font-size:10px;color:#aaa;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.res-val{font-family:'SF Mono',Monaco,monospace;font-size:13px;color:#1a1a18;font-weight:500;cursor:pointer}
+.res-val:hover{color:#2563eb}
+.copy-hint{font-size:10px;color:#aaa;margin-top:2px}
+.action-row{display:flex;gap:8px;align-items:center}
+.btn{font-size:12px;padding:5px 14px;border-radius:6px;border:1px solid #d0d0ce;background:#fff;color:#1a1a18;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn:hover{background:#f0f0ee}
+.btn-primary{background:#1a1a18;color:#fff;border-color:#1a1a18}
+.btn-primary:hover{background:#333}
+.btn-sm{font-size:11px;padding:4px 10px}
+.err{font-size:11px;color:#dc2626}
+
+/* Batch mode */
+.batch-body{display:flex;flex-direction:column;flex:1;overflow:hidden}
+.batch-top{padding:10px 14px;border-bottom:1px solid #e5e5e3;flex-shrink:0}
+.batch-hint{font-size:11px;color:#aaa;margin-bottom:6px}
+.batch-panes{display:grid;grid-template-columns:1fr 1fr;flex:1;overflow:hidden;min-height:0}
+.batch-pane{display:flex;flex-direction:column;overflow:hidden}
+.batch-pane:first-child{border-right:1px solid #e5e5e3}
+.pane-label{font-size:10px;font-weight:700;color:#aaa;letter-spacing:.05em;text-transform:uppercase;padding:6px 10px;border-bottom:1px solid #e5e5e3;display:flex;align-items:center;gap:6px;flex-shrink:0}
+textarea{flex:1;width:100%;resize:none;border:none;outline:none;font-family:'SF Mono',Monaco,monospace;font-size:11px;color:#1a1a18;background:#fff;padding:8px 10px;line-height:1.7;min-height:0}
+.batch-actions{padding:8px 14px;border-top:1px solid #e5e5e3;display:flex;gap:8px;align-items:center;flex-shrink:0}
+.badge-cnt{font-size:11px;color:#666;margin-left:auto}
+
+/* Map info */
+.map-info{position:absolute;bottom:14px;right:14px;z-index:1000;background:#fff;border:1px solid #e5e5e3;border-radius:8px;padding:8px 12px;font-size:11px;color:#666;pointer-events:none;line-height:1.8;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.map-info b{color:#1a1a18;font-weight:600}
+.copied-toast{position:absolute;top:14px;right:14px;z-index:2000;background:#1a1a18;color:#fff;border-radius:6px;padding:6px 12px;font-size:12px;display:none;pointer-events:none}
+
+/* ===== SYSTEM DARK MODE OVERRIDES ===== */
+html.dark body{background:#0f172a;color:#f8fafc}
+html.dark .sidebar{background:#1e293b;border-right-color:#334155}
+html.dark .header{border-bottom-color:#334155}
+html.dark .header-actions a, html.dark .header-actions button{color:#94a3b8}
+html.dark .header-actions a:hover, html.dark .header-actions button:hover{background:#334155;color:#fbbf24}
+html.dark .mode-tabs{border-bottom-color:#334155}
+html.dark .mtab{color:#64748b}
+html.dark .mtab.active{color:#fbbf24;border-bottom-color:#fbbf24}
+html.dark .crs-row{border-bottom-color:#334155}
+html.dark select{background:#1e293b;color:#f8fafc}
+html.dark select:hover{background:#334155}
+html.dark .swap-col{background:#1e293b;color:#94a3b8;border-left-color:#334155;border-right-color:#334155}
+html.dark .swap-col:hover{background:#334155;color:#fbbf24}
+html.dark .single-body{border-bottom-color:#334155}
+html.dark input[type=text]{border-color:#475569;background:#0f172a;color:#f8fafc}
+html.dark input[type=text]:focus{border-color:#818cf8}
+html.dark .result-box{background:#0f172a}
+html.dark .res-val{color:#f8fafc}
+html.dark .res-val:hover{color:#60a5fa}
+html.dark .btn{border-color:#475569;background:#1e293b;color:#f8fafc}
+html.dark .btn:hover{background:#334155}
+html.dark .btn-primary{background:#f8fafc;color:#0f172a;border-color:#f8fafc}
+html.dark .btn-primary:hover{background:#e2e8f0}
+html.dark .batch-top{border-bottom-color:#334155}
+html.dark .batch-pane:first-child{border-right-color:#334155}
+html.dark .pane-label{border-bottom-color:#334155}
+html.dark textarea{background:#1e293b;color:#f8fafc}
+html.dark .batch-actions{border-top-color:#334155}
+html.dark .map-info{background:#1e293b;border-color:#334155;color:#94a3b8}
+html.dark .map-info b{color:#f8fafc}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="sidebar">
+    <div class="header">
+      <span class="title">Coordinate Transformer</span>
+      <div class="header-actions">
+        <a href="/" title="Về trang chủ"><span class="material-symbols-outlined" style="font-size:20px">home</span></a>
+        <button onclick="toggleDarkMode()" title="Chuyển chế độ Sáng/Tối"><span id="theme-icon" class="material-symbols-outlined" style="font-size:20px">light_mode</span></button>
+      </div>
+    </div>
+
+    <div class="mode-tabs">
+      <button class="mtab active" onclick="switchMode('single',this)">Single point</button>
+      <button class="mtab" onclick="switchMode('batch',this)">Batch</button>
+    </div>
+
+    <div class="crs-row">
+      <div class="crs-col">
+        <div class="crs-label">From</div>
+        <select id="crsFrom" onchange="onCrsChange()"></select>
+      </div>
+      <div class="swap-col" onclick="swapCRS()" title="Swap">⇄</div>
+      <div class="crs-col">
+        <div class="crs-label">To</div>
+        <select id="crsTo" onchange="onCrsChange()"></select>
+      </div>
+    </div>
+
+    <div id="mode-single">
+      <div class="single-body">
+        <div class="input-grid">
+          <div class="field-wrap">
+            <div class="field-label" id="label-x">X / Longitude</div>
+            <input type="text" id="inX" placeholder="105.834563" oninput="liveConvert()"/>
+          </div>
+          <div class="field-wrap">
+            <div class="field-label" id="label-y">Y / Latitude</div>
+            <input type="text" id="inY" placeholder="21.027763" oninput="liveConvert()"/>
+          </div>
+        </div>
+        <div class="result-box" id="result-box" style="display:none">
+          <div class="res-field">
+            <div class="res-label" id="res-label-x">X</div>
+            <div class="res-val" id="res-x" onclick="copyVal('res-x')">—</div>
+          </div>
+          <div class="res-field">
+            <div class="res-label" id="res-label-y">Y</div>
+            <div class="res-val" id="res-y" onclick="copyVal('res-y')">—</div>
+          </div>
+        </div>
+        <div class="copy-hint" id="copy-hint" style="display:none">Click value to copy</div>
+        <div class="action-row">
+          <button class="btn btn-sm" onclick="clearSingle()">Clear</button>
+          <button class="btn btn-sm" onclick="showOnMap()">Show on map</button>
+          <span class="err" id="single-err"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="mode-batch" style="display:none;flex:1;overflow:hidden;display:none;flex-direction:column">
+      <div class="batch-top">
+        <div class="batch-hint">One coordinate pair per line — supports: <code>x,y</code> &nbsp;|&nbsp; <code>x y</code> &nbsp;|&nbsp; <code>x;y</code> &nbsp;|&nbsp; <code>label,x,y</code></div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-sm" onclick="loadBatchExample()">Example</button>
+          <button class="btn btn-sm" onclick="clearBatch()">Clear</button>
+        </div>
+      </div>
+      <div class="batch-panes">
+        <div class="batch-pane">
+          <div class="pane-label">Input</div>
+          <textarea id="batchIn" spellcheck="false" placeholder="105.834563, 21.027763&#10;105.841200, 21.033100&#10;HN Center, 105.854444, 21.027778"></textarea>
+        </div>
+        <div class="batch-pane">
+          <div class="pane-label">Output <span id="batch-cnt" style="font-size:10px;color:#aaa;margin-left:4px"></span></div>
+          <textarea id="batchOut" spellcheck="false" readonly placeholder="Results appear here..."></textarea>
+        </div>
+      </div>
+      <div class="batch-actions">
+        <button class="btn btn-primary" onclick="runBatch()">Convert</button>
+        <button class="btn btn-sm" onclick="copyBatch()">Copy output</button>
+        <button class="btn btn-sm" onclick="showBatchOnMap()">Show on map</button>
+        <span class="err" id="batch-err"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="map-info" id="map-info" style="display:none">
+      <div id="map-info-content"></div>
+    </div>
+    <div class="copied-toast" id="toast">Copied!</div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/proj4@2.11.0/dist/proj4.js"></script>
+<script>
+// ─── Dark Mode Handler ───────────────────────────────────────────────────────
+function toggleDarkMode() {
+  const isDark = document.documentElement.classList.toggle("dark");
+  document.getElementById("theme-icon").textContent = isDark ? "dark_mode" : "light_mode";
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  if(window.tileLayer) {
+    window.tileLayer.setUrl(isDark ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png');
+  }
+}
+const isDarkInit = localStorage.getItem("theme") === "dark";
+if (isDarkInit) { document.documentElement.classList.add("dark"); }
+
+// ─── Map setup ───────────────────────────────────────────────────────────────
+const map = L.map('map',{zoomControl:true,attributionControl:true}).setView([16.5,106.5],6);
+window.tileLayer = L.tileLayer(isDarkInit ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+  maxZoom:19, attribution:'&copy; CARTO &copy; OSM'
+}).addTo(map);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const icon = document.getElementById("theme-icon");
+  if (icon && isDarkInit) icon.textContent = "dark_mode";
+});
+
+// ─── CRS definitions ────────────────────────────────────────────────────────
+const CRS_LIST = [
+  {id:'EPSG:4326',  label:'WGS84 — geographic (EPSG:4326)', def:'+proj=longlat +datum=WGS84 +no_defs', unit:'deg', axes:['Longitude','Latitude']},
+  {id:'EPSG:3857',  label:'Web Mercator (EPSG:3857)',        def:'+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs', unit:'m', axes:['X (Easting)','Y (Northing)']},
+  {id:'EPSG:4756',  label:'VN2000 — geographic (EPSG:4756)', def:'+proj=longlat +ellps=WGS84 +towgs84=-191.90441429,-39.30318279,-111.45032835,0.00928836,-0.01975479,0.00427372,0.252906278 +no_defs', unit:'deg', axes:['Longitude','Latitude']},
+  {id:'EPSG:3405',  label:'VN2000 UTM zone 48N (EPSG:3405)', def:'+proj=utm +zone=48 +ellps=WGS84 +towgs84=-191.90441429,-39.30318279,-111.45032835,0.00928836,-0.01975479,0.00427372,0.252906278 +units=m +no_defs', unit:'m', axes:['Easting','Northing']},
+  {id:'EPSG:3406',  label:'VN2000 UTM zone 49N (EPSG:3406)', def:'+proj=utm +zone=49 +ellps=WGS84 +towgs84=-191.90441429,-39.30318279,-111.45032835,0.00928836,-0.01975479,0.00427372,0.252906278 +units=m +no_defs', unit:'m', axes:['Easting','Northing']},
+  {id:'EPSG:4147',  label:'HN72 — geographic (EPSG:4147)',   def:'+proj=longlat +ellps=krass +towgs84=-17.51,-108.32,-62.39,0,0,0,0 +no_defs', unit:'deg', axes:['Longitude','Latitude']},
+  {id:'EPSG:2044',  label:'HN72 / Gauss-Kruger zone 18 (EPSG:2044)', def:'+proj=tmerc +lat_0=0 +lon_0=105 +k=1 +x_0=18500000 +y_0=0 +ellps=krass +towgs84=-17.51,-108.32,-62.39,0,0,0,0 +units=m +no_defs', unit:'m', axes:['Easting','Northing']},
+  {id:'EPSG:2045',  label:'HN72 / Gauss-Kruger zone 19 (EPSG:2045)', def:'+proj=tmerc +lat_0=0 +lon_0=111 +k=1 +x_0=19500000 +y_0=0 +ellps=krass +towgs84=-17.51,-108.32,-62.39,0,0,0,0 +units=m +no_defs', unit:'m', axes:['Easting','Northing']},
+  {id:'EPSG:32648', label:'WGS84 UTM zone 48N (EPSG:32648)', def:'+proj=utm +zone=48 +datum=WGS84 +units=m +no_defs', unit:'m', axes:['Easting','Northing']},
+  {id:'EPSG:32649', label:'WGS84 UTM zone 49N (EPSG:32649)', def:'+proj=utm +zone=49 +datum=WGS84 +units=m +no_defs', unit:'m', axes:['Easting','Northing']},
+];
+
+CRS_LIST.forEach(c => proj4.defs(c.id, c.def));
+function getCRS(id){ return CRS_LIST.find(c=>c.id===id); }
+function getAxes(id){ return getCRS(id)?.axes || ['X','Y']; }
+function isGeo(id){ return getCRS(id)?.unit==='deg'; }
+
+function populateSelects(){
+  ['crsFrom','crsTo'].forEach(sid=>{
+    const sel = document.getElementById(sid);
+    CRS_LIST.forEach(c=>{
+      const o = document.createElement('option');
+      o.value = c.id; o.textContent = c.label;
+      sel.appendChild(o);
+    });
+  });
+  document.getElementById('crsFrom').value = 'EPSG:4326';
+  document.getElementById('crsTo').value = 'EPSG:3405';
+  updateAxisLabels();
+}
+
+function onCrsChange(){ updateAxisLabels(); liveConvert(); }
+function updateAxisLabels(){
+  const from = document.getElementById('crsFrom').value;
+  const to   = document.getElementById('crsTo').value;
+  const [ax, ay] = getAxes(from);
+  document.getElementById('label-x').textContent = ax;
+  document.getElementById('label-y').textContent = ay;
+  const [rx, ry] = getAxes(to);
+  document.getElementById('res-label-x').textContent = rx;
+  document.getElementById('res-label-y').textContent = ry;
+}
+
+function swapCRS(){
+  const f = document.getElementById('crsFrom');
+  const t = document.getElementById('crsTo');
+  [f.value, t.value] = [t.value, f.value];
+  const rx = document.getElementById('res-x').textContent;
+  const ry = document.getElementById('res-y').textContent;
+  if(rx && rx!=='—'){
+    document.getElementById('inX').value = rx;
+    document.getElementById('inY').value = ry;
+  }
+  onCrsChange();
+}
+
+function transform(x, y, fromId, toId){ return proj4(fromId, toId, [x, y]); }
+function fmt(v, crsId){ return isGeo(crsId) ? v.toFixed(8) : v.toFixed(3); }
+
+function liveConvert(){
+  const x = parseFloat(document.getElementById('inX').value);
+  const y = parseFloat(document.getElementById('inY').value);
+  const fromId = document.getElementById('crsFrom').value;
+  const toId   = document.getElementById('crsTo').value;
+  const err = document.getElementById('single-err');
+
+  if(isNaN(x) || isNaN(y)){
+    document.getElementById('result-box').style.display='none';
+    document.getElementById('copy-hint').style.display='none';
+    err.textContent=''; return;
+  }
+  try {
+    const [rx, ry] = transform(x, y, fromId, toId);
+    if(!isFinite(rx)||!isFinite(ry)) throw new Error('out of range');
+    document.getElementById('res-x').textContent = fmt(rx, toId);
+    document.getElementById('res-y').textContent = fmt(ry, toId);
+    document.getElementById('result-box').style.display='grid';
+    document.getElementById('copy-hint').style.display='block';
+    err.textContent='';
+  } catch(e){
+    err.textContent='Transform failed — check coordinates';
+    document.getElementById('result-box').style.display='none';
+  }
+}
+
+function clearSingle(){
+  document.getElementById('inX').value='';
+  document.getElementById('inY').value='';
+  document.getElementById('result-box').style.display='none';
+  document.getElementById('copy-hint').style.display='none';
+  document.getElementById('single-err').textContent='';
+  clearMapLayers();
+}
+
+function copyVal(id){
+  const txt = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(txt).then(()=>showToast());
+}
+function copyBatch(){
+  const txt = document.getElementById('batchOut').value;
+  if(txt) navigator.clipboard.writeText(txt).then(()=>showToast());
+}
+function showToast(){
+  const t = document.getElementById('toast');
+  t.style.display='block';
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=>t.style.display='none', 1500);
+}
+
+let mapLayers = [];
+function clearMapLayers(){
+  mapLayers.forEach(l=>map.removeLayer(l));
+  mapLayers=[];
+  document.getElementById('map-info').style.display='none';
+}
+
+function toWGS84(x, y, fromId){
+  if(fromId==='EPSG:4326') return [y, x];
+  const [lng, lat] = transform(x, y, fromId, 'EPSG:4326');
+  return [lat, lng];
+}
+
+function showOnMap(){
+  clearMapLayers();
+  const x = parseFloat(document.getElementById('inX').value);
+  const y = parseFloat(document.getElementById('inY').value);
+  if(isNaN(x)||isNaN(y)) return;
+  const fromId = document.getElementById('crsFrom').value;
+  const toId   = document.getElementById('crsTo').value;
+  try {
+    const [lat, lng] = toWGS84(x, y, fromId);
+    const [rx, ry] = transform(x, y, fromId, toId);
+    const marker = L.circleMarker([lat,lng],{radius:8,fillColor:'#2563eb',color:'#fff',weight:2,fillOpacity:.9}).addTo(map);
+    mapLayers.push(marker);
+    map.setView([lat,lng],14);
+    const [ax,ay] = getAxes(fromId);
+    const [rx_l,ry_l] = getAxes(toId);
+    document.getElementById('map-info-content').innerHTML =
+      `<b>Input (${fromId.split(':')[1]})</b><br>${ax}: ${x}<br>${ay}: ${y}<br><br>` +
+      `<b>Output (${toId.split(':')[1]})</b><br>${rx_l}: ${fmt(rx,toId)}<br>${ry_l}: ${fmt(ry,toId)}`;
+    document.getElementById('map-info').style.display='block';
+  } catch(e){}
+}
+
+function showBatchOnMap(){
+  clearMapLayers();
+  const fromId = document.getElementById('crsFrom').value;
+  const lines = document.getElementById('batchIn').value.split('\n').filter(l=>l.trim());
+  const bounds = [];
+  lines.forEach(line=>{
+    const parsed = parseLine(line);
+    if(!parsed) return;
+    const {x,y,label} = parsed;
+    try {
+      const [lat,lng] = toWGS84(x, y, fromId);
+      bounds.push([lat,lng]);
+      const marker = L.circleMarker([lat,lng],{radius:6,fillColor:'#2563eb',color:'#fff',weight:2,fillOpacity:.85}).addTo(map);
+      if(label) marker.bindTooltip(label,{permanent:false,direction:'top'});
+      mapLayers.push(marker);
+    } catch(e){}
+  });
+  if(bounds.length){
+    if(bounds.length===1) map.setView(bounds[0],14);
+    else map.fitBounds(bounds, {padding:[30,30]});
+  }
+}
+
+function parseLine(line){
+  line = line.trim();
+  if(!line||line.startsWith('#')) return null;
+  const parts = line.split(/[,;\t]+|\s{2,}/).map(s=>s.trim()).filter(Boolean);
+  if(parts.length>=3){
+    const x=parseFloat(parts[parts.length-2]), y=parseFloat(parts[parts.length-1]);
+    if(!isNaN(x)&&!isNaN(y)) return {label:parts.slice(0,parts.length-2).join(' '),x,y};
+  }
+  if(parts.length===2){
+    const x=parseFloat(parts[0]),y=parseFloat(parts[1]);
+    if(!isNaN(x)&&!isNaN(y)) return {label:'',x,y};
+  }
+  const sp = line.split(/\s+/);
+  if(sp.length===2){
+    const x=parseFloat(sp[0]),y=parseFloat(sp[1]);
+    if(!isNaN(x)&&!isNaN(y)) return {label:'',x,y};
+  }
+  return null;
+}
+
+function runBatch(){
+  const fromId = document.getElementById('crsFrom').value;
+  const toId   = document.getElementById('crsTo').value;
+  const lines  = document.getElementById('batchIn').value.split('\n');
+  let out = [], ok=0, fail=0;
+
+  lines.forEach(line=>{
+    if(!line.trim()||line.trim().startsWith('#')){ out.push(line); return; }
+    const parsed = parseLine(line);
+    if(!parsed){ out.push('# parse error: '+line.trim()); fail++; return; }
+    try {
+      const [rx,ry] = transform(parsed.x, parsed.y, fromId, toId);
+      if(!isFinite(rx)||!isFinite(ry)) throw new Error();
+      const prefix = parsed.label ? parsed.label+', ' : '';
+      out.push(`${prefix}${fmt(rx,toId)}, ${fmt(ry,toId)}`);
+      ok++;
+    } catch(e){ out.push('# transform error: '+line.trim()); fail++; }
+  });
+  document.getElementById('batchOut').value = out.join('\n');
+  document.getElementById('batch-cnt').textContent = `${ok} ok${fail?`, ${fail} error`:''}`;
+}
+
+function loadBatchExample(){
+  document.getElementById('crsFrom').value='EPSG:4326';
+  document.getElementById('crsTo').value='EPSG:3405';
+  updateAxisLabels();
+  document.getElementById('batchIn').value =
+`# Hà Nội landmarks (WGS84)
+Hồ Gươm, 105.852230, 21.028700
+Văn Miếu, 105.836000, 21.023000
+Hồ Tây, 105.823000, 21.058000
+Sân bay Nội Bài, 105.807173, 21.221201
+105.834563, 21.027763`;
+  document.getElementById('batchOut').value='';
+}
+
+function clearBatch(){
+  document.getElementById('batchIn').value='';
+  document.getElementById('batchOut').value='';
+  document.getElementById('batch-cnt').textContent='';
+  clearMapLayers();
+}
+
+function switchMode(mode, btn){
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const single = document.getElementById('mode-single');
+  const batch  = document.getElementById('mode-batch');
+  if(mode==='single'){ single.style.display='block'; batch.style.display='none'; } 
+  else { single.style.display='none'; batch.style.display='flex'; }
+  clearMapLayers();
+}
+
+populateSelects();
+</script>
+</body>
+</html>

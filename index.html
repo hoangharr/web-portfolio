@@ -166,11 +166,6 @@
         }
       }
       #mini-map { height: 180px; width: 100%; }
-      .map-footer {
-        padding: 8px 12px; display: flex; align-items: center; gap: 8px;
-        border-top: 1px solid #f1f5f9;
-      }
-      html.dark .map-footer { border-color: #334155; }
       .map-pulse {
         width: 10px; height: 10px; flex-shrink: 0;
         background: #185FA5; border-radius: 50%;
@@ -181,6 +176,15 @@
         0%   { box-shadow: 0 0 0 0 rgba(24,95,165,0.4); }
         70%  { box-shadow: 0 0 0 7px rgba(24,95,165,0); }
         100% { box-shadow: 0 0 0 0 rgba(24,95,165,0); }
+      }
+      .map-pulse-user {
+        background: #059669 !important;
+        animation: mpulse-user 1.8s ease-out infinite;
+      }
+      @keyframes mpulse-user {
+        0%   { box-shadow: 0 0 0 0 rgba(5,150,105,0.4); }
+        70%  { box-shadow: 0 0 0 7px rgba(5,150,105,0); }
+        100% { box-shadow: 0 0 0 0 rgba(5,150,105,0); }
       }
       .map-footer-text { font-size: 11px; color: #64748b; }
       .map-footer-text strong { color: #1e293b; font-weight: 600; }
@@ -229,7 +233,6 @@
 
   <body class="bg-surface text-on-surface font-sans overflow-x-hidden">
 
-    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-16 h-16 bg-white border-b border-outline-variant border-t-4 border-t-amber-400">
       <a href="/" class="font-serif text-lg font-semibold text-indigo-950 tracking-tight no-underline">hoangdm.com</a>
       <nav class="flex items-center gap-4 md:gap-8">
@@ -242,11 +245,13 @@
         <a href="#projects" class="hidden md:inline text-sm text-on-surface-variant hover:text-indigo-900 transition-colors font-serif">
           <span class="lang-en">Projects</span><span class="lang-vi">Dự án</span>
         </a>
+        <a href="#tools" class="hidden md:inline text-sm text-on-surface-variant hover:text-indigo-900 transition-colors font-serif">
+          <span class="lang-en">Tools</span><span class="lang-vi">Công cụ</span>
+        </a>
         <a href="#contact" class="hidden md:inline text-sm text-on-surface-variant hover:text-indigo-900 transition-colors font-serif">
           <span class="lang-en">Contact</span><span class="lang-vi">Liên hệ</span>
         </a>
         <div class="flex items-center gap-1 border-l pl-4 border-outline-variant dark:border-slate-600">
-          <!-- Language Toggle -->
           <button
             onclick="toggleLanguage()"
             class="w-10 h-10 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 font-bold text-sm flex items-center justify-center"
@@ -254,7 +259,6 @@
           >
             <span id="lang-icon">VI</span>
           </button>
-          <!-- Dark Mode Toggle -->
           <button
             onclick="toggleDarkMode()"
             class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
@@ -268,12 +272,9 @@
 
     <main class="pt-16">
 
-      <!-- Hero -->
       <section id="about" class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-28 section-fade">
 
-        <!-- Khối chứa cả Địa chỉ, Tên và Ảnh ngang hàng -->
         <div class="flex items-center justify-between gap-4 mb-6">
-          <!-- Bên trái: Địa chỉ + Tên -->
           <div>
             <div class="location-wrap mb-8 mt-5">
               <button class="location-btn" id="loc-btn" onclick="toggleMapPopover()">
@@ -285,7 +286,7 @@
               <div class="map-popover" id="map-pop">
                 <div id="mini-map"></div>
                 <div class="map-footer" style="flex-direction:column;align-items:flex-start;gap:5px">
-                  <div style="display:flex;align-items:center;gap:8px">
+                  <div style="display:flex;align-items:center;gap:8px;justify-content:center">
                     <div class="map-pulse"></div>
                     <div class="map-footer-text">Me: <span id="map-clock"></span> · UTC+7 · Remote-friendly</div>
                   </div>
@@ -298,15 +299,12 @@
             </h1>
           </div>
 
-          <!-- Bên phải: Ảnh hover sketch → real -->
           <div class="avatar-hover flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48">
-            <!-- Ảnh thật (ẩn, hiện khi hover) -->
             <img 
               src="/public/avatar.png" 
               alt="Đỗ Minh Hoàng" 
               class="avatar-real w-full h-full object-contain dark:brightness-90"
             />
-            <!-- Ảnh chì (hiện mặc định, ẩn khi hover) -->
             <img 
               src="/public/avatar-sketch.png" 
               alt="Đỗ Minh Hoàng — sketch" 
@@ -315,7 +313,6 @@
           </div>
         </div>
 
-        <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-8">
           <span class="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-900 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1">
             <span class="material-symbols-outlined" style="font-size:15px">terminal</span>
@@ -334,7 +331,6 @@
           </span>
         </div>
 
-        <!-- Bio -->
         <div class="border-l-4 border-amber-400 pl-5 mb-8 max-w-xl">
           <p class="lang-en text-base font-medium text-slate-800 leading-relaxed mb-1">
             I build web applications, translate technical patents, and help Vietnamese learners navigate academic English.
@@ -344,7 +340,6 @@
           </p>
         </div>
 
-        <!-- Social links -->
         <div class="flex flex-wrap gap-3">
           <a href="https://github.com/hoangharr" target="_blank" rel="noopener"
             class="social-btn flex items-center gap-2 text-sm font-medium text-indigo-900 border border-indigo-200 rounded-full px-4 py-2 bg-indigo-50">
@@ -366,7 +361,6 @@
 
       <div class="border-t border-outline-variant max-w-3xl mx-auto"></div>
 
-      <!-- What I Do / Skills -->
       <section id="skills" class="max-w-3xl mx-auto px-4 md:px-8 py-12 section-fade">
         <p class="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
           <span class="lang-en">What I do</span>
@@ -427,7 +421,6 @@
 
       <div class="border-t border-outline-variant max-w-3xl mx-auto"></div>
 
-      <!-- Projects -->
       <section id="projects" class="max-w-3xl mx-auto px-4 md:px-8 py-12 section-fade">
         <p class="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
           <span class="lang-en">Projects</span>
@@ -435,7 +428,6 @@
         </p>
         <div class="flex flex-col gap-4">
 
-          <!-- Live project -->
           <a href="/english.html" class="card card-hover bg-white border border-outline-variant rounded-xl p-5 flex justify-between items-start no-underline group">
             <div>
               <div class="flex items-center gap-2 mb-1">
@@ -457,7 +449,6 @@
             <span class="material-symbols-outlined text-outline group-hover:text-indigo-900 transition-colors ml-4 mt-1" style="font-size:20px">open_in_new</span>
           </a>
 
-          <!-- Coming soon -->
           <div class="card bg-surface-container-low border border-dashed border-outline-variant rounded-xl p-5 flex justify-between items-start opacity-70">
             <div>
               <div class="flex items-center gap-2 mb-1">
@@ -473,7 +464,6 @@
             </div>
           </div>
 
-          <!-- Patent glossary placeholder -->
           <div class="card bg-surface-container-low border border-dashed border-outline-variant rounded-xl p-5 flex justify-between items-start opacity-70">
             <div>
               <div class="flex items-center gap-2 mb-1">
@@ -497,7 +487,102 @@
 
       <div class="border-t border-outline-variant max-w-3xl mx-auto"></div>
 
-      <!-- Contact -->
+      <section id="tools" class="max-w-3xl mx-auto px-4 md:px-8 py-12 section-fade">
+        <p class="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-6">
+          <span class="lang-en">Developer Tools</span>
+          <span class="lang-vi">Công cụ phát triển</span>
+        </p>
+        <div class="flex flex-col gap-4">
+
+          <a href="/coord-transform.html" class="card card-hover bg-white border border-outline-variant rounded-xl p-5 flex justify-between items-start no-underline group">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-serif font-semibold text-indigo-950">Coordinate Transformer</h3>
+                <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full px-2 py-0.5 text-[11px] font-medium font-sans">
+                  <span class="lang-en">Live Tool</span><span class="lang-vi">Hoạt động</span>
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                <span class="lang-en">Geodetic coordinate converter supporting WGS84, VN2000, Web Mercator, and HN72. Features batch processing and Leaflet preview.</span>
+                <span class="lang-vi">Bộ chuyển đổi hệ tọa độ trắc địa chuyên dụng (WGS84, VN2000, HN72, Web Mercator). Hỗ trợ xử lý hàng loạt và hiển thị trực quan bản đồ Leaflet.</span>
+              </p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">Proj4js</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">Leaflet.js</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">Batch Engine</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-indigo-900 transition-colors ml-4 mt-1" style="font-size:20px">open_in_new</span>
+          </a>
+
+          <a href="/cql-filter-tester.html" class="card card-hover bg-white border border-outline-variant rounded-xl p-5 flex justify-between items-start no-underline group">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-serif font-semibold text-indigo-950">GeoServer CQL Filter Tester</h3>
+                <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full px-2 py-0.5 text-[11px] font-medium font-sans">
+                  <span class="lang-en">Live Tool</span><span class="lang-vi">Hoạt động</span>
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                <span class="lang-en">Validate GeoServer CQL filters on GeoJSON data. Includes custom Lexer/Parser for AST validation, spatial predicates (BBOX, INTERSECTS), and data linkage.</span>
+                <span class="lang-vi">Trình thử nghiệm bộ lọc GeoServer CQL trên tập GeoJSON. Tích hợp bộ Lexer/Parser sinh cây AST, hỗ trợ truy vấn không gian (BBOX, INTERSECTS) và bảng thuộc tính đồng bộ.</span>
+              </p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">CQL Parser</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">Turf.js</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">GeoJSON GIS</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-indigo-900 transition-colors ml-4 mt-1" style="font-size:20px">open_in_new</span>
+          </a>
+
+          <a href="/geojson-diff.html" class="card card-hover bg-white border border-outline-variant rounded-xl p-5 flex justify-between items-start no-underline group">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-serif font-semibold text-indigo-950">GeoJSON Diff Viewer</h3>
+                <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full px-2 py-0.5 text-[11px] font-medium font-sans">
+                  <span class="lang-en">Live Tool</span><span class="lang-vi">Hoạt động</span>
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                <span class="lang-en">Compare two GeoJSON layers or Shapefiles (.zip) visually. Highlights added, removed, and modified geographic features and attributes.</span>
+                <span class="lang-vi">So sánh trực quan hai lớp dữ liệu GeoJSON hoặc Shapefile (.zip) dạng chuỗi thời gian. Tự động làm nổi bật các thực thể hình học và thuộc tính GIS được thêm, xóa hoặc chỉnh sửa.</span>
+              </p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">GeoJSON Diff</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">Shpjs</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">Visual Geometry</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-indigo-900 transition-colors ml-4 mt-1" style="font-size:20px">open_in_new</span>
+          </a>
+
+          <a href="/sld-preview.html" class="card card-hover bg-white border border-outline-variant rounded-xl p-5 flex justify-between items-start no-underline group">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-serif font-semibold text-indigo-950">SLD Style Previewer</h3>
+                <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full px-2 py-0.5 text-[11px] font-medium font-sans">
+                  <span class="lang-en">Live Tool</span><span class="lang-vi">Hoạt động</span>
+                </span>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                <span class="lang-en">Parse and preview OGC Styled Layer Descriptor (SLD) XML rules directly on GeoJSON vector data. Features custom filters evaluation and rule swatch rendering.</span>
+                <span class="lang-vi">Phân tích cú pháp và xem trước các quy tắc giao diện cấu hình SLD XML chuẩn OGC trực tiếp trên nền vector GeoJSON. Hỗ trợ dựng bảng chú giải (Rules Swatch) tương tác.</span>
+              </p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">SLD XML</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">DOMParser</span>
+                <span class="tag text-xs bg-indigo-50 text-indigo-900 border border-indigo-100 rounded-full px-2 py-0.5">OGC Renderer</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-indigo-900 transition-colors ml-4 mt-1" style="font-size:20px">open_in_new</span>
+          </a>
+
+        </div>
+      </section>
+
+      <div class="border-t border-outline-variant max-w-3xl mx-auto"></div>
+
       <section id="contact" class="max-w-3xl mx-auto px-4 md:px-8 py-12 section-fade">
         <p class="text-xs font-semibold uppercase tracking-widest text-amber-700 mb-2">
           <span class="lang-en">Get in touch</span>
@@ -551,7 +636,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="border-t border-outline-variant mt-8 py-6 px-4 md:px-8 text-center" style="padding-bottom: max(24px, env(safe-area-inset-bottom))">
       <p class="text-xs text-outline">© 2026 Đỗ Minh Hoàng · hoangdm.com</p>
     </footer>
@@ -672,7 +756,6 @@
         const avatar = document.querySelector(".avatar-hover");
         if (!avatar) return;
         avatar.addEventListener("click", () => {
-          // Only toggle on touch devices (no fine pointer)
           if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
             avatar.classList.toggle("revealed");
           }
@@ -682,7 +765,6 @@
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/sw.js").then(reg => {
-            // Auto-refresh when a new service worker activates
             reg.addEventListener("updatefound", () => {
               const newWorker = reg.installing;
               if (!newWorker) return;
@@ -738,7 +820,6 @@
           });
           L.tileLayer(tileUrl, { maxZoom: 19 }).addTo(map);
 
-          // Marker Hà Nội
           const hnIcon = L.divIcon({
             className: '',
             html: `<div style="width:12px;height:12px;background:#185FA5;border-radius:50%;border:2px solid white;box-shadow:0 0 0 4px rgba(24,95,165,0.2)"></div>`,
@@ -746,18 +827,15 @@
           });
           L.marker(HN, { icon: hnIcon }).addTo(map);
 
-          // Lấy vị trí người dùng
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((pos) => {
               const userLatLng = [pos.coords.latitude, pos.coords.longitude];
 
-              // Lấy timezone + giờ của người dùng
               const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
               const userTime = new Date().toLocaleTimeString('en-GB', {
                 timeZone: userTZ,
                 hour: '2-digit', minute: '2-digit', second: '2-digit',
               });
-              // Rút gọn tên timezone: "Asia/Bangkok" → "Asia/Bangkok (UTC+7)"
               const tzOffset = -new Date().getTimezoneOffset();
               const tzSign = tzOffset >= 0 ? '+' : '-';
               const tzHours = String(Math.floor(Math.abs(tzOffset) / 60)).padStart(2, '0');
@@ -789,26 +867,26 @@
 
               L.marker(userLatLng, { icon: userIcon }).addTo(map);
 
-              // Fit map để thấy cả 2 marker
               const bounds = L.latLngBounds([HN, userLatLng]);
-              map.fitBounds(bounds, { padding: [32, 32] });
+              map.fitBounds(bounds, { 
+                padding: [70, 50], 
+                maxZoom: 13 
+              });
 
-              // Cập nhật footer
               startUserClock(userTZ, tzLabel, youLabel);
 
             }, () => {
-              // Từ chối hoặc lỗi → giữ nguyên footer mặc định
             });
           }
         }
       }
 
+      // Khởi động đồng hồ thời gian thực của client trên mini map
       function startUserClock(tz, tzLabel, youLabel) {
         setInterval(() => {
           const t = new Date().toLocaleTimeString('en-GB', {
             timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit',
           });
-          // Cập nhật marker label
           const markerClock = document.getElementById('marker-clock');
           if (markerClock) markerClock.textContent = t + ' · ' + tzLabel;
         }, 1000);

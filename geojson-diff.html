@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GeoJSON Diff Viewer</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f8f7;color:#1a1a18;height:100dvh;display:flex;flex-direction:column}
+#app{display:flex;flex-direction:column;height:100dvh}
+.toolbar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #e5e5e3;background:#fff;flex-shrink:0;flex-wrap:wrap}
+.toolbar-title{font-size:14px;font-weight:600;color:#1a1a18}
+
+/* Header Navigation Actions */
+.header-actions{display:flex;gap:4px;align-items:center;margin-left:8px}
+.header-actions a, .header-actions button{color:#666;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:none;background:none;cursor:pointer;transition:background .15s,color .15s}
+.header-actions a:hover, .header-actions button:hover{background:#f0f0ee;color:#1a1a18}
+
+.legend{display:flex;gap:12px;margin-left:auto;align-items:center}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#666}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+.panels{display:grid;grid-template-columns:1fr 1fr;flex-shrink:0;border-bottom:1px solid #e5e5e3}
+.panel{display:flex;flex-direction:column}
+.panel:first-child{border-right:1px solid #e5e5e3}
+.panel-label{font-size:11px;font-weight:600;color:#999;padding:6px 10px;background:#f8f8f7;border-bottom:1px solid #e5e5e3;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.panel-label span{flex:1}
+
+.input-tabs{display:flex;border-bottom:1px solid #e5e5e3}
+.tab{font-size:11px;padding:5px 12px;cursor:pointer;color:#999;border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit;transition:color .15s}
+.tab.active{color:#1a1a18;border-bottom-color:#1a1a18;font-weight:600}
+.tab:hover:not(.active){color:#555}
+
+.input-body{position:relative}
+textarea{width:100%;height:110px;resize:none;border:none;outline:none;font-family:'SF Mono',Monaco,monospace;font-size:11px;color:#1a1a18;background:#fff;padding:8px 10px;line-height:1.6;display:block}
+
+.drop-zone{height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;background:#fff;border:none;transition:background .15s;position:relative}
+.drop-zone.hidden{display:none}
+.drop-zone:hover,.drop-zone.drag-over{background:#f0fdf4}
+.drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{font-size:22px;color:#ccc}
+.drop-text{font-size:12px;color:#999;text-align:center;line-height:1.4}
+.drop-text strong{color:#555;display:block;font-weight:600}
+.file-loaded{font-size:12px;color:#059669;display:flex;align-items:center;gap:5px;font-weight:500}
+.file-clear{font-size:11px;color:#999;cursor:pointer;padding:2px 6px;border-radius:4px;border:1px solid #e5e5e3;background:#fff;margin-left:auto}
+.file-clear:hover{background:#fee2e2;color:#dc2626;border-color:#fca5a5}
+
+.actions{display:flex;gap:8px;padding:8px 14px;border-bottom:1px solid #e5e5e3;background:#fff;flex-shrink:0;align-items:center;flex-wrap:wrap}
+.btn{font-size:12px;padding:5px 14px;border-radius:6px;border:1px solid #d0d0ce;background:#fff;color:#1a1a18;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn:hover{background:#f0f0ee}
+.btn-primary{background:#1a1a18;color:#fff;border-color:#1a1a18}
+.btn-primary:hover{background:#333}
+.btn-small{font-size:11px;padding:4px 10px}
+.stats{display:flex;gap:10px;margin-left:auto;align-items:center;flex-wrap:wrap}
+.stat{font-size:12px;display:flex;align-items:center;gap:4px;color:#666}
+.badge{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px}
+.badge-add{background:#d1fae5;color:#065f46}
+.badge-del{background:#fee2e2;color:#991b1b}
+.badge-mod{background:#fef3c7;color:#92400e}
+.badge-same{background:#f0f0ee;color:#666}
+.error-msg{font-size:12px;color:#dc2626}
+
+.map-wrap{position:relative;flex:1;min-height:0}
+#map{width:100%;height:100%}
+.info-box{position:absolute;bottom:16px;right:16px;z-index:1000;background:#fff;border:1px solid #e5e5e3;border-radius:8px;padding:10px 14px;font-size:12px;color:#666;max-width:240px;pointer-events:none;display:none;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.info-status{font-weight:600;margin-bottom:6px;font-size:13px}
+.info-table td{padding:2px 0}
+.info-table td:first-child{color:#999;padding-right:10px;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.info-table td:last-child{font-weight:500;color:#1a1a18;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ===== SYSTEM DARK MODE OVERRIDES ===== */
+html.dark body{background:#0f172a;color:#f8fafc}
+html.dark .toolbar{background:#1e293b;border-bottom-color:#334155}
+html.dark .toolbar-title{color:#f8fafc}
+html.dark .header-actions a, html.dark .header-actions button{color:#94a3b8}
+html.dark .header-actions a:hover, html.dark .header-actions button:hover{background:#334155;color:#fbbf24}
+html.dark .leg-item{color:#94a3b8}
+html.dark .panels{border-bottom-color:#334155}
+html.dark .panel:first-child{border-right-color:#334155}
+html.dark .panel-label{background:#0f172a;border-bottom-color:#334155;color:#94a3b8}
+html.dark .input-tabs{border-bottom-color:#334155}
+html.dark .tab{color:#64748b}
+html.dark .tab.active{color:#fbbf24;border-bottom-color:#fbbf24}
+html.dark textarea{background:#1e293b;color:#f8fafc}
+html.dark .drop-zone{background:#1e293b}
+html.dark .drop-zone:hover, html.dark .drop-zone.drag-over{background:#064e3b}
+html.dark .drop-text{color:#64748b}
+html.dark .drop-text strong{color:#94a3b8}
+html.dark #fileInfoA, html.dark #fileInfoB{background:#064e3b;border-top-color:#334155}
+html.dark .file-clear{background:#1e293b;border-color:#475569;color:#94a3b8}
+html.dark .file-clear:hover{background:#7f1d1d;color:#fca5a5;border-color:#f87171}
+html.dark .actions{background:#1e293b;border-bottom-color:#334155}
+html.dark .btn{border-color:#475569;background:#1e293b;color:#f8fafc}
+html.dark .btn:hover{background:#334155}
+html.dark .btn-primary{background:#f8fafc;color:#0f172a;border-color:#f8fafc}
+html.dark .btn-primary:hover{background:#e2e8f0}
+html.dark .badge-same{background:#334155;color:#94a3b8}
+html.dark .stat{color:#94a3b8}
+html.dark .info-box{background:#1e293b;border-color:#334155}
+html.dark .info-table td:last-child{color:#f8fafc}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="toolbar">
+    <span class="toolbar-title">GeoJSON Diff</span>
+    <div class="header-actions">
+      <a href="/" title="Về trang chủ"><span class="material-symbols-outlined" style="font-size:20px">home</span></a>
+      <button onclick="toggleDarkMode()" title="Chuyển chế độ Sáng/Tối"><span id="theme-icon" class="material-symbols-outlined" style="font-size:20px">light_mode</span></button>
+    </div>
+    <div class="legend">
+      <div class="leg-item"><div class="dot" style="background:#10b981"></div>added</div>
+      <div class="leg-item"><div class="dot" style="background:#ef4444"></div>removed</div>
+      <div class="leg-item"><div class="dot" style="background:#f59e0b"></div>modified</div>
+      <div class="leg-item"><div class="dot" style="background:#94a3b8"></div>unchanged</div>
+    </div>
+  </div>
+
+  <div class="panels">
+    <div class="panel">
+      <div class="panel-label"><span>A — before</span></div>
+      <div class="input-tabs">
+        <button class="tab active" onclick="switchTab('A','text',this)">Paste GeoJSON</button>
+        <button class="tab" onclick="switchTab('A','shp',this)">Upload SHP / ZIP</button>
+      </div>
+      <div class="input-body">
+        <textarea id="inputA" spellcheck="false" placeholder='{"type":"FeatureCollection","features":[...]}'></textarea>
+        <div class="drop-zone hidden" id="dropA" ondragover="onDragOver(event,'dropA')" ondragleave="onDragLeave('dropA')" ondrop="onDrop(event,'A')">
+          <input type="file" accept=".zip,.shp" onchange="onFileChange(event,'A')" id="fileA"/>
+          <div class="drop-icon">📂</div>
+          <div class="drop-text"><strong>Drop .zip or .shp here</strong>Use a .zip containing .shp + .dbf + .prj</div>
+        </div>
+        <div id="fileInfoA" style="display:none;padding:6px 10px;border-top:1px solid #e5e5e3;background:#f0fdf4;align-items:center;gap:6px">
+          <span class="file-loaded" id="fileNameA"></span>
+          <button class="file-clear" onclick="clearFile('A')">✕ clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label"><span>B — after</span></div>
+      <div class="input-tabs">
+        <button class="tab active" onclick="switchTab('B','text',this)">Paste GeoJSON</button>
+        <button class="tab" onclick="switchTab('B','shp',this)">Upload SHP / ZIP</button>
+      </div>
+      <div class="input-body">
+        <textarea id="inputB" spellcheck="false" placeholder='{"type":"FeatureCollection","features":[...]}'></textarea>
+        <div class="drop-zone hidden" id="dropB" ondragover="onDragOver(event,'dropB')" ondragleave="onDragLeave('dropB')" ondrop="onDrop(event,'B')">
+          <input type="file" accept=".zip,.shp" onchange="onFileChange(event,'B')" id="fileB"/>
+          <div class="drop-icon">📂</div>
+          <div class="drop-text"><strong>Drop .zip or .shp here</strong>Use a .zip containing .shp + .dbf + .prj</div>
+        </div>
+        <div id="fileInfoB" style="display:none;padding:6px 10px;border-top:1px solid #e5e5e3;background:#f0fdf4;align-items:center;gap:6px">
+          <span class="file-loaded" id="fileNameB"></span>
+          <button class="file-clear" onclick="clearFile('B')">✕ clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" onclick="runDiff()">Compare</button>
+    <button class="btn btn-small" onclick="loadExample()">Load example</button>
+    <button class="btn btn-small" onclick="clearAll()">Clear</button>
+    <span class="error-msg" id="err-msg"></span>
+    <div class="stats" id="stats" style="display:none">
+      <div class="stat"><span class="badge badge-add" id="cnt-add">0</span> added</div>
+      <div class="stat"><span class="badge badge-mod" id="cnt-mod">0</span> modified</div>
+      <div class="stat"><span class="badge badge-del" id="cnt-del">0</span> removed</div>
+      <div class="stat"><span class="badge badge-same" id="cnt-same">0</span> unchanged</div>
+    </div>
+  </div>
+
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="info-box" id="info-box">
+      <div class="info-status" id="info-status"></div>
+      <table class="info-table" id="info-table"></table>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/shpjs@4.0.4/dist/shp.js"></script>
+<script>
+// ─── Dark Mode Handler ───────────────────────────────────────────────────────
+function toggleDarkMode() {
+  const isDark = document.documentElement.classList.toggle("dark");
+  document.getElementById("theme-icon").textContent = isDark ? "dark_mode" : "light_mode";
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  if(window.tileLayer) {
+    window.tileLayer.setUrl(isDark ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png');
+  }
+}
+const isDarkInit = localStorage.getItem("theme") === "dark";
+if (isDarkInit) { document.documentElement.classList.add("dark"); }
+
+// ─── Map setup ───────────────────────────────────────────────────────────────
+const map = L.map('map',{zoomControl:true,attributionControl:true}).setView([21.03,105.83],13);
+window.tileLayer = L.tileLayer(isDarkInit ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png' : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+  maxZoom:19, attribution:'&copy; CARTO &copy; OSM'
+}).addTo(map);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const icon = document.getElementById("theme-icon");
+  if (icon && isDarkInit) icon.textContent = "dark_mode";
+});
+
+let diffLayer = null;
+const parsedGeoJSON = {A: null, B: null};
+
+function switchTab(side, mode, btn){
+  const textarea = document.getElementById('input'+side);
+  const drop = document.getElementById('drop'+side);
+  btn.closest('.input-tabs').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  if(mode === 'text'){ textarea.style.display = 'block'; drop.classList.add('hidden'); } 
+  else { textarea.style.display = 'none'; drop.classList.remove('hidden'); }
+}
+
+function onDragOver(e, id){ e.preventDefault(); document.getElementById(id).classList.add('drag-over'); }
+function onDragLeave(id){ document.getElementById(id).classList.remove('drag-over'); }
+function onDrop(e, side){ e.preventDefault(); document.getElementById('drop'+side).classList.remove('drag-over'); const file = e.dataTransfer.files[0]; if(file) processShpFile(file, side); }
+function onFileChange(e, side){ const file = e.target.files[0]; if(file) processShpFile(file, side); }
+
+async function processShpFile(file, side){
+  showError(''); const name = file.name;
+  if(!name.endsWith('.zip') && !name.endsWith('.shp')){ showError('Only .zip files are supported'); return; }
+  try {
+    const buf = await file.arrayBuffer(); let geojson;
+    if(name.endsWith('.zip')){ geojson = await shp(buf); } else { showError('Please use a .zip with shp, dbf and prj'); return; }
+    if(Array.isArray(geojson)) geojson = geojson[0];
+    parsedGeoJSON[side] = geojson;
+    setFileInfo(side, name, geojson.features.length);
+  } catch(err){ showError('Failed to parse shapefile: ' + err.message); }
+}
+
+function setFileInfo(side, name, count){
+  const infoEl = document.getElementById('fileInfo'+side);
+  document.getElementById('fileName'+side).textContent = `✓ ${name} (${count} features)`;
+  infoEl.style.display = 'flex';
+}
+function clearFile(side){ parsedGeoJSON[side] = null; document.getElementById('fileInfo'+side).style.display = 'none'; document.getElementById('file'+side).value = ''; }
+function getKey(f, i){ if(!f.properties) return String(i); return String(f.properties.id ?? f.properties.name ?? f.properties.code ?? i); }
+function hash(obj){ return JSON.stringify(obj); }
+function colorFor(s){ return {added:'#10b981',removed:'#ef4444',modified:'#f59e0b',unchanged:'#94a3b8'}[s]; }
+function styleFor(s){ const c = colorFor(s); return {color:c, weight:s==='unchanged'?1:2.5, fillColor:c, fillOpacity:s==='unchanged'?.1:.35, dashArray:s==='removed'?'5,4':null}; }
+function showError(msg){ document.getElementById('err-msg').textContent = msg; }
+function getGeoJSON(side){ if(parsedGeoJSON[side]) return parsedGeoJSON[side]; const val = document.getElementById('input'+side).value.trim(); return val ? JSON.parse(val) : null; }
+
+function runDiff(){
+  showError(''); let a = getGeoJSON('A'), b = getGeoJSON('B');
+  if(!a || !b) { showError('Vui lòng nhập đầy đủ dữ liệu cả hai bên.'); return; }
+  const fa = a.type==='FeatureCollection' ? a.features : [a];
+  const fb = b.type==='FeatureCollection' ? b.features : [b];
+
+  const mapA = new Map(), mapB = new Map();
+  fa.forEach((f,i) => mapA.set(getKey(f,i), f));
+  fb.forEach((f,i) => mapB.set(getKey(f,i), f));
+
+  const results = []; let nAdd=0, nDel=0, nMod=0, nSame=0;
+  mapA.forEach((fA, k) => {
+    if(!mapB.has(k)){ results.push({f:fA, status:'removed'}); nDel++; } 
+    else {
+      const fB = mapB.get(k);
+      const changed = hash(fA.geometry)!==hash(fB.geometry) || hash(fA.properties)!==hash(fB.properties);
+      if(changed){ results.push({f:fB, fOld:fA, status:'modified'}); nMod++; }
+      else { results.push({f:fB, status:'unchanged'}); nSame++; }
+    }
+  });
+  mapB.forEach((fB, k) => { if(!mapA.has(k)){ results.push({f:fB, status:'added'}); nAdd++; } });
+
+  document.getElementById('cnt-add').textContent = nAdd; document.getElementById('cnt-mod').textContent = nMod;
+  document.getElementById('cnt-del').textContent = nDel; document.getElementById('cnt-same').textContent = nSame;
+  document.getElementById('stats').style.display = 'flex';
+
+  if(diffLayer){ map.removeLayer(diffLayer); }
+  diffLayer = L.geoJSON(null,{
+    style: f => styleFor(f.properties._diff_status),
+    pointToLayer: (f, ll) => L.circleMarker(ll,{radius:9,fillColor:colorFor(f.properties._diff_status),color:'#fff',weight:2.5,fillOpacity:.85}),
+    onEachFeature: (f, layer) => {
+      layer.on('click', () => showInfo(f));
+    }
+  }).addTo(map);
+
+  results.forEach(({f, status}) => {
+    const feat = JSON.parse(JSON.stringify(f)); feat.properties = {...(feat.properties||{}), _diff_status: status};
+    diffLayer.addData(feat);
+  });
+  try { map.fitBounds(diffLayer.getBounds().pad(0.15)); } catch(e){}
+}
+
+function showInfo(f){
+  const s = f.properties._diff_status; document.getElementById('info-status').textContent = s.toUpperCase();
+  document.getElementById('info-status').style.color = colorFor(s);
+  const p = {...f.properties}; delete p._diff_status;
+  document.getElementById('info-table').innerHTML = Object.entries(p).slice(0,8).map(([k,v])=>`<tr><td>${k}</td><td>${String(v)}</td></tr>`).join('');
+  document.getElementById('info-box').style.display = 'block';
+}
+function loadExample(){
+  const A = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"id":1,"name":"Khu A"},"geometry":{"type":"Polygon","coordinates":[[[105.83,21.03],[105.84,21.03],[105.84,21.04],[105.83,21.04],[105.83,21.03]]]}}]};
+  const B = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"id":1,"name":"Khu A chỉnh sửa"},"geometry":{"type":"Polygon","coordinates":[[[105.83,21.03],[105.845,21.03],[105.845,21.04],[105.83,21.04],[105.83,21.03]]]}}]};
+  document.getElementById('inputA').value = JSON.stringify(A,null,2);
+  document.getElementById('inputB').value = JSON.stringify(B,null,2);
+  runDiff();
+}
+function clearAll(){ document.getElementById('inputA').value = ''; document.getElementById('inputB').value = ''; clearMapLayers(); }
+</script>
+</body>
+</html>
