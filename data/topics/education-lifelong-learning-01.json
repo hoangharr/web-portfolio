@@ -59,7 +59,7 @@
         {
           "term": "Academic discipline",
           "definition": "Ex: Psychology is a complex academic discipline involving the study of the mind.",
-          "translation": "Mot nganh hoc/mon hoc thuat",
+          "translation": "Một ngành học / môn học thuật",
           "icon": "school",
           "category": "Noun",
           "variant": "default"
@@ -67,7 +67,7 @@
         {
           "term": "Distance learning",
           "definition": "Ex: Distance learning has become essential for working professionals worldwide.",
-          "translation": "Hoc tu xa",
+          "translation": "Học từ xa",
           "icon": "laptop_mac",
           "category": "Phrase",
           "variant": "default"
@@ -75,7 +75,7 @@
         {
           "term": "Continuous professional development (CPD)",
           "definition": "Essential for maintaining high standards in the corporate sector.",
-          "translation": "Phat trien chuyen mon lien tuc",
+          "translation": "Phát triển chuyên môn liên tục",
           "icon": "history_edu",
           "category": "Core",
           "variant": "primary"
@@ -83,7 +83,7 @@
         {
           "term": "Acquire knowledge/skills",
           "definition": "Ex: Workshops are a great way to acquire practical industry skills.",
-          "translation": "Tiep thu kien thuc/ky nang",
+          "translation": "Tiếp thu kiến thức / kỹ năng",
           "icon": "psychology",
           "category": "Verb",
           "variant": "default"
@@ -91,7 +91,7 @@
         {
           "term": "To enroll in a course",
           "definition": "Ex: Students must enroll in the course before the semester begins.",
-          "translation": "Dang ky mot khoa hoc",
+          "translation": "Đăng ký một khóa học",
           "icon": "assignment_turned_in",
           "category": "Action",
           "variant": "default"
@@ -99,7 +99,7 @@
         {
           "term": "To meet the requirements",
           "definition": "Ex: Does he meet the requirements for this senior management position?",
-          "translation": "Dap ung cac yeu cau",
+          "translation": "Đáp ứng các yêu cầu",
           "icon": "verified",
           "category": "Criteria",
           "variant": "default"

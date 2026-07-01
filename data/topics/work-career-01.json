@@ -54,7 +54,7 @@
         {
           "term": "Pursue a career path",
           "definition": "To follow a specific professional direction or series of jobs over time.",
-          "translation": "Theo duoi con duong su nghiep",
+          "translation": "Theo đuổi con đường sự nghiệp",
           "icon": "moving",
           "category": "Career Growth",
           "variant": "default"
@@ -62,7 +62,7 @@
         {
           "term": "Gain hands-on experience",
           "definition": "Learning by doing the actual work rather than just studying the theory.",
-          "translation": "Tich luy kinh nghiem thuc te",
+          "translation": "Tích lũy kinh nghiệm thực tế",
           "icon": "front_hand",
           "category": "Practical Skills",
           "badge": "Essential",
@@ -71,7 +71,7 @@
         {
           "term": "Meet a deadline",
           "definition": "To finish a task or project by the agreed-upon time or date.",
-          "translation": "Hoan thanh dung han",
+          "translation": "Hoàn thành đúng hạn",
           "icon": "alarm",
           "category": "Time Management",
           "variant": "default"
@@ -79,7 +79,7 @@
         {
           "term": "Work under pressure",
           "definition": "To perform effectively while dealing with difficult or stressful situations.",
-          "translation": "Lam viec duoi ap luc",
+          "translation": "Làm việc dưới áp lực",
           "icon": "bolt",
           "category": "Resilience",
           "variant": "default"
@@ -87,7 +87,7 @@
         {
           "term": "Achieve a work-life balance",
           "definition": "Managing time between professional responsibilities and personal life.",
-          "translation": "Dat duoc su can bang cong viec - cuoc song",
+          "translation": "Đạt được sự cân bằng giữa công việc và cuộc sống",
           "icon": "balance",
           "category": "Well-being",
           "badge": "High Priority",
@@ -96,7 +96,7 @@
         {
           "term": "Job satisfaction",
           "definition": "The feeling of pleasure and fulfillment that a person derives from their job.",
-          "translation": "Su hai long voi cong viec",
+          "translation": "Sự hài lòng với công việc",
           "icon": "sentiment_satisfied",
           "category": "Fulfillment",
           "variant": "default"

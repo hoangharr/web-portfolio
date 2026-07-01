@@ -1,0 +1,366 @@
+{
+  "id": "communication-presentation-01",
+  "title": "Communication & Presentation Skills",
+  "level": "B2",
+  "subtitle": "Essential Vocabulary and Grammar for Aptis Speaking & Writing",
+  "themeIcon": "campaign",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "Module 3 Introduction",
+      "title": "Communication & Presentation Skills",
+      "quote": "Speaking clearly, structuring ideas, and engaging your audience.",
+      "features": [
+        {
+          "icon": "record_voice_over",
+          "title": "Speaking Fluency",
+          "description": "Build confidence when presenting ideas in formal and informal settings."
+        },
+        {
+          "icon": "forum",
+          "title": "Audience Engagement",
+          "description": "Use body language and rhetorical devices to keep listeners interested."
+        },
+        {
+          "icon": "splitscreen",
+          "title": "Organizing Ideas",
+          "description": "Structure speeches and presentations with clear openings, bodies, and conclusions."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Apply your language to speaking, reading, and writing tasks."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80",
+        "alt": "People presenting in a meeting"
+      },
+      "badge": {
+        "icon": "verified",
+        "title": "APTIS ALIGNED",
+        "text": "This module develops B2-level communication skills for presentations, discussions, and formal responses."
+      },
+      "tip": {
+        "title": "B2 Communication Tip",
+        "text": "Instead of saying \"I think it is good,\" try \"I believe it is highly effective\" or \"In my view, it offers several advantages.\""
+      }
+    },
+    {
+      "id": "presentation-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Building",
+      "title": "1. Presentation Vocabulary",
+      "description": "Tap cards to flip and listen.",
+      "cards": [
+        {
+          "term": "Deliver a presentation",
+          "definition": "To give a formal talk to an audience, often in a professional or academic setting.",
+          "translation": "Thuyết trình trước đám đông",
+          "icon": "present_to_all",
+          "category": "Action",
+          "variant": "default"
+        },
+        {
+          "term": "Engage the audience",
+          "definition": "To capture and maintain the attention of listeners.",
+          "translation": "Thu hút người nghe",
+          "icon": "groups",
+          "category": "Communication",
+          "variant": "default"
+        },
+        {
+          "term": "Make eye contact",
+          "definition": "To look at the audience directly while speaking.",
+          "translation": "Nhìn thẳng vào người nghe",
+          "icon": "visibility",
+          "category": "Body Language",
+          "variant": "highlight"
+        },
+        {
+          "term": "Speak fluently",
+          "definition": "To speak smoothly and without unnecessary pauses.",
+          "translation": "Nói trôi chảy",
+          "icon": "chat",
+          "category": "Skill",
+          "variant": "default"
+        },
+        {
+          "term": "Structure your ideas",
+          "definition": "To organize your thoughts in a logical order.",
+          "translation": "Sắp xếp ý tưởng rõ ràng",
+          "icon": "view_agenda",
+          "category": "Planning",
+          "variant": "default"
+        },
+        {
+          "term": "Handle questions",
+          "definition": "To respond effectively to audience questions or objections.",
+          "translation": "Đáp các câu hỏi",
+          "icon": "help_center",
+          "category": "Interaction",
+          "variant": "primary"
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Strong presenters often use short signposting phrases such as \"To begin with\", \"In addition\", and \"To conclude\" to guide the audience."
+      }
+    },
+    {
+      "id": "presentation-synonyms",
+      "type": "synonyms",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Upgrade",
+      "title": "2. Formal Alternatives",
+      "description": "Replace common words with more polished B2-level expressions.",
+      "rows": [
+        {
+          "basic": "Talk",
+          "advanced": ["Presentation", "Address", "Speech"]
+        },
+        {
+          "basic": "Nervous",
+          "advanced": ["Anxious", "Apprehensive", "Uneasy"]
+        },
+        {
+          "basic": "Explain",
+          "advanced": ["Clarify", "Elaborate", "Outline"]
+        },
+        {
+          "basic": "Good",
+          "advanced": ["Effective", "Persuasive", "Convincing"]
+        }
+      ],
+      "practiceTasks": [
+        {
+          "icon": "edit_note",
+          "label": "Practice Task",
+          "text": "Rewrite one sentence from your last presentation using at least one formal alternative from the table."
+        },
+        {
+          "icon": "record_voice_over",
+          "label": "Speaking Drill",
+          "text": "Say the sentence aloud twice: \"The proposal is persuasive and easy to understand.\""
+        },
+        {
+          "icon": "lightbulb",
+          "label": "Nuance Check",
+          "text": "Compare \"explain\" and \"clarify\" in a short context."
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip: Precision Matters",
+        "text": "\"Clarify\" is often used when you want to make something easier to understand, while \"elaborate\" suggests giving more detail."
+      }
+    },
+    {
+      "id": "presentation-grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar Unit",
+      "title": "3. Hedging and Signposting",
+      "description": "Use cautious language and clear transitions to sound more formal and natural.",
+      "points": [
+        {
+          "title": "Hedging",
+          "icon": "balance",
+          "function": "Softens opinions and makes statements more polite",
+          "examples": [
+            "I would say that this approach is effective.",
+            "It seems that audience engagement improves when visuals are used."
+          ]
+        },
+        {
+          "title": "Signposting",
+          "icon": "swap_calls",
+          "function": "Shows the structure of a talk or argument",
+          "examples": [
+            "To begin with, I would like to explain the main goal.",
+            "In addition, the data suggests that the strategy works."
+          ]
+        },
+        {
+          "title": "Transition Phrases",
+          "icon": "route",
+          "function": "Helps the audience follow your ideas smoothly",
+          "examples": [
+            "On the other hand, we should also consider the costs.",
+            "To conclude, the benefits outweigh the difficulties."
+          ]
+        }
+      ],
+      "table": {
+        "headers": ["Structure", "Use", "Example"],
+        "rows": [
+          ["Hedging", "Make claims sound more cautious", "I would say that this is a reasonable solution."],
+          ["Signposting", "Organize ideas clearly", "To begin with, I will explain the problem."],
+          ["Transition", "Move between points smoothly", "In addition, the survey shows strong support."]
+        ]
+      },
+      "tip": {
+        "title": "Academic Pro-Tip",
+        "text": "In formal speaking, hedging helps you sound thoughtful rather than overly absolute."
+      }
+    },
+    {
+      "id": "presentation-mcq",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Aptis Practice",
+      "title": "4. Choose the Best Option",
+      "description": "Select the most appropriate word or phrase for each sentence.",
+      "questions": [
+        {
+          "id": "pres-q1",
+          "prompt": "To make a strong first impression, you should ________ your main point clearly.",
+          "options": ["delay", "state", "avoid", "ignore"],
+          "correct": 1
+        },
+        {
+          "id": "pres-q2",
+          "prompt": "During a presentation, it is important to ________ the audience by using examples and questions.",
+          "options": ["bore", "confuse", "engage", "interrupt"],
+          "correct": 2
+        },
+        {
+          "id": "pres-q3",
+          "prompt": "If you want to sound more formal, you can say \"________\" instead of \"I think\".",
+          "options": ["I know", "I guess", "I would say", "I hope"],
+          "correct": 2
+        },
+        {
+          "id": "pres-q4",
+          "prompt": "A good introduction should ________ the audience and present the topic.",
+          "options": ["capture", "avoid", "reduce", "delay"],
+          "correct": 0
+        },
+        {
+          "id": "pres-q5",
+          "prompt": "When you want to add another point, you can say \"________\".",
+          "options": ["To conclude", "In addition", "At once", "As a result"],
+          "correct": 1
+        },
+        {
+          "id": "pres-q6",
+          "prompt": "A presenter should try to ________ eye contact with the audience rather than looking at the floor.",
+          "options": ["avoid", "maintain", "ignore", "hide"],
+          "correct": 1
+        },
+        {
+          "id": "pres-q7",
+          "prompt": "If a speaker wants to sound more polite, they may use the phrase \"________\".",
+          "options": ["I am certain", "It is obvious", "I would suggest", "It is definitely"],
+          "correct": 2
+        },
+        {
+          "id": "pres-q8",
+          "prompt": "At the end of a presentation, a speaker often ________ the main ideas briefly.",
+          "options": ["summarizes", "forgets", "avoids", "repeats"],
+          "correct": 0
+        }
+      ],
+      "tip": {
+        "title": "Sentence Upgrade",
+        "text": "Original: \"I think the plan is good.\" Upgrade: \"I would say that the plan is quite effective and likely to succeed.\""
+      }
+    },
+    {
+      "id": "presentation-matching",
+      "type": "drag-drop",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 2",
+      "title": "5. Match the Phrases",
+      "description": "Drag each phrase into the correct presentation stage.",
+      "targets": [
+        { "id": "opening", "label": "Opening" },
+        { "id": "body", "label": "Main Body" },
+        { "id": "closing", "label": "Closing" }
+      ],
+      "items": [
+        { "id": "item-1", "text": "To begin with, I would like to introduce the topic.", "match": "opening" },
+        { "id": "item-2", "text": "In addition, the research shows clear evidence.", "match": "body" },
+        { "id": "item-3", "text": "To conclude, I would like to summarize the key points.", "match": "closing" },
+        { "id": "item-4", "text": "On the other hand, there are some limitations to consider.", "match": "body" },
+        { "id": "item-5", "text": "First of all, let me explain the context.", "match": "opening" }
+      ],
+      "tip": {
+        "title": "Presentation Structure",
+        "text": "A clear structure helps the audience follow your message and improves your overall impact."
+      }
+    },
+    {
+      "id": "presentation-reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading Skills",
+      "title": "6. Reading Practice: A Good Presentation",
+      "description": "Complete the text with the best words from the box.",
+      "passage": {
+        "title": "Useful Habits for a Strong Presentation",
+        "options": ["engage", "clarify", "confidently", "address", "structure"],
+        "parts": [
+          "A successful presentation begins with a clear ",
+          { "blank": "pres-r1" },
+          ". The speaker should ",
+          { "blank": "pres-r2" },
+          " the audience by using stories, questions, or examples. It is also helpful to ",
+          { "blank": "pres-r3"},
+          " important points in simple language so that everyone understands. During the talk, the presenter should speak ",
+          { "blank": "pres-r4" },
+          " and be ready to ",
+          { "blank": "pres-r5" },
+          " difficult questions calmly."
+        ],
+        "blanks": [
+          { "id": "pres-r1", "correct": "structure" },
+          { "id": "pres-r2", "correct": "engage" },
+          { "id": "pres-r3", "correct": "clarify" },
+          { "id": "pres-r4", "correct": "confidently" },
+          { "id": "pres-r5", "correct": "address" }
+        ]
+      },
+      "questions": [
+        {
+          "id": "pres-read-q1",
+          "prompt": "What is the main purpose of the passage?",
+          "options": ["To explain how to prepare a presentation", "To describe a job interview", "To discuss weather conditions", "To explain cooking techniques"],
+          "correct": 0
+        },
+        {
+          "id": "pres-read-q2",
+          "prompt": "According to the passage, what should a speaker do when answering difficult questions?",
+          "options": ["Ignore them", "Answer calmly", "Laugh loudly", "Speak faster"],
+          "correct": 1
+        }
+      ],
+      "tip": {
+        "title": "Reading Tip",
+        "text": "Pay attention to collocations such as \"engage the audience\" and \"clarify important points\"."
+      }
+    },
+    {
+      "id": "presentation-writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing Task",
+      "title": "7. Write a Short Presentation Response",
+      "description": "Practice writing a clear, structured response for an Aptis-style task.",
+      "prompt": {
+        "situation": "You have been asked to give a short presentation about a skill that is important for students today. Describe the skill, explain why it matters, and give one example.",
+        "placeholder": "Write about a useful skill such as communication, teamwork, or digital literacy.",
+        "minWords": 80,
+        "maxWords": 140,
+        "referenceAnswer": "Communication is an essential skill for students because it helps them express ideas clearly and work well with others. In my view, it matters in both academic and professional life. For example, a student who can explain a project confidently is more likely to succeed in group work and interviews.",
+        "focus": ["Communication", "Important", "Example", "Confidence"]
+      },
+      "tip": {
+        "title": "Writing Tip",
+        "text": "Try to use a simple structure: introduction, main point, example, and conclusion."
+      }
+    }
+  ]
+}
