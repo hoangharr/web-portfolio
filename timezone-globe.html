@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Interactive WebGIS Globe Clock</title>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --panel-bg: rgba(255, 255, 255, 0.85);
+      --panel-border: rgba(15, 23, 42, 0.08);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent: #2563eb;
+      --accent-glow: rgba(37, 99, 235, 0.15);
+      --sun-color: #ea580c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #app-container {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 30px;
+      width: 100%;
+      max-width: 1120px;
+      background: rgba(255, 255, 255, 0.4);
+      padding: 30px;
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      #app-container { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+    }
+
+    .globe-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #globe-area {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    svg#globe {
+      max-width: 500px;
+      width: 100%;
+      cursor: grab;
+      filter: drop-shadow(0 15px 35px rgba(15, 23, 42, 0.12));
+    }
+    svg#globe:active { cursor: grabbing; }
+
+    .control-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .glass-panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03);
+    }
+
+    /* Search engine styling */
+    .search-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .search-box label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      font-weight: 700;
+    }
+    .search-input-wrap {
+      position: relative;
+    }
+    .search-input-wrap input {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      color: var(--text-primary);
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s;
+    }
+    .search-input-wrap input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .search-results {
+      display: none;
+      max-height: 220px;
+      overflow-y: auto;
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+    .search-results.show {
+      display: block;
+    }
+    .search-result-item {
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+    .search-result-item:hover {
+      background: #f8fafc;
+      color: var(--accent);
+    }
+    .search-result-item.empty {
+      cursor: default;
+      color: var(--text-secondary);
+    }
+    .mode-toggle,
+    .preset-btn,
+    .time-preset-btn {
+      border: 1px solid var(--panel-border);
+      background: #ffffff;
+      color: var(--text-primary);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mode-toggle.active,
+    .preset-btn.active,
+    .time-preset-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+    .preset-row,
+    .time-preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .preset-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+    .compare-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .compare-summary {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding-top: 4px;
+    }
+    .compare-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .compare-card {
+      background: #f8fafc;
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .compare-card .cc-flag {
+      width: 28px;
+      height: 20px;
+      border-radius: 3px;
+      object-fit: cover;
+      display: inline-block;
+      margin-bottom: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    }
+    .compare-card .cc-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .compare-card .cc-time {
+      font-size: 20px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-primary);
+      letter-spacing: -.5px;
+      line-height: 1.2;
+      margin: 2px 0;
+    }
+    .compare-card .cc-date {
+      font-size: 10px;
+      color: var(--text-secondary);
+      margin-bottom: 1px;
+    }
+    .compare-card .cc-offset {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .compare-diff {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .clear-compare-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 0 4px;
+      line-height: 1;
+      border-radius: 4px;
+      transition: color .15s;
+    }
+    .clear-compare-btn:hover { color: #dc2626; }
+    .my-tz-bar {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 6px 0 2px;
+      font-weight: 500;
+    }
+    .my-tz-bar span { color: var(--accent); font-weight: 700; }
+    .cc-time { cursor: pointer; transition: opacity .15s; }
+    .cc-time:hover { opacity: .7; }
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #fff;
+      font-size: 12px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .copy-toast.show { opacity: 1; }
+
+    /* Info Display Card */
+    #info-card {
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    /* UTC bar moved to globe overlay (.utc-overlay) */
+    #tz-city {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    #tz-time {
+      font-size: 44px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -1px;
+      color: var(--text-primary);
+    }
+    #tz-date {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .placeholder-text {
+      color: var(--text-secondary);
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    /* Slider styling */
+    .slider-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    input[type=range] {
+      flex: 1;
+      -webkit-appearance: none;
+      background: #e2e8f0;
+      height: 6px;
+      border-radius: 3px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+    
+    .btn-reset {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      color: var(--text-primary);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+    }
+    .btn-reset:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    #tz-hint {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+    .globe-toolbar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .utc-overlay {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 8px 12px;
+      text-align: center;
+      min-width: 120px;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+      backdrop-filter: blur(6px);
+      z-index: 6;
+    }
+    .zoom-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--panel-border);
+      background: #ffffff;
+      color: var(--text-primary);
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    }
+    .zoom-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+    .legend-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 8px 0 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--sun-color);
+      box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.16);
+      flex-shrink: 0;
+    }
+    .country-tooltip {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -100%);
+      background: rgba(15, 23, 42, 0.92);
+      color: white;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      z-index: 10;
+      transition: opacity 0.15s ease;
+    }
+    .country-path {
+      transition: fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
+    }
+    .country-path.selected {
+      filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.45));
+      animation: countryPulse 1.4s ease-in-out infinite;
+    }
+    .country-path.compare {
+      filter: drop-shadow(0 0 8px rgba(22, 163, 74, 0.45));
+      animation: comparePulse 1.4s ease-in-out infinite;
+    }
+    @keyframes comparePulse {
+      0%, 100% { stroke-width: 2.2px; }
+      50% { stroke-width: 3px; }
+    }
+    .country-path.glow-transition {
+      filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.6));
+    }
+    .sun-marker {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    @keyframes countryPulse {
+      0%, 100% { stroke-width: 2.2px; }
+      50% { stroke-width: 3px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="app-container">
+  <div class="globe-section">
+    <div class="globe-toolbar">
+      <button class="zoom-btn" id="zoom-out" aria-label="Thu nhỏ">−</button>
+      <button class="zoom-btn" id="zoom-in" aria-label="Phóng to">＋</button>
+    </div>
+    <div id="utc-overlay" class="utc-overlay" aria-hidden="false">
+      <div style="font-size:11px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em">UTC</div>
+      <div id="utc-time" style="font-size:18px;font-weight:700;margin-top:4px">--:--:--</div>
+    </div>
+    <div id="globe-area">
+      <div id="country-tooltip" class="country-tooltip"></div>
+      <svg id="globe"></svg>
+    </div>
+    <div class="legend-row">
+      <span class="legend-dot"></span>
+      <span>Điểm cam = vị trí Mặt Trời; vùng sáng/tối cho biết ngày và đêm</span>
+    </div>
+    <div id="tz-hint">➔ Kéo để xoay mô hình • Click vào quốc gia bất kỳ để đồng bộ giờ</div>
+  </div>
+
+    <div class="control-section">
+    <div class="glass-panel" style="padding:14px 20px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <button class="btn-reset" id="btn-auto-rotate">Tự quay: Bật</button>
+          <div id="auto-rotate-info" style="font-size:12px;color:var(--text-secondary)">Đang tự quay khi không tương tác. Click để bật/tắt.</div>
+        </div>
+        <div class="my-tz-bar" style="text-align:right;font-size:13px;color:var(--text-secondary)">Múi giờ của bạn: <span id="my-tz-label">--</span></div>
+      </div>
+    </div>
+
+    <div class="glass-panel search-box">
+      <label for="country-search-input">Tìm kiếm & Định vị nhanh</label>
+      <div class="search-input-wrap">
+        <input id="country-search-input" type="text" placeholder="Nhập tên quốc gia..." autocomplete="off">
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+
+    <div class="glass-panel">
+      <div class="preset-row">
+        <span class="preset-label">Nút nhanh</span>
+        <button class="preset-btn" data-preset="vn">VN</button>
+        <button class="preset-btn" data-preset="us">US</button>
+        <button class="preset-btn" data-preset="london">London</button>
+        <button class="preset-btn" data-preset="tokyo">Tokyo</button>
+      </div>
+
+    </div>
+
+    <div class="glass-panel compare-box">
+      <label for="compare-country-input">So sánh 2 quốc gia</label>
+      <div class="search-input-wrap" style="display:flex;gap:6px;align-items:center">
+        <input id="compare-country-input" type="text" placeholder="Nhập quốc gia thứ 2..." autocomplete="off" style="flex:1">
+        <button class="clear-compare-btn" id="btn-clear-compare" title="Xóa so sánh">✕</button>
+      </div>
+      <div id="compare-search-results" class="search-results"></div>
+      <div id="compare-cards" class="compare-cards" style="display:none"></div>
+      <div id="compare-diff" class="compare-diff" style="display:none"></div>
+      <div id="compare-summary" class="compare-summary">Chọn quốc gia để xem chênh lệch giờ.</div>
+    </div>
+
+    <div class="glass-panel" id="info-card">
+      <div id="info-content">
+        <div class="placeholder-text">Chưa chọn khu vực.<br>Vui lòng tương tác với địa cầu để xem chi tiết.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="copy-toast" id="copy-toast">Đã sao chép!</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const W = 500, H = 450, R = 195;
+
+// Premium Light GIS Palette
+const C = {
+  ocean: '#e0f2fe',       // Xanh dương pastel sáng mượt cực đẹp
+  land: '#ffffff',        // Đất liền trắng tinh khôi
+  landStroke: '#cbd5e1',  // Viền ranh giới quốc gia thanh mảnh nhã nhặn
+  nightOverlay: 'rgba(15, 23, 42, 0.22)', // Bóng tối trong suốt phủ mịn qua chế độ Blend Mode
+  graticule: 'rgba(15, 23, 42, 0.03)',    // Lưới kinh vĩ tuyến tinh tế
+  terminator: 'rgba(234, 88, 12, 0.25)', // Đường ranh giới sáng tối hổ phách nhẹ
+  sunDot: '#ea580c',      // Tâm điểm mặt trời màu cam rực rỡ
+  clicked: '#2563eb',     // HIGHLIGHT: Xanh Royal đậm tương phản mạnh khi click
+};
+
+const svg = d3.select('#globe').attr('viewBox', `0 0 ${W} ${H}`);
+let rot = [105, -15], dragging = false, dragStart = null, animFrame = null;
+let countries = [], selectedId = null, zoomLevel = 1;
+let countryLookup = [], compareId = null;
+let autoRotateEnabled = true, lastInteractionAt = Date.now();
+
+let activePresetName = '';
+
+const proj = d3.geoOrthographic().scale(R).translate([W/2, H/2]).clipAngle(90);
+const path = d3.geoPath(proj);
+const searchInput = document.getElementById('country-search-input');
+const searchResults = document.getElementById('search-results');
+const compareInput = document.getElementById('compare-country-input');
+const compareResults = document.getElementById('compare-search-results');
+const compareSummary = document.getElementById('compare-summary');
+// ISO 3166-1 numeric → alpha-2 for flagcdn.com
+const FLAG_ISO2 = {
+  4:'af',8:'al',12:'dz',24:'ao',32:'ar',36:'au',40:'at',50:'bd',56:'be',64:'bt',
+  68:'bo',76:'br',100:'bg',104:'mm',116:'kh',120:'cm',124:'ca',144:'lk',152:'cl',
+  156:'cn',170:'co',188:'cr',191:'hr',192:'cu',196:'cy',203:'cz',208:'dk',214:'do',
+  218:'ec',818:'eg',222:'sv',231:'et',246:'fi',250:'fr',266:'ga',276:'de',288:'gh',
+  300:'gr',320:'gt',324:'gn',332:'ht',340:'hn',348:'hu',356:'in',360:'id',364:'ir',
+  368:'iq',372:'ie',376:'il',380:'it',388:'jm',392:'jp',400:'jo',398:'kz',404:'ke',
+  408:'kp',410:'kr',414:'kw',418:'la',422:'lb',434:'ly',440:'lt',442:'lu',450:'mg',
+  458:'my',466:'ml',484:'mx',496:'mn',504:'ma',516:'na',524:'np',528:'nl',554:'nz',
+  558:'ni',562:'ne',566:'ng',578:'no',586:'pk',591:'pa',598:'pg',604:'pe',608:'ph',
+  616:'pl',620:'pt',634:'qa',642:'ro',643:'ru',646:'rw',682:'sa',703:'sk',706:'so',
+  710:'za',716:'zw',724:'es',740:'sr',752:'se',756:'ch',760:'sy',764:'th',788:'tn',
+  792:'tr',800:'ug',804:'ua',784:'ae',826:'gb',840:'us',858:'uy',860:'uz',862:'ve',
+  704:'vn',887:'ye',894:'zm',566:'ng',854:'bf',686:'sn',780:'tt',108:'bi',174:'km',
+};
+
+function flagImg(id, size=20) {
+  const iso2 = FLAG_ISO2[+id];
+  if (!iso2) return '';
+  return `<img class="cc-flag" src="https://flagcdn.com/w40/${iso2}.png" alt="${iso2}" style="height:${size}px;width:auto;border-radius:3px;vertical-align:middle;box-shadow:0 1px 3px rgba(0,0,0,.15)">`;
+}
+
+function updateProjection() {
+  proj.scale(R * zoomLevel).translate([W/2, H/2]).clipAngle(90);
+  globeBase.attr('r', R * zoomLevel);
+}
+
+function setZoom(nextLevel) {
+  zoomLevel = Math.max(1, Math.min(2.2, nextLevel));
+  updateProjection();
+}
+
+function normalizeText(text) {
+  return (text || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
+function renderSearchResults(query = '') {
+  const term = normalizeText(query || '').trim();
+  if (!term) {
+    searchResults.innerHTML = '';
+    searchResults.classList.remove('show');
+    return;
+  }
+
+  const filtered = countryLookup.filter(item => normalizeText(item.name).includes(term)).slice(0, 12);
+  if (filtered.length === 0) {
+    searchResults.innerHTML = '<div class="search-result-item empty">Không tìm thấy quốc gia</div>';
+    searchResults.classList.add('show');
+    return;
+  }
+
+  searchResults.innerHTML = filtered.map(item => `<button type="button" class="search-result-item" data-id="${item.id}">${item.name}</button>`).join('');
+  searchResults.classList.add('show');
+}
+
+function selectCountry(id) {
+  const numericId = +id;
+  if (!numericId) return;
+
+  // Click lần 2 vào nước đang chọn → bỏ chọn
+  if (numericId === selectedId) {
+    selectedId = null;
+    activePresetName = '';
+    searchInput.value = '';
+    document.getElementById('info-content').innerHTML = '<div class="placeholder-text">Chưa chọn khu vực.<br>Vui lòng tương tác với địa cầu để xem chi tiết.</div>';
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    updateCompareSummary();
+    return;
+  }
+
+  selectedId = numericId;
+  activePresetName = '';
+  lastInteractionAt = Date.now();
+  const matched = countryLookup.find(item => item.id === numericId);
+  if (matched) {
+    searchInput.value = matched.name;
+  }
+  searchResults.classList.remove('show');
+
+  const foundFeature = countries.find(f => +f.id === numericId);
+  if (foundFeature) {
+    flyTo(d3.geoCentroid(foundFeature));
+  }
+
+  triggerSelectionGlow();
+  updateCompareSummary();
+}
+
+function renderCompareResults(query = '') {
+  const term = normalizeText(query || '').trim();
+  if (!term) {
+    compareResults.innerHTML = '';
+    compareResults.classList.remove('show');
+    return;
+  }
+
+  const filtered = countryLookup.filter(item => normalizeText(item.name).includes(term)).slice(0, 12);
+  if (filtered.length === 0) {
+    compareResults.innerHTML = '<div class="search-result-item empty">Không tìm thấy quốc gia</div>';
+    compareResults.classList.add('show');
+    return;
+  }
+
+  compareResults.innerHTML = filtered.map(item => `<button type="button" class="search-result-item" data-id="${item.id}">${item.name}</button>`).join('');
+  compareResults.classList.add('show');
+}
+
+function clearCompare() {
+  compareId = null;
+  compareInput.value = '';
+  document.getElementById('compare-cards').style.display = 'none';
+  document.getElementById('compare-diff').style.display = 'none';
+  document.getElementById('compare-summary').style.display = 'block';
+  document.getElementById('compare-summary').textContent = 'Chọn quốc gia để xem chênh lệch giờ.';
+  document.getElementById('info-card').style.display = '';
+}
+
+function showCopyToast() {
+  const t = document.getElementById('copy-toast');
+  t.classList.add('show');
+  clearTimeout(window._copyTimer);
+  window._copyTimer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// Hiển thị múi giờ browser
+(function(){
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const offset = getTimezoneOffsetString(tz);
+    document.getElementById('my-tz-label').textContent = `${tz} (${offset})`;
+  } catch(e) {}
+})();
+
+function selectCompareCountry(id) {
+  const numericId = +id;
+  if (!numericId) return;
+  compareId = numericId;
+  const matched = countryLookup.find(item => item.id === numericId);
+  if (matched) {
+    compareInput.value = matched.name;
+  }
+  compareResults.classList.remove('show');
+  updateCompareSummary();
+}
+
+// Khởi tạo cấu trúc các Layer SVG phân cấp hình học rõ ràng
+const globeBase = svg.append('circle')
+  .attr('class', 'globe-base')
+  .attr('cx', W/2)
+  .attr('cy', H/2)
+  .attr('r', R)
+  .attr('fill', C.ocean);
+const gratLayer = svg.append('g');
+const landLayer = svg.append('g');
+const nightLayer = svg.append('g'); 
+const termLayer = svg.append('g');
+const sunLayer = svg.append('g');
+
+// Từ điển định danh dữ liệu mở rộng các nước lớn
+const COUNTRY_DATA = {
+  704: { name: 'Việt Nam', tz: 'Asia/Ho_Chi_Minh' },
+  840: { name: 'Hoa Kỳ (New York)', tz: 'America/New_York' },
+  156: { name: 'Trung Quốc', tz: 'Asia/Shanghai' },
+  356: { name: 'Ấn Độ', tz: 'Asia/Kolkata' },
+  392: { name: 'Nhật Bản', tz: 'Asia/Tokyo' },
+  410: { name: 'Hàn Quốc', tz: 'Asia/Seoul' },
+  643: { name: 'Nga (Moscow)', tz: 'Europe/Moscow' },
+  826: { name: 'Vương Quốc Anh', tz: 'Europe/London' },
+  250: { name: 'Pháp', tz: 'Europe/Paris' },
+  276: { name: 'Đức', tz: 'Europe/Berlin' },
+  380: { name: 'Ý', tz: 'Europe/Rome' },
+  724: { name: 'Tây Ban Nha', tz: 'Europe/Madrid' },
+  36:  { name: 'Australia (Sydney)', tz: 'Australia/Sydney' },
+  554: { name: 'New Zealand', tz: 'Pacific/Auckland' },
+  76:  { name: 'Brazil (São Paulo)', tz: 'America/Sao_Paulo' },
+  32:  { name: 'Argentina', tz: 'America/Argentina/Buenos_Aires' },
+  124: { name: 'Canada (Toronto)', tz: 'America/Toronto' },
+  484: { name: 'Mexico', tz: 'America/Mexico_City' },
+  710: { name: 'Nam Phi', tz: 'Africa/Johannesburg' },
+  818: { name: 'Ai Cập', tz: 'Africa/Cairo' },
+  566: { name: 'Nigeria', tz: 'Africa/Lagos' },
+  682: { name: 'Saudi Arabia', tz: 'Asia/Riyadh' },
+  784: { name: 'UAE', tz: 'Asia/Dubai' },
+  792: { name: 'Thổ Nhĩ Kỳ', tz: 'Europe/Istanbul' },
+  360: { name: 'Indonesia (Jakarta)', tz: 'Asia/Jakarta' },
+  458: { name: 'Malaysia', tz: 'Asia/Kuala_Lumpur' },
+  764: { name: 'Thái Lan', tz: 'Asia/Bangkok' },
+  608: { name: 'Philippines', tz: 'Asia/Manila' },
+  586: { name: 'Pakistan', tz: 'Asia/Karachi' },
+  50:  { name: 'Bangladesh', tz: 'Asia/Dhaka' },
+  364: { name: 'Iran', tz: 'Asia/Tehran' },
+  376: { name: 'Israel', tz: 'Asia/Jerusalem' },
+  804: { name: 'Ukraine', tz: 'Europe/Kiev' },
+  752: { name: 'Thụy Điển', tz: 'Europe/Stockholm' },
+  578: { name: 'Na Uy', tz: 'Europe/Oslo' },
+  246: { name: 'Phần Lan', tz: 'Europe/Helsinki' },
+  756: { name: 'Thụy Sĩ', tz: 'Europe/Zurich' },
+  528: { name: 'Hà Lan', tz: 'Europe/Amsterdam' },
+  56:  { name: 'Bỉ', tz: 'Europe/Brussels' },
+  40:  { name: 'Áo', tz: 'Europe/Vienna' },
+  208: { name: 'Đan Mạch', tz: 'Europe/Copenhagen' },
+  300: { name: 'Hy Lạp', tz: 'Europe/Athens' },
+  616: { name: 'Ba Lan', tz: 'Europe/Warsaw' },
+  620: { name: 'Bồ Đào Nha', tz: 'Europe/Lisbon' },
+  170: { name: 'Colombia', tz: 'America/Bogota' },
+  604: { name: 'Peru', tz: 'America/Lima' },
+  862: { name: 'Venezuela', tz: 'America/Caracas' },
+  858: { name: 'Uruguay', tz: 'America/Montevideo' },
+  152: { name: 'Chile', tz: 'America/Santiago' },
+  4:   { name: 'Afghanistan', tz: 'Asia/Kabul' },
+  12:  { name: 'Algeria', tz: 'Africa/Algiers' },
+  504: { name: 'Morocco', tz: 'Africa/Casablanca' },
+  404: { name: 'Kenya', tz: 'Africa/Nairobi' },
+  368: { name: 'Iraq', tz: 'Asia/Baghdad' },
+  634: { name: 'Qatar', tz: 'Asia/Qatar' }
+};
+
+// Thuật toán thiên văn tính toán vị trí mặt trời theo thời gian thực
+function sunPosition(now) {
+  const jd = now / 86400000 + 2440587.5;
+  const n = jd - 2451545;
+  const L = (280.46 + 0.9856474 * n) % 360;
+  const g = (357.528 + 0.9856003 * n) * Math.PI / 180;
+  const lambda = (L + 1.915 * Math.sin(g) + 0.02 * Math.sin(2 * g)) * Math.PI / 180;
+  const eps = 23.439 * Math.PI / 180;
+  const sinDec = Math.sin(eps) * Math.sin(lambda);
+  const dec = Math.asin(sinDec) * 180 / Math.PI;
+  const ut = (now % 86400000) / 3600000;
+  const lon = -(ut - 12) * 15;
+  return [lon, dec];
+}
+
+// Lấy chuỗi định dạng múi giờ thực tế của trình duyệt (ví dụ: UTC+07:00)
+function getTimezoneOffsetString(tzName) {
+  try {
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: tzName,
+      timeZoneName: 'longOffset'
+    });
+    return formatter.formatToParts(new Date()).find(p => p.type === 'timeZoneName').value.replace('GMT', 'UTC');
+  } catch (e) { return ''; }
+}
+
+// GIẢI PHÁP ĐỘC QUYỀN WEBGIS: Tự động xử lý dữ liệu quốc gia chưa map dựa trên phân tích không gian
+function getCountryData(feature) {
+  const id = +feature.id;
+  if (COUNTRY_DATA[id]) return { ...COUNTRY_DATA[id], isFallback: false };
+
+  // Tính toán trọng tâm GIS của Shapefile nước này nếu không nằm trong từ điển
+  const center = d3.geoCentroid(feature);
+  const lon = center[0];
+  const offsetHours = Math.round(lon / 15); // Mỗi 15 độ kinh tuyến tương đương 1 giờ
+  const sign = offsetHours >= 0 ? '+' : '';
+  const countryName = feature.properties?.name || `Lãnh thổ vùng biển (ID: ${id})`;
+
+  return {
+    name: countryName,
+    isFallback: true,
+    offsetStr: `UTC${sign}${offsetHours}:00`,
+    offsetHours: offsetHours
+  };
+}
+
+function getTimezoneOffsetHours(tzName, date = new Date()) {
+  try {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: tzName,
+      timeZoneName: 'shortOffset'
+    }).formatToParts(date);
+    const tzNamePart = parts.find(part => part.type === 'timeZoneName')?.value || '';
+    const match = tzNamePart.match(/GMT([+-])(\d{1,2})(?::?(\d{2}))?/);
+    if (match) {
+      const sign = match[1] === '-' ? -1 : 1;
+      const hours = Number(match[2]);
+      const minutes = Number(match[3] || 0);
+      return sign * (hours + minutes / 60);
+    }
+  } catch (error) {
+    return 0;
+  }
+  return 0;
+}
+
+function getOffsetHoursForCountry(info, date = new Date()) {
+  if (!info) return 0;
+  if (info.isFallback) return info.offsetHours || 0;
+  return getTimezoneOffsetHours(info.tz, date);
+}
+
+
+
+function getLocalTimeStr(info, simTime) {
+  if (!info) return { time: '--:--:--', date: '', offset: '' };
+  try {
+    if (info.isFallback) {
+      const utcMs = simTime.getTime() + simTime.getTimezoneOffset() * 60000;
+      const local = new Date(utcMs + info.offsetHours * 3600000);
+      return {
+        time: local.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }),
+        date: local.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'short' }),
+        offset: info.offsetStr
+      };
+    }
+    return {
+      time: simTime.toLocaleString('vi-VN', { timeZone: info.tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }),
+      date: simTime.toLocaleString('vi-VN', { timeZone: info.tz, weekday: 'short', day: 'numeric', month: 'short' }),
+      offset: getTimezoneOffsetString(info.tz)
+    };
+  } catch(e) { return { time: '--:--:--', date: '', offset: '' }; }
+}
+
+function updateCompareSummary() {
+  const simTime = new Date();
+  const baseFeature = selectedId ? countries.find(f => +f.id === selectedId) : null;
+  const cmpFeature  = compareId  ? countries.find(f => +f.id === compareId)  : null;
+  const baseInfo = baseFeature ? getCountryData(baseFeature) : null;
+  const cmpInfo  = cmpFeature  ? getCountryData(cmpFeature)  : null;
+
+  const cardsEl = document.getElementById('compare-cards');
+  const diffEl  = document.getElementById('compare-diff');
+
+  if (!cmpInfo) {
+    compareSummary.style.display = 'block';
+    compareSummary.textContent = 'Chọn quốc gia để xem chênh lệch giờ.';
+    cardsEl.style.display = 'none';
+    diffEl.style.display = 'none';
+    document.getElementById('info-card').style.display = '';
+    return;
+  }
+
+  compareSummary.style.display = 'none';
+  cardsEl.style.display = 'grid';
+  diffEl.style.display = 'block';
+
+  const baseLabel = baseInfo?.name || 'UTC';
+  const baseId    = selectedId || null;
+
+  const bTime = baseInfo ? getLocalTimeStr(baseInfo, simTime) : {
+    time: simTime.toLocaleTimeString('vi-VN', { timeZone:'UTC', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false }),
+    date: simTime.toLocaleDateString('vi-VN', { timeZone:'UTC', weekday:'short', day:'numeric', month:'short' }),
+    offset: 'UTC+00:00'
+  };
+  const cTime = getLocalTimeStr(cmpInfo, simTime);
+
+  const baseOffset = baseInfo ? getOffsetHoursForCountry(baseInfo) : 0;
+  const cmpOffset  = getOffsetHoursForCountry(cmpInfo);
+  const diff = cmpOffset - baseOffset;
+  const diffText = diff === 0 ? 'Cùng múi giờ' : `${cmpInfo.name} ${diff > 0 ? 'sớm hơn' : 'trễ hơn'} ${Math.abs(diff)} giờ`;
+
+  cardsEl.innerHTML = `
+    <div class="compare-card">
+      <div>${flagImg(baseId, 18)}</div>
+      <div class="cc-name">${baseLabel}</div>
+      <div class="cc-time" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)">${bTime.time}</div>
+      <div class="cc-date">${bTime.date}</div>
+      <div class="cc-offset">${bTime.offset}</div>
+    </div>
+    <div class="compare-card" style="border-color:rgba(22,163,74,.35);background:#f0fdf4">
+      <div>${flagImg(compareId, 18)}</div>
+      <div class="cc-name">${cmpInfo.name}</div>
+      <div class="cc-time" style="color:#15803d" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)">${cTime.time}</div>
+      <div class="cc-date">${cTime.date}</div>
+      <div class="cc-offset" style="color:#16a34a">${cTime.offset}</div>
+    </div>
+  `;
+  diffEl.textContent = diffText;
+
+  // Ẩn info card khi đang so sánh để tránh lặp thông tin
+  document.getElementById('info-card').style.display = 'none';
+}
+
+function draw() {
+  if (autoRotateEnabled && Date.now() - lastInteractionAt > 1800) {
+    rot = [rot[0] + 0.14, rot[1]];
+  }
+  updateProjection();
+  const simulatedTime = new Date();
+  const sun = sunPosition(simulatedTime.getTime());
+
+  // Áp dụng tính năng chuẩn D3 để tạo đa giác bán cầu tối ngược vị trí mặt trời (Fix lỗi ngược sáng tối)
+  const nightCircle = d3.geoCircle().center([sun[0] + 180, -sun[1]]).radius(90)();
+
+  proj.rotate([rot[0], rot[1]]);
+
+  // 1. Lưới Kinh vĩ tuyến
+  gratLayer.selectAll('path').data([d3.geoGraticule()()])
+    .join('path').attr('d', path).attr('fill', 'none').attr('stroke', C.graticule).attr('stroke-width', 0.5);
+
+  // 2. Vẽ Bản đồ đất liền & Highlight quốc gia được chọn
+  landLayer.selectAll('path').data(countries)
+    .join('path')
+    .attr('class', f => `country-path${+f.id === selectedId ? ' selected' : +f.id === compareId ? ' compare' : ''}`)
+    .classed('glow-transition', false)
+    .attr('d', path)
+    .attr('fill', f => +f.id === selectedId ? C.clicked : +f.id === compareId ? '#16a34a' : C.land)
+    .attr('stroke', f => +f.id === selectedId ? C.clicked : +f.id === compareId ? '#15803d' : C.landStroke)
+    .attr('stroke-width', f => (f.id === selectedId || +f.id === compareId) ? 2.2 : 0.45)
+    .style('cursor', 'pointer')
+    .on('mouseenter', function(event, f) {
+      const info = getCountryData(f);
+      const tooltip = document.getElementById('country-tooltip');
+      tooltip.textContent = info.name;
+      tooltip.style.opacity = '1';
+    })
+    .on('mousemove', function(event) {
+      const tooltip = document.getElementById('country-tooltip');
+      const rect = document.getElementById('globe-area').getBoundingClientRect();
+      tooltip.style.left = `${event.clientX - rect.left}px`;
+      tooltip.style.top = `${event.clientY - rect.top - 16}px`;
+    })
+    .on('mouseleave', function() {
+      document.getElementById('country-tooltip').style.opacity = '0';
+    });
+
+  // 3. Đổ bóng đêm mượt mà (Blend Mode: Multiply giúp giữ nguyên cấu trúc nền sáng)
+  nightLayer.selectAll('path').data([nightCircle])
+    .join('path').attr('d', path)
+    .attr('fill', 'rgba(15, 23, 42, 0.28)')
+    .style('mix-blend-mode', 'multiply')
+    .style('transition', 'opacity 0.6s ease')
+    .attr('pointer-events', 'none');
+
+  // 4. Đường Hoàng hôn (Terminator)
+  termLayer.selectAll('path').data([nightCircle])
+    .join('path').attr('d', path).attr('fill', 'none').attr('stroke', C.terminator).attr('stroke-width', 1.2);
+
+  // 5. Chấm định vị Mặt Trời
+  const sunPt = proj([sun[0], sun[1]]);
+  if (sunPt && d3.geoDistance([sun[0], sun[1]], proj.invert([W/2, H/2])) < Math.PI/2) {
+    sunLayer.selectAll('circle').data([sunPt])
+      .join('circle').attr('cx', d => d[0]).attr('cy', d => d[1]).attr('r', 6)
+      .attr('class', 'sun-marker')
+      .attr('fill', C.sunDot).attr('stroke', '#fff').attr('stroke-width', 2);
+  } else {
+    sunLayer.selectAll('circle').remove();
+  }
+
+  // Cập nhật giao diện Đồng hồ trung tâm thế giới
+  document.getElementById('utc-time').textContent = simulatedTime.toUTCString().slice(17, 25);
+
+  // Cập nhật Thẻ hiển thị thông tin Quốc gia chủ động
+  if (activePresetName === 'UTC') {
+    document.getElementById('info-content').innerHTML = `
+      <div id="tz-city">UTC <span style="color: var(--accent); font-size:14px; font-weight:600; margin-left:4px;">UTC+00:00</span></div>
+      <div id="tz-time">${simulatedTime.toUTCString().slice(17, 25)}</div>
+      <div id="tz-date">${simulatedTime.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'short' })}</div>
+    `;
+  } else if (selectedId) {
+    const feature = countries.find(f => +f.id === selectedId);
+    if (feature) {
+      const info = getCountryData(feature);
+      let localTimeStr, localDateStr, offsetDisplay;
+
+      if (info.isFallback) {
+        offsetDisplay = info.offsetStr;
+        const utcTimestamp = simulatedTime.getTime() + (simulatedTime.getTimezoneOffset() * 60000);
+        const fallbackLocal = new Date(utcTimestamp + (info.offsetHours * 3600000));
+        localTimeStr = fallbackLocal.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+        localDateStr = fallbackLocal.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'short' });
+      } else {
+        offsetDisplay = getTimezoneOffsetString(info.tz);
+        localTimeStr = simulatedTime.toLocaleString('vi-VN', { timeZone: info.tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+        localDateStr = simulatedTime.toLocaleString('vi-VN', { timeZone: info.tz, weekday: 'short', day: 'numeric', month: 'short' });
+      }
+
+      document.getElementById('info-content').innerHTML = `
+        <div id="tz-city">${flagImg(+feature.id, 22)} ${info.name} <span style="color: var(--accent); font-size:14px; font-weight:600; margin-left:4px;">${offsetDisplay}</span></div>
+        <div id="tz-time" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)">${localTimeStr}</div>
+        <div id="tz-date">${localDateStr}</div>
+      `;
+    }
+  } else {
+    document.getElementById('info-content').innerHTML = '<div class="placeholder-text">Chưa chọn khu vực.<br>Vui lòng tương tác với địa cầu để xem chi tiết.</div>';
+  }
+
+  if (compareId) updateCompareSummary();
+}
+
+function tick() {
+  draw();
+  animFrame = requestAnimationFrame(tick);
+}
+
+// Cơ chế Drag để quay Địa cầu
+svg.call(d3.drag()
+  .on('start', e => { dragStart = [e.x, e.y]; lastInteractionAt = Date.now(); })
+  .on('drag', e => {
+    if (!dragStart) return;
+    const dx = e.x - dragStart[0], dy = e.y - dragStart[1];
+    rot = [rot[0] + dx * 0.3, Math.max(-80, Math.min(80, rot[1] - dy * 0.3))];
+    dragStart = [e.x, e.y];
+    lastInteractionAt = Date.now();
+  })
+);
+
+// Raycasting tính toán tọa độ click chuột trên tập hợp Vector SVG đường dẫn đa giác
+const _canvas = document.createElement('canvas');
+const _ctx = _canvas.getContext('2d');
+function isPointInPath(pathStr, x, y) {
+  try { return _ctx.isPointInPath(new Path2D(pathStr), x, y); } catch (e) { return false; }
+}
+
+svg.on('click', function(event) {
+  const [mx, my] = d3.pointer(event, this);
+  const clicked = countries.find(f => {
+    const p = path(f);
+    return p && isPointInPath(p, mx, my);
+  });
+
+  lastInteractionAt = Date.now();
+  if (clicked) {
+    selectCountry(+clicked.id);
+  }
+});
+
+function triggerSelectionGlow() {
+  const prevSelected = document.querySelector('.country-path.selected');
+  if (prevSelected) {
+    prevSelected.classList.add('glow-transition');
+    setTimeout(() => prevSelected.classList.remove('glow-transition'), 500);
+  }
+}
+
+svg.on('wheel', function(event) {
+  event.preventDefault();
+  const delta = event.deltaY > 0 ? -0.08 : 0.08;
+  setZoom(zoomLevel + delta);
+});
+
+// Hàm Fly-to nội suy camera mượt mà
+function flyTo(targetCoordinates) {
+  const targetRot = [-targetCoordinates[0], -targetCoordinates[1]];
+  const interpolator = d3.interpolate(rot, targetRot);
+  d3.transition().duration(1200).ease(d3.easeCubicOut).tween("rotate", () => t => { rot = interpolator(t); });
+}
+
+// Nạp tài nguyên dữ liệu bản đồ toàn cầu Atlas
+d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w => {
+  countries = topojson.feature(w, w.objects.countries).features;
+
+  countryLookup = countries
+    .map(feature => ({
+      id: +feature.id,
+      name: getCountryData(feature).name,
+      searchName: normalizeText(getCountryData(feature).name)
+    }))
+    .filter(item => Number.isFinite(item.id) && item.name)
+    .sort((a, b) => a.name.localeCompare(b.name, 'vi'));
+
+  searchInput.addEventListener('input', function(event) {
+    renderSearchResults(event.target.value);
+  });
+
+  searchInput.addEventListener('focus', function() {
+    renderSearchResults(this.value);
+  });
+
+  compareInput.addEventListener('input', function(event) {
+    renderCompareResults(event.target.value);
+  });
+
+  compareInput.addEventListener('focus', function() {
+    renderCompareResults(this.value);
+  });
+
+  searchInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const query = normalizeText(this.value).trim();
+      const exact = countryLookup.find(item => item.searchName === query);
+      const firstMatch = exact || countryLookup.find(item => item.searchName.includes(query));
+      if (firstMatch) {
+        selectCountry(firstMatch.id);
+      }
+    }
+  });
+
+  searchResults.addEventListener('click', function(event) {
+    const btn = event.target.closest('.search-result-item[data-id]');
+    if (btn) {
+      selectCountry(btn.dataset.id);
+    }
+  });
+
+  compareResults.addEventListener('click', function(event) {
+    const btn = event.target.closest('.search-result-item[data-id]');
+    if (btn) {
+      selectCompareCountry(btn.dataset.id);
+    }
+  });
+
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.search-box')) {
+      searchResults.classList.remove('show');
+    }
+    if (!event.target.closest('.compare-box')) {
+      compareResults.classList.remove('show');
+    }
+  });
+
+  document.getElementById('btn-clear-compare').addEventListener('click', clearCompare);
+
+  document.getElementById('zoom-in').addEventListener('click', () => { lastInteractionAt = Date.now(); setZoom(zoomLevel + 0.08); });
+  document.getElementById('zoom-out').addEventListener('click', () => { lastInteractionAt = Date.now(); setZoom(zoomLevel - 0.08); });
+  document.getElementById('btn-auto-rotate').addEventListener('click', () => {
+    autoRotateEnabled = !autoRotateEnabled;
+    const btnAuto = document.getElementById('btn-auto-rotate');
+    btnAuto.textContent = `Tự quay: ${autoRotateEnabled ? 'Bật' : 'Tắt'}`;
+    btnAuto.classList.toggle('active', autoRotateEnabled);
+    const infoEl = document.getElementById('auto-rotate-info');
+    if (infoEl) infoEl.textContent = autoRotateEnabled ? 'Đang tự quay khi không tương tác. Click để tắt.' : 'Tự quay tắt — dùng chuột hoặc nút để xoay.';
+  });
+
+  document.querySelectorAll('.preset-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const preset = button.dataset.preset;
+      const presetMap = { utc: null, vn: 704, us: 840, london: 826, tokyo: 392 };
+      if (preset === 'utc') {
+        selectedId = null;
+        activePresetName = 'UTC';
+        searchInput.value = '';
+      } else {
+        selectCountry(presetMap[preset]);
+      }
+      document.querySelectorAll('.preset-btn').forEach(item => item.classList.toggle('active', item === button));
+    });
+  });
+
+  tick();
+});
+
+
+</script>
+</body>
+</html>
