@@ -1,0 +1,371 @@
+{
+  "id": "technology-innovation-01",
+  "title": "Technology & Innovation",
+  "level": "B2",
+  "subtitle": "Essential Vocabulary and Grammar for Aptis Speaking & Writing",
+  "themeIcon": "computer",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "Module Introduction",
+      "title": "Technology & Innovation - Level B2",
+      "quote": "Essential Vocabulary for Aptis Writing & Speaking about Technology",
+      "features": [
+        {
+          "icon": "auto_awesome",
+          "title": "Digital Transformation",
+          "description": "Vocabulary for discussing technological changes in business and society."
+        },
+        {
+          "icon": "psychology",
+          "title": "Impact on Society",
+          "description": "Terms for describing how technology affects our daily lives and relationships."
+        },
+        {
+          "icon": "trending_up",
+          "title": "Future Trends",
+          "description": "Language for discussing emerging technologies and innovation."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+        "alt": "Modern technology with digital interfaces and innovation concepts"
+      },
+      "badge": {
+        "icon": "verified",
+        "title": "APTIS ALIGNED",
+        "text": "This module specifically addresses the B2 performance descriptors for lexical range and accuracy in technology contexts."
+      },
+      "tip": {
+        "title": "Academic Insight",
+        "text": "Focus on cause-and-effect language and future predictions when discussing technology trends."
+      }
+    },
+    {
+      "id": "tech-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Building",
+      "title": "1. Technology Vocabulary",
+      "description": "Click cards to flip and listen.",
+      "cards": [
+        {
+          "term": "Digital transformation",
+          "definition": "The integration of digital technology into all areas of a business or society, fundamentally changing how it operates.",
+          "translation": "Chuyển đổi số",
+          "icon": "transform",
+          "category": "Business",
+          "variant": "default"
+        },
+        {
+          "term": "User-friendly interface",
+          "definition": "A system or device designed to be easy to use, even for people with little technical knowledge.",
+          "translation": "Giao diện thân thiện với người dùng",
+          "icon": "touch_app",
+          "category": "Design",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "Cutting-edge technology",
+          "definition": "The newest and most advanced technology available in a particular field.",
+          "translation": "Công nghệ tiên tiến nhất",
+          "icon": "bolt",
+          "category": "Innovation",
+          "variant": "default"
+        },
+        {
+          "term": "Data privacy",
+          "definition": "The aspect of information technology that relates to the right of individuals to control how their personal information is collected and used.",
+          "translation": "Quyền riêng tư dữ liệu",
+          "icon": "security",
+          "category": "Ethics",
+          "variant": "default"
+        },
+        {
+          "term": "Artificial intelligence",
+          "definition": "Computer systems designed to perform tasks that normally require human intelligence, such as visual perception and decision-making.",
+          "translation": "Trí tuệ nhân tạo",
+          "icon": "android",
+          "category": "Technology",
+          "badge": "High Priority",
+          "variant": "primary"
+        },
+        {
+          "term": "Seamless integration",
+          "definition": "The smooth incorporation of new technology or systems with existing ones without disruption.",
+          "translation": "Tích hợp liền mạch",
+          "icon": "merge_type",
+          "category": "Implementation",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Use \"cutting-edge\" instead of \"new\" to emphasize that the technology is the most advanced available."
+      }
+    },
+    {
+      "id": "tech-synonyms",
+      "type": "synonyms",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Upgrade",
+      "title": "2. Technology Synonyms (B2 Level)",
+      "description": "Elevate your vocabulary by replacing common A1/A2 words with professional B2-level alternatives.",
+      "rows": [
+        {
+          "basic": "Computer",
+          "advanced": ["Device", "System", "Technology"]
+        },
+        {
+          "basic": "Good/Nice",
+          "advanced": ["Efficient", "Effective", "Innovative"]
+        },
+        {
+          "basic": "Change",
+          "advanced": ["Transform", "Revolutionize", "Disrupt"]
+        },
+        {
+          "basic": "Fast/Quick",
+          "advanced": ["Rapid", "Swift", "Instantaneous"]
+        },
+        {
+          "basic": "Problem",
+          "advanced": ["Challenge", "Issue", "Obstacle"]
+        }
+      ],
+      "practiceTasks": [
+        {
+          "icon": "edit_note",
+          "label": "Practice Task",
+          "text": "Rewrite a paragraph about technology using at least three B2 equivalents from the table above."
+        },
+        {
+          "icon": "record_voice_over",
+          "label": "Speaking Drill",
+          "text": "Discuss how technology has transformed your daily life using at least five advanced vocabulary words from this section."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+        "alt": "Modern technology with digital interfaces and innovation concepts"
+      },
+      "tip": {
+        "title": "Pro-Tip: Precision Matters",
+        "text": "In technology contexts, using \"disrupt\" instead of \"change\" shows a sophisticated understanding of how new innovations can completely transform industries."
+      }
+    },
+    {
+      "id": "tech-grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 03",
+      "title": "3. Technology Grammar: Future Forms",
+      "description": "Using future tenses effectively to discuss technological predictions and plans.",
+      "points": [
+        {
+          "title": "Will for Predictions",
+          "icon": "psychology",
+          "function": "To make predictions about future technological developments",
+          "examples": ["Artificial intelligence will revolutionize healthcare within the next decade.", "Smart homes will become standard in most households by 2030."]
+        },
+        {
+          "title": "Be Going To for Plans",
+          "icon": "event_note",
+          "function": "To talk about planned technological developments or personal intentions",
+          "examples": ["Our company is going to launch a new app next month.", "I'm going to upgrade my computer next week."]
+        },
+        {
+          "title": "Future Continuous for Ongoing Actions",
+          "icon": "hourglass_bottom",
+          "function": "To describe actions that will be in progress at a specific time in the future",
+          "examples": ["This time next year, I'll be using virtual reality for remote meetings.", "By 2025, most people will be working with AI assistants."]
+        }
+      ],
+      "table": {
+        "headers": ["Form", "Function", "Technology Example"],
+        "rows": [
+          ["Will", "Predictions", "5G technology will transform mobile communications."],
+          ["Be going to", "Plans", "The government is going to invest in digital infrastructure."],
+          ["Will be + -ing", "Future ongoing actions", "We'll be using voice recognition software in most devices."]
+        ]
+      },
+      "tip": {
+        "title": "Pro-Tip: Future Nuance",
+        "text": "Use \"will\" for general predictions about technology trends, and \"be going to\" for specific planned developments."
+      }
+    },
+    {
+      "id": "tech-mcq",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 1",
+      "title": "Technology Vocabulary Practice",
+      "description": "Choose the best word or phrase to complete each technology sentence.",
+      "questions": [
+        {
+          "id": "t1q1",
+          "prompt": "\"________ involves integrating digital technology into all areas of a business, fundamentally changing how it operates.\"",
+          "options": ["Digital transformation", "Computer upgrade", "Software installation", "Internet connection"],
+          "correct": 0
+        },
+        {
+          "id": "t1q2",
+          "prompt": "\"A ________ is designed to be easy to use, even for people with little technical knowledge.\"",
+          "options": ["user-friendly interface", "complex system", "difficult program", "advanced software"],
+          "correct": 0
+        },
+        {
+          "id": "t1q3",
+          "prompt": "\"________ refers to the newest and most advanced technology available in a particular field.\"",
+          "options": ["Cutting-edge technology", "Old equipment", "Basic tools", "Simple devices"],
+          "correct": 0
+        },
+        {
+          "id": "t1q4",
+          "prompt": "\"________ relates to the right of individuals to control how their personal information is collected and used.\"",
+          "options": ["Data privacy", "Public information", "Open access", "Free sharing"],
+          "correct": 0
+        },
+        {
+          "id": "t1q5",
+          "prompt": "\"________ involves computer systems designed to perform tasks that normally require human intelligence.\"",
+          "options": ["Artificial intelligence", "Manual labor", "Human resources", "Traditional methods"],
+          "correct": 0
+        },
+        {
+          "id": "t1q6",
+          "prompt": "\"________ describes the smooth incorporation of new technology with existing systems without disruption.\"",
+          "options": ["Seamless integration", "Rough connection", "Difficult merger", "Complex combination"],
+          "correct": 0
+        },
+        {
+          "id": "t1q7",
+          "prompt": "\"________ technology will likely become more prevalent in healthcare diagnostics.\"",
+          "options": ["Artificial intelligence", "Manual processes", "Paper records", "Traditional methods"],
+          "correct": 0
+        },
+        {
+          "id": "t1q8",
+          "prompt": "\"Companies must ensure ________ to maintain customer trust in the digital age.\"",
+          "options": ["data privacy", "public exposure", "open access", "free sharing"],
+          "correct": 0
+        },
+        {
+          "id": "t1q9",
+          "prompt": "\"The new smartphone features a ________ that makes it accessible to users of all ages.\"",
+          "options": ["user-friendly interface", "complex system", "difficult program", "advanced software"],
+          "correct": 0
+        },
+        {
+          "id": "t1q10",
+          "prompt": "\"________ has enabled businesses to operate more efficiently and reach global markets.\"",
+          "options": ["Digital transformation", "Paper-based systems", "Manual processes", "Traditional methods"],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "id": "tech-matching",
+      "type": "drag-drop",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 2",
+      "title": "Technology Concepts Matching",
+      "description": "Drag each technology concept to the correct category.",
+      "targets": [
+        { "id": "development", "label": "Technology Development" },
+        { "id": "impact", "label": "Societal Impact" },
+        { "id": "future", "label": "Future Trends" }
+      ],
+      "items": [
+        { "id": "drag-1", "text": "Digital transformation", "match": "development" },
+        { "id": "drag-2", "text": "Social media influence", "match": "impact" },
+        { "id": "drag-3", "text": "Artificial intelligence", "match": "future" },
+        { "id": "drag-4", "text": "User-friendly interface", "match": "development" },
+        { "id": "drag-5", "text": "Remote work culture", "match": "impact" },
+        { "id": "drag-6", "text": "Virtual reality", "match": "future" },
+        { "id": "drag-7", "text": "Seamless integration", "match": "development" },
+        { "id": "drag-8", "text": "Digital communication", "match": "impact" },
+        { "id": "drag-9", "text": "Quantum computing", "match": "future" },
+        { "id": "drag-10", "text": "Data privacy concerns", "match": "impact" },
+        { "id": "drag-11", "text": "Cutting-edge technology", "match": "development" },
+        { "id": "drag-12", "text": "Internet of Things (IoT)", "match": "future" }
+      ]
+    },
+    {
+      "id": "tech-reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Practice Part 3",
+      "title": "Reading Part 2: Technology Trends",
+      "description": "Complete the passage using the most appropriate technology vocabulary.",
+      "passage": {
+        "title": "The Future of Work in the Digital Age",
+        "options": ["artificial", "digital", "interface", "privacy", "seamless", "transformation"],
+        "parts": [
+          "The ",
+          { "blank": "tech1" },
+          " ________ has fundamentally changed how we work and communicate. Companies are investing in ",
+          { "blank": "tech2" },
+          " ________ to create more efficient processes. A user-friendly ",
+          { "blank": "tech3" },
+          " ________ is essential for employee adoption of new systems. However, as we integrate more ",
+          { "blank": "tech4" },
+          " ________ intelligence tools, data ",
+          { "blank": "tech5" },
+          " ________ becomes increasingly important. The goal is ",
+          { "blank": "tech6" },
+          " ________ integration of technology that enhances productivity without compromising security."
+        ],
+        "blanks": [
+          { "id": "tech1", "correct": "digital" },
+          { "id": "tech2", "correct": "cutting-edge" },
+          { "id": "tech3", "correct": "interface" },
+          { "id": "tech4", "correct": "artificial" },
+          { "id": "tech5", "correct": "privacy" },
+          { "id": "tech6", "correct": "seamless" }
+        ]
+      },
+      "questions": [
+        {
+          "id": "techq1",
+          "prompt": "What is the main theme of the passage?",
+          "options": ["The importance of traditional office work", "How technology is changing the workplace", "The dangers of artificial intelligence", "The history of computer development"],
+          "correct": 1
+        },
+        {
+          "id": "techq2",
+          "prompt": "According to the passage, what is essential for employee adoption of new systems?",
+          "options": ["Free lunch in the office", "A user-friendly interface", "Higher salaries", "More meetings"],
+          "correct": 1
+        }
+      ],
+      "tip": {
+        "title": "Reading Tip",
+        "text": "Look for collocations such as \"digital transformation\" and \"seamless integration\" to help you choose the correct words."
+      }
+    },
+    {
+      "id": "tech-writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Practice Part 4",
+      "title": "Writing Part 4: Technology Opinion",
+      "description": "Write a short formal response using the vocabulary from this lesson.",
+      "prompt": {
+        "situation": "Some people believe that technology improves our lives, while others think it creates more problems than it solves. What is your opinion? Write a short essay (80-140 words) expressing your view. Use appropriate future forms and at least 5 vocabulary words from this lesson.",
+        "placeholder": "Begin your essay here...",
+        "minWords": 80,
+        "maxWords": 140,
+        "referenceAnswer": "In my opinion, technology will continue to bring more benefits than problems to our lives. Digital transformation has already revolutionized how we work, communicate, and access information. Cutting-edge technology such as artificial intelligence will solve complex problems in healthcare and education. However, we must ensure seamless integration of new systems while protecting data privacy. In the future, I believe we'll see even more user-friendly interfaces that make technology accessible to everyone. Although there are challenges, the potential for positive change is enormous if we approach technological development responsibly.",
+        "focus": ["digital transformation", "cutting-edge technology", "artificial intelligence", "seamless integration", "data privacy", "user-friendly interface"]
+      },
+      "tip": {
+        "title": "B2 Writing Tip",
+        "text": "Use a variety of future forms (will for predictions, be going to for plans) to show sophisticated grammar control. Include linking words like \"however\" and \"although\" to present balanced arguments."
+      }
+    }
+  ]
+}

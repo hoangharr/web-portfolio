@@ -1,0 +1,374 @@
+{
+  "id": "travel-tourism-01",
+  "title": "Travel & Tourism",
+  "level": "B2",
+  "subtitle": "Essential Vocabulary and Grammar for Aptis Speaking & Writing",
+  "themeIcon": "flight",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "Module Introduction",
+      "title": "Travel & Tourism - Level B2",
+      "quote": "Essential Vocabulary for Aptis Writing & Speaking about Travel",
+      "features": [
+        {
+          "icon": "location_on",
+          "title": "Travel Vocabulary",
+          "description": "Essential terms for discussing destinations, accommodations, and experiences."
+        },
+        {
+          "icon": "language",
+          "title": "Cultural Exchange",
+          "description": "Describing cultural experiences and intercultural communication."
+        },
+        {
+          "icon": "trending_up",
+          "title": "Travel Industry",
+          "description": "Professional language for tourism careers and travel planning."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=800&q=80",
+        "alt": "Travel destinations around the world"
+      },
+      "badge": {
+        "icon": "verified",
+        "title": "APTIS ALIGNED",
+        "text": "This module specifically addresses the B2 performance descriptors for lexical range and accuracy in travel contexts."
+      },
+      "tip": {
+        "title": "Academic Insight",
+        "text": "Focus on descriptive adjectives and sensory language to make your travel descriptions more vivid and engaging."
+      }
+    },
+    {
+      "id": "travel-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Building",
+      "title": "1. Travel Vocabulary",
+      "description": "Click cards to flip and listen.",
+      "cards": [
+        {
+          "term": "Breathtaking scenery",
+          "definition": "Views or landscapes that are extremely beautiful and impressive.",
+          "translation": "Phong cảnh ngoạn mục",
+          "icon": "landscape",
+          "category": "Descriptions",
+          "variant": "default"
+        },
+        {
+          "term": "Cultural immersion",
+          "definition": "The experience of deeply engaging with and understanding another culture.",
+          "translation": "Hòa nhập văn hóa",
+          "icon": "diversity_3",
+          "category": "Experience",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "Off the beaten path",
+          "definition": "Referring to places that are not commonly visited by tourists.",
+          "translation": "Nơi hẻo lánh, ít người biết đến",
+          "icon": "hiking",
+          "category": "Destinations",
+          "variant": "default"
+        },
+        {
+          "term": "Sustainable tourism",
+          "definition": "Travel that respects local environments and communities while minimizing negative impact.",
+          "translation": "Du lịch bền vững",
+          "icon": "eco",
+          "category": "Responsibility",
+          "variant": "default"
+        },
+        {
+          "term": "Local cuisine",
+          "definition": "Traditional food and drink specialties of a particular region or country.",
+          "translation": "Ẩm thực địa phương",
+          "icon": "restaurant",
+          "category": "Experience",
+          "badge": "High Priority",
+          "variant": "primary"
+        },
+        {
+          "term": "Travel itinerary",
+          "definition": "A planned schedule of activities and destinations for a trip.",
+          "translation": "Lịch trình du lịch",
+          "icon": "event_note",
+          "category": "Planning",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Use \"breathtaking\" instead of \"very beautiful\" to create a stronger impression in your travel descriptions."
+      }
+    },
+    {
+      "id": "travel-synonyms",
+      "type": "synonyms",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Upgrade",
+      "title": "2. Travel Synonyms (B2 Level)",
+      "description": "Elevate your vocabulary by replacing common A1/A2 words with professional B2-level alternatives.",
+      "rows": [
+        {
+          "basic": "Trip/Journey",
+          "advanced": ["Expedition", "Voyage", "Adventure"]
+        },
+        {
+          "basic": "Beautiful",
+          "advanced": ["Stunning", "Picturesque", "Breathtaking"]
+        },
+        {
+          "basic": "Hotel",
+          "advanced": ["Accommodation", "Lodging", "Establishment"]
+        },
+        {
+          "basic": "See/Look",
+          "advanced": ["Explore", "Discover", "Witness"]
+        },
+        {
+          "basic": "Good",
+          "advanced": ["Memorable", "Unforgettable", "Remarkable"]
+        }
+      ],
+      "practiceTasks": [
+        {
+          "icon": "edit_note",
+          "label": "Practice Task",
+          "text": "Rewrite your last travel description using at least three B2 equivalents from the table above."
+        },
+        {
+          "icon": "record_voice_over",
+          "label": "Speaking Drill",
+          "text": "Describe your dream vacation using at least five advanced vocabulary words from this section."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80",
+        "alt": "Travel map with destinations"
+      },
+      "tip": {
+        "title": "Pro-Tip: Precision Matters",
+        "text": "In travel writing, using \"picturesque\" instead of \"beautiful\" specifically conveys that something is like a picture - visually appealing and charming."
+      }
+    },
+    {
+      "id": "travel-grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 03",
+      "title": "3. Travel Grammar: Past Experiences",
+      "description": "Using past tenses effectively to describe travel experiences and memories.",
+      "points": [
+        {
+          "title": "Past Simple for Completed Actions",
+          "icon": "history",
+          "function": "To describe completed travel experiences in chronological order",
+          "examples": ["I visited the Eiffel Tower last summer.", "We stayed in a boutique hotel in Paris."]
+        },
+        {
+          "title": "Past Continuous for Background Actions",
+          "icon": "hourglass_bottom",
+          "function": "To describe ongoing actions during which something else happened",
+          "examples": ["I was taking photos when the sun set behind the mountains.", "They were exploring the market when they found the antique shop."]
+        },
+        {
+          "title": "Present Perfect for Recent Experiences",
+          "icon": "update",
+          "function": "To describe travel experiences that have relevance to the present",
+          "examples": ["I have traveled to over 15 countries.", "She has never experienced such breathtaking scenery before."]
+        }
+      ],
+      "table": {
+        "headers": ["Tense", "Function", "Travel Example"],
+        "rows": [
+          ["Past Simple", "Completed actions in the past", "I visited three museums during my trip."],
+          ["Past Continuous", "Ongoing actions in the past", "We were hiking when it started to rain."],
+          ["Present Perfect", "Experiences with present relevance", "I have explored many European cities."]
+        ]
+      },
+      "tip": {
+        "title": "Pro-Tip: Tense Clarity",
+        "text": "Use past simple for specific completed trips, and present perfect for general travel experiences that may continue."
+      }
+    },
+    {
+      "id": "travel-mcq",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 1",
+      "title": "Travel Vocabulary Practice",
+      "description": "Choose the best word or phrase to complete each travel sentence.",
+      "questions": [
+        {
+          "id": "t1q1",
+          "prompt": "\"The ________ views from the mountain top were absolutely stunning.\"",
+          "options": ["breathtaking", "boring", "tiring", "confusing"],
+          "correct": 0
+        },
+        {
+          "id": "t1q2",
+          "prompt": "\"To truly understand a culture, you need to experience ________ with the local community.\"",
+          "options": ["cultural immersion", "fast food", "shopping malls", "airport transfers"],
+          "correct": 0
+        },
+        {
+          "id": "t1q3",
+          "prompt": "\"We decided to explore ________ areas instead of popular tourist destinations.\"",
+          "options": ["off the beaten path", "on the beaten track", "in the beaten zone", "under the beaten route"],
+          "correct": 0
+        },
+        {
+          "id": "t1q4",
+          "prompt": "\"________ focuses on minimizing environmental impact and supporting local communities.\"",
+          "options": ["Sustainable tourism", "Luxury travel", "Budget backpacking", "Cruise tourism"],
+          "correct": 0
+        },
+        {
+          "id": "t1q5",
+          "prompt": "\"One of the highlights of my trip was trying the local ________ at traditional restaurants.\"",
+          "options": ["cuisine", "menu", "waiter", "reservation"],
+          "correct": 0
+        },
+        {
+          "id": "t1q6",
+          "prompt": "\"Before our vacation, we spent weeks planning our travel ________.\"",
+          "options": ["itinerary", "insurance", "passport", "luggage"],
+          "correct": 0
+        },
+        {
+          "id": "t1q7",
+          "prompt": "\"The hotel was a charming boutique ________ with excellent service.\"",
+          "options": ["establishment", "airport", "restaurant", "shopping mall"],
+          "correct": 0
+        },
+        {
+          "id": "t1q8",
+          "prompt": "\"During our ________, we discovered a hidden waterfall in the jungle.\"",
+          "options": ["adventure", "homework", "meeting", "shopping"],
+          "correct": 0
+        },
+        {
+          "id": "t1q9",
+          "prompt": "\"The village was so ________ that it looked like it was from another century.\"",
+          "options": ["picturesque", "expensive", "crowded", "modern"],
+          "correct": 0
+        },
+        {
+          "id": "t1q10",
+          "prompt": "\"This was a truly ________ experience that I will never forget.\"",
+          "options": ["unforgettable", "forgettable", "forgettable", "forgettable"],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "id": "travel-matching",
+      "type": "drag-drop",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 2",
+      "title": "Travel Experience Matching",
+      "description": "Drag each travel experience to the correct category.",
+      "targets": [
+        { "id": "planning", "label": "Travel Planning" },
+        { "id": "experience", "label": "Travel Experience" },
+        { "id": "description", "label": "Descriptive Language" }
+      ],
+      "items": [
+        { "id": "drag-1", "text": "Travel itinerary", "match": "planning" },
+        { "id": "drag-2", "text": "Breathtaking scenery", "match": "description" },
+        { "id": "drag-3", "text": "Cultural immersion", "match": "experience" },
+        { "id": "drag-4", "text": "Off the beaten path", "match": "description" },
+        { "id": "drag-5", "text": "Sustainable tourism", "match": "planning" },
+        { "id": "drag-6", "text": "Local cuisine", "match": "experience" },
+        { "id": "drag-7", "text": "Picturesque village", "match": "description" },
+        { "id": "drag-8", "text": "Travel insurance", "match": "planning" },
+        { "id": "drag-9", "text": "Unforgettable adventure", "match": "experience" },
+        { "id": "drag-10", "text": "Memorable journey", "match": "experience" },
+        { "id": "drag-11", "text": "Stunning landscape", "match": "description" },
+        { "id": "drag-12", "text": "Packing essentials", "match": "planning" }
+      ]
+    },
+    {
+      "id": "travel-reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Practice Part 3",
+      "title": "Reading Part 2: Travel Planning",
+      "description": "Complete the passage using the most appropriate travel vocabulary.",
+      "passage": {
+        "title": "Planning the Perfect Adventure",
+        "options": ["breathtaking", "cultural", "itinerary", "memorable", "picturesque", "sustainable"],
+        "parts": [
+          "When planning a ",
+          { "blank": "tr1" },
+          " trip, it's important to consider ",
+          { "blank": "tr2" },
+          " tourism practices. A well-organized ",
+          { "blank": "tr3" },
+          " should include time to explore ",
+          { "blank": "tr4" },
+          " villages and experience ",
+          { "blank": "tr5" },
+          " immersion with local communities. Don't forget to pack your camera to capture ",
+          { "blank": "tr6" },
+          " views that will create ",
+          { "blank": "tr7" },
+          " memories for years to come."
+        ],
+        "blanks": [
+          { "id": "tr1", "correct": "memorable" },
+          { "id": "tr2", "correct": "sustainable" },
+          { "id": "tr3", "correct": "itinerary" },
+          { "id": "tr4", "correct": "picturesque" },
+          { "id": "tr5", "correct": "cultural" },
+          { "id": "tr6", "correct": "breathtaking" },
+          { "id": "tr7", "correct": "memorable" }
+        ]
+      },
+      "questions": [
+        {
+          "id": "trq1",
+          "prompt": "What is the main purpose of the passage?",
+          "options": ["To describe a past trip", "To provide advice on travel planning", "To sell travel insurance", "To review a hotel"],
+          "correct": 1
+        },
+        {
+          "id": "trq2",
+          "prompt": "According to the passage, what should travelers do to create lasting memories?",
+          "options": ["Stay in luxury hotels", "Take lots of photos", "Buy souvenirs", "Visit crowded tourist attractions"],
+          "correct": 1
+        }
+      ],
+      "tip": {
+        "title": "Reading Tip",
+        "text": "Look for collocations such as \"breathtaking views\" and \"memorable memories\" to help you choose the correct words."
+      }
+    },
+    {
+      "id": "travel-writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Practice Part 4",
+      "title": "Writing Part 4: Travel Experience",
+      "description": "Write a short formal response using the vocabulary from this lesson.",
+      "prompt": {
+        "situation": "You have been asked to write a short article for your school magazine about an unforgettable travel experience. Describe where you went, what you did, and why it was memorable. Use at least 5 vocabulary words from this lesson.",
+        "placeholder": "Begin your article here...",
+        "minWords": 80,
+        "maxWords": 140,
+        "referenceAnswer": "Last summer, I had the opportunity to experience cultural immersion in a picturesque village in Vietnam. The breathtaking scenery and warm hospitality of the locals made this an unforgettable adventure. I explored off the beaten path locations and tried the delicious local cuisine. This sustainable tourism experience taught me the importance of respecting local communities while traveling. It was truly a memorable journey that broadened my perspective on different cultures.",
+        "focus": ["breathtaking", "cultural immersion", "picturesque", "unforgettable", "sustainable tourism", "off the beaten path"]
+      },
+      "tip": {
+        "title": "B2 Writing Tip",
+        "text": "Use a variety of past tenses to make your travel narrative more engaging. Combine past simple for completed actions with past continuous for ongoing experiences."
+      }
+    }
+  ]
+}

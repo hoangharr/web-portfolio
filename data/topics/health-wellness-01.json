@@ -1,0 +1,369 @@
+{
+  "id": "health-wellness-01",
+  "title": "Health & Wellness",
+  "level": "B2",
+  "subtitle": "Essential Vocabulary and Grammar for Aptis Speaking & Writing",
+  "themeIcon": "favorite",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "Module Introduction",
+      "title": "Health & Wellness - Level B2",
+      "quote": "Essential Vocabulary for Aptis Writing & Speaking about Health",
+      "features": [
+        {
+          "icon": "fitness_center",
+          "title": "Physical Health",
+          "description": "Vocabulary for discussing exercise, nutrition, and physical wellbeing."
+        },
+        {
+          "icon": "psychology",
+          "title": "Mental Health",
+          "description": "Terms for describing emotional wellbeing and mental health practices."
+        },
+        {
+          "icon": "local_hospital",
+          "title": "Healthcare System",
+          "description": "Professional language for medical appointments and health services."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=800&q=80",
+        "alt": "Healthy lifestyle with exercise and nutritious food"
+      },
+      "badge": {
+        "icon": "verified",
+        "title": "APTIS ALIGNED",
+        "text": "This module specifically addresses the B2 performance descriptors for lexical range and accuracy in health contexts."
+      },
+      "tip": {
+        "title": "Academic Insight",
+        "text": "Focus on cause-and-effect language to explain health relationships and recommendations."
+      }
+    },
+    {
+      "id": "health-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Building",
+      "title": "1. Health & Wellness Vocabulary",
+      "description": "Click cards to flip and listen.",
+      "cards": [
+        {
+          "term": "Holistic approach",
+          "definition": "Considering the whole person - body, mind, and spirit - in treatment or wellbeing.",
+          "translation": "Cách tiếp cận toàn diện",
+          "icon": "psychology",
+          "category": "Concepts",
+          "variant": "default"
+        },
+        {
+          "term": "Preventive care",
+          "definition": "Measures taken to prevent diseases rather than treat them after they occur.",
+          "translation": "Chăm sóc phòng ngừa",
+          "icon": "shield",
+          "category": "Healthcare",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "Work-life balance",
+          "definition": "Maintaining equilibrium between professional responsibilities and personal life.",
+          "translation": "Cân bằng giữa công việc và cuộc sống",
+          "icon": "balance",
+          "category": "Wellbeing",
+          "variant": "default"
+        },
+        {
+          "term": "Mindfulness practice",
+          "definition": "Techniques that encourage awareness of the present moment without judgment.",
+          "translation": "Thực hành chánh niệm",
+          "icon": "self_improvement",
+          "category": "Mental Health",
+          "variant": "default"
+        },
+        {
+          "term": "Nutritious diet",
+          "definition": "A diet that provides all necessary nutrients for good health and wellbeing.",
+          "translation": "Chế độ ăn bổ dưỡng",
+          "icon": "restaurant",
+          "category": "Nutrition",
+          "badge": "High Priority",
+          "variant": "primary"
+        },
+        {
+          "term": "Regular exercise routine",
+          "definition": "A planned and consistent schedule of physical activities for health benefits.",
+          "translation": "Chế độ tập luyện thường xuyên",
+          "icon": "fitness_center",
+          "category": "Fitness",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Use \"holistic approach\" instead of \"complete method\" to show a sophisticated understanding of comprehensive care."
+      }
+    },
+    {
+      "id": "health-synonyms",
+      "type": "synonyms",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary Upgrade",
+      "title": "2. Health Synonyms (B2 Level)",
+      "description": "Elevate your vocabulary by replacing common A1/A2 words with professional B2-level alternatives.",
+      "rows": [
+        {
+          "basic": "Healthy",
+          "advanced": ["Wholesome", "Nutritious", "Beneficial"]
+        },
+        {
+          "basic": "Sick/Ill",
+          "advanced": ["Unwell", "Indisposed", "Ailing"]
+        },
+        {
+          "basic": "Tired",
+          "advanced": ["Exhausted", "Fatigued", "Weary"]
+        },
+        {
+          "basic": "Exercise",
+          "advanced": ["Physical activity", "Workout", "Fitness regimen"]
+        },
+        {
+          "basic": "Doctor",
+          "advanced": ["Physician", "Healthcare professional", "Medical practitioner"]
+        }
+      ],
+      "practiceTasks": [
+        {
+          "icon": "edit_note",
+          "label": "Practice Task",
+          "text": "Rewrite a health advice paragraph using at least three B2 equivalents from the table above."
+        },
+        {
+          "icon": "record_voice_over",
+          "label": "Speaking Drill",
+          "text": "Discuss your weekly health routine using at least five advanced vocabulary words from this section."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=800&q=80",
+        "alt": "Healthy lifestyle with exercise and nutritious food"
+      },
+      "tip": {
+        "title": "Pro-Tip: Precision Matters",
+        "text": "In health contexts, using \"physician\" instead of \"doctor\" shows a more formal and professional register."
+      }
+    },
+    {
+      "id": "health-grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 03",
+      "title": "3. Health Grammar: Modals of Advice and Obligation",
+      "description": "Using modal verbs to give health recommendations and express necessity.",
+      "points": [
+        {
+          "title": "Should/Ought to for Advice",
+          "icon": "lightbulb",
+          "function": "To give recommendations or suggestions for better health",
+          "examples": ["You should eat more vegetables.", "People ought to exercise regularly for good health."]
+        },
+        {
+          "title": "Must/Have to for Obligation",
+          "icon": "priority_high",
+          "function": "To express necessity or strong recommendation in health contexts",
+          "examples": ["Patients must follow the prescribed treatment.", "You have to make an appointment before seeing the specialist."]
+        },
+        {
+          "title": "Need to for Necessity",
+          "icon": "check_circle",
+          "function": "To express what is necessary for health and wellbeing",
+          "examples": ["We need to maintain a balanced diet.", "You need to get enough sleep to recover properly."]
+        }
+      ],
+      "table": {
+        "headers": ["Modal", "Function", "Health Example"],
+        "rows": [
+          ["Should/Ought to", "Giving advice", "You should reduce your sugar intake."],
+          ["Must/Have to", "Expressing obligation", "Patients must take medication as prescribed."],
+          ["Need to", "Expressing necessity", "We need to stay hydrated during exercise."]
+        ]
+      },
+      "tip": {
+        "title": "Pro-Tip: Modal Nuance",
+        "text": "Use \"should\" for general advice, \"must\" for medical necessity, and \"need to\" for personal health requirements."
+      }
+    },
+    {
+      "id": "health-mcq",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 1",
+      "title": "Health Vocabulary Practice",
+      "description": "Choose the best word or phrase to complete each health sentence.",
+      "questions": [
+        {
+          "id": "h1q1",
+          "prompt": "\"A ________ considers the whole person - body, mind, and spirit - in treatment.\"",
+          "options": ["holistic approach", "simple method", "basic technique", "quick fix"],
+          "correct": 0
+        },
+        {
+          "id": "h1q2",
+          "prompt": "\"________ focuses on preventing diseases rather than treating them after they occur.\"",
+          "options": ["Preventive care", "Reactive treatment", "Emergency response", "Surgical intervention"],
+          "correct": 0
+        },
+        {
+          "id": "h1q3",
+          "prompt": "\"Maintaining a healthy ________ is essential for reducing stress and increasing productivity.\"",
+          "options": ["work-life balance", "office environment", "salary level", "commute time"],
+          "correct": 0
+        },
+        {
+          "id": "h1q4",
+          "prompt": "\"________ involves techniques that encourage awareness of the present moment without judgment.\"",
+          "options": ["Mindfulness practice", "Physical exercise", "Medical treatment", "Social interaction"],
+          "correct": 0
+        },
+        {
+          "id": "h1q5",
+          "prompt": "\"A ________ provides all necessary nutrients for good health and wellbeing.\"",
+          "options": ["nutritious diet", "fast food menu", "strict diet", "expensive meal"],
+          "correct": 0
+        },
+        {
+          "id": "h1q6",
+          "prompt": "\"Following a ________ helps ensure consistent health benefits from physical activity.\"",
+          "options": ["regular exercise routine", "random workout", "occasional sport", "competitive training"],
+          "correct": 0
+        },
+        {
+          "id": "h1q7",
+          "prompt": "\"________ is more formal than 'doctor' and is often used in professional healthcare contexts.\"",
+          "options": ["Physician", "Healer", "Nurse", "Specialist"],
+          "correct": 0
+        },
+        {
+          "id": "h1q8",
+          "prompt": "\"If you feel ________, it's important to rest and recover properly.\"",
+          "options": ["exhausted", "happy", "excited", "energetic"],
+          "correct": 0
+        },
+        {
+          "id": "h1q9",
+          "prompt": "\"________ foods provide essential vitamins and minerals without excessive calories.\"",
+          "options": ["Nutritious", "Expensive", "Tasty", "Colorful"],
+          "correct": 0
+        },
+        {
+          "id": "h1q10",
+          "prompt": "\"________ refers to measures taken to avoid health problems before they occur.\"",
+          "options": ["Prevention", "Treatment", "Medication", "Surgery"],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "id": "health-matching",
+      "type": "drag-drop",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 2",
+      "title": "Health Advice Matching",
+      "description": "Drag each health recommendation to the correct modal verb category.",
+      "targets": [
+        { "id": "should", "label": "Should/Ought to (Advice)" },
+        { "id": "must", "label": "Must/Have to (Obligation)" },
+        { "id": "need", "label": "Need to (Necessity)" }
+      ],
+      "items": [
+        { "id": "drag-1", "text": "You should eat five portions of fruits and vegetables daily.", "match": "should" },
+        { "id": "drag-2", "text": "Patients must take their medication exactly as prescribed.", "match": "must" },
+        { "id": "drag-3", "text": "We need to stay hydrated, especially during hot weather.", "match": "need" },
+        { "id": "drag-4", "text": "You ought to consult a physician before starting any new exercise program.", "match": "should" },
+        { "id": "drag-5", "text": "Smokers have to quit before undergoing surgery.", "match": "must" },
+        { "id": "drag-6", "text": "Children need to get at least 8 hours of sleep each night.", "match": "need" },
+        { "id": "drag-7", "text": "You should practice mindfulness to reduce stress.", "match": "should" },
+        { "id": "drag-8", "text": "All participants must wear protective equipment during the experiment.", "match": "must" },
+        { "id": "drag-9", "text": "Athletes need to warm up properly before intense training.", "match": "need" },
+        { "id": "drag-10", "text": "People ought to limit their sugar intake for better health.", "match": "should" }
+      ]
+    },
+    {
+      "id": "health-reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Practice Part 3",
+      "title": "Reading Part 2: Health Advice",
+      "description": "Complete the passage using the most appropriate health vocabulary.",
+      "passage": {
+        "title": "Maintaining a Healthy Lifestyle",
+        "options": ["balanced", "exhausted", "holistic", "nutritious", "physician", "preventive"],
+        "parts": [
+          "A ",
+          { "blank": "h1" },
+          " approach to health considers both physical and mental wellbeing. ",
+          { "blank": "h2" },
+          " care is essential for avoiding serious health problems. This includes regular check-ups with a ",
+          { "blank": "h3" },
+          " and maintaining a ",
+          { "blank": "h4" },
+          " diet rich in vitamins and minerals. When we feel ",
+          { "blank": "h5" },
+          " after a long day, it's important to rest and recover properly. ",
+          { "blank": "h6" },
+          " measures such as exercise and proper nutrition are more effective than treating illnesses after they develop."
+        ],
+        "blanks": [
+          { "id": "h1", "correct": "holistic" },
+          { "id": "h2", "correct": "preventive" },
+          { "id": "h3", "correct": "physician" },
+          { "id": "h4", "correct": "nutritious" },
+          { "id": "h5", "correct": "exhausted" },
+          { "id": "h6", "correct": "preventive" }
+        ]
+      },
+      "questions": [
+        {
+          "id": "hq1",
+          "prompt": "What is the main message of the passage?",
+          "options": ["Treatment is better than prevention", "A comprehensive approach to health is important", "Doctors are unnecessary for good health", "Exercise is the only way to stay healthy"],
+          "correct": 1
+        },
+        {
+          "id": "hq2",
+          "prompt": "According to the passage, what should you do when feeling exhausted?",
+          "options": ["Continue working harder", "Rest and recover properly", "Drink more coffee", "Eat fast food"],
+          "correct": 1
+        }
+      ],
+      "tip": {
+        "title": "Reading Tip",
+        "text": "Look for context clues and collocations such as \"holistic approach\" and \"nutritious diet\" to help choose the correct words."
+      }
+    },
+    {
+      "id": "health-writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Practice Part 4",
+      "title": "Writing Part 4: Health Advice",
+      "description": "Write a short formal response using the vocabulary from this lesson.",
+      "prompt": {
+        "situation": "Your friend has been feeling stressed and tired due to their busy schedule. Write a short email (80-140 words) giving them health advice. Include suggestions about work-life balance, exercise, and diet. Use at least 5 vocabulary words from this lesson.",
+        "placeholder": "Begin your email here...",
+        "minWords": 80,
+        "maxWords": 140,
+        "referenceAnswer": "Dear Friend, I'm sorry to hear you've been feeling stressed and exhausted. You should consider adopting a more holistic approach to your wellbeing. It's essential to maintain a healthy work-life balance to prevent burnout. You ought to incorporate a regular exercise routine into your weekly schedule, even if it's just a 20-minute walk. Additionally, try to follow a more nutritious diet with plenty of fruits and vegetables. Remember, preventive care is always better than treating health problems after they develop. Please take care of yourself and don't hesitate to consult a healthcare professional if you continue feeling unwell.",
+        "focus": ["holistic approach", "work-life balance", "regular exercise routine", "nutritious diet", "preventive care", "exhausted"]
+      },
+      "tip": {
+        "title": "B2 Writing Tip",
+        "text": "Use modal verbs (should, ought to, must) appropriately to give advice. Vary your sentence structures to make your writing more engaging."
+      }
+    }
+  ]
+}
