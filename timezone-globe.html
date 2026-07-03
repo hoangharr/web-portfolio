@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Premium Interactive WebGIS Globe Clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -430,6 +431,8 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+      font-family: 'Material Symbols Outlined', sans-serif;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
     .zoom-btn:hover {
       background: var(--accent);
@@ -548,10 +551,10 @@
 <div id="app-container">
   <div class="globe-section">
     <div class="globe-toolbar">
-      <button class="zoom-btn" id="zoom-out" aria-label="Thu nhỏ">−</button>
-      <button class="zoom-btn" id="zoom-in" aria-label="Phóng to">＋</button>
-      <button class="zoom-btn" id="btn-home" title="Home" aria-label="Home">⌂</button>
-      <button class="zoom-btn" id="btn-theme" title="Chuyển giao diện" aria-label="Theme">☀︎</button>
+      <button class="zoom-btn" id="zoom-out" aria-label="Thu nhỏ"><span class="material-symbols-outlined">zoom_out</span></button>
+      <button class="zoom-btn" id="zoom-in" aria-label="Phóng to"><span class="material-symbols-outlined">zoom_in</span></button>
+      <button class="zoom-btn" id="btn-home" title="Home" aria-label="Home"><span class="material-symbols-outlined">home</span></button>
+      <button class="zoom-btn" id="btn-theme" title="Chuyển giao diện" aria-label="Theme"><span id="btn-theme-icon" class="material-symbols-outlined">dark_mode</span></button>
     </div>
     <div id="utc-overlay" class="utc-overlay" aria-hidden="false">
       <div style="font-size:11px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em">UTC</div>
@@ -563,7 +566,7 @@
     </div>
     <div class="legend-row">
       <span class="legend-dot"></span>
-      <span>Điểm cam = vị trí Mặt Trời; vùng sáng/tối cho biết ngày và đêm</span>
+      <span>Vị trí Mặt Trời; vùng sáng/tối cho biết ngày và đêm</span>
     </div>
     <div id="tz-hint">➔ Kéo để xoay mô hình • Click vào quốc gia bất kỳ để đồng bộ giờ</div>
   </div>
@@ -602,7 +605,7 @@
       <label for="compare-country-input">So sánh 2 quốc gia</label>
       <div class="search-input-wrap" style="display:flex;gap:6px;align-items:center">
         <input id="compare-country-input" type="text" placeholder="Nhập quốc gia thứ 2..." autocomplete="off" style="flex:1">
-        <button class="clear-compare-btn" id="btn-clear-compare" title="Xóa so sánh">✕</button>
+        <button class="clear-compare-btn" id="btn-clear-compare" title="Xóa so sánh" style="display:none">✕</button>
       </div>
       <div id="compare-search-results" class="search-results"></div>
       <div id="compare-cards" class="compare-cards" style="display:none"></div>
@@ -789,6 +792,8 @@ function clearCompare() {
   document.getElementById('compare-summary').style.display = 'block';
   document.getElementById('compare-summary').textContent = 'Chọn quốc gia để xem chênh lệch giờ.';
   document.getElementById('info-card').style.display = '';
+  const clearBtn = document.getElementById('btn-clear-compare');
+  if (clearBtn) clearBtn.style.display = 'none';
 }
 
 function showCopyToast() {
@@ -816,6 +821,8 @@ function selectCompareCountry(id) {
     compareInput.value = matched.name;
   }
   compareResults.classList.remove('show');
+  const clearBtn = document.getElementById('btn-clear-compare');
+  if (clearBtn) clearBtn.style.display = 'inline-flex';
   updateCompareSummary();
 }
 
@@ -1312,7 +1319,11 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w
     }
   });
 
-  document.getElementById('btn-clear-compare').addEventListener('click', clearCompare);
+  const clearCompareBtn = document.getElementById('btn-clear-compare');
+  if (clearCompareBtn) {
+    clearCompareBtn.addEventListener('click', clearCompare);
+    clearCompareBtn.style.display = 'none';
+  }
 
   document.getElementById('zoom-in').addEventListener('click', () => { lastInteractionAt = Date.now(); setZoom(zoomLevel + 0.08); });
   document.getElementById('zoom-out').addEventListener('click', () => { lastInteractionAt = Date.now(); setZoom(zoomLevel - 0.08); });
@@ -1344,13 +1355,13 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w
   function toggleTheme() {
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('tz_theme', isDark ? 'dark' : 'light');
-    const btn = document.getElementById('btn-theme');
-    if (btn) btn.textContent = isDark ? '☾' : '☀︎';
+    const icon = document.getElementById('btn-theme-icon');
+    if (icon) icon.textContent = isDark ? 'dark_mode' : 'light_mode';
   }
   const savedTheme = localStorage.getItem('tz_theme');
   if (savedTheme === 'dark') {
     document.documentElement.classList.add('dark');
-    const btn = document.getElementById('btn-theme'); if (btn) btn.textContent = '☾';
+    const icon = document.getElementById('btn-theme-icon'); if (icon) icon.textContent = 'dark_mode';
   }
   const themeBtn = document.getElementById('btn-theme');
   if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
