@@ -73,6 +73,31 @@
         padding-top: max(0px, env(safe-area-inset-top));
       }
 
+      /* Mobile nav menu */
+      #mobile-menu-panel {
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid #c6c5d4;
+        z-index: 49;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+      }
+      #mobile-menu-panel.open { max-height: 340px; }
+      html.dark #mobile-menu-panel { background: #1e293b; border-color: #334155; }
+      #mobile-menu-panel a {
+        display: block;
+        padding: 13px 20px;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #e8e8e8;
+      }
+      html.dark #mobile-menu-panel a { border-color: #334155; }
+      #mobile-menu-panel a:last-child { border-bottom: none; }
+
       /* Language Switch Logic */
       html[lang="vi"] .lang-en { display: none !important; }
       html[lang="en"] .lang-vi { display: none !important; }
@@ -236,6 +261,15 @@
     <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-16 h-16 bg-white border-b border-outline-variant border-t-4 border-t-amber-400">
       <a href="/" class="font-serif text-lg font-semibold text-indigo-950 tracking-tight no-underline">hoangdm.com</a>
       <nav class="flex items-center gap-4 md:gap-8">
+        <button
+          id="mobile-menu-btn"
+          onclick="toggleMobileMenu()"
+          class="md:hidden w-10 h-10 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
+          aria-label="Menu"
+          aria-expanded="false"
+        >
+          <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
+        </button>
         <a href="#about" class="hidden md:inline text-sm text-on-surface-variant hover:text-indigo-900 transition-colors font-serif">
           <span class="lang-en">About</span><span class="lang-vi">Giới thiệu</span>
         </a>
@@ -269,6 +303,24 @@
         </div>
       </nav>
     </header>
+
+    <div id="mobile-menu-panel" class="md:hidden">
+      <a href="#about" onclick="closeMobileMenu()">
+        <span class="lang-en">About</span><span class="lang-vi">Giới thiệu</span>
+      </a>
+      <a href="#skills" onclick="closeMobileMenu()">
+        <span class="lang-en">Skills</span><span class="lang-vi">Kỹ năng</span>
+      </a>
+      <a href="#projects" onclick="closeMobileMenu()">
+        <span class="lang-en">Projects</span><span class="lang-vi">Dự án</span>
+      </a>
+      <a href="#tools" onclick="closeMobileMenu()">
+        <span class="lang-en">Tools</span><span class="lang-vi">Công cụ</span>
+      </a>
+      <a href="#contact" onclick="closeMobileMenu()">
+        <span class="lang-en">Contact</span><span class="lang-vi">Liên hệ</span>
+      </a>
+    </div>
 
     <main class="pt-16">
 
@@ -781,6 +833,36 @@
             avatar.classList.toggle("revealed");
           }
         });
+      });
+
+      // Mobile nav menu
+      function toggleMobileMenu() {
+        const panel = document.getElementById('mobile-menu-panel');
+        const icon = document.getElementById('mobile-menu-icon');
+        const btn = document.getElementById('mobile-menu-btn');
+        const isOpen = panel.classList.toggle('open');
+        icon.textContent = isOpen ? 'close' : 'menu';
+        btn.setAttribute('aria-expanded', String(isOpen));
+      }
+      function closeMobileMenu() {
+        const panel = document.getElementById('mobile-menu-panel');
+        const icon = document.getElementById('mobile-menu-icon');
+        const btn = document.getElementById('mobile-menu-btn');
+        panel.classList.remove('open');
+        icon.textContent = 'menu';
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      document.addEventListener('click', (e) => {
+        const panel = document.getElementById('mobile-menu-panel');
+        const btn = document.getElementById('mobile-menu-btn');
+        if (panel && btn && panel.classList.contains('open') &&
+            !btn.contains(e.target) && !panel.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+      // Đóng menu mobile nếu resize lên desktop
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) closeMobileMenu();
       });
 
       if ("serviceWorker" in navigator) {

@@ -242,6 +242,12 @@
       color: var(--accent);
       font-weight: 600;
     }
+    .compare-card-b {
+      border-color: rgba(22, 163, 74, 0.3);
+      background: #f0fdf4;
+    }
+    .compare-card-b .cc-time { color: #15803d; }
+    .compare-card-b .cc-offset { color: #16a34a; }
     .compare-diff {
       text-align: center;
       font-size: 11px;
@@ -377,6 +383,11 @@
       color: #ffffff;
       border-color: var(--accent);
     }
+    .btn-reset.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
 
     #tz-hint {
       font-size: 12px;
@@ -412,6 +423,11 @@
       background: #ffffff;
       color: var(--text-primary);
       font-size: 18px;
+      line-height: 1;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
     }
@@ -480,6 +496,52 @@
       50% { stroke-width: 3px; }
     }
   </style>
+  <style>
+    /* Dark mode variables & overrides */
+    html.dark {
+      --bg-gradient: linear-gradient(135deg,#071025 0%, #0b1220 100%);
+      --panel-bg: rgba(17,24,39,0.72);
+      --panel-border: rgba(255,255,255,0.04);
+      --text-primary: #e6eef8;
+      --text-secondary: #94a3b8;
+      --accent: #60a5fa;
+      --accent-glow: rgba(96,165,250,0.12);
+      --sun-color: #fb923c;
+    }
+    html.dark .glass-panel,
+    html.dark .utc-overlay {
+      background: var(--panel-bg);
+      border-color: var(--panel-border);
+      color: var(--text-primary);
+    }
+    html.dark .search-input-wrap input,
+    html.dark .search-results,
+    html.dark .preset-btn,
+    html.dark .mode-toggle,
+    html.dark .time-preset-btn,
+    html.dark .btn-reset,
+    html.dark .zoom-btn {
+      background: #071826;
+      color: var(--text-primary);
+      border-color: var(--panel-border);
+    }
+    html.dark .btn-reset:hover,
+    html.dark .btn-reset.active {
+      background: var(--accent);
+      color: #0b1220;
+      border-color: var(--accent);
+    }
+    html.dark .zoom-btn:hover {
+      background: var(--accent);
+      color: #0b1220;
+      border-color: var(--accent);
+    }
+    html.dark .compare-card { background: #061225; border-color: var(--panel-border); }
+    html.dark .compare-card-b { background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.3); }
+    html.dark .compare-card-b .cc-time { color: #facc15; }
+    html.dark .compare-card-b .cc-offset { color: #facc15; }
+    html.dark .copy-toast { background: #e2e8f0; color: #0f172a; }
+  </style>
 </head>
 <body>
 
@@ -488,6 +550,8 @@
     <div class="globe-toolbar">
       <button class="zoom-btn" id="zoom-out" aria-label="Thu nhỏ">−</button>
       <button class="zoom-btn" id="zoom-in" aria-label="Phóng to">＋</button>
+      <button class="zoom-btn" id="btn-home" title="Home" aria-label="Home">⌂</button>
+      <button class="zoom-btn" id="btn-theme" title="Chuyển giao diện" aria-label="Theme">☀︎</button>
     </div>
     <div id="utc-overlay" class="utc-overlay" aria-hidden="false">
       <div style="font-size:11px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em">UTC</div>
@@ -508,7 +572,7 @@
     <div class="glass-panel" style="padding:14px 20px">
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between">
         <div style="display:flex;flex-direction:column;gap:6px">
-          <button class="btn-reset" id="btn-auto-rotate">Tự quay: Bật</button>
+          <button class="btn-reset active" id="btn-auto-rotate">Tự quay: Bật</button>
           <div id="auto-rotate-info" style="font-size:12px;color:var(--text-secondary)">Đang tự quay khi không tương tác. Click để bật/tắt.</div>
         </div>
         <div class="my-tz-bar" style="text-align:right;font-size:13px;color:var(--text-secondary)">Múi giờ của bạn: <span id="my-tz-label">--</span></div>
@@ -561,23 +625,44 @@
 <script>
 const W = 500, H = 450, R = 195;
 
-// Premium Light GIS Palette
-const C = {
-  ocean: '#e0f2fe',       // Xanh dương pastel sáng mượt cực đẹp
-  land: '#ffffff',        // Đất liền trắng tinh khôi
-  landStroke: '#cbd5e1',  // Viền ranh giới quốc gia thanh mảnh nhã nhặn
-  nightOverlay: 'rgba(15, 23, 42, 0.22)', // Bóng tối trong suốt phủ mịn qua chế độ Blend Mode
-  graticule: 'rgba(15, 23, 42, 0.03)',    // Lưới kinh vĩ tuyến tinh tế
-  terminator: 'rgba(234, 88, 12, 0.25)', // Đường ranh giới sáng tối hổ phách nhẹ
-  sunDot: '#ea580c',      // Tâm điểm mặt trời màu cam rực rỡ
-  clicked: '#2563eb',     // HIGHLIGHT: Xanh Royal đậm tương phản mạnh khi click
+// Bảng màu địa cầu — đổi theo theme sáng/tối
+const PALETTE = {
+  light: {
+    ocean: '#e0f2fe',
+    land: '#ffffff',
+    landStroke: '#cbd5e1',
+    nightOverlay: 'rgba(15, 23, 42, 0.22)',
+    graticule: 'rgba(15, 23, 42, 0.03)',
+    terminator: 'rgba(234, 88, 12, 0.25)',
+    sunDot: '#ea580c',
+    clicked: '#2563eb',
+    compareColor: '#16a34a',
+    compareStroke: '#15803d',
+  },
+  dark: {
+    ocean: '#0a1830',
+    land: '#1d9e75',
+    landStroke: '#0a3d2e',
+    nightOverlay: 'rgba(2, 6, 15, 0.5)',
+    graticule: 'rgba(255, 255, 255, 0.06)',
+    terminator: 'rgba(251, 146, 60, 0.4)',
+    sunDot: '#fb923c',
+    clicked: '#60a5fa',
+    compareColor: '#facc15',
+    compareStroke: '#ca8a04',
+  }
 };
+function getPalette(){
+  return document.documentElement.classList.contains('dark') ? PALETTE.dark : PALETTE.light;
+}
 
 const svg = d3.select('#globe').attr('viewBox', `0 0 ${W} ${H}`);
 let rot = [105, -15], dragging = false, dragStart = null, animFrame = null;
 let countries = [], selectedId = null, zoomLevel = 1;
 let countryLookup = [], compareId = null;
 let autoRotateEnabled = true, lastInteractionAt = Date.now();
+let lastRenderedSelection = undefined; // Tránh rebuild innerHTML (và ảnh cờ) mỗi frame
+let lastRenderedCompare = undefined;
 
 let activePresetName = '';
 
@@ -740,7 +825,7 @@ const globeBase = svg.append('circle')
   .attr('cx', W/2)
   .attr('cy', H/2)
   .attr('r', R)
-  .attr('fill', C.ocean);
+  .attr('fill', getPalette().ocean);
 const gratLayer = svg.append('g');
 const landLayer = svg.append('g');
 const nightLayer = svg.append('g'); 
@@ -938,22 +1023,38 @@ function updateCompareSummary() {
   const diff = cmpOffset - baseOffset;
   const diffText = diff === 0 ? 'Cùng múi giờ' : `${cmpInfo.name} ${diff > 0 ? 'sớm hơn' : 'trễ hơn'} ${Math.abs(diff)} giờ`;
 
-  cardsEl.innerHTML = `
-    <div class="compare-card">
-      <div>${flagImg(baseId, 18)}</div>
-      <div class="cc-name">${baseLabel}</div>
-      <div class="cc-time" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)">${bTime.time}</div>
-      <div class="cc-date">${bTime.date}</div>
-      <div class="cc-offset">${bTime.offset}</div>
-    </div>
-    <div class="compare-card" style="border-color:rgba(22,163,74,.35);background:#f0fdf4">
-      <div>${flagImg(compareId, 18)}</div>
-      <div class="cc-name">${cmpInfo.name}</div>
-      <div class="cc-time" style="color:#15803d" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)">${cTime.time}</div>
-      <div class="cc-date">${cTime.date}</div>
-      <div class="cc-offset" style="color:#16a34a">${cTime.offset}</div>
-    </div>
-  `;
+  const compareKey = `${baseId || 'utc'}|${compareId}`;
+  if (compareKey !== lastRenderedCompare) {
+    lastRenderedCompare = compareKey;
+    cardsEl.innerHTML = `
+      <div class="compare-card">
+        <div>${flagImg(baseId, 18)}</div>
+        <div class="cc-name">${baseLabel}</div>
+        <div class="cc-time" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)"></div>
+        <div class="cc-date"></div>
+        <div class="cc-offset"></div>
+      </div>
+      <div class="compare-card compare-card-b">
+        <div>${flagImg(compareId, 18)}</div>
+        <div class="cc-name">${cmpInfo.name}</div>
+        <div class="cc-time" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)"></div>
+        <div class="cc-date"></div>
+        <div class="cc-offset"></div>
+      </div>
+    `;
+  }
+  // Update text mỗi lần gọi (không đụng tới ảnh cờ đã tải)
+  const [baseCard, cmpCard] = cardsEl.children;
+  if (baseCard) {
+    baseCard.querySelector('.cc-time').textContent = bTime.time;
+    baseCard.querySelector('.cc-date').textContent = bTime.date;
+    baseCard.querySelector('.cc-offset').textContent = bTime.offset;
+  }
+  if (cmpCard) {
+    cmpCard.querySelector('.cc-time').textContent = cTime.time;
+    cmpCard.querySelector('.cc-date').textContent = cTime.date;
+    cmpCard.querySelector('.cc-offset').textContent = cTime.offset;
+  }
   diffEl.textContent = diffText;
 
   // Ẩn info card khi đang so sánh để tránh lặp thông tin
@@ -961,6 +1062,8 @@ function updateCompareSummary() {
 }
 
 function draw() {
+  const C = getPalette();
+  globeBase.attr('fill', C.ocean);
   if (autoRotateEnabled && Date.now() - lastInteractionAt > 1800) {
     rot = [rot[0] + 0.14, rot[1]];
   }
@@ -983,8 +1086,8 @@ function draw() {
     .attr('class', f => `country-path${+f.id === selectedId ? ' selected' : +f.id === compareId ? ' compare' : ''}`)
     .classed('glow-transition', false)
     .attr('d', path)
-    .attr('fill', f => +f.id === selectedId ? C.clicked : +f.id === compareId ? '#16a34a' : C.land)
-    .attr('stroke', f => +f.id === selectedId ? C.clicked : +f.id === compareId ? '#15803d' : C.landStroke)
+    .attr('fill', f => +f.id === selectedId ? C.clicked : +f.id === compareId ? C.compareColor : C.land)
+    .attr('stroke', f => +f.id === selectedId ? C.clicked : +f.id === compareId ? C.compareStroke : C.landStroke)
     .attr('stroke-width', f => (f.id === selectedId || +f.id === compareId) ? 2.2 : 0.45)
     .style('cursor', 'pointer')
     .on('mouseenter', function(event, f) {
@@ -1006,7 +1109,7 @@ function draw() {
   // 3. Đổ bóng đêm mượt mà (Blend Mode: Multiply giúp giữ nguyên cấu trúc nền sáng)
   nightLayer.selectAll('path').data([nightCircle])
     .join('path').attr('d', path)
-    .attr('fill', 'rgba(15, 23, 42, 0.28)')
+    .attr('fill', C.nightOverlay)
     .style('mix-blend-mode', 'multiply')
     .style('transition', 'opacity 0.6s ease')
     .attr('pointer-events', 'none');
@@ -1029,39 +1132,59 @@ function draw() {
   // Cập nhật giao diện Đồng hồ trung tâm thế giới
   document.getElementById('utc-time').textContent = simulatedTime.toUTCString().slice(17, 25);
 
-  // Cập nhật Thẻ hiển thị thông tin Quốc gia chủ động
-  if (activePresetName === 'UTC') {
-    document.getElementById('info-content').innerHTML = `
-      <div id="tz-city">UTC <span style="color: var(--accent); font-size:14px; font-weight:600; margin-left:4px;">UTC+00:00</span></div>
-      <div id="tz-time">${simulatedTime.toUTCString().slice(17, 25)}</div>
-      <div id="tz-date">${simulatedTime.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'short' })}</div>
-    `;
-  } else if (selectedId) {
-    const feature = countries.find(f => +f.id === selectedId);
+  // Cập nhật Thẻ hiển thị thông tin Quốc gia — chỉ rebuild HTML (và ảnh cờ) khi ĐỔI lựa chọn,
+  // còn mỗi frame chỉ update text giờ/ngày để tránh tải lại ảnh cờ liên tục.
+  const currentSelectionKey = activePresetName === 'UTC' ? 'UTC' : (selectedId || null);
+
+  if (currentSelectionKey !== lastRenderedSelection) {
+    lastRenderedSelection = currentSelectionKey;
+    if (currentSelectionKey === 'UTC') {
+      document.getElementById('info-content').innerHTML = `
+        <div id="tz-city">UTC <span style="color: var(--accent); font-size:14px; font-weight:600; margin-left:4px;">UTC+00:00</span></div>
+        <div id="tz-time">--:--:--</div>
+        <div id="tz-date"></div>
+      `;
+    } else if (currentSelectionKey) {
+      const feature = countries.find(f => +f.id === currentSelectionKey);
+      if (feature) {
+        const info = getCountryData(feature);
+        const offsetDisplay = info.isFallback ? info.offsetStr : getTimezoneOffsetString(info.tz);
+        document.getElementById('info-content').innerHTML = `
+          <div id="tz-city">${flagImg(+feature.id, 22)} ${info.name} <span style="color: var(--accent); font-size:14px; font-weight:600; margin-left:4px;">${offsetDisplay}</span></div>
+          <div id="tz-time" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)">--:--:--</div>
+          <div id="tz-date"></div>
+        `;
+      }
+    } else {
+      document.getElementById('info-content').innerHTML = '<div class="placeholder-text">Chưa chọn khu vực.<br>Vui lòng tương tác với địa cầu để xem chi tiết.</div>';
+    }
+  }
+
+  // Update text giờ/ngày mỗi frame (không đụng tới DOM ảnh cờ)
+  if (currentSelectionKey === 'UTC') {
+    const tzTimeEl = document.getElementById('tz-time');
+    const tzDateEl = document.getElementById('tz-date');
+    if (tzTimeEl) tzTimeEl.textContent = simulatedTime.toUTCString().slice(17, 25);
+    if (tzDateEl) tzDateEl.textContent = simulatedTime.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'short' });
+  } else if (currentSelectionKey) {
+    const feature = countries.find(f => +f.id === currentSelectionKey);
     if (feature) {
       const info = getCountryData(feature);
-      let localTimeStr, localDateStr, offsetDisplay;
-
+      let localTimeStr, localDateStr;
       if (info.isFallback) {
-        offsetDisplay = info.offsetStr;
         const utcTimestamp = simulatedTime.getTime() + (simulatedTime.getTimezoneOffset() * 60000);
         const fallbackLocal = new Date(utcTimestamp + (info.offsetHours * 3600000));
         localTimeStr = fallbackLocal.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
         localDateStr = fallbackLocal.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'short' });
       } else {
-        offsetDisplay = getTimezoneOffsetString(info.tz);
         localTimeStr = simulatedTime.toLocaleString('vi-VN', { timeZone: info.tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
         localDateStr = simulatedTime.toLocaleString('vi-VN', { timeZone: info.tz, weekday: 'short', day: 'numeric', month: 'short' });
       }
-
-      document.getElementById('info-content').innerHTML = `
-        <div id="tz-city">${flagImg(+feature.id, 22)} ${info.name} <span style="color: var(--accent); font-size:14px; font-weight:600; margin-left:4px;">${offsetDisplay}</span></div>
-        <div id="tz-time" title="Click để sao chép" onclick="navigator.clipboard.writeText(this.textContent).then(showCopyToast)">${localTimeStr}</div>
-        <div id="tz-date">${localDateStr}</div>
-      `;
+      const tzTimeEl = document.getElementById('tz-time');
+      const tzDateEl = document.getElementById('tz-date');
+      if (tzTimeEl) tzTimeEl.textContent = localTimeStr;
+      if (tzDateEl) tzDateEl.textContent = localDateStr;
     }
-  } else {
-    document.getElementById('info-content').innerHTML = '<div class="placeholder-text">Chưa chọn khu vực.<br>Vui lòng tương tác với địa cầu để xem chi tiết.</div>';
   }
 
   if (compareId) updateCompareSummary();
@@ -1215,6 +1338,32 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(w
       }
       document.querySelectorAll('.preset-btn').forEach(item => item.classList.toggle('active', item === button));
     });
+  });
+
+  // Theme (dark mode) initialization and toggle
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('tz_theme', isDark ? 'dark' : 'light');
+    const btn = document.getElementById('btn-theme');
+    if (btn) btn.textContent = isDark ? '☾' : '☀︎';
+  }
+  const savedTheme = localStorage.getItem('tz_theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+    const btn = document.getElementById('btn-theme'); if (btn) btn.textContent = '☾';
+  }
+  const themeBtn = document.getElementById('btn-theme');
+  if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+  // Home button: navigate back to main index page
+  const homeBtn = document.getElementById('btn-home');
+  if (homeBtn) homeBtn.addEventListener('click', () => {
+    // Use relative path to return to the site root index
+    try {
+      window.location.assign('/');
+    } catch (e) {
+      window.location.href = '/';
+    }
   });
 
   tick();
