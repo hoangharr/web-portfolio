@@ -1593,113 +1593,60 @@
           els.micBtn.classList.add("recording");
           els.waveEl.classList.add("live");
           startWaveVisualization();
+          setMicIconRecording(true);
 
-          if (isScripted) {
-            // Single utterance: stops automatically after one sentence of silence.
-            els.micBtn.classList.add("auto-listening");
-            els.statusLine.textContent =
-              "Đang nghe... sẽ tự dừng khi bạn nói xong, không cần bấm lại";
+          // Both modes now record continuously until the user manually presses
+          // stop — recognizeOnceAsync's silence-detection auto-stop was
+          // unreliable with background noise (it would just hang forever
+          // waiting for a "clean" silence that never came). Segments are
+          // collected as they come in and aggregated when the user stops.
+          continuousSegments = [];
+          els.statusLine.textContent = isScripted
+            ? "Đang ghi — đọc câu tham chiếu ở trên, nhấn mic khi xong để chấm điểm."
+            : "Đang ghi — nói tự do, nhấn nút lần nữa để dừng và chấm điểm.";
 
-            recognizer.recognizeOnceAsync(
-              function (result) {
-                finishSession(startedAt);
-                if (result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {
-                  var pronResult =
-                    SpeechSDK.PronunciationAssessmentResult.fromResult(result);
-                  var detailJson = JSON.parse(
-                    result.properties.getProperty(
-                      SpeechSDK.PropertyId.SpeechServiceResponse_JsonResult,
-                    ),
-                  );
-                  var words = normalizeWords(
-                    (detailJson.NBest &&
-                      detailJson.NBest[0] &&
-                      detailJson.NBest[0].Words) ||
-                      [],
-                  );
-                  renderResults([{ pron: pronResult, words: words }]);
-                  els.statusLine.textContent = "Xong. Nhấn mic để thử lại.";
-                } else if (result.reason === SpeechSDK.ResultReason.NoMatch) {
-                  showError(
-                    "Không nhận diện được giọng nói. Thử nói to và rõ hơn, gần micro hơn.",
-                  );
-                  els.statusLine.textContent = "Nhấn để bắt đầu ghi âm";
-                } else {
-                  showError(
-                    "Không nhận được kết quả từ Azure (reason: " +
-                      result.reason +
-                      ").",
-                  );
-                  els.statusLine.textContent = "Nhấn để bắt đầu ghi âm";
-                }
-                recognizer.close();
-                recognizer = null;
-              },
-              function (err) {
-                finishSession(startedAt);
-                showError(
-                  "Lỗi khi gọi Azure: " +
-                    err +
-                    ". Kiểm tra lại Key/Region hoặc quyền truy cập micro.",
-                );
-                els.statusLine.textContent = "Nhấn để bắt đầu ghi âm";
-                recognizer.close();
-                recognizer = null;
-              },
-            );
-          } else {
-            // Continuous mode: keeps listening across pauses until the user presses stop.
-            // Segments are collected as they come in and aggregated when the user stops.
-            continuousSegments = [];
-            els.statusLine.textContent =
-              "Đang ghi — nói tự do, nhấn nút lần nữa để dừng và chấm điểm.";
-            setMicIconRecording(true);
+          recognizer.recognized = function (s, e) {
+            if (e.result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {
+              var pronResult =
+                SpeechSDK.PronunciationAssessmentResult.fromResult(e.result);
+              var detailJson = JSON.parse(
+                e.result.properties.getProperty(
+                  SpeechSDK.PropertyId.SpeechServiceResponse_JsonResult,
+                ),
+              );
+              var words = normalizeWords(
+                (detailJson.NBest &&
+                  detailJson.NBest[0] &&
+                  detailJson.NBest[0].Words) ||
+                  [],
+              );
+              continuousSegments.push({ pron: pronResult, words: words });
+              els.statusLine.textContent =
+                "Đang ghi (" +
+                continuousSegments.length +
+                " câu đã bắt được) — nhấn để dừng.";
+            }
+            // NoMatch segments (silence gaps) are ignored; recognition keeps going.
+          };
 
-            recognizer.recognized = function (s, e) {
-              if (e.result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {
-                var pronResult =
-                  SpeechSDK.PronunciationAssessmentResult.fromResult(e.result);
-                var detailJson = JSON.parse(
-                  e.result.properties.getProperty(
-                    SpeechSDK.PropertyId.SpeechServiceResponse_JsonResult,
-                  ),
-                );
-                var words = normalizeWords(
-                  (detailJson.NBest &&
-                    detailJson.NBest[0] &&
-                    detailJson.NBest[0].Words) ||
-                    [],
-                );
-                continuousSegments.push({ pron: pronResult, words: words });
-                els.statusLine.textContent =
-                  "Đang ghi (" +
-                  continuousSegments.length +
-                  " câu đã bắt được) — nhấn để dừng.";
-              }
-              // NoMatch segments (silence gaps) are ignored; recognition keeps going.
-            };
+          recognizer.canceled = function (s, e) {
+            if (e.reason === SpeechSDK.CancellationReason.Error) {
+              showError(
+                "Lỗi khi ghi âm: " + e.errorDetails + ". Kiểm tra lại Key/Region.",
+              );
+            }
+            stopContinuousInternal(startedAt);
+          };
 
-            recognizer.canceled = function (s, e) {
-              if (e.reason === SpeechSDK.CancellationReason.Error) {
-                showError(
-                  "Lỗi khi ghi âm liên tục: " +
-                    e.errorDetails +
-                    ". Kiểm tra lại Key/Region.",
-                );
-              }
-              stopContinuousInternal(startedAt);
-            };
-
-            recognizer.startContinuousRecognitionAsync(
-              function () {
-                /* started successfully */
-              },
-              function (err) {
-                showError("Không khởi động được ghi âm liên tục: " + err);
-                stopRecordingUI();
-              },
-            );
-          }
+          recognizer.startContinuousRecognitionAsync(
+            function () {
+              /* started successfully */
+            },
+            function (err) {
+              showError("Không khởi động được ghi âm: " + err);
+              stopRecordingUI();
+            },
+          );
         }
 
         function stopContinuousInternal(startedAt) {
@@ -1750,8 +1697,7 @@
 
         els.micBtn.addEventListener("click", function () {
           if (isRecording) {
-            if (!isScripted && recognizer) {
-              // Stop button: user manually ends the free-speaking session.
+            if (recognizer) {
               var startedAt = sessionStartedAt || Date.now();
               recognizer.stopContinuousRecognitionAsync(
                 function () {
@@ -1762,10 +1708,6 @@
                   stopContinuousInternal(startedAt);
                 },
               );
-            } else if (isScripted) {
-              // Auto-stop mode: clicking again does nothing except confirm it's still listening.
-              els.statusLine.textContent =
-                "Vẫn đang nghe... sẽ tự dừng khi bạn nói xong";
             }
             return;
           }
