@@ -843,18 +843,23 @@
             <span></span><span></span><span></span><span></span><span></span
             ><span></span><span></span>
           </div>
-          <div class="mic-btn" id="micBtn">
-            <svg
-              id="micIcon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              style="color: var(--text)"
-            >
-              <path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3z" />
-              <path d="M19 11a7 7 0 01-14 0M12 18v3" />
-            </svg>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 18px;">
+            <div class="mic-btn" id="micBtn" style="margin: 0;">
+              <svg
+                id="micIcon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                style="color: var(--text)"
+              >
+                <path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3z" />
+                <path d="M19 11a7 7 0 01-14 0M12 18v3" />
+              </svg>
+            </div>
+            <button id="pauseBtn" class="btn-ghost" style="display: none; height: 48px; padding: 0 16px; border-radius: 24px; align-items: center; gap: 8px;">
+              <span id="pauseIcon">⏸</span> <span id="pauseText">Tạm dừng</span>
+            </button>
           </div>
           <div class="status-line" id="statusLine">Nhấn để bắt đầu ghi âm</div>
         </div>
@@ -985,7 +990,15 @@
         var continuousSegments = [];
         var sessionStartedAt = null;
         var lastWordsFlat = [];
+        var activeMediaStream = null;
+        var isPaused = false;
+        var pausedDuration = 0;
+        var pauseStartedAt = null;
 
+        // Thêm pauseBtn, pauseIcon, pauseText vào object els:
+        els.pauseBtn = document.getElementById("pauseBtn");
+        els.pauseIcon = document.getElementById("pauseIcon");
+        els.pauseText = document.getElementById("pauseText");
         // ---------- Reference sentence bank (scripted mode) ----------
         // Mix of lengths/topics/phoneme coverage typical of IELTS Part 1 answers.
         var REFERENCE_SENTENCES = [
@@ -1570,8 +1583,15 @@
             key,
             region,
           );
+
+          speechConfig.setProperty(
+            SpeechSDK.PropertyId.SpeechServiceConnection_InitialSilenceTimeoutMs, 
+            "5000"
+          );
+          // Tùy chỉnh mức độ nhạy xử lý tiếng ồn
+          speechConfig.setProperty("SpeechServiceResponse_PostProcessingOption", "True");
+
           speechConfig.speechRecognitionLanguage = "en-US";
-          var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
 
           var refText = isScripted ? els.referenceText.value.trim() : "";
           var pronConfig = new SpeechSDK.PronunciationAssessmentConfig(
@@ -1581,29 +1601,52 @@
             true,
           );
 
-          recognizer = new SpeechSDK.SpeechRecognizer(
-            speechConfig,
-            audioConfig,
-          );
-          pronConfig.applyTo(recognizer);
+          isPaused = false;
+          pausedDuration = 0;
+          pauseStartedAt = null;
+          els.pauseBtn.style.display = "inline-flex";
+          els.pauseIcon.textContent = "⏸";
+          els.pauseText.textContent = "Tạm dừng";
 
-          var startedAt = Date.now();
-          sessionStartedAt = startedAt;
-          isRecording = true;
-          els.micBtn.classList.add("recording");
-          els.waveEl.classList.add("live");
-          startWaveVisualization();
-          setMicIconRecording(true);
+          // Yêu cầu trình duyệt bật các bộ lọc tạp âm, tiếng quạt và echo
+          navigator.mediaDevices.getUserMedia({
+            audio: {
+              echoCancellation: true,   // Bật triệt tiếng vang
+              noiseSuppression: true,   // BẬT LỌC TẠP ÂM (tiếng quạt, ồn nền)
+              autoGainControl: true     // Tự động cân bằng âm lượng
+            }
+          }).then(function (mediaStream) {
+            activeMediaStream = mediaStream;
+            var audioConfig = SpeechSDK.AudioConfig.fromStreamInput(mediaStream);
 
-          // Both modes now record continuously until the user manually presses
-          // stop — recognizeOnceAsync's silence-detection auto-stop was
-          // unreliable with background noise (it would just hang forever
-          // waiting for a "clean" silence that never came). Segments are
-          // collected as they come in and aggregated when the user stops.
-          continuousSegments = [];
-          els.statusLine.textContent = isScripted
-            ? "Đang ghi — đọc câu tham chiếu ở trên, nhấn mic khi xong để chấm điểm."
-            : "Đang ghi — nói tự do, nhấn nút lần nữa để dừng và chấm điểm.";
+            recognizer = new SpeechSDK.SpeechRecognizer(
+              speechConfig,
+              audioConfig,
+            );
+            pronConfig.applyTo(recognizer);
+
+            var startedAt = Date.now();
+            sessionStartedAt = startedAt;
+            isRecording = true;
+            els.micBtn.classList.add("recording");
+            els.waveEl.classList.add("live");
+            startWaveVisualization();
+            setMicIconRecording(true);
+
+            continuousSegments = [];
+            els.statusLine.textContent = isScripted
+              ? "Đang ghi — đọc câu tham chiếu ở trên, nhấn mic khi xong để chấm điểm."
+              : "Đang ghi — nói tự do, nhấn nút lần nữa để dừng và chấm điểm.";
+
+            setupRecognizerEvents(startedAt);
+          }).catch(function (err) {
+            showError("Không thể bật micro hoặc bộ lọc nhiễu: " + err);
+            stopRecordingUI();
+          });
+        }
+
+        function setupRecognizerEvents(startedAt) {
+          if (!recognizer) return;
 
           recognizer.recognized = function (s, e) {
             if (e.result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {
@@ -1626,7 +1669,6 @@
                 continuousSegments.length +
                 " câu đã bắt được) — nhấn để dừng.";
             }
-            // NoMatch segments (silence gaps) are ignored; recognition keeps going.
           };
 
           recognizer.canceled = function (s, e) {
@@ -1635,12 +1677,12 @@
                 "Lỗi khi ghi âm: " + e.errorDetails + ". Kiểm tra lại Key/Region.",
               );
             }
-            stopContinuousInternal(startedAt);
+              stopContinuousInternal(startedAt);
           };
 
           recognizer.startContinuousRecognitionAsync(
             function () {
-              /* started successfully */
+              /* Khởi tạo ghi âm thành công */
             },
             function (err) {
               showError("Không khởi động được ghi âm: " + err);
@@ -1671,8 +1713,9 @@
 
         function finishSession(startedAt) {
           stopRecordingUI();
-          var elapsedSec = (Date.now() - startedAt) / 1000;
-          addUsageSeconds(elapsedSec);
+          var totalElapsed = (Date.now() - startedAt) / 1000;
+          var netElapsed = Math.max(0, totalElapsed - (pausedDuration / 1000));
+          addUsageSeconds(netElapsed);
         }
 
         function setMicIconRecording(isFreeContinuous) {
@@ -1688,11 +1731,19 @@
 
         function stopRecordingUI() {
           isRecording = false;
+          isPaused = false;
+          els.pauseBtn.style.display = "none";
           els.micBtn.classList.remove("recording");
           els.micBtn.classList.remove("auto-listening");
           els.waveEl.classList.remove("live");
           setMicIconRecording(false);
           stopWaveVisualization();
+          if (activeMediaStream) {
+            activeMediaStream.getTracks().forEach(function (track) {
+              track.stop();
+            });
+            activeMediaStream = null;
+          }
         }
 
         els.micBtn.addEventListener("click", function () {
@@ -1714,6 +1765,40 @@
           startRecognition();
         });
 
+        els.pauseBtn.addEventListener("click", function () {
+          if (!isRecording || !activeMediaStream) return;
+
+          if (!isPaused) {
+            // TAP MẠNG / PAUSE MIC
+            isPaused = true;
+            pauseStartedAt = Date.now();
+            activeMediaStream.getAudioTracks().forEach(function (track) {
+              track.enabled = false; // Ngắt đường truyền âm thanh sang SDK
+            });
+            
+            els.waveEl.classList.remove("live");
+            els.pauseIcon.textContent = "▶";
+            els.pauseText.textContent = "Tiếp tục";
+            els.statusLine.textContent = "Đang tạm dừng — nhấn 'Tiếp tục' để nói tiếp.";
+          } else {
+            // BẬT LẠI MIC / RESUME
+            isPaused = false;
+            if (pauseStartedAt) {
+              pausedDuration += Date.now() - pauseStartedAt;
+              pauseStartedAt = null;
+            }
+            activeMediaStream.getAudioTracks().forEach(function (track) {
+              track.enabled = true; // Bật lại đường truyền âm thanh
+            });
+
+            els.waveEl.classList.add("live");
+            els.pauseIcon.textContent = "⏸";
+            els.pauseText.textContent = "Tạm dừng";
+            els.statusLine.textContent = isScripted
+              ? "Đang ghi — đọc câu tham chiếu ở trên, nhấn mic khi xong để chấm điểm."
+              : "Đang ghi — nói tự do, nhấn nút lần nữa để dừng và chấm điểm.";
+          }
+        });
         // ---------- Theme toggle (dark default, light optional, persisted) ----------
         var LS_THEME = "pron_check_theme";
         var SUN_ICON =
