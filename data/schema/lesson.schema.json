@@ -27,7 +27,9 @@
         { "$ref": "#/$defs/mcqSection" },
         { "$ref": "#/$defs/dragDropSection" },
         { "$ref": "#/$defs/readingSection" },
-        { "$ref": "#/$defs/writingSection" }
+        { "$ref": "#/$defs/writingSection" },
+        { "$ref": "#/$defs/speakingSection" },
+        { "$ref": "#/$defs/checkpointSection" }
       ]
     },
     "baseSection": {
@@ -80,6 +82,16 @@
               "properties": {
                 "icon": { "type": "string" },
                 "title": { "type": "string" },
+                "text": { "type": "string" }
+              }
+            },
+            "nextStep": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["icon", "label", "text"],
+              "properties": {
+                "icon": { "type": "string" },
+                "label": { "type": "string" },
                 "text": { "type": "string" }
               }
             },
@@ -369,6 +381,65 @@
                   "type": "array",
                   "items": { "type": "string" }
                 }
+              }
+            },
+            "tip": { "$ref": "#/$defs/tip" }
+          }
+        }
+      ]
+    },
+    "speakingSection": {
+      "allOf": [
+        { "$ref": "#/$defs/baseSection" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "questions", "sampleAnswer"],
+          "properties": {
+            "id": true,
+            "type": { "const": "speaking" },
+            "nav": true,
+            "eyebrow": true,
+            "title": true,
+            "description": true,
+            "questions": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            "sampleAnswer": { "type": "string" },
+            "sampleAnswerTranslation": { "type": "string" },
+            "tip": { "$ref": "#/$defs/tip" }
+          }
+        }
+      ]
+    },
+    "checkpointSection": {
+      "allOf": [
+        { "$ref": "#/$defs/baseSection" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "questions"],
+          "properties": {
+            "id": true,
+            "type": { "const": "checkpoint" },
+            "nav": true,
+            "eyebrow": true,
+            "title": true,
+            "description": true,
+            "questions": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/mcqQuestion" }
+            },
+            "nextStep": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["icon", "label", "text"],
+              "properties": {
+                "icon": { "type": "string" },
+                "label": { "type": "string" },
+                "text": { "type": "string" }
               }
             },
             "tip": { "$ref": "#/$defs/tip" }

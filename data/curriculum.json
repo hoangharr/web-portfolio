@@ -1,8 +1,23 @@
-[
-  "data/topics/work-career-01.json",
-  "data/topics/education-lifelong-learning-01.json",
-  "data/topics/communication-presentation-01.json",
-  "data/topics/travel-tourism-01.json",
-  "data/topics/health-wellness-01.json",
-  "data/topics/technology-innovation-01.json"
-]
+{
+  "tracks": [
+    {
+      "id": "starter",
+      "label": "Starter Path (A1-A2)",
+      "lessons": [
+        "data/topics/daily-life-personal-info-01.json"
+      ]
+    },
+    {
+      "id": "b2",
+      "label": "B2 Aptis Modules",
+      "lessons": [
+        "data/topics/work-career-01.json",
+        "data/topics/education-lifelong-learning-01.json",
+        "data/topics/communication-presentation-01.json",
+        "data/topics/travel-tourism-01.json",
+        "data/topics/health-wellness-01.json",
+        "data/topics/technology-innovation-01.json"
+      ]
+    }
+  ]
+}

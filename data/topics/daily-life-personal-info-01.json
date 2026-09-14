@@ -1,0 +1,480 @@
+{
+  "id": "daily-life-personal-info-01",
+  "title": "Daily Life & Personal Information",
+  "level": "A1-A2",
+  "subtitle": "Foundation Core - Lesson 1: Talk about yourself, your day, and your routine",
+  "themeIcon": "waving_hand",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "Starter Path - Foundation Core - Lesson 1",
+      "title": "Daily Life & Personal Information - Level A1-A2",
+      "quote": "Talk about yourself, your day, and your routine with confidence.",
+      "features": [
+        {
+          "icon": "record_voice_over",
+          "title": "Introduce Yourself",
+          "description": "Say your name, age, job, and where you live - clearly and simply."
+        },
+        {
+          "icon": "schedule",
+          "title": "Describe Your Day",
+          "description": "Use the present simple to talk about your daily routine."
+        },
+        {
+          "icon": "flag",
+          "title": "Aptis Ready",
+          "description": "These are exactly the questions asked in Aptis Speaking Part 1 and Writing Part 1."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",
+        "alt": "A calm morning routine with coffee and notebook"
+      },
+      "badge": {
+        "icon": "school",
+        "title": "FOUNDATION TRACK",
+        "text": "This lesson builds the base you need for B2 Module: Work & Career and Health & Wellness - personal introductions appear in interviews and health conversations."
+      },
+      "nextStep": {
+        "icon": "arrow_forward",
+        "label": "Prepares you for",
+        "text": "B2 Module: Work & Career - after Stage 1 of the Starter Path, you will be ready to start the B2 modules."
+      },
+      "tip": {
+        "title": "Study Tip",
+        "text": "Short, simple sentences are fine at A1-A2. Focus on being accurate first - you will add length and detail later in the B2 modules."
+      }
+    },
+    {
+      "id": "key-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 - Core Vocabulary",
+      "title": "1. Core Vocabulary: Daily Life",
+      "description": "Click cards to flip and listen. Say each word out loud three times.",
+      "cards": [
+        {
+          "term": "wake up",
+          "definition": "I wake up at six o'clock every morning.",
+          "translation": "thức dậy",
+          "icon": "alarm",
+          "category": "Daily Routine",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "get up",
+          "definition": "I get up and open the window.",
+          "translation": "đứng dậy / ra khỏi giường",
+          "icon": "hotel",
+          "category": "Daily Routine",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "have breakfast",
+          "definition": "I have breakfast at seven in the morning.",
+          "translation": "ăn sáng",
+          "icon": "free_breakfast",
+          "category": "Meals",
+          "badge": "High Frequency",
+          "variant": "highlight"
+        },
+        {
+          "term": "go to work",
+          "definition": "I go to work by bus.",
+          "translation": "đi làm",
+          "icon": "work",
+          "category": "Daily Routine",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "live in",
+          "definition": "I live in Hanoi with my family.",
+          "translation": "sống ở",
+          "icon": "location_on",
+          "category": "Personal Information",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "be married / single",
+          "definition": "I am single. / My sister is married.",
+          "translation": "đã kết hôn / độc thân",
+          "icon": "favorite",
+          "category": "Personal Information",
+          "badge": "High Frequency",
+          "variant": "default"
+        },
+        {
+          "term": "free time",
+          "definition": "In my free time, I read books.",
+          "translation": "thời gian rảnh",
+          "icon": "schedule",
+          "category": "Free Time",
+          "badge": "High Frequency",
+          "variant": "default"
+        },
+        {
+          "term": "usually",
+          "definition": "I usually cook dinner at home.",
+          "translation": "thường thường",
+          "icon": "repeat",
+          "category": "Frequency",
+          "badge": "High Frequency",
+          "variant": "primary"
+        },
+        {
+          "term": "stay at home",
+          "definition": "On Sundays, I stay at home and relax.",
+          "translation": "ở nhà",
+          "icon": "home",
+          "category": "Free Time",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "go to bed",
+          "definition": "I go to bed at eleven o'clock.",
+          "translation": "đi ngủ",
+          "icon": "bedtime",
+          "category": "Daily Routine",
+          "badge": "Essential",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Learn the whole chunk, not just one word: \"have breakfast\", \"go to work\", \"go to bed\". Chunks help you speak faster and sound natural."
+      }
+    },
+    {
+      "id": "useful-chunks",
+      "type": "grammar",
+      "nav": "vocabulary",
+      "eyebrow": "Section 02 - Useful Chunks",
+      "title": "2. Useful Chunks & Collocations",
+      "description": "Learn these high-frequency phrases as complete units.",
+      "points": [
+        {
+          "title": "get dressed",
+          "icon": "checkroom",
+          "function": "mặc quần áo",
+          "examples": ["I get dressed at half past six.", "He gets dressed quickly before school."]
+        },
+        {
+          "title": "take a shower",
+          "icon": "shower",
+          "function": "tắm",
+          "examples": ["I take a shower every morning.", "She takes a shower after work."]
+        },
+        {
+          "title": "have lunch with",
+          "icon": "lunch_dining",
+          "function": "ăn trưa với",
+          "examples": ["I have lunch with my colleagues.", "Do you have lunch with your family on Sundays?"]
+        },
+        {
+          "title": "spend time with my family",
+          "icon": "family_restroom",
+          "function": "dành thời gian cho gia đình",
+          "examples": ["I spend time with my family every evening.", "We spend time with our family at the weekend."]
+        },
+        {
+          "title": "on weekdays / at the weekend",
+          "icon": "date_range",
+          "function": "vào ngày thường / vào cuối tuần",
+          "examples": ["I work hard on weekdays.", "At the weekend, I visit my parents."]
+        },
+        {
+          "title": "my favourite ... is ...",
+          "icon": "star",
+          "function": "cái ... yêu thích của tôi là ...",
+          "examples": ["My favourite food is pho.", "My favourite day is Sunday."]
+        }
+      ],
+      "tip": {
+        "title": "Pro-Tip",
+        "text": "Notice the small words: \"at the weekend\" (British English) but \"on weekends\" is also common. Pick one form and use it consistently."
+      }
+    },
+    {
+      "id": "present-simple",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 03 - Grammar Focus",
+      "title": "3. Grammar: Present Simple for Routines",
+      "description": "The present simple is the most important tense at A1-A2. We use it for habits, routines, and facts - exactly what you need for Aptis Speaking Part 1.",
+      "points": [
+        {
+          "title": "Affirmative (+)",
+          "icon": "add_circle",
+          "function": "I / you / we / they + verb · he / she / it + verb-s",
+          "examples": ["I work in a small shop.", "She works in a hospital.", "They live in Da Nang.", "He has coffee every morning."]
+        },
+        {
+          "title": "Questions & Short Answers (?)",
+          "icon": "help",
+          "function": "Do / Does + subject + verb? · Yes, I do. / No, she doesn't.",
+          "examples": ["Do you live here? - Yes, I do.", "Does she work? - No, she doesn't.", "Where do you work?", "What time does he get up?"]
+        },
+        {
+          "title": "Time Words & Frequency",
+          "icon": "schedule",
+          "function": "at + time · on + day · in + part of day · always / usually / often / sometimes / never",
+          "examples": ["I get up at 6 a.m.", "I play football on Saturdays.", "In the evening, I cook dinner.", "I never drink coffee at night."]
+        }
+      ],
+      "table": {
+        "headers": ["Subject", "Verb Form", "Example"],
+        "rows": [
+          ["I / You / We / They", "work, live, have", "They live in Hanoi."],
+          ["He / She / It", "works, lives, has", "She works in a hospital."],
+          ["I / You / We / They", "do not (don't) + verb", "I don't work on Sundays."],
+          ["He / She / It", "does not (doesn't) + verb", "He doesn't like coffee."]
+        ]
+      },
+      "tip": {
+        "title": "Common Mistake",
+        "text": "Don't forget the -s: \"She work\" is wrong, \"She works\" is correct. But after \"does\", use the base verb: \"Does she work?\" - not \"Does she works?\""
+      }
+    },
+    {
+      "id": "practice-mcq",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 1",
+      "title": "Controlled Practice: Choose the Correct Answer",
+      "description": "Choose the best word or phrase to complete each sentence about daily life.",
+      "questions": [
+        {
+          "id": "m1q1",
+          "prompt": "Mai ______ up at six o'clock every morning.",
+          "options": ["get", "gets", "getting", "got"],
+          "correct": 1,
+          "explanation": "Mai = she, so the verb needs -s: gets."
+        },
+        {
+          "id": "m1q2",
+          "prompt": "I ______ to work by bus every day.",
+          "options": ["goes", "going", "go", "gone"],
+          "correct": 2,
+          "explanation": "I takes the base form: go."
+        },
+        {
+          "id": "m1q3",
+          "prompt": "______ your brother live in Hanoi?",
+          "options": ["Do", "Is", "Does", "Are"],
+          "correct": 2,
+          "explanation": "Your brother = he, so we use Does."
+        },
+        {
+          "id": "m1q4",
+          "prompt": "We ______ TV in the evening.",
+          "options": ["watchs", "watch", "watches", "watching"],
+          "correct": 1,
+          "explanation": "We takes the base form: watch."
+        },
+        {
+          "id": "m1q5",
+          "prompt": "I have breakfast ______ seven o'clock.",
+          "options": ["in", "on", "at", "to"],
+          "correct": 2,
+          "explanation": "We use at with clock times: at seven o'clock."
+        },
+        {
+          "id": "m1q6",
+          "prompt": "She ______ like coffee, but she loves tea.",
+          "options": ["doesn't", "don't", "isn't", "not"],
+          "correct": 0,
+          "explanation": "She = he/she/it, so the negative is doesn't + base verb."
+        }
+      ],
+      "tip": {
+        "title": "Strategy",
+        "text": "First find the subject: is it I/you/we/they or he/she/it? Then choose the verb form."
+      }
+    },
+    {
+      "id": "matching-practice",
+      "type": "drag-drop",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 2",
+      "title": "Matching: When Does It Happen?",
+      "description": "Drag each activity or word to the correct group.",
+      "targets": [
+        { "id": "morning", "label": "Morning" },
+        { "id": "evening", "label": "Evening" },
+        { "id": "weekend", "label": "Weekend" },
+        { "id": "people", "label": "People" },
+        { "id": "home", "label": "Home" }
+      ],
+      "items": [
+        { "id": "drag-1", "text": "have breakfast", "match": "morning" },
+        { "id": "drag-2", "text": "watch TV", "match": "evening" },
+        { "id": "drag-3", "text": "my brother", "match": "people" },
+        { "id": "drag-4", "text": "go to bed", "match": "evening" },
+        { "id": "drag-5", "text": "cook dinner", "match": "evening" },
+        { "id": "drag-6", "text": "visit my parents", "match": "weekend" },
+        { "id": "drag-7", "text": "take a shower", "match": "morning" },
+        { "id": "drag-8", "text": "my flatmate", "match": "people" },
+        { "id": "drag-9", "text": "stay at home", "match": "home" },
+        { "id": "drag-10", "text": "go to work", "match": "morning" }
+      ],
+      "tip": {
+        "title": "Tip",
+        "text": "Think about your own day: what do you do in the morning, in the evening, and at the weekend?"
+      }
+    },
+    {
+      "id": "reading-practice",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Practice Part 3",
+      "title": "Gap-Fill Reading: A Day in Mai's Life",
+      "description": "Complete the short text with the words from the box.",
+      "passage": {
+        "title": "A Day in Mai's Life",
+        "options": ["wake", "breakfast", "bus", "usually", "free", "bed"],
+        "parts": [
+          "Hi! My name is Mai. I ",
+          { "blank": "r1" },
+          " up at six o'clock every morning. I have ",
+          { "blank": "r2" },
+          " with my family at seven. I ",
+          { "blank": "r3" },
+          " go to work by ",
+          { "blank": "r4" },
+          ". In the evening, in my ",
+          { "blank": "r5" },
+          " time, I read books or watch TV. I go to ",
+          { "blank": "r6" },
+          " at about eleven o'clock."
+        ],
+        "blanks": [
+          { "id": "r1", "correct": "wake" },
+          { "id": "r2", "correct": "breakfast" },
+          { "id": "r3", "correct": "usually" },
+          { "id": "r4", "correct": "bus" },
+          { "id": "r5", "correct": "free" },
+          { "id": "r6", "correct": "bed" }
+        ]
+      },
+      "questions": [
+        {
+          "id": "rq1",
+          "prompt": "What is the text mainly about?",
+          "options": ["Mai's job interview", "Mai's typical day", "Mai's weekend trip", "Mai's family home"],
+          "correct": 1
+        }
+      ],
+      "tip": {
+        "title": "Reading Tip",
+        "text": "Read the whole sentence first. Which word makes sense? Then check: does the subject need verb-s?"
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Practice Part 4 - Guided Production: Speaking",
+      "title": "Speaking: Introduce Yourself",
+      "description": "Answer these two questions out loud. Speak for about 30 seconds. Then listen to the sample answer and compare.",
+      "questions": [
+        "What's your name, and where do you live?",
+        "What do you do on a typical day?"
+      ],
+      "sampleAnswer": "Hi, my name is Lan. I am twenty-four years old, and I live in Hanoi with my family. I work in a small office near my home. I usually get up at six o'clock and have breakfast at home. I go to work by bus. In the evening, I cook dinner and spend time with my family. I go to bed at about eleven o'clock.",
+      "sampleAnswerTranslation": "Xin chào, tôi tên là Lan. Tôi hai mươi bốn tuổi và tôi sống ở Hà Nội cùng gia đình. Tôi làm việc trong một văn phòng nhỏ gần nhà. Tôi thường thức dậy lúc sáu giờ và ăn sáng ở nhà. Tôi đi làm bằng xe buýt. Buổi tối, tôi nấu bữa tối và dành thời gian cho gia đình. Tôi đi ngủ vào khoảng mười một giờ.",
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Use this simple plan: name and city -> job or study -> one or two routine details -> one free-time detail. Short and correct is better than long and confused."
+      }
+    },
+    {
+      "id": "writing-practice",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Practice Part 5 - Guided Production: Writing",
+      "title": "Writing: My Typical Day (30-50 words)",
+      "description": "Write a short paragraph about your typical day. Use the present simple and at least one time expression.",
+      "prompt": {
+        "situation": "A new friend wants to know about your daily routine. Write about your typical day: when you get up, where you work or study, and what you do in the evening.",
+        "placeholder": "My typical day... (write 30-50 words)",
+        "minWords": 30,
+        "maxWords": 50,
+        "referenceAnswer": "My typical day starts at six o'clock. I get up and have breakfast at home. I go to work by bus and start at eight. In the evening, I usually cook dinner and spend time with my family. I go to bed at eleven o'clock.",
+        "focus": ["present simple", "one time expression (at / on / in)", "one frequency adverb (usually / often)", "verb + -s for he / she"]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Before you finish, check: 1) Is every verb in the present simple? 2) Does he/she have verb-s? 3) Did you use at least one time word (at 6 a.m., on Sundays)? 4) Is it 30-50 words?"
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Lesson Checkpoint",
+      "title": "Quick Review: Are You Ready to Move On?",
+      "description": "Answer these quick questions to check your understanding of Lesson 1.",
+      "questions": [
+        {
+          "id": "c1q1",
+          "prompt": "Which sentence is correct?",
+          "options": ["She go to work at eight.", "She goes to work at eight.", "She going to work at eight."],
+          "correct": 1,
+          "explanation": "He/she/it + verb-s: She goes."
+        },
+        {
+          "id": "c1q2",
+          "prompt": "Choose the correct question.",
+          "options": ["Do he live here?", "Does he lives here?", "Does he live here?"],
+          "correct": 2,
+          "explanation": "After Does, use the base verb: live."
+        },
+        {
+          "id": "c1q3",
+          "prompt": "\"I get up ___ six o'clock.\"",
+          "options": ["in", "at", "on"],
+          "correct": 1,
+          "explanation": "Use at with clock times."
+        },
+        {
+          "id": "c1q4",
+          "prompt": "Which phrase means \"an sang\" (eat the morning meal)?",
+          "options": ["have breakfast", "go to bed", "get dressed"],
+          "correct": 0,
+          "explanation": "have breakfast = ăn sáng."
+        },
+        {
+          "id": "c1q5",
+          "prompt": "\"In my ___ time, I read books.\"",
+          "options": ["busy", "free", "early"],
+          "correct": 1,
+          "explanation": "free time = thời gian rảnh."
+        },
+        {
+          "id": "c1q6",
+          "prompt": "Which negative sentence is correct?",
+          "options": ["I doesn't like tea.", "He don't work on Sundays.", "She doesn't watch TV."],
+          "correct": 2,
+          "explanation": "He/she/it + doesn't + base verb."
+        }
+      ],
+      "nextStep": {
+        "icon": "arrow_forward",
+        "label": "Next step",
+        "text": "Well done! Next: Lesson 2 - People & Relationships. After Stage 1 of the Starter Path, you will be ready for B2 Module: Work & Career."
+      },
+      "tip": {
+        "title": "Progress",
+        "text": "When you finish the questions, click \"Mark as completed\" to save your progress for this lesson."
+      }
+    }
+  ]
+}

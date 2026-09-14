@@ -2,6 +2,7 @@ const CURRICULUM_URL = "data/curriculum.json";
 
 const state = {
   lessons: [],
+  tracks: [],
   sections: [],
   currentSlide: 1,
   totalSlides: 0,
@@ -12,7 +13,7 @@ const state = {
 const sectionNavMap = {
   vocabulary: ["vocabulary", "synonyms"],
   grammar: ["grammar"],
-  exercise: ["mcq", "drag-drop", "reading", "writing"]
+  exercise: ["mcq", "drag-drop", "reading", "writing", "speaking", "checkpoint"]
 };
 
 function escapeHtml(value) {
@@ -74,6 +75,7 @@ function renderIntro(section) {
             </div>
           `).join("")}
         </div>
+        ${renderNextStepCard(section.nextStep)}
         ${renderTip(section.tip, "border border-[#E0E0E0]")}
       </div>
       <div class="md:col-span-6 relative group mt-8 md:mt-0">
@@ -428,6 +430,115 @@ function renderWriting(section) {
   `;
 }
 
+function isLessonCompleted(lessonId) {
+  try {
+    return localStorage.getItem(`aptis_completed_${lessonId}`) === "1";
+  } catch (e) {
+    return false;
+  }
+}
+
+function setLessonCompleted(lessonId, completed) {
+  try {
+    if (completed) {
+      localStorage.setItem(`aptis_completed_${lessonId}`, "1");
+    } else {
+      localStorage.removeItem(`aptis_completed_${lessonId}`);
+    }
+  } catch (e) {
+    // ignore storage errors
+  }
+}
+
+function renderNextStepCard(nextStep) {
+  if (!nextStep) return "";
+  return `
+    <div class="flex items-start gap-4 p-4 rounded-lg bg-secondary-container/20 border border-secondary-container">
+      ${materialIcon(nextStep.icon || "arrow_forward", "text-secondary")}
+      <div>
+        <p class="font-label-caps text-label-caps text-secondary uppercase">${escapeHtml(nextStep.label)}</p>
+        <p class="font-body-md text-sm text-on-surface-variant">${escapeHtml(nextStep.text)}</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderSpeaking(section) {
+  return `
+    ${renderHeader(section)}
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter items-start">
+      <div class="lg:col-span-7 space-y-6">
+        ${section.questions.map((question, index) => `
+          <div class="p-6 bg-white border border-outline-variant rounded-xl shadow-sm flex items-start gap-4">
+            ${materialIcon("mic", "text-primary text-3xl")}
+            <div>
+              <p class="font-label-caps text-label-caps text-outline uppercase">Question ${index + 1}</p>
+              <p class="font-h3 text-lg text-primary mt-1">${escapeHtml(question)}</p>
+            </div>
+          </div>
+        `).join("")}
+        ${renderTip(section.tip)}
+      </div>
+      <div class="lg:col-span-5 flex flex-col gap-6">
+        <div class="bg-primary-container text-white p-6 rounded-xl shadow-sm">
+          <div class="flex justify-between items-center mb-4 border-b border-white/20 pb-3">
+            <span class="font-label-caps text-label-caps uppercase">Sample Answer</span>
+            <button class="speakable flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-full text-sm font-bold" data-speak="${escapeHtml(section.sampleAnswer)}">
+              ${materialIcon("volume_up", "text-lg")} Listen
+            </button>
+          </div>
+          <p class="font-body-lg text-base leading-relaxed text-on-primary-container">${escapeHtml(section.sampleAnswer)}</p>
+        </div>
+        ${section.sampleAnswerTranslation ? `
+          <details class="bg-surface-container-low border border-outline-variant p-6 rounded-xl">
+            <summary class="cursor-pointer font-h3 text-lg text-primary-container">Nghĩa tiếng Việt</summary>
+            <p class="font-body-md text-on-surface-variant mt-3">${escapeHtml(section.sampleAnswerTranslation)}</p>
+          </details>
+        ` : ""}
+      </div>
+    </div>
+  `;
+}
+
+function renderCheckpoint(section) {
+  const lessonId = section.lesson?.id || "";
+  const completed = isLessonCompleted(lessonId);
+  return `
+    ${renderHeader(section)}
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div class="lg:col-span-8 space-y-6 mcq-group" data-count="${section.questions.length}">
+        ${section.questions.map((question, questionIndex) => `
+          <div class="p-6 bg-white border border-outline-variant rounded-xl shadow-sm space-y-4" id="mcq-${escapeHtml(question.id)}">
+            <p class="font-h3 text-lg text-primary italic">${questionIndex + 1}. ${escapeHtml(question.prompt)}</p>
+            <div class="grid grid-cols-1 gap-3">
+              ${question.options.map((option, optionIndex) => `
+                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-q="${escapeHtml(question.id)}" data-correct="${optionIndex === question.correct}">
+                  ${materialIcon("radio_button_unchecked", "text-outline icon-state text-lg")}
+                  <span>${optionLabel(optionIndex)}. ${escapeHtml(option)}</span>
+                </button>
+              `).join("")}
+            </div>
+          </div>
+        `).join("")}
+        <div class="mt-8 flex justify-end">
+          <button disabled class="btn-check-all-mcq bg-primary text-white font-bold py-3 px-8 md:py-4 md:px-12 rounded-lg opacity-50 cursor-not-allowed transition-all shadow-md flex items-center gap-3 w-full sm:w-auto justify-center">
+            Check All Answers
+            ${materialIcon("done_all", "text-sm md:text-base")}
+          </button>
+        </div>
+      </div>
+      <div class="lg:col-span-4 flex flex-col gap-6">
+        <button data-complete-lesson="${escapeHtml(lessonId)}" id="btn-complete-${escapeHtml(lessonId)}" class="flex items-center justify-center gap-3 font-bold py-4 px-8 rounded-lg shadow-md transition-all ${completed ? "bg-green-600 text-white" : "bg-secondary-container text-on-secondary-container hover:bg-secondary hover:text-white"}">
+          ${materialIcon(completed ? "task_alt" : "flag", "text-xl")}
+          <span class="complete-label uppercase">${completed ? "Lesson Completed" : "Mark as Completed"}</span>
+        </button>
+        ${renderNextStepCard(section.nextStep)}
+        ${renderTip(section.tip)}
+      </div>
+    </div>
+  `;
+}
+
 function renderSection(section, index) {
   const renderers = {
     intro: renderIntro,
@@ -437,7 +548,9 @@ function renderSection(section, index) {
     mcq: renderMcq,
     "drag-drop": renderDragDrop,
     reading: renderReading,
-    writing: renderWriting
+    writing: renderWriting,
+    speaking: renderSpeaking,
+    checkpoint: renderCheckpoint
   };
 
   return `
@@ -477,19 +590,44 @@ function renderModulesMenu() {
   if (!menuList || !state.lessons.length) return;
 
   let slideStart = 1;
-  menuList.innerHTML = state.lessons.map((lesson, index) => {
-    const start = slideStart;
-    slideStart += lesson.sections.length;
-    return `
-    <button data-module-slide="${start}" class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all text-left">
-      ${materialIcon(lesson.themeIcon, "text-primary text-3xl")}
-      <div>
-        <p class="font-bold text-primary text-base">Module ${index + 1}</p>
-        <p class="text-sm text-on-surface-variant">${escapeHtml(lesson.title)}</p>
+  let lessonPointer = 0;
+  let globalIndex = 0;
+  let html = "";
+
+  const tracks = state.tracks && state.tracks.length
+    ? state.tracks
+    : [{ id: "all", label: "Modules", lessons: state.lessons.map(() => "") }];
+
+  tracks.forEach(track => {
+    const trackCount = track.lessons.length;
+    if (!trackCount) return;
+    html += `
+      <div class="pt-2">
+        <p class="font-label-caps text-label-caps text-outline uppercase border-b border-outline-variant pb-2 mb-3">${escapeHtml(track.label)}</p>
       </div>
-    </button>
-  `;
-  }).join("");
+    `;
+    for (let i = 0; i < trackCount; i += 1) {
+      const lesson = state.lessons[lessonPointer];
+      if (!lesson) break;
+      lessonPointer += 1;
+      globalIndex += 1;
+      const start = slideStart;
+      slideStart += lesson.sections.length;
+      const completed = isLessonCompleted(lesson.id);
+      html += `
+        <button data-module-slide="${start}" class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all text-left">
+          ${materialIcon(lesson.themeIcon, "text-primary text-3xl")}
+          <div class="flex-grow">
+            <p class="font-bold text-primary text-base">Module ${globalIndex}</p>
+            <p class="text-sm text-on-surface-variant">${escapeHtml(lesson.title)}</p>
+          </div>
+          ${completed ? materialIcon("check_circle", "text-green-600") : ""}
+        </button>
+      `;
+    }
+  });
+
+  menuList.innerHTML = html;
 
   menuList.querySelectorAll("[data-module-slide]").forEach(button => {
     button.addEventListener("click", () => selectModule(Number(button.dataset.moduleSlide)));
@@ -522,6 +660,26 @@ function bindLessonEvents() {
 
   document.querySelectorAll(".btn-check-reading").forEach(button => {
     button.addEventListener("click", checkReading);
+  });
+
+  document.querySelectorAll("[data-complete-lesson]").forEach(button => {
+    button.addEventListener("click", () => {
+      const lessonId = button.dataset.completeLesson;
+      if (!lessonId) return;
+      const nowCompleted = !isLessonCompleted(lessonId);
+      setLessonCompleted(lessonId, nowCompleted);
+      button.classList.toggle("bg-green-600", nowCompleted);
+      button.classList.toggle("text-white", nowCompleted);
+      button.classList.toggle("bg-secondary-container", !nowCompleted);
+      button.classList.toggle("text-on-secondary-container", !nowCompleted);
+      button.classList.toggle("hover:bg-secondary", !nowCompleted);
+      button.classList.toggle("hover:text-white", !nowCompleted);
+      const icon = button.querySelector(".material-symbols-outlined");
+      if (icon) icon.textContent = nowCompleted ? "task_alt" : "flag";
+      const label = button.querySelector(".complete-label");
+      if (label) label.textContent = nowCompleted ? "Lesson Completed" : "Mark as Completed";
+      renderModulesMenu();
+    });
   });
 
   bindDragDrop();
@@ -926,10 +1084,15 @@ function toggleDarkMode() {
 async function loadLesson() {
   const root = document.getElementById("lesson-root");
   try {
-    // Load curriculum (array of lesson URLs) first
+    // Load curriculum (tracks object or legacy array of lesson URLs)
     const curriculumResp = await fetch(CURRICULUM_URL);
     if (!curriculumResp.ok) throw new Error(`Unable to load curriculum`);
-    const urls = await curriculumResp.json();
+    const curriculumData = await curriculumResp.json();
+    const tracks = Array.isArray(curriculumData)
+      ? [{ id: "all", label: "Modules", lessons: curriculumData }]
+      : curriculumData.tracks;
+    state.tracks = tracks;
+    const urls = tracks.flatMap(track => track.lessons);
     const lessons = await Promise.all(urls.map(async url => {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Unable to load ${url}`);
