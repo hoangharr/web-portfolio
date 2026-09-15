@@ -933,6 +933,111 @@ function selectModule(startSlideNum) {
   toggleModulesMenu();
 }
 
+function hideWelcome() {
+  const screen = document.getElementById("welcome-screen");
+  if (screen) screen.classList.add("hidden");
+  document.body.classList.remove("welcome-active");
+}
+
+function startFromWelcome(slideNum) {
+  hideWelcome();
+  goToSlide(slideNum);
+}
+
+function renderWelcome() {
+  const screen = document.getElementById("welcome-screen");
+  const content = document.getElementById("welcome-content");
+  if (!screen || !content) return;
+
+  let slideStart = 1;
+  let moduleIndex = 0;
+  const cards = [];
+  const tracks = state.tracks && state.tracks.length
+    ? state.tracks
+    : [{ id: "all", label: "Modules", lessons: state.lessons.map(() => "") }];
+
+  tracks.forEach(track => {
+    track.lessons.forEach(() => {
+      const lesson = state.lessons[moduleIndex];
+      if (!lesson) return;
+      const start = slideStart;
+      slideStart += lesson.sections.length;
+      moduleIndex += 1;
+      const completed = isLessonCompleted(lesson.id);
+      cards.push(`
+        <button data-welcome-slide="${start}" class="group flex items-center gap-4 w-full p-4 rounded-xl bg-surface-container-low dark:bg-slate-800 border border-outline-variant dark:border-slate-700 hover:border-primary dark:hover:border-amber-400 hover:bg-primary/5 transition-all text-left active:scale-[0.98]">
+          <span class="w-11 h-11 shrink-0 rounded-full bg-primary-container dark:bg-indigo-900 flex items-center justify-center">
+            ${materialIcon(lesson.themeIcon, "text-on-primary dark:text-amber-400 text-2xl")}
+          </span>
+          <span class="flex-grow">
+            <span class="block font-label-caps text-label-caps text-secondary dark:text-amber-400 uppercase tracking-widest mb-0.5">Module ${moduleIndex}</span>
+            <span class="block font-bold text-primary dark:text-slate-100 text-base">${escapeHtml(lesson.title)}</span>
+          </span>
+          ${completed ? materialIcon("check_circle", "text-green-600") : materialIcon("chevron_right", "text-outline group-hover:text-primary dark:group-hover:text-amber-400 transition-colors")}
+        </button>
+      `);
+    });
+  });
+
+  let saved = null;
+  try {
+    const value = Number(localStorage.getItem("aptis_lastSlide"));
+    if (value && Number.isFinite(value) && value >= 1 && value <= state.totalSlides) saved = value;
+  } catch (e) {
+    // ignore
+  }
+
+  content.innerHTML = `
+    <div class="flex justify-end gap-1 mb-2">
+      <a
+        href="https://hoangdm.com"
+        class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
+        title="Về trang chủ"
+      >
+        <span class="material-symbols-outlined">home</span>
+      </a>
+      <button
+        onclick="toggleDarkMode()"
+        class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
+        title="Chuyển chế độ Sáng/Tối"
+      >
+        <span id="welcome-theme-icon" class="material-symbols-outlined">light_mode</span>
+      </button>
+    </div>
+    <div class="text-center mb-8">
+      <span class="inline-flex w-16 h-16 rounded-full bg-primary-container dark:bg-indigo-900 items-center justify-center mb-4">
+        ${materialIcon("school", "text-on-primary dark:text-amber-400 text-4xl")}
+      </span>
+      <h1 class="font-h1 text-3xl md:text-4xl text-primary dark:text-slate-100 mb-2">English Academic Deck</h1>
+      <div class="w-16 h-1 bg-secondary-container mx-auto mb-4"></div>
+      <p class="font-body-md text-on-surface-variant dark:text-slate-400">Select a module to start learning</p>
+    </div>
+    ${saved ? `
+      <button data-welcome-continue="${saved}" class="flex items-center justify-center gap-2 w-full p-4 mb-4 rounded-xl bg-primary dark:bg-indigo-900 text-on-primary dark:text-amber-400 font-bold hover:bg-primary-container dark:hover:bg-indigo-800 transition-all active:scale-[0.98]">
+        ${materialIcon("play_arrow", "text-xl")}
+        <span>Continue learning</span>
+      </button>
+    ` : ""}
+    <div class="flex flex-col gap-3">${cards.join("")}</div>
+  `;
+
+  content.querySelectorAll("[data-welcome-slide]").forEach(button => {
+    button.addEventListener("click", () => startFromWelcome(Number(button.dataset.welcomeSlide)));
+  });
+  const continueBtn = content.querySelector("[data-welcome-continue]");
+  if (continueBtn) {
+    continueBtn.addEventListener("click", () => startFromWelcome(Number(continueBtn.dataset.welcomeContinue)));
+  }
+
+  screen.classList.remove("hidden");
+  document.body.classList.add("welcome-active");
+
+  const welcomeThemeIcon = document.getElementById("welcome-theme-icon");
+  if (welcomeThemeIcon) {
+    welcomeThemeIcon.textContent = document.documentElement.classList.contains("dark") ? "dark_mode" : "light_mode";
+  }
+}
+
 function selectMCQ(btn, qId) {
   const container = document.getElementById(`mcq-${qId}`);
   if (!container) return;
@@ -1114,18 +1219,19 @@ function resetMatching(sectionId) {
 function toggleDarkMode() {
   const html = document.documentElement;
   const icon = document.getElementById("theme-icon");
+  const welcomeIcon = document.getElementById("welcome-theme-icon");
+  const nextIcon = html.classList.contains("dark") ? "light_mode" : "dark_mode";
 
   if (html.classList.contains("dark")) {
     html.classList.remove("dark");
     html.classList.add("light");
-    if (icon) icon.textContent = "light_mode";
-    localStorage.setItem("theme", "light");
   } else {
     html.classList.remove("light");
     html.classList.add("dark");
-    if (icon) icon.textContent = "dark_mode";
-    localStorage.setItem("theme", "dark");
   }
+  if (icon) icon.textContent = nextIcon;
+  if (welcomeIcon) welcomeIcon.textContent = nextIcon;
+  localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
 }
 
 async function loadLesson() {
@@ -1146,15 +1252,8 @@ async function loadLesson() {
       return response.json();
     }));
     renderDeck(lessons);
-    // Restore last viewed slide if available
-    try {
-      const saved = Number(localStorage.getItem("aptis_lastSlide"));
-      if (saved && Number.isFinite(saved) && saved >= 1 && saved <= state.totalSlides) {
-        goToSlide(saved);
-      }
-    } catch (e) {
-      // ignore
-    }
+    // Show welcome screen; user picks a module (or continues) from there
+    renderWelcome();
   } catch (error) {
     if (root) {
       root.innerHTML = `

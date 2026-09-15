@@ -189,6 +189,17 @@
         cursor: not-allowed;
       }
 
+      /* Welcome screen — ẩn header/footer khi đang hiển thị */
+      body.welcome-active > header,
+      body.welcome-active > footer {
+        display: none;
+      }
+
+      /* Welcome screen — khoá scroll của trang phía sau để chỉ còn 1 scrollbar */
+      body.welcome-active {
+        overflow: hidden;
+      }
+
       /* Flip Card CSS */
       .flip-card {
         perspective: 1000px;
@@ -484,6 +495,17 @@
           </button>
         </div>
         <div id="modules-list" class="flex flex-col gap-4"></div>
+      </div>
+    </div>
+
+    <!-- Welcome screen -->
+    <div
+      id="welcome-screen"
+      class="fixed inset-0 z-[90] hidden overflow-y-auto overscroll-contain bg-surface dark:bg-slate-900"
+      style="padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom)"
+    >
+      <div class="min-h-full flex items-center justify-center px-4 py-8">
+        <div id="welcome-content" class="w-full max-w-lg"></div>
       </div>
     </div>
 
