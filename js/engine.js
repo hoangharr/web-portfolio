@@ -585,6 +585,35 @@ function renderDeck(lessons) {
   updateUI();
 }
 
+function getCollapsedTracks() {
+  try {
+    return JSON.parse(localStorage.getItem("aptis_collapsedTracks") || "[]");
+  } catch (e) {
+    return [];
+  }
+}
+
+function setTrackCollapsed(trackId, collapsed) {
+  try {
+    const collapsedTracks = getCollapsedTracks();
+    const index = collapsedTracks.indexOf(trackId);
+    if (collapsed && index === -1) collapsedTracks.push(trackId);
+    if (!collapsed && index !== -1) collapsedTracks.splice(index, 1);
+    localStorage.setItem("aptis_collapsedTracks", JSON.stringify(collapsedTracks));
+  } catch (e) {
+    // ignore storage errors
+  }
+}
+
+function applyTrackVisibility(menuList, trackId, collapsed) {
+  const header = menuList.querySelector(`[data-track-header="${trackId}"]`);
+  const group = menuList.querySelector(`[data-track-group="${trackId}"]`);
+  if (!header || !group) return;
+  group.classList.toggle("hidden", collapsed);
+  const chevron = header.querySelector(".track-chevron");
+  if (chevron) chevron.style.transform = collapsed ? "rotate(-90deg)" : "rotate(0deg)";
+}
+
 function renderModulesMenu() {
   const menuList = document.getElementById("modules-list");
   if (!menuList || !state.lessons.length) return;
@@ -592,7 +621,7 @@ function renderModulesMenu() {
   let slideStart = 1;
   let lessonPointer = 0;
   let globalIndex = 0;
-  let html = "";
+  let html = `<div class="max-h-[55vh] overflow-y-auto pr-1 flex flex-col gap-2" id="tracks-scroll">`;
 
   const tracks = state.tracks && state.tracks.length
     ? state.tracks
@@ -601,10 +630,16 @@ function renderModulesMenu() {
   tracks.forEach(track => {
     const trackCount = track.lessons.length;
     if (!trackCount) return;
+    const collapsed = getCollapsedTracks().includes(track.id);
     html += `
-      <div class="pt-2">
-        <p class="font-label-caps text-label-caps text-outline uppercase border-b border-outline-variant pb-2 mb-3">${escapeHtml(track.label)}</p>
-      </div>
+      <button data-track-header="${track.id}" class="flex items-center justify-between w-full p-3 rounded-lg bg-surface-container-low hover:bg-primary/5 transition-all text-left">
+        <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">${escapeHtml(track.label)}</span>
+        <span class="flex items-center gap-2">
+          <span class="text-[10px] text-outline font-label-caps">${trackCount}</span>
+          ${materialIcon("keyboard_arrow_down", "track-chevron text-outline transition-transform duration-200")}
+        </span>
+      </button>
+      <div data-track-group="${track.id}" class="flex flex-col gap-2 ${collapsed ? "hidden" : ""}">
     `;
     for (let i = 0; i < trackCount; i += 1) {
       const lesson = state.lessons[lessonPointer];
@@ -625,12 +660,24 @@ function renderModulesMenu() {
         </button>
       `;
     }
+    html += `</div>`;
   });
 
+  html += `</div>`;
   menuList.innerHTML = html;
 
   menuList.querySelectorAll("[data-module-slide]").forEach(button => {
     button.addEventListener("click", () => selectModule(Number(button.dataset.moduleSlide)));
+  });
+
+  menuList.querySelectorAll("[data-track-header]").forEach(header => {
+    const trackId = header.dataset.trackHeader;
+    applyTrackVisibility(menuList, trackId, getCollapsedTracks().includes(trackId));
+    header.addEventListener("click", () => {
+      const collapsed = !getCollapsedTracks().includes(trackId);
+      setTrackCollapsed(trackId, collapsed);
+      applyTrackVisibility(menuList, trackId, collapsed);
+    });
   });
 }
 
