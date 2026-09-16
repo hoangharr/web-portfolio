@@ -255,7 +255,8 @@
         { "id": "boss", "label": "Boss" },
         { "id": "colleagues", "label": "Colleagues" },
         { "id": "good-at", "label": "Good at" },
-        { "id": "job", "label": "Job" }
+        { "id": "job", "label": "Job" },
+        { "id": "none", "label": "Not a match" }
       ],
       "items": [
         { "id": "drag-1", "text": "Proficient in", "match": "good-at" },

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Log in · APTIS B2 Prep</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center p-5">
+    <main class="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xl">
+      <a href="english.html" class="text-sm font-semibold text-indigo-800 hover:underline">← Back to lessons</a>
+      <p class="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-amber-700">APTIS B2 Prep</p>
+      <h1 class="mt-2 font-serif text-3xl font-bold text-indigo-950">Welcome back</h1>
+      <p class="mt-2 text-sm leading-6 text-slate-600">Sign in with the account your teacher created for you. Your drafts and learning progress will then follow you across devices.</p>
+      <form id="login-form" class="mt-7 space-y-5">
+        <label class="block text-sm font-semibold">Email<input id="email" type="email" required autocomplete="email" class="mt-1.5 block w-full rounded-lg border-slate-300 px-3 py-3 focus:border-indigo-800 focus:ring-indigo-800" /></label>
+        <label class="block text-sm font-semibold">Password<input id="password" type="password" required autocomplete="current-password" class="mt-1.5 block w-full rounded-lg border-slate-300 px-3 py-3 focus:border-indigo-800 focus:ring-indigo-800" /></label>
+        <p id="error" class="hidden rounded-lg bg-red-50 p-3 text-sm text-red-700" role="alert"></p>
+        <button class="w-full rounded-lg bg-indigo-950 px-4 py-3 font-bold text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200" type="submit">Log in</button>
+      </form>
+    </main>
+    <script>
+      let csrf;
+      async function secureRequest(path, body) {
+        if (!csrf) {
+          const response = await fetch('/api/auth/csrf', { credentials: 'same-origin' });
+          if (!response.ok) throw new Error('The learning service is unavailable.');
+          csrf = await response.json();
+        }
+        return fetch(path, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', [csrf.headerName]: csrf.token }, body: JSON.stringify(body) });
+      }
+      document.getElementById('login-form').addEventListener('submit', async event => {
+        event.preventDefault();
+        const error = document.getElementById('error');
+        error.classList.add('hidden');
+        try {
+          const response = await secureRequest('/api/auth/login', { email: document.getElementById('email').value, password: document.getElementById('password').value });
+          if (!response.ok) throw new Error(response.status === 401 ? 'Email or password is incorrect.' : 'Could not log in. Please try again.');
+          window.location.assign('english.html');
+        } catch (err) {
+          error.textContent = err.message;
+          error.classList.remove('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>

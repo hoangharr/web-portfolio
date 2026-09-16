@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Classroom · APTIS B2 Prep</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <header class="border-b border-slate-200 bg-white"><div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4"><a href="english.html" class="font-serif text-xl font-bold text-indigo-950">APTIS B2 Prep</a><a href="english.html" class="text-sm font-semibold text-indigo-800 hover:underline">Back to lessons</a></div></header>
+    <main class="mx-auto grid max-w-6xl gap-6 px-5 py-8 lg:grid-cols-[360px_1fr]">
+      <section class="rounded-2xl bg-indigo-950 p-6 text-white"><p class="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">Classroom</p><h1 class="mt-2 font-serif text-3xl font-bold">Invite a learner</h1><p class="mt-3 text-sm leading-6 text-indigo-100">Create accounts for your class. There is no public sign-up.</p>
+        <form id="create-user-form" class="mt-6 space-y-4">
+          <label class="block text-sm font-semibold">Name<input id="display-name" required maxlength="120" class="mt-1.5 block w-full rounded-lg border-0 px-3 py-3 text-slate-900" /></label>
+          <label class="block text-sm font-semibold">Email<input id="email" type="email" required autocomplete="email" class="mt-1.5 block w-full rounded-lg border-0 px-3 py-3 text-slate-900" /></label>
+          <label class="block text-sm font-semibold">Temporary password<input id="password" type="password" required minlength="12" autocomplete="new-password" class="mt-1.5 block w-full rounded-lg border-0 px-3 py-3 text-slate-900" /></label>
+          <label class="block text-sm font-semibold">Role<select id="role" class="mt-1.5 block w-full rounded-lg border-0 px-3 py-3 text-slate-900"><option value="LEARNER">Learner</option><option value="TEACHER">Teacher</option></select></label>
+          <p id="form-message" class="hidden rounded-lg p-3 text-sm" role="status"></p>
+          <button class="w-full rounded-lg bg-amber-300 px-4 py-3 font-bold text-slate-950 hover:bg-amber-200" type="submit">Create account</button>
+        </form>
+      </section>
+      <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><div class="flex items-start justify-between gap-4"><div><p class="text-xs font-bold uppercase tracking-[0.18em] text-amber-700">People</p><h2 class="mt-2 font-serif text-3xl font-bold text-indigo-950">Your classroom</h2></div><span id="account-name" class="text-sm font-semibold text-slate-500"></span></div><div id="status" class="mt-8 text-slate-600">Loading accounts…</div><div class="mt-5 overflow-x-auto"><table id="users-table" class="hidden min-w-full text-left text-sm"><thead class="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500"><tr><th class="px-3 py-3">Name</th><th class="px-3 py-3">Email</th><th class="px-3 py-3">Role</th></tr></thead><tbody></tbody></table></div></section>
+    </main>
+    <script>
+      let csrf;
+      const status = document.getElementById('status');
+      function message(text, ok) { const el = document.getElementById('form-message'); el.textContent = text; el.className = `rounded-lg p-3 text-sm ${ok ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-800'}`; }
+      function escapeHtml(value) { const div = document.createElement('div'); div.textContent = value; return div.innerHTML; }
+      async function secure(path, method, body) { if (!csrf) { const response = await fetch('/api/auth/csrf', {credentials:'same-origin'}); if (!response.ok) throw new Error('Learning service is unavailable.'); csrf = await response.json(); } const response = await fetch(path, {method, credentials:'same-origin', headers:{'Content-Type':'application/json',[csrf.headerName]:csrf.token}, body: body ? JSON.stringify(body) : undefined}); if (!response.ok) throw new Error(response.status === 403 ? 'You do not have access to this page.' : 'The request could not be completed.'); return response.status === 204 ? null : response.json(); }
+      async function loadUsers() { const response = await fetch('/api/admin/users', {credentials:'same-origin'}); if (!response.ok) throw new Error('Could not load classroom accounts.'); const users = await response.json(); const table = document.getElementById('users-table'); const tbody = table.querySelector('tbody'); tbody.innerHTML = users.map(user => `<tr class="border-b border-slate-100"><td class="px-3 py-3 font-semibold">${escapeHtml(user.displayName)}</td><td class="px-3 py-3">${escapeHtml(user.email)}</td><td class="px-3 py-3">${escapeHtml(user.role)}</td></tr>`).join(''); table.classList.remove('hidden'); status.classList.add('hidden'); }
+      async function init() { try { const response = await fetch('/api/auth/me', {credentials:'same-origin'}); if (!response.ok) { window.location.assign('login.html'); return; } const me = await response.json(); if (me.role !== 'ADMIN') throw new Error('Only an administrator can manage classroom accounts.'); document.getElementById('account-name').textContent = me.displayName; await loadUsers(); } catch (error) { status.textContent = error.message; status.className = 'mt-8 rounded-lg bg-red-50 p-4 text-red-800'; } }
+      document.getElementById('create-user-form').addEventListener('submit', async event => { event.preventDefault(); try { const user = await secure('/api/admin/users', 'POST', {displayName:document.getElementById('display-name').value, email:document.getElementById('email').value, temporaryPassword:document.getElementById('password').value, role:document.getElementById('role').value}); message(`${user.displayName}'s account is ready. Send them the temporary password privately.`, true); event.target.reset(); await loadUsers(); } catch (error) { message(error.message, false); } });
+      init();
+    </script>
+  </body>
+</html>

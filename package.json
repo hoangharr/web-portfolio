@@ -1,0 +1,9 @@
+{
+  "name": "toward-aptis",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:content": "node scripts/validate-content.mjs",
+    "check": "node --check js/engine.js && npm run validate:content"
+  }
+}

@@ -7,7 +7,10 @@ const state = {
   currentSlide: 1,
   totalSlides: 0,
   draggedItem: null,
-  currentAudio: null
+  selectedMatchItem: null,
+  currentAudio: null,
+  user: null,
+  csrf: null
 };
 
 const sectionNavMap = {
@@ -284,11 +287,11 @@ function renderMcq(section) {
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       <div class="lg:col-span-8 space-y-6 mcq-group" data-count="${section.questions.length}">
         ${section.questions.map((question, questionIndex) => `
-          <div class="p-6 bg-white border border-outline-variant rounded-xl shadow-sm space-y-4" id="mcq-${escapeHtml(question.id)}">
+          <div class="mcq-question p-6 bg-white border border-outline-variant rounded-xl shadow-sm space-y-4" data-question-id="${escapeHtml(question.id)}">
             <p class="font-h3 text-lg text-primary italic">${questionIndex + 1}. ${escapeHtml(question.prompt)}</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               ${question.options.map((option, optionIndex) => `
-                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-q="${escapeHtml(question.id)}" data-correct="${optionIndex === question.correct}">
+                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-correct="${optionIndex === question.correct}">
                   ${materialIcon("radio_button_unchecked", "text-outline icon-state text-lg")}
                   <span>${optionLabel(optionIndex)}. ${escapeHtml(option)}</span>
                 </button>
@@ -315,15 +318,15 @@ function renderDragDrop(section) {
         ${section.targets.map(target => `
           <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <span class="w-24 text-sm font-bold text-outline uppercase">${escapeHtml(target.label)}</span>
-            <div class="drop-zone flex-grow min-h-[56px] h-auto border-2 border-dashed border-outline-variant rounded-lg bg-surface flex flex-wrap items-center gap-2 p-2" data-match="${escapeHtml(target.id)}"></div>
+            <button type="button" class="drop-zone flex-grow min-h-[56px] h-auto border-2 border-dashed border-outline-variant rounded-lg bg-surface flex flex-wrap items-center gap-2 p-2 text-left" data-match="${escapeHtml(target.id)}" aria-label="Place selected item in ${escapeHtml(target.label)}"></button>
           </div>
         `).join("")}
       </div>
       <div class="flex flex-wrap gap-3 content-start p-4 bg-surface-container-low rounded-lg border border-outline-variant min-h-[400px]" id="draggables-container-${escapeHtml(section.id)}">
         ${section.items.map(item => `
-          <div id="${escapeHtml(item.id)}" draggable="true" data-match="${escapeHtml(item.match)}" class="drag-item px-3 py-1.5 text-sm bg-white border border-primary text-primary rounded-full cursor-grab active:scale-95 shadow-sm transition-colors">
+          <button type="button" draggable="true" data-match="${escapeHtml(item.match)}" class="drag-item px-3 py-1.5 text-sm bg-white border border-primary text-primary rounded-full cursor-grab active:scale-95 shadow-sm transition-colors" aria-pressed="false">
             ${escapeHtml(item.text)}
-          </div>
+          </button>
         `).join("")}
       </div>
     </div>
@@ -383,6 +386,9 @@ function renderReading(section) {
 }
 
 function renderWriting(section) {
+  const draftKey = `${section.lesson?.id || "lesson"}:${section.id}`;
+  const savedDraft = getWritingDraft(draftKey);
+  const initialWords = countWords(savedDraft);
   return `
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter">
       <div class="lg:col-span-7 flex flex-col gap-6 md:gap-section-gap">
@@ -401,12 +407,13 @@ function renderWriting(section) {
         <div class="flex flex-col gap-2 md:gap-4">
           <div class="flex justify-between items-end">
             <label class="font-label-caps text-[10px] md:text-xs text-primary uppercase tracking-widest">Your Response</label>
-            <span class="text-[10px] md:text-xs text-outline font-label-caps">Word Count: <span class="word-counter font-bold text-primary">0</span> / ${section.prompt.maxWords}</span>
+            <span class="text-[10px] md:text-xs text-outline font-label-caps">Word Count: <span class="word-counter font-bold text-primary">${initialWords}</span> / ${section.prompt.maxWords} <span class="min-words">(min. ${section.prompt.minWords})</span></span>
           </div>
           <div class="relative">
-            <textarea class="writing-input-text w-full p-4 md:p-6 font-body-md text-sm md:text-base border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary bg-white resize-none outline-none shadow-inner" data-max-words="${section.prompt.maxWords}" placeholder="${escapeHtml(section.prompt.placeholder)}" rows="8"></textarea>
+            <textarea class="writing-input-text w-full p-4 md:p-6 font-body-md text-sm md:text-base border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary bg-white resize-none outline-none shadow-inner" data-max-words="${section.prompt.maxWords}" data-min-words="${section.prompt.minWords}" data-draft-key="${escapeHtml(draftKey)}" placeholder="${escapeHtml(section.prompt.placeholder)}" rows="8">${escapeHtml(savedDraft)}</textarea>
             <div class="absolute bottom-4 right-4 opacity-20 pointer-events-none">${materialIcon("edit_note", "text-2xl md:text-4xl")}</div>
           </div>
+          <p class="draft-status text-xs text-outline" aria-live="polite">${savedDraft ? "Draft restored from this browser." : "Draft saves automatically on this browser."}</p>
         </div>
         ${section.prompt.referenceAnswer ? `
           <details class="bg-surface-container-low border border-primary-container p-6 rounded-xl">
@@ -430,6 +437,45 @@ function renderWriting(section) {
   `;
 }
 
+function countWords(value) {
+  return String(value || "").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function getWritingDraft(draftKey) {
+  try {
+    return localStorage.getItem(`aptis_draft_${draftKey}`) || "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function saveWritingDraft(draftKey, value) {
+  try {
+    localStorage.setItem(`aptis_draft_${draftKey}`, value);
+    if (state.user) void syncDraft(draftKey, value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function renderLessonCompletionPanel(lesson) {
+  if (!lesson) return "";
+  const completed = isLessonCompleted(lesson.id);
+  return `
+    <section class="mt-8 border border-outline-variant rounded-xl bg-surface-container-low p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <p class="font-label-caps text-label-caps text-secondary uppercase">Lesson progress</p>
+        <p class="font-body-md text-on-surface-variant mt-1">Mark this lesson complete when you have finished its practice tasks.</p>
+      </div>
+      <button data-complete-lesson="${escapeHtml(lesson.id)}" class="flex shrink-0 items-center justify-center gap-3 font-bold py-3 px-6 rounded-lg shadow-md transition-all ${completed ? "bg-green-600 text-white" : "bg-secondary-container text-on-secondary-container hover:bg-secondary hover:text-white"}">
+        ${materialIcon(completed ? "task_alt" : "flag", "text-xl")}
+        <span class="complete-label uppercase">${completed ? "Lesson Completed" : "Mark as Completed"}</span>
+      </button>
+    </section>
+  `;
+}
+
 function isLessonCompleted(lessonId) {
   try {
     return localStorage.getItem(`aptis_completed_${lessonId}`) === "1";
@@ -448,6 +494,56 @@ function setLessonCompleted(lessonId, completed) {
   } catch (e) {
     // ignore storage errors
   }
+  if (state.user) void syncLessonProgress(lessonId, completed);
+}
+
+async function getCsrf() {
+  if (state.csrf) return state.csrf;
+  const response = await fetch("/api/auth/csrf", { credentials: "same-origin" });
+  if (!response.ok) throw new Error("Could not start a secure session.");
+  state.csrf = await response.json();
+  return state.csrf;
+}
+
+async function apiWrite(path, method, body) {
+  const csrf = await getCsrf();
+  const response = await fetch(path, { method, credentials: "same-origin", headers: { "Content-Type": "application/json", [csrf.headerName]: csrf.token }, body: JSON.stringify(body) });
+  if (!response.ok) throw new Error(`Request failed (${response.status})`);
+  return response.status === 204 ? null : response.json();
+}
+
+async function syncLessonProgress(lessonId, completed) {
+  const section = state.sections[state.currentSlide - 1];
+  const lastSlide = section?.lesson?.id === lessonId ? section.sectionIndex + 1 : 1;
+  try { await apiWrite(`/api/progress/lessons/${encodeURIComponent(lessonId)}`, "PUT", { lastSlide, completed }); } catch (e) { /* local storage remains the offline fallback */ }
+}
+
+async function syncDraft(draftKey, content) {
+  const [lessonId, sectionId] = draftKey.split(":");
+  if (!lessonId || !sectionId) return;
+  try { await apiWrite("/api/progress/drafts", "PUT", { lessonId, sectionId, content }); } catch (e) { /* local draft remains available */ }
+}
+
+function updateAuthButton() {
+  const button = document.getElementById("auth-button");
+  if (!button) return;
+  button.textContent = state.user ? state.user.displayName : "Log in";
+  button.href = state.user?.role === "ADMIN" ? "admin.html" : state.user ? "english.html" : "login.html";
+}
+
+async function restoreAccountState() {
+  try {
+    const response = await fetch("/api/auth/me", { credentials: "same-origin" });
+    if (!response.ok) return;
+    state.user = await response.json();
+    const [progressResponse, draftsResponse] = await Promise.all([fetch("/api/progress", { credentials: "same-origin" }), fetch("/api/progress/drafts", { credentials: "same-origin" })]);
+    if (progressResponse.ok) for (const item of await progressResponse.json()) if (item.completed) localStorage.setItem(`aptis_completed_${item.lessonId}`, "1");
+    if (draftsResponse.ok) for (const item of await draftsResponse.json()) localStorage.setItem(`aptis_draft_${item.lessonId}:${item.sectionId}`, item.content);
+  } catch (e) { /* Backend is optional until it is deployed. */ }
+}
+
+function bindAuth() {
+  // Authentication happens on login.html so browser password managers and iOS autofill work reliably.
 }
 
 function renderNextStepCard(nextStep) {
@@ -508,11 +604,11 @@ function renderCheckpoint(section) {
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       <div class="lg:col-span-8 space-y-6 mcq-group" data-count="${section.questions.length}">
         ${section.questions.map((question, questionIndex) => `
-          <div class="p-6 bg-white border border-outline-variant rounded-xl shadow-sm space-y-4" id="mcq-${escapeHtml(question.id)}">
+          <div class="mcq-question p-6 bg-white border border-outline-variant rounded-xl shadow-sm space-y-4" data-question-id="${escapeHtml(question.id)}">
             <p class="font-h3 text-lg text-primary italic">${questionIndex + 1}. ${escapeHtml(question.prompt)}</p>
             <div class="grid grid-cols-1 gap-3">
               ${question.options.map((option, optionIndex) => `
-                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-q="${escapeHtml(question.id)}" data-correct="${optionIndex === question.correct}">
+                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-correct="${optionIndex === question.correct}">
                   ${materialIcon("radio_button_unchecked", "text-outline icon-state text-lg")}
                   <span>${optionLabel(optionIndex)}. ${escapeHtml(option)}</span>
                 </button>
@@ -556,6 +652,7 @@ function renderSection(section, index) {
   return `
     <section id="slide-${index + 1}" class="slide-section ${index === 0 ? "active" : ""} w-full" data-section-id="${escapeHtml(section.id)}" data-section-type="${escapeHtml(section.type)}" data-nav="${escapeHtml(section.nav)}">
       ${renderers[section.type](section)}
+      ${section.sectionIndex === section.lesson.sections.length - 1 && section.type !== "checkpoint" ? renderLessonCompletionPanel(section.lesson) : ""}
     </section>
   `;
 }
@@ -694,7 +791,7 @@ function bindLessonEvents() {
   });
 
   document.querySelectorAll(".mcq-option").forEach(button => {
-    button.addEventListener("click", () => selectMCQ(button, button.dataset.q));
+    button.addEventListener("click", () => selectMCQ(button));
   });
 
   document.querySelectorAll(".btn-check-all-mcq").forEach(button => {
@@ -736,6 +833,18 @@ function bindLessonEvents() {
 function bindDragDrop() {
   // Global drag handlers for any draggable item
   document.querySelectorAll(".drag-item").forEach(item => {
+    item.addEventListener("click", function () {
+      const previous = state.selectedMatchItem;
+      if (previous && previous !== this) {
+        previous.classList.remove("ring-2", "ring-secondary", "bg-secondary-container/20");
+        previous.setAttribute("aria-pressed", "false");
+      }
+      state.selectedMatchItem = previous === this ? null : this;
+      this.classList.toggle("ring-2", state.selectedMatchItem === this);
+      this.classList.toggle("ring-secondary", state.selectedMatchItem === this);
+      this.classList.toggle("bg-secondary-container/20", state.selectedMatchItem === this);
+      this.setAttribute("aria-pressed", String(state.selectedMatchItem === this));
+    });
     item.addEventListener("dragstart", function () {
       state.draggedItem = this;
       setTimeout(() => {
@@ -760,6 +869,15 @@ function bindDragDrop() {
       this.appendChild(state.draggedItem);
       this.classList.remove("border-dashed");
       this.classList.add("border-solid", "border-primary");
+    });
+    zone.addEventListener("click", function () {
+      if (!state.selectedMatchItem) return;
+      this.appendChild(state.selectedMatchItem);
+      this.classList.remove("border-dashed");
+      this.classList.add("border-solid", "border-primary");
+      state.selectedMatchItem.classList.remove("ring-2", "ring-secondary", "bg-secondary-container/20");
+      state.selectedMatchItem.setAttribute("aria-pressed", "false");
+      state.selectedMatchItem = null;
     });
   });
 
@@ -790,6 +908,12 @@ function bindWritingCounter() {
       } else {
         counter.classList.remove("text-error");
         counter.classList.add("text-primary");
+      }
+      const status = this.closest(".slide-section")?.querySelector(".draft-status");
+      if (this.dataset.draftKey && saveWritingDraft(this.dataset.draftKey, this.value)) {
+        if (status) status.textContent = "Draft saved.";
+      } else if (status) {
+        status.textContent = "Draft could not be saved in this browser.";
       }
     });
   });
@@ -1038,8 +1162,8 @@ function renderWelcome() {
   }
 }
 
-function selectMCQ(btn, qId) {
-  const container = document.getElementById(`mcq-${qId}`);
+function selectMCQ(btn) {
+  const container = btn.closest(".mcq-question");
   if (!container) return;
   container.classList.remove("answered");
 
@@ -1071,8 +1195,8 @@ function selectMCQ(btn, qId) {
   btn.querySelectorAll("span").forEach(span => span.classList.add("font-bold", "text-primary"));
 
   const currentSection = document.querySelector(".slide-section.active");
-  const unanswered = currentSection?.querySelectorAll(".p-6[id^='mcq-']:not(.answered)") || [];
-  const allAnswered = Array.from(currentSection?.querySelectorAll("[id^='mcq-']") || []).every(question => question.querySelector(".mcq-option[data-selected='true']"));
+  const unanswered = currentSection?.querySelectorAll(".mcq-question:not(.answered)") || [];
+  const allAnswered = Array.from(currentSection?.querySelectorAll(".mcq-question") || []).every(question => question.querySelector(".mcq-option[data-selected='true']"));
   const checkAllButton = currentSection?.querySelector(".btn-check-all-mcq");
   if (checkAllButton && allAnswered && unanswered.length) {
     checkAllButton.disabled = false;
@@ -1082,8 +1206,7 @@ function selectMCQ(btn, qId) {
   }
 }
 
-function checkMCQ(qId) {
-  const container = document.getElementById(`mcq-${qId}`);
+function checkMCQ(container) {
   if (!container) return;
   container.classList.add("answered");
 
@@ -1122,8 +1245,8 @@ function checkMCQ(qId) {
 
 function checkAllMCQ() {
   const currentSection = document.querySelector(".slide-section.active");
-  currentSection?.querySelectorAll("[id^='mcq-']").forEach(container => {
-    checkMCQ(container.id.replace("mcq-", ""));
+  currentSection?.querySelectorAll(".mcq-question").forEach(container => {
+    checkMCQ(container);
   });
 
   const button = currentSection?.querySelector(".btn-check-all-mcq");
@@ -1251,7 +1374,9 @@ async function loadLesson() {
       if (!response.ok) throw new Error(`Unable to load ${url}`);
       return response.json();
     }));
+    await restoreAccountState();
     renderDeck(lessons);
+    updateAuthButton();
     // Show welcome screen; user picks a module (or continues) from there
     renderWelcome();
   } catch (error) {
@@ -1280,7 +1405,7 @@ async function loadLesson() {
   }
 })();
 
-document.addEventListener("DOMContentLoaded", loadLesson);
+document.addEventListener("DOMContentLoaded", () => { bindAuth(); loadLesson(); });
 
 window.speakText = speakText;
 window.updateUI = updateUI;

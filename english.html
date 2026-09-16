@@ -406,6 +406,7 @@
           >
         </nav>
         <div class="flex items-center gap-1 border-l pl-2 md:pl-4 border-gray-200 dark:border-slate-700">
+          <a id="auth-button" href="login.html" class="px-3 py-2 text-sm font-semibold rounded-full text-indigo-900 hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10">Log in</a>
           <a
             href="https://hoangdm.com"
             class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
@@ -496,6 +497,16 @@
         </div>
         <div id="modules-list" class="flex flex-col gap-4"></div>
       </div>
+    </div>
+
+    <div id="auth-modal" class="fixed inset-0 hidden z-[120] bg-black/50 p-4 items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <form id="login-form" class="w-full max-w-sm rounded-xl bg-white p-6 shadow-2xl space-y-4">
+        <div class="flex items-start justify-between gap-4"><div><h2 id="auth-title" class="font-h2 text-2xl text-primary">Welcome back</h2><p class="text-sm text-outline mt-1">Use the account created by your teacher.</p></div><button id="auth-close" type="button" class="text-outline hover:text-error"><span class="material-symbols-outlined">close</span></button></div>
+        <label class="block text-sm font-semibold text-primary">Email<input id="login-email" type="email" required autocomplete="email" class="mt-1 block w-full rounded border border-outline-variant p-3" /></label>
+        <label class="block text-sm font-semibold text-primary">Password<input id="login-password" type="password" required autocomplete="current-password" class="mt-1 block w-full rounded border border-outline-variant p-3" /></label>
+        <p id="login-error" class="hidden text-sm text-error" role="alert"></p>
+        <button class="w-full rounded bg-primary py-3 font-bold text-white hover:bg-primary-container" type="submit">Log in</button>
+      </form>
     </div>
 
     <!-- Welcome screen -->

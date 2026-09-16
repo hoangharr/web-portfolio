@@ -1,5 +1,5 @@
 // Bump this version on every deploy to bust the old cache
-const APP_VERSION = 'v2';
+const APP_VERSION = 'v3';
 const CACHE_NAME = `aptis-shell-${APP_VERSION}`;
 
 const SHELL_FILES = [
@@ -40,6 +40,12 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
+
+  // User data and future authenticated endpoints must never be stored offline.
+  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/auth/')) {
+    event.respondWith(fetch(request));
+    return;
+  }
 
   // Network-first for JSON data requests (/data/ or /topics/)
   if (

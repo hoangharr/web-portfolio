@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/aptis}
+    username: ${DATABASE_USERNAME:aptis}
+    password: ${DATABASE_PASSWORD:aptis}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+server:
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: ${SESSION_COOKIE_SECURE:false}
+aptis:
+  bootstrap-admin:
+    email: ${APTIS_BOOTSTRAP_ADMIN_EMAIL:}
+    password: ${APTIS_BOOTSTRAP_ADMIN_PASSWORD:}
