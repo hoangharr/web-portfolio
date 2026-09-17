@@ -20,3 +20,6 @@ aptis:
   bootstrap-admin:
     email: ${APTIS_BOOTSTRAP_ADMIN_EMAIL:}
     password: ${APTIS_BOOTSTRAP_ADMIN_PASSWORD:}
+  remember-device:
+    days: ${REMEMBER_DEVICE_DAYS:30}
+    secure-cookie: ${SESSION_COOKIE_SECURE:false}

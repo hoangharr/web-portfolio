@@ -1,0 +1,18 @@
+[Unit]
+Description=Web Portfolio APTIS API
+After=network.target postgresql.service
+Requires=postgresql.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/web-portfolio/server
+EnvironmentFile=/home/ubuntu/web-portfolio/.env
+ExecStart=/usr/bin/java -jar /home/ubuntu/web-portfolio/server/target/aptis-api-0.1.0.jar
+Restart=on-failure
+RestartSec=5
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

@@ -526,9 +526,11 @@ async function syncDraft(draftKey, content) {
 
 function updateAuthButton() {
   const button = document.getElementById("auth-button");
+  const logoutButton = document.getElementById("logout-button");
   if (!button) return;
   button.textContent = state.user ? state.user.displayName : "Log in";
   button.href = state.user?.role === "ADMIN" ? "admin.html" : state.user ? "english.html" : "login.html";
+  if (logoutButton) logoutButton.hidden = !state.user;
 }
 
 async function restoreAccountState() {
@@ -542,8 +544,21 @@ async function restoreAccountState() {
   } catch (e) { /* Backend is optional until it is deployed. */ }
 }
 
+async function logout() {
+  try {
+    const csrf = await getCsrf();
+    await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin", headers: { [csrf.headerName]: csrf.token } });
+  } finally {
+    state.user = null;
+    state.csrf = null;
+    window.location.assign("login.html");
+  }
+}
+
 function bindAuth() {
-  // Authentication happens on login.html so browser password managers and iOS autofill work reliably.
+  const logoutButton = document.getElementById("logout-button");
+  if (!logoutButton) return;
+  logoutButton.addEventListener("click", () => { void logout(); });
 }
 
 function renderNextStepCard(nextStep) {
@@ -1004,7 +1019,14 @@ function updateNav(section) {
   });
 }
 
+function requireAccount() {
+  if (state.user) return true;
+  window.location.assign("login.html");
+  return false;
+}
+
 function changeSlide(direction) {
+  if (!requireAccount()) return;
   const newSlide = state.currentSlide + direction;
   if (newSlide >= 1 && newSlide <= state.totalSlides) {
     state.currentSlide = newSlide;
@@ -1020,6 +1042,7 @@ function changeSlide(direction) {
 
 
 function goToSlide(slideNum) {
+  if (!requireAccount()) return;
   if (slideNum >= 1 && slideNum <= state.totalSlides) {
     state.currentSlide = slideNum;
     updateUI();
@@ -1064,6 +1087,7 @@ function hideWelcome() {
 }
 
 function startFromWelcome(slideNum) {
+  if (!requireAccount()) return;
   hideWelcome();
   goToSlide(slideNum);
 }
@@ -1111,8 +1135,15 @@ function renderWelcome() {
     // ignore
   }
 
+  const welcomeSubtitle = state.user ? "Select a module to start learning" : "Log in to access your lessons and save your progress.";
+
   content.innerHTML = `
-    <div class="flex justify-end gap-1 mb-2">
+    <div class="flex items-center justify-between gap-3 mb-2">
+      <div class="flex items-center gap-2">
+        <button id="welcome-logout-button" type="button" hidden class="order-2 px-4 py-2 rounded-full border border-primary text-primary dark:border-amber-400 dark:text-amber-400 text-sm font-bold hover:bg-primary/5 dark:hover:bg-white/10 transition-colors">Log out</button>
+        ${state.user ? `<span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-bold tracking-wide text-primary shadow-sm dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-300">${escapeHtml(state.user.displayName)}</span>` : `<a href="login.html" class="px-4 py-2 rounded-full bg-primary dark:bg-indigo-900 text-on-primary dark:text-amber-400 text-sm font-bold hover:bg-primary-container dark:hover:bg-indigo-800 transition-colors">Log in</a>`}
+      </div>
+      <div class="flex items-center gap-1">
       <a
         href="https://hoangdm.com"
         class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
@@ -1127,6 +1158,7 @@ function renderWelcome() {
       >
         <span id="welcome-theme-icon" class="material-symbols-outlined">light_mode</span>
       </button>
+      </div>
     </div>
     <div class="text-center mb-8">
       <span class="inline-flex w-16 h-16 rounded-full bg-primary-container dark:bg-indigo-900 items-center justify-center mb-4">
@@ -1134,7 +1166,7 @@ function renderWelcome() {
       </span>
       <h1 class="font-h1 text-3xl md:text-4xl text-primary dark:text-slate-100 mb-2">English Academic Deck</h1>
       <div class="w-16 h-1 bg-secondary-container mx-auto mb-4"></div>
-      <p class="font-body-md text-on-surface-variant dark:text-slate-400">Select a module to start learning</p>
+      <p class="font-body-md text-on-surface-variant dark:text-slate-400">${welcomeSubtitle}</p>
     </div>
     ${saved ? `
       <button data-welcome-continue="${saved}" class="flex items-center justify-center gap-2 w-full p-4 mb-4 rounded-xl bg-primary dark:bg-indigo-900 text-on-primary dark:text-amber-400 font-bold hover:bg-primary-container dark:hover:bg-indigo-800 transition-all active:scale-[0.98]">
@@ -1151,6 +1183,11 @@ function renderWelcome() {
   const continueBtn = content.querySelector("[data-welcome-continue]");
   if (continueBtn) {
     continueBtn.addEventListener("click", () => startFromWelcome(Number(continueBtn.dataset.welcomeContinue)));
+  }
+  const welcomeLogout = content.querySelector("#welcome-logout-button");
+  if (welcomeLogout) {
+    welcomeLogout.hidden = !state.user;
+    welcomeLogout.addEventListener("click", () => { void logout(); });
   }
 
   screen.classList.remove("hidden");
