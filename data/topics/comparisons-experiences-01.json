@@ -1,0 +1,298 @@
+{
+  "id": "comparisons-experiences-01",
+  "title": "Comparisons & Life Experiences",
+  "level": "A2",
+  "subtitle": "A2 Core Path · Compare choices and talk about experiences up to the present.",
+  "themeIcon": "compare_arrows",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A2 Core Path",
+      "title": "Comparisons & Life Experiences · Level A2",
+      "quote": "Compare choices and talk about experiences up to the present.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for comparisons & life experiences."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Connect concrete A2 descriptions with the longer explanations expected at B1."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
+        "alt": "Comparisons & Life Experiences"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "A2 LEARNING PATH",
+        "text": "Connect concrete A2 descriptions with the longer explanations expected at B1."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "experience",
+          "definition": "Travelling alone was a useful experience.",
+          "translation": "trải nghiệm",
+          "icon": "explore",
+          "category": "Comparisons & Life Experiences",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "similar",
+          "definition": "The two courses are similar.",
+          "translation": "tương tự",
+          "icon": "join",
+          "category": "Comparisons & Life Experiences",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "different",
+          "definition": "My new job is very different.",
+          "translation": "khác biệt",
+          "icon": "difference",
+          "category": "Comparisons & Life Experiences",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "crowded",
+          "definition": "The city centre is crowded at noon.",
+          "translation": "đông đúc",
+          "icon": "groups",
+          "category": "Comparisons & Life Experiences",
+          "variant": "highlight"
+        },
+        {
+          "term": "peaceful",
+          "definition": "The village is quiet and peaceful.",
+          "translation": "yên bình",
+          "icon": "spa",
+          "category": "Comparisons & Life Experiences",
+          "variant": "default"
+        },
+        {
+          "term": "convenient",
+          "definition": "Online booking is convenient.",
+          "translation": "thuận tiện",
+          "icon": "devices",
+          "category": "Comparisons & Life Experiences",
+          "variant": "default"
+        },
+        {
+          "term": "ever",
+          "definition": "Have you ever tried skiing?",
+          "translation": "đã từng",
+          "icon": "history",
+          "category": "Comparisons & Life Experiences",
+          "variant": "default"
+        },
+        {
+          "term": "recently",
+          "definition": "I have recently started yoga.",
+          "translation": "gần đây",
+          "icon": "update",
+          "category": "Comparisons & Life Experiences",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this A2 module to the next stage.",
+      "points": [
+        {
+          "title": "Comparatives",
+          "icon": "schema",
+          "function": "Use -er or more to compare two things.",
+          "examples": [
+            "The train is faster than the bus.",
+            "This app is more convenient."
+          ]
+        },
+        {
+          "title": "Superlatives",
+          "icon": "schema",
+          "function": "Use the ...-est or the most for one item in a group.",
+          "examples": [
+            "It is the cheapest option.",
+            "That was the most exciting trip."
+          ]
+        },
+        {
+          "title": "Present perfect: experience",
+          "icon": "schema",
+          "function": "Use have/has + past participle with ever, never and recently.",
+          "examples": [
+            "Have you ever been abroad?",
+            "I have never flown alone.",
+            "She has recently moved."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "This route is ___ than the old one.",
+          "options": [
+            "short",
+            "shorter",
+            "shortest",
+            "more short"
+          ],
+          "correct": 1,
+          "explanation": "Use shorter than to compare two routes."
+        },
+        {
+          "id": "q2",
+          "prompt": "It is ___ restaurant in town.",
+          "options": [
+            "the most popular",
+            "more popular",
+            "popular than",
+            "most popular"
+          ],
+          "correct": 0,
+          "explanation": "Use the most popular for the superlative."
+        },
+        {
+          "id": "q3",
+          "prompt": "Have you ever ___ sushi?",
+          "options": [
+            "eat",
+            "ate",
+            "eaten",
+            "eating"
+          ],
+          "correct": 2,
+          "explanation": "Present perfect needs the past participle eaten."
+        },
+        {
+          "id": "q4",
+          "prompt": "I have ___ visited Canada.",
+          "options": [
+            "ever",
+            "never",
+            "ago",
+            "last"
+          ],
+          "correct": 1,
+          "explanation": "Never describes an experience that has not happened."
+        },
+        {
+          "id": "q5",
+          "prompt": "The village is quieter ___ the city.",
+          "options": [
+            "that",
+            "then",
+            "than",
+            "as"
+          ],
+          "correct": 2,
+          "explanation": "Comparatives use than."
+        },
+        {
+          "id": "q6",
+          "prompt": "She ___ recently started a new course.",
+          "options": [
+            "have",
+            "has",
+            "did",
+            "is"
+          ],
+          "correct": 1,
+          "explanation": "She takes has in the present perfect."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "Compare your town with another place.",
+        "What is the best trip you have ever taken?",
+        "What new thing have you tried recently?"
+      ],
+      "sampleAnswer": "My town is quieter than Hanoi, but Hanoi is more convenient. The best place I have ever visited is Da Nang because the beaches are beautiful.",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Recommend one of two places to a visitor.",
+      "prompt": {
+        "situation": "Compare transport, atmosphere and price, then mention your own experience.",
+        "placeholder": "Write your answer here...",
+        "minWords": 70,
+        "maxWords": 110,
+        "referenceAnswer": "My town is quieter than Hanoi, but Hanoi is more convenient. The best place I have ever visited is Da Nang because the beaches are beautiful.",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "id": "advice-conditionals-01",
+  "title": "Advice, Rules & Conditionals",
+  "level": "B1",
+  "subtitle": "B1 Core Path · Give nuanced advice, explain obligations, and discuss real or imagined results.",
+  "themeIcon": "signpost",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "B1 Core Path",
+      "title": "Advice, Rules & Conditionals · Level B1",
+      "quote": "Give nuanced advice, explain obligations, and discuss real or imagined results.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for advice, rules & conditionals."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Develop the control of modal verbs and conditionals needed for B2 discussion tasks."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
+        "alt": "Advice, Rules & Conditionals"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "B1 LEARNING PATH",
+        "text": "Develop the control of modal verbs and conditionals needed for B2 discussion tasks."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "recommend",
+          "definition": "I recommend taking regular breaks.",
+          "translation": "khuyên / đề xuất",
+          "icon": "recommend",
+          "category": "Advice, Rules & Conditionals",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "avoid",
+          "definition": "Try to avoid checking your phone.",
+          "translation": "tránh",
+          "icon": "block",
+          "category": "Advice, Rules & Conditionals",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "requirement",
+          "definition": "A passport is a basic requirement.",
+          "translation": "yêu cầu",
+          "icon": "rule",
+          "category": "Advice, Rules & Conditionals",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "permission",
+          "definition": "You need permission to enter.",
+          "translation": "sự cho phép",
+          "icon": "verified_user",
+          "category": "Advice, Rules & Conditionals",
+          "variant": "highlight"
+        },
+        {
+          "term": "consequence",
+          "definition": "Every decision has a consequence.",
+          "translation": "hậu quả",
+          "icon": "conversion_path",
+          "category": "Advice, Rules & Conditionals",
+          "variant": "default"
+        },
+        {
+          "term": "unless",
+          "definition": "You cannot improve unless you practise.",
+          "translation": "trừ khi",
+          "icon": "alt_route",
+          "category": "Advice, Rules & Conditionals",
+          "variant": "default"
+        },
+        {
+          "term": "in case",
+          "definition": "Take a charger in case the battery dies.",
+          "translation": "phòng khi",
+          "icon": "battery_alert",
+          "category": "Advice, Rules & Conditionals",
+          "variant": "default"
+        },
+        {
+          "term": "responsible for",
+          "definition": "You are responsible for your own work.",
+          "translation": "chịu trách nhiệm về",
+          "icon": "assignment_ind",
+          "category": "Advice, Rules & Conditionals",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this B1 module to the next stage.",
+      "points": [
+        {
+          "title": "Advice and obligation",
+          "icon": "schema",
+          "function": "Use should for advice, must for strong rules, and have to for external requirements.",
+          "examples": [
+            "You should rest.",
+            "You must wear a helmet.",
+            "I have to submit this today."
+          ]
+        },
+        {
+          "title": "First conditional",
+          "icon": "schema",
+          "function": "Use if + present, will + verb for a likely future result.",
+          "examples": [
+            "If you leave now, you will arrive on time.",
+            "Unless you hurry, you will miss it."
+          ]
+        },
+        {
+          "title": "Second conditional",
+          "icon": "schema",
+          "function": "Use if + past, would + verb for an imaginary situation.",
+          "examples": [
+            "If I had more time, I would exercise more.",
+            "What would you do if you lost your phone?"
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "You ___ see a doctor if the pain continues.",
+          "options": [
+            "should",
+            "would",
+            "might to",
+            "had"
+          ],
+          "correct": 0,
+          "explanation": "Should gives advice."
+        },
+        {
+          "id": "q2",
+          "prompt": "Employees ___ wear an ID card; it is company policy.",
+          "options": [
+            "could",
+            "have to",
+            "would",
+            "should have"
+          ],
+          "correct": 1,
+          "explanation": "Have to expresses an external rule."
+        },
+        {
+          "id": "q3",
+          "prompt": "If it rains, we ___ the event indoors.",
+          "options": [
+            "move",
+            "moved",
+            "will move",
+            "would moved"
+          ],
+          "correct": 2,
+          "explanation": "First conditional uses will in the result."
+        },
+        {
+          "id": "q4",
+          "prompt": "Unless you ___ now, you will be late.",
+          "options": [
+            "left",
+            "leave",
+            "will leave",
+            "would leave"
+          ],
+          "correct": 1,
+          "explanation": "After unless, use the present simple."
+        },
+        {
+          "id": "q5",
+          "prompt": "If I knew the answer, I ___ tell you.",
+          "options": [
+            "will",
+            "would",
+            "must",
+            "am"
+          ],
+          "correct": 1,
+          "explanation": "Second conditional uses would + verb."
+        },
+        {
+          "id": "q6",
+          "prompt": "Take some cash ___ the card machine is broken.",
+          "options": [
+            "unless",
+            "in case",
+            "although",
+            "because of"
+          ],
+          "correct": 1,
+          "explanation": "In case prepares for a possible problem."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "What advice would you give a stressed student?",
+        "What rules are important at work or school?",
+        "What would you change if you had more free time?"
+      ],
+      "sampleAnswer": "A stressed student should make a simple study plan and take regular breaks. If they sleep well, they will concentrate better. I would also recommend asking for help.",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Reply to a friend who is struggling to study and work at the same time.",
+      "prompt": {
+        "situation": "Give practical advice, explain one obligation, and use both a first and second conditional.",
+        "placeholder": "Write your answer here...",
+        "minWords": 100,
+        "maxWords": 150,
+        "referenceAnswer": "A stressed student should make a simple study plan and take regular breaks. If they sleep well, they will concentrate better. I would also recommend asking for help.",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}

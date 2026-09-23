@@ -1,15 +1,43 @@
 {
   "tracks": [
     {
-      "id": "starter",
-      "label": "Starter Path (A1-A2)",
+      "id": "a1",
+      "level": "A1",
+      "label": "A1 · Beginner",
+      "description": "Build accurate sentences for familiar people, routines and everyday needs.",
       "lessons": [
-        "data/topics/daily-life-personal-info-01.json"
+        "data/topics/daily-life-personal-info-01.json",
+        "data/topics/family-home-01.json",
+        "data/topics/food-shopping-01.json"
+      ]
+    },
+    {
+      "id": "a2",
+      "level": "A2",
+      "label": "A2 · Elementary",
+      "description": "Talk about past events, future plans, choices and personal experiences.",
+      "lessons": [
+        "data/topics/past-events-01.json",
+        "data/topics/future-plans-01.json",
+        "data/topics/comparisons-experiences-01.json"
+      ]
+    },
+    {
+      "id": "b1",
+      "level": "B1",
+      "label": "B1 · Intermediate",
+      "description": "Connect ideas, tell structured stories and support opinions with reasons.",
+      "lessons": [
+        "data/topics/storytelling-sequencing-01.json",
+        "data/topics/advice-conditionals-01.json",
+        "data/topics/opinions-media-society-01.json"
       ]
     },
     {
       "id": "b2",
-      "label": "B2 Aptis Modules",
+      "level": "B2",
+      "label": "B2 · Upper-intermediate",
+      "description": "Apply broader vocabulary and precise language to Aptis-style topics.",
       "lessons": [
         "data/topics/work-career-01.json",
         "data/topics/education-lifelong-learning-01.json",

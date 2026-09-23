@@ -1,4 +1,4 @@
-const CURRICULUM_URL = "data/curriculum.json";
+const CURRICULUM_URL = "/data/curriculum.json?v=2";
 const LEARNING_QUOTES = ["Small progress each day adds up to big results.", "Learning never exhausts the mind.", "The expert in anything was once a beginner.", "Study a little today, understand a lot tomorrow.", "Every new word is another way to see the world."];
 
 const state = {
@@ -929,7 +929,7 @@ function renderModulesMenu() {
         <button data-module-slide="${start}" class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all text-left">
           ${materialIcon(lesson.themeIcon, "text-primary text-3xl")}
           <div class="flex-grow">
-            <p class="font-bold text-primary text-base">Module ${globalIndex}</p>
+            <p class="font-bold text-primary text-base">${escapeHtml(track.level || track.id.toUpperCase())} · Module ${i + 1}</p>
             <p class="text-sm text-on-surface-variant">${escapeHtml(lesson.title)}</p>
           </div>
           ${completed ? materialIcon("check_circle", "text-green-600") : ""}
@@ -1291,34 +1291,36 @@ function renderWelcome() {
 
   let slideStart = 1;
   let moduleIndex = 0;
-  const cards = [];
+  const levelGroups = [];
   const tracks = state.tracks && state.tracks.length
     ? state.tracks
-    : [{ id: "all", label: "Modules", lessons: state.lessons.map(() => "") }];
+    : [{ id: "all", level: "ALL", label: "Modules", lessons: state.lessons.map(() => "") }];
 
   tracks.forEach(track => {
-    track.lessons.forEach(() => {
+    const level = track.level || track.id.toUpperCase();
+    const groupCards = [];
+    track.lessons.forEach((unused, trackModuleIndex) => {
       const lesson = state.lessons[moduleIndex];
       if (!lesson) return;
       const start = slideStart;
       slideStart += lesson.sections.length;
       moduleIndex += 1;
       const progress = moduleProgress(lesson);
-      cards.push(`
+      groupCards.push(`
         <button data-welcome-slide="${start}" class="group flex items-center gap-4 w-full p-4 rounded-xl bg-surface-container-low dark:bg-slate-800 border border-outline-variant dark:border-slate-700 hover:border-primary dark:hover:border-amber-400 hover:bg-primary/5 transition-all text-left active:scale-[0.98]">
           <span class="w-11 h-11 shrink-0 rounded-full bg-primary-container dark:bg-indigo-900 flex items-center justify-center">
             ${materialIcon(lesson.themeIcon, "text-on-primary dark:text-amber-400 text-2xl")}
           </span>
-          <span class="flex-grow">
-            <span class="block font-label-caps text-label-caps text-secondary dark:text-amber-400 uppercase tracking-widest mb-0.5">Module ${moduleIndex}</span>
+          <span class="min-w-0 flex-grow">
+            <span class="block font-label-caps text-label-caps text-secondary dark:text-amber-400 uppercase tracking-widest mb-0.5">${escapeHtml(level)} · Module ${trackModuleIndex + 1}</span>
             <span class="block font-bold text-primary dark:text-slate-100 text-base">${escapeHtml(lesson.title)}</span><span class="mt-2 block h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"><span class="block h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all" style="width: ${progress.percent}%"></span></span><span class="mt-1 block text-xs font-semibold text-outline dark:text-slate-400">${progress.done}/${progress.total} sections · ${progress.percent}%</span>
           </span>
-          ${progress.completed ? materialIcon("check_circle", "text-green-600") : materialIcon("chevron_right", "text-outline group-hover:text-primary dark:group-hover:text-amber-400 transition-colors")}
+          ${progress.completed ? materialIcon("check_circle", "text-green-600 dark:text-emerald-400") : materialIcon("chevron_right", "text-outline group-hover:text-primary dark:group-hover:text-amber-400 transition-colors")}
         </button>
       `);
     });
+    if (groupCards.length) levelGroups.push({ level, label: track.label, description: track.description || "", cards: groupCards });
   });
-
   let saved = null;
   try {
     const key = accountStorageKey("lastSlide", "current");
@@ -1355,7 +1357,20 @@ function renderWelcome() {
         <span>Continue learning</span>
       </button>
     ` : ""}
-    <div class="flex flex-col gap-3">${cards.join("")}</div>
+    <div class="space-y-8">
+      ${levelGroups.map(group => `
+        <section aria-labelledby="level-${escapeHtml(group.level.toLowerCase())}">
+          <div class="mb-3 flex items-start gap-3">
+            <span class="grid h-11 min-w-14 place-items-center rounded-xl bg-primary text-sm font-black tracking-wider text-white shadow-sm dark:bg-amber-300 dark:text-slate-950">${escapeHtml(group.level)}</span>
+            <span class="min-w-0">
+              <h2 id="level-${escapeHtml(group.level.toLowerCase())}" class="font-serif text-lg font-black leading-tight text-primary dark:text-slate-100">${escapeHtml(group.label)}</h2>
+              ${group.description ? `<p class="mt-1 text-sm leading-snug text-on-surface-variant dark:text-slate-400">${escapeHtml(group.description)}</p>` : ""}
+            </span>
+          </div>
+          <div class="flex flex-col gap-3">${group.cards.join("")}</div>
+        </section>
+      `).join("")}
+    </div>
   `;
 
   content.querySelectorAll("[data-welcome-slide]").forEach(button => {

@@ -1,0 +1,300 @@
+{
+  "id": "past-events-01",
+  "title": "Past Events & Memorable Days",
+  "level": "A2",
+  "subtitle": "A2 Core Path · Tell people what happened and ask clear questions about the past.",
+  "themeIcon": "history",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A2 Core Path",
+      "title": "Past Events & Memorable Days · Level A2",
+      "quote": "Tell people what happened and ask clear questions about the past.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for past events & memorable days."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Move from routine language to complete stories about finished events."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
+        "alt": "Past Events & Memorable Days"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "A2 LEARNING PATH",
+        "text": "Move from routine language to complete stories about finished events."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "arrive",
+          "definition": "We arrived before lunch.",
+          "translation": "đến nơi",
+          "icon": "flight_land",
+          "category": "Past Events & Memorable Days",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "decide",
+          "definition": "They decided to walk home.",
+          "translation": "quyết định",
+          "icon": "fork_right",
+          "category": "Past Events & Memorable Days",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "happen",
+          "definition": "What happened yesterday?",
+          "translation": "xảy ra",
+          "icon": "event",
+          "category": "Past Events & Memorable Days",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "invite",
+          "definition": "Lan invited us to her party.",
+          "translation": "mời",
+          "icon": "mail",
+          "category": "Past Events & Memorable Days",
+          "variant": "highlight"
+        },
+        {
+          "term": "miss",
+          "definition": "I missed the last bus.",
+          "translation": "lỡ",
+          "icon": "directions_bus",
+          "category": "Past Events & Memorable Days",
+          "variant": "default"
+        },
+        {
+          "term": "suddenly",
+          "definition": "Suddenly, the lights went out.",
+          "translation": "đột nhiên",
+          "icon": "bolt",
+          "category": "Past Events & Memorable Days",
+          "variant": "default"
+        },
+        {
+          "term": "fortunately",
+          "definition": "Fortunately, nobody was hurt.",
+          "translation": "may mắn thay",
+          "icon": "sentiment_satisfied",
+          "category": "Past Events & Memorable Days",
+          "variant": "default"
+        },
+        {
+          "term": "last weekend",
+          "definition": "We visited Hue last weekend.",
+          "translation": "cuối tuần trước",
+          "icon": "calendar_month",
+          "category": "Past Events & Memorable Days",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this A2 module to the next stage.",
+      "points": [
+        {
+          "title": "Past simple: regular verbs",
+          "icon": "schema",
+          "function": "Add -ed for finished actions; learn spelling changes.",
+          "examples": [
+            "We visited our cousins.",
+            "She studied all evening.",
+            "They stopped near the lake."
+          ]
+        },
+        {
+          "title": "Irregular verbs",
+          "icon": "schema",
+          "function": "Common verbs change form and must be learned.",
+          "examples": [
+            "go → went",
+            "see → saw",
+            "buy → bought"
+          ]
+        },
+        {
+          "title": "Questions and negatives",
+          "icon": "schema",
+          "function": "Use did/didn’t plus the base verb.",
+          "examples": [
+            "Did you enjoy the trip?",
+            "Where did they go?",
+            "I did not see him."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "We ___ to the museum last Saturday.",
+          "options": [
+            "go",
+            "went",
+            "gone",
+            "going"
+          ],
+          "correct": 1,
+          "explanation": "Went is the past form of go."
+        },
+        {
+          "id": "q2",
+          "prompt": "___ you call Mai yesterday?",
+          "options": [
+            "Do",
+            "Were",
+            "Did",
+            "Have"
+          ],
+          "correct": 2,
+          "explanation": "Use Did for a past simple question."
+        },
+        {
+          "id": "q3",
+          "prompt": "She did not ___ the email.",
+          "options": [
+            "received",
+            "receives",
+            "receive",
+            "receiving"
+          ],
+          "correct": 2,
+          "explanation": "After did not, use the base verb."
+        },
+        {
+          "id": "q4",
+          "prompt": "They ___ at the hotel at 9 p.m.",
+          "options": [
+            "arrived",
+            "arrive",
+            "were arrive",
+            "have arrived"
+          ],
+          "correct": 0,
+          "explanation": "Arrived describes a finished past action."
+        },
+        {
+          "id": "q5",
+          "prompt": "I ___ a new bag at the market.",
+          "options": [
+            "buyed",
+            "bought",
+            "buy",
+            "was buy"
+          ],
+          "correct": 1,
+          "explanation": "Bought is the irregular past of buy."
+        },
+        {
+          "id": "q6",
+          "prompt": "___, a stranger helped us find the station.",
+          "options": [
+            "Last",
+            "Fortunately",
+            "Ago",
+            "Yet"
+          ],
+          "correct": 1,
+          "explanation": "Fortunately introduces a positive result."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "What did you do last weekend?",
+        "Describe a memorable day.",
+        "When did something unexpected happen to you?"
+      ],
+      "sampleAnswer": "Last weekend, I visited my grandparents. We cooked lunch and talked for hours. On Sunday, I missed my bus, but fortunately my uncle drove me home.",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Tell a friend about a memorable weekend.",
+      "prompt": {
+        "situation": "Explain where you went, what happened, and how you felt.",
+        "placeholder": "Write your answer here...",
+        "minWords": 60,
+        "maxWords": 100,
+        "referenceAnswer": "Last weekend, I visited my grandparents. We cooked lunch and talked for hours. On Sunday, I missed my bus, but fortunately my uncle drove me home.",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}

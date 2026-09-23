@@ -348,6 +348,7 @@
               "type": "array",
               "items": { "$ref": "#/$defs/mcqQuestion" }
             },
+            "video": { "$ref": "#/$defs/video" },
             "tip": { "$ref": "#/$defs/tip" }
           }
         }
@@ -500,6 +501,17 @@
         "title": { "type": "string" },
         "text": { "type": "string" },
         "icon": { "type": "string", "default": "lightbulb" }
+      }
+    },
+    "video": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "src"],
+      "properties": {
+        "type": { "const": "iframe" },
+        "src": { "type": "string" },
+        "title": { "type": "string" },
+        "caption": { "type": "string" }
       }
     },
     "image": {

@@ -1,0 +1,297 @@
+{
+  "id": "opinions-media-society-01",
+  "title": "Opinions, Media & Society",
+  "level": "B1",
+  "subtitle": "B1 Core Path · Express and support opinions while describing people, things, and processes precisely.",
+  "themeIcon": "forum",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "B1 Core Path",
+      "title": "Opinions, Media & Society · Level B1",
+      "quote": "Express and support opinions while describing people, things, and processes precisely.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for opinions, media & society."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Prepare for B2 speaking and writing by connecting claims, evidence, and balanced conclusions."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80",
+        "alt": "Opinions, Media & Society"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "B1 LEARNING PATH",
+        "text": "Prepare for B2 speaking and writing by connecting claims, evidence, and balanced conclusions."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "point of view",
+          "definition": "From my point of view, the change is useful.",
+          "translation": "quan điểm",
+          "icon": "visibility",
+          "category": "Opinions, Media & Society",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "evidence",
+          "definition": "There is evidence that the plan works.",
+          "translation": "bằng chứng",
+          "icon": "fact_check",
+          "category": "Opinions, Media & Society",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "influence",
+          "definition": "Social media can influence our choices.",
+          "translation": "ảnh hưởng",
+          "icon": "hub",
+          "category": "Opinions, Media & Society",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "reliable",
+          "definition": "Use a reliable source of information.",
+          "translation": "đáng tin cậy",
+          "icon": "verified",
+          "category": "Opinions, Media & Society",
+          "variant": "highlight"
+        },
+        {
+          "term": "misleading",
+          "definition": "The headline was misleading.",
+          "translation": "gây hiểu lầm",
+          "icon": "warning",
+          "category": "Opinions, Media & Society",
+          "variant": "default"
+        },
+        {
+          "term": "benefit",
+          "definition": "One benefit is faster communication.",
+          "translation": "lợi ích",
+          "icon": "add_circle",
+          "category": "Opinions, Media & Society",
+          "variant": "default"
+        },
+        {
+          "term": "drawback",
+          "definition": "The main drawback is the cost.",
+          "translation": "hạn chế",
+          "icon": "remove_circle",
+          "category": "Opinions, Media & Society",
+          "variant": "default"
+        },
+        {
+          "term": "whereas",
+          "definition": "City life is busy, whereas village life is quieter.",
+          "translation": "trong khi",
+          "icon": "compare",
+          "category": "Opinions, Media & Society",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this B1 module to the next stage.",
+      "points": [
+        {
+          "title": "Opinion and contrast linkers",
+          "icon": "schema",
+          "function": "Organise ideas with in my view, however, although and whereas.",
+          "examples": [
+            "In my view, the policy is fair.",
+            "It is useful; however, it is expensive."
+          ]
+        },
+        {
+          "title": "Defining relative clauses",
+          "icon": "schema",
+          "function": "Use who, which and that to identify a person or thing.",
+          "examples": [
+            "A journalist is someone who reports news.",
+            "This is an app that checks sources."
+          ]
+        },
+        {
+          "title": "Present passive",
+          "icon": "schema",
+          "function": "Use am/is/are + past participle when the action matters more than the actor.",
+          "examples": [
+            "News is shared online.",
+            "The articles are checked before publication."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "A reporter is someone ___ collects information.",
+          "options": [
+            "which",
+            "who",
+            "where",
+            "whose it"
+          ],
+          "correct": 1,
+          "explanation": "Use who for a person."
+        },
+        {
+          "id": "q2",
+          "prompt": "This is the website ___ I use for fact-checking.",
+          "options": [
+            "who",
+            "where is",
+            "that",
+            "what"
+          ],
+          "correct": 2,
+          "explanation": "Use that for a thing in a defining clause."
+        },
+        {
+          "id": "q3",
+          "prompt": "Millions of messages ___ every day.",
+          "options": [
+            "send",
+            "are sent",
+            "sent",
+            "are sending"
+          ],
+          "correct": 1,
+          "explanation": "The present passive is are sent."
+        },
+        {
+          "id": "q4",
+          "prompt": "The service is fast; ___, it is not always reliable.",
+          "options": [
+            "because",
+            "however",
+            "therefore because",
+            "whereas of"
+          ],
+          "correct": 1,
+          "explanation": "However introduces contrast between sentences."
+        },
+        {
+          "id": "q5",
+          "prompt": "The advert was ___ because it hid the real cost.",
+          "options": [
+            "reliable",
+            "misleading",
+            "benefit",
+            "evidence"
+          ],
+          "correct": 1,
+          "explanation": "Misleading information creates a false impression."
+        },
+        {
+          "id": "q6",
+          "prompt": "Online news is convenient, ___ printed news can be easier to focus on.",
+          "options": [
+            "whereas",
+            "because of",
+            "unless",
+            "in case"
+          ],
+          "correct": 0,
+          "explanation": "Whereas contrasts two clauses."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "Where do you usually get news?",
+        "What are the benefits and drawbacks of social media?",
+        "How can people check whether information is reliable?"
+      ],
+      "sampleAnswer": "I usually read news on trusted websites. Social media is convenient; however, some posts are misleading. People should compare several sources and look for evidence.",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Write an opinion paragraph: “Social media is the best source of news.”",
+      "prompt": {
+        "situation": "Give your view, support it with reasons, include a contrast, and finish with a balanced conclusion.",
+        "placeholder": "Write your answer here...",
+        "minWords": 110,
+        "maxWords": 170,
+        "referenceAnswer": "I usually read news on trusted websites. Social media is convenient; however, some posts are misleading. People should compare several sources and look for evidence.",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "id": "family-home-01",
+  "title": "Family, Home & Possessions",
+  "level": "A1",
+  "subtitle": "A1 Core Path · Describe your family, your home, and the things people own.",
+  "themeIcon": "family_restroom",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A1 Core Path",
+      "title": "Family, Home & Possessions · Level A1",
+      "quote": "Describe your family, your home, and the things people own.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for family, home & possessions."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Build the sentence patterns you need before talking about places and everyday needs."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80",
+        "alt": "Family, Home & Possessions"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "A1 LEARNING PATH",
+        "text": "Build the sentence patterns you need before talking about places and everyday needs."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "parents",
+          "definition": "My parents live near me.",
+          "translation": "bố mẹ",
+          "icon": "family_restroom",
+          "category": "Family, Home & Possessions",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "sister",
+          "definition": "My sister is a student.",
+          "translation": "chị/em gái",
+          "icon": "person",
+          "category": "Family, Home & Possessions",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "neighbour",
+          "definition": "Our neighbour is very friendly.",
+          "translation": "hàng xóm",
+          "icon": "waving_hand",
+          "category": "Family, Home & Possessions",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "flat",
+          "definition": "They live in a small flat.",
+          "translation": "căn hộ",
+          "icon": "apartment",
+          "category": "Family, Home & Possessions",
+          "variant": "highlight"
+        },
+        {
+          "term": "bedroom",
+          "definition": "My bedroom has a large window.",
+          "translation": "phòng ngủ",
+          "icon": "bed",
+          "category": "Family, Home & Possessions",
+          "variant": "default"
+        },
+        {
+          "term": "furniture",
+          "definition": "The furniture is new.",
+          "translation": "đồ nội thất",
+          "icon": "chair",
+          "category": "Family, Home & Possessions",
+          "variant": "default"
+        },
+        {
+          "term": "belong to",
+          "definition": "This bag belongs to Lan.",
+          "translation": "thuộc về",
+          "icon": "inventory_2",
+          "category": "Family, Home & Possessions",
+          "variant": "default"
+        },
+        {
+          "term": "comfortable",
+          "definition": "Our home is small but comfortable.",
+          "translation": "thoải mái",
+          "icon": "weekend",
+          "category": "Family, Home & Possessions",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this A1 module to the next stage.",
+      "points": [
+        {
+          "title": "Be: identity and description",
+          "icon": "schema",
+          "function": "Use am/is/are with nouns and adjectives.",
+          "examples": [
+            "I am Minh.",
+            "She is friendly.",
+            "Our rooms are bright."
+          ]
+        },
+        {
+          "title": "Have got / has got",
+          "icon": "schema",
+          "function": "Use have got to talk about family and possessions.",
+          "examples": [
+            "I have got two brothers.",
+            "She has got a new phone.",
+            "Have you got a garden?"
+          ]
+        },
+        {
+          "title": "Possessives",
+          "icon": "schema",
+          "function": "Use my/your/his/her/our/their before nouns; use ’s after a person.",
+          "examples": [
+            "This is my room.",
+            "That is Nam’s desk.",
+            "Their house is near the park."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "My brother ___ a teacher.",
+          "options": [
+            "am",
+            "is",
+            "are",
+            "be"
+          ],
+          "correct": 1,
+          "explanation": "Brother is singular, so use is."
+        },
+        {
+          "id": "q2",
+          "prompt": "We ___ got a small garden.",
+          "options": [
+            "has",
+            "have",
+            "are",
+            "is"
+          ],
+          "correct": 1,
+          "explanation": "We takes have got."
+        },
+        {
+          "id": "q3",
+          "prompt": "This is Hoa. ___ room is upstairs.",
+          "options": [
+            "His",
+            "Her",
+            "Our",
+            "Their"
+          ],
+          "correct": 1,
+          "explanation": "Hoa is female, so use her."
+        },
+        {
+          "id": "q4",
+          "prompt": "Those keys belong ___ my father.",
+          "options": [
+            "at",
+            "on",
+            "to",
+            "for"
+          ],
+          "correct": 2,
+          "explanation": "The phrase is belong to."
+        },
+        {
+          "id": "q5",
+          "prompt": "___ they got any children?",
+          "options": [
+            "Has",
+            "Have",
+            "Are",
+            "Do"
+          ],
+          "correct": 1,
+          "explanation": "Use Have they got...?"
+        },
+        {
+          "id": "q6",
+          "prompt": "This is my ___ car.",
+          "options": [
+            "parents",
+            "parents’s",
+            "parents’",
+            "parent"
+          ],
+          "correct": 2,
+          "explanation": "Use parents’ for something owned by both parents."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "Who is in your family?",
+        "What is your home like?",
+        "What is your favourite room and why?"
+      ],
+      "sampleAnswer": "There are four people in my family. We live in a small flat. My favourite room is the living room because it is bright and comfortable.",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Introduce your family and describe your home to a new online friend.",
+      "prompt": {
+        "situation": "Write about the people in your family, your rooms, and one possession that is important to you.",
+        "placeholder": "Write your answer here...",
+        "minWords": 45,
+        "maxWords": 80,
+        "referenceAnswer": "There are four people in my family. We live in a small flat. My favourite room is the living room because it is bright and comfortable.",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 // Bump this version on every deploy to bust the old cache
-const APP_VERSION = 'v20';
+const APP_VERSION = 'v22';
 const CACHE_NAME = `aptis-shell-${APP_VERSION}`;
 
 const SHELL_FILES = [
@@ -67,26 +67,23 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Stale-while-revalidate for HTML/JS shell — serve cached immediately,
-  // then fetch fresh version in background for next visit
+  // Network-first for HTML/JS shell so deployments appear immediately.
+  // The cache remains available only as an offline fallback.
   if (
     request.destination === 'document' ||
     request.destination === 'script' ||
     SHELL_FILES.includes(url.pathname)
   ) {
     event.respondWith(
-      caches.open(CACHE_NAME).then(cache =>
-        cache.match(request).then(cached => {
-          const fetchPromise = fetch(request).then(networkResp => {
-            if (networkResp && networkResp.ok) {
-              cache.put(request, networkResp.clone());
-            }
-            return networkResp;
-          });
-          // Return cached immediately, or wait for network if no cache yet
-          return cached || fetchPromise;
+      fetch(request)
+        .then(networkResp => {
+          if (networkResp && networkResp.ok) {
+            const copy = networkResp.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          }
+          return networkResp;
         })
-      )
+        .catch(() => caches.match(request))
     );
     return;
   }

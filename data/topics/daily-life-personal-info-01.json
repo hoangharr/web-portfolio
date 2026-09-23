@@ -1,7 +1,7 @@
 {
   "id": "daily-life-personal-info-01",
   "title": "Daily Life & Personal Information",
-  "level": "A1-A2",
+  "level": "A1",
   "subtitle": "Foundation Core - Lesson 1: Talk about yourself, your day, and your routine",
   "themeIcon": "waving_hand",
   "sections": [
@@ -10,7 +10,7 @@
       "type": "intro",
       "nav": "intro",
       "eyebrow": "Starter Path - Foundation Core - Lesson 1",
-      "title": "Daily Life & Personal Information - Level A1-A2",
+      "title": "Daily Life & Personal Information - Level A1",
       "quote": "Talk about yourself, your day, and your routine with confidence.",
       "features": [
         {
@@ -36,16 +36,16 @@
       "badge": {
         "icon": "school",
         "title": "FOUNDATION TRACK",
-        "text": "This lesson builds the base you need for B2 Module: Work & Career and Health & Wellness - personal introductions appear in interviews and health conversations."
+        "text": "This is the first A1 module. It builds the sentence patterns needed for Family, Home & Possessions."
       },
       "nextStep": {
         "icon": "arrow_forward",
         "label": "Prepares you for",
-        "text": "B2 Module: Work & Career - after Stage 1 of the Starter Path, you will be ready to start the B2 modules."
+        "text": "A1 Module 2: Family, Home & Possessions."
       },
       "tip": {
         "title": "Study Tip",
-        "text": "Short, simple sentences are fine at A1-A2. Focus on being accurate first - you will add length and detail later in the B2 modules."
+        "text": "Short, simple sentences are the goal at A1. Focus on being accurate first - you will add length and detail later in the B2 modules."
       }
     },
     {

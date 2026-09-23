@@ -1,0 +1,300 @@
+{
+  "id": "food-shopping-01",
+  "title": "Food, Shopping & Everyday Needs",
+  "level": "A1",
+  "subtitle": "A1 Core Path · Buy food, ask about prices, and talk about quantities politely.",
+  "themeIcon": "shopping_basket",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A1 Core Path",
+      "title": "Food, Shopping & Everyday Needs · Level A1",
+      "quote": "Buy food, ask about prices, and talk about quantities politely.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for food, shopping & everyday needs."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Complete the A1 foundation and prepare for choices and comparisons at A2."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80",
+        "alt": "Food, Shopping & Everyday Needs"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "A1 LEARNING PATH",
+        "text": "Complete the A1 foundation and prepare for choices and comparisons at A2."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "bread",
+          "definition": "We need a loaf of bread.",
+          "translation": "bánh mì",
+          "icon": "bakery_dining",
+          "category": "Food, Shopping & Everyday Needs",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "vegetables",
+          "definition": "I buy fresh vegetables every week.",
+          "translation": "rau củ",
+          "icon": "nutrition",
+          "category": "Food, Shopping & Everyday Needs",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "bottle",
+          "definition": "Can I have a bottle of water?",
+          "translation": "chai",
+          "icon": "water_bottle",
+          "category": "Food, Shopping & Everyday Needs",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "packet",
+          "definition": "She bought a packet of rice.",
+          "translation": "gói",
+          "icon": "inventory_2",
+          "category": "Food, Shopping & Everyday Needs",
+          "variant": "highlight"
+        },
+        {
+          "term": "price",
+          "definition": "What is the price of this jacket?",
+          "translation": "giá",
+          "icon": "sell",
+          "category": "Food, Shopping & Everyday Needs",
+          "variant": "default"
+        },
+        {
+          "term": "change",
+          "definition": "Here is your change.",
+          "translation": "tiền thừa",
+          "icon": "payments",
+          "category": "Food, Shopping & Everyday Needs",
+          "variant": "default"
+        },
+        {
+          "term": "cheap",
+          "definition": "These bananas are cheap today.",
+          "translation": "rẻ",
+          "icon": "savings",
+          "category": "Food, Shopping & Everyday Needs",
+          "variant": "default"
+        },
+        {
+          "term": "enough",
+          "definition": "We have enough milk for breakfast.",
+          "translation": "đủ",
+          "icon": "check_circle",
+          "category": "Food, Shopping & Everyday Needs",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this A1 module to the next stage.",
+      "points": [
+        {
+          "title": "Countable nouns",
+          "icon": "schema",
+          "function": "Use a/an and plural forms with things you can count.",
+          "examples": [
+            "an apple",
+            "two tomatoes",
+            "How many eggs do we need?"
+          ]
+        },
+        {
+          "title": "Uncountable nouns",
+          "icon": "schema",
+          "function": "Use some, any and much with food such as rice or water.",
+          "examples": [
+            "some rice",
+            "Is there any milk?",
+            "We do not have much time."
+          ]
+        },
+        {
+          "title": "Polite requests",
+          "icon": "schema",
+          "function": "Use Can I have...? or I’d like... in shops and cafés.",
+          "examples": [
+            "Can I have a coffee, please?",
+            "I’d like two sandwiches.",
+            "How much is it?"
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "We need ___ apple for the salad.",
+          "options": [
+            "a",
+            "an",
+            "some",
+            "any"
+          ],
+          "correct": 1,
+          "explanation": "Apple begins with a vowel sound, so use an."
+        },
+        {
+          "id": "q2",
+          "prompt": "Is there ___ cheese in the fridge?",
+          "options": [
+            "a",
+            "many",
+            "any",
+            "an"
+          ],
+          "correct": 2,
+          "explanation": "Use any in questions with uncountable nouns."
+        },
+        {
+          "id": "q3",
+          "prompt": "How ___ oranges would you like?",
+          "options": [
+            "much",
+            "many",
+            "some",
+            "any"
+          ],
+          "correct": 1,
+          "explanation": "Oranges are countable, so use many."
+        },
+        {
+          "id": "q4",
+          "prompt": "I would like two ___ of water.",
+          "options": [
+            "bottles",
+            "bottle",
+            "waters",
+            "glass"
+          ],
+          "correct": 0,
+          "explanation": "After two, use the plural bottles."
+        },
+        {
+          "id": "q5",
+          "prompt": "This shirt is ten pounds. That is a good ___.",
+          "options": [
+            "change",
+            "price",
+            "cash",
+            "size"
+          ],
+          "correct": 1,
+          "explanation": "A good price means the cost is reasonable."
+        },
+        {
+          "id": "q6",
+          "prompt": "Can I ___ a sandwich, please?",
+          "options": [
+            "having",
+            "has",
+            "have",
+            "had"
+          ],
+          "correct": 2,
+          "explanation": "After can, use the base verb have."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "What food do you buy every week?",
+        "Where do you usually shop?",
+        "Order a drink and a snack politely."
+      ],
+      "sampleAnswer": "I usually shop at a market near my home. I buy vegetables, eggs and some rice. In a café, I say: Can I have a tea and a sandwich, please?",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Write a shopping message for a family member.",
+      "prompt": {
+        "situation": "List what you need, give quantities, and ask them to check one price.",
+        "placeholder": "Write your answer here...",
+        "minWords": 35,
+        "maxWords": 70,
+        "referenceAnswer": "I usually shop at a market near my home. I buy vegetables, eggs and some rice. In a café, I say: Can I have a tea and a sandwich, please?",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}

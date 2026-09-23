@@ -1,0 +1,298 @@
+{
+  "id": "future-plans-01",
+  "title": "Future Plans & Arrangements",
+  "level": "A2",
+  "subtitle": "A2 Core Path · Discuss intentions, arrangements, predictions, and quick decisions.",
+  "themeIcon": "event_upcoming",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A2 Core Path",
+      "title": "Future Plans & Arrangements · Level A2",
+      "quote": "Discuss intentions, arrangements, predictions, and quick decisions.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for future plans & arrangements."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Choose future forms accurately before planning longer projects at B1."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=80",
+        "alt": "Future Plans & Arrangements"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "A2 LEARNING PATH",
+        "text": "Choose future forms accurately before planning longer projects at B1."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "plan",
+          "definition": "Our plan is to travel in June.",
+          "translation": "kế hoạch",
+          "icon": "event_note",
+          "category": "Future Plans & Arrangements",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "arrangement",
+          "definition": "I have an arrangement with my tutor.",
+          "translation": "sự sắp xếp",
+          "icon": "handshake",
+          "category": "Future Plans & Arrangements",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "appointment",
+          "definition": "My appointment is at three.",
+          "translation": "cuộc hẹn",
+          "icon": "calendar_clock",
+          "category": "Future Plans & Arrangements",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "book",
+          "definition": "We need to book a room.",
+          "translation": "đặt trước",
+          "icon": "hotel",
+          "category": "Future Plans & Arrangements",
+          "variant": "highlight"
+        },
+        {
+          "term": "prepare",
+          "definition": "I am preparing for the test.",
+          "translation": "chuẩn bị",
+          "icon": "checklist",
+          "category": "Future Plans & Arrangements",
+          "variant": "default"
+        },
+        {
+          "term": "probably",
+          "definition": "It will probably rain later.",
+          "translation": "có lẽ",
+          "icon": "cloud",
+          "category": "Future Plans & Arrangements",
+          "variant": "default"
+        },
+        {
+          "term": "available",
+          "definition": "Are you available on Friday?",
+          "translation": "rảnh / có sẵn",
+          "icon": "event_available",
+          "category": "Future Plans & Arrangements",
+          "variant": "default"
+        },
+        {
+          "term": "look forward to",
+          "definition": "I look forward to the holiday.",
+          "translation": "mong chờ",
+          "icon": "sentiment_excited",
+          "category": "Future Plans & Arrangements",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this A2 module to the next stage.",
+      "points": [
+        {
+          "title": "Be going to",
+          "icon": "schema",
+          "function": "Use it for intentions and predictions based on evidence.",
+          "examples": [
+            "I am going to study tonight.",
+            "Look at those clouds! It is going to rain."
+          ]
+        },
+        {
+          "title": "Present continuous",
+          "icon": "schema",
+          "function": "Use it for a fixed future arrangement.",
+          "examples": [
+            "I am meeting Hoa at six.",
+            "We are flying on Monday."
+          ]
+        },
+        {
+          "title": "Will",
+          "icon": "schema",
+          "function": "Use it for instant decisions, offers and general predictions.",
+          "examples": [
+            "I will answer the phone.",
+            "I think people will travel more.",
+            "I will help you."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "I ___ my dentist at 10 tomorrow.",
+          "options": [
+            "meet",
+            "met",
+            "am meeting",
+            "will met"
+          ],
+          "correct": 2,
+          "explanation": "A fixed arrangement uses the present continuous."
+        },
+        {
+          "id": "q2",
+          "prompt": "Look at the sky. It ___ rain.",
+          "options": [
+            "is going to",
+            "will to",
+            "goes to",
+            "is"
+          ],
+          "correct": 0,
+          "explanation": "Evidence now supports a going-to prediction."
+        },
+        {
+          "id": "q3",
+          "prompt": "The phone is ringing. I ___ answer it.",
+          "options": [
+            "am going",
+            "will",
+            "am",
+            "do"
+          ],
+          "correct": 1,
+          "explanation": "Use will for an instant decision."
+        },
+        {
+          "id": "q4",
+          "prompt": "We ___ a hotel for next weekend.",
+          "options": [
+            "have booked",
+            "book yesterday",
+            "are book",
+            "will booking"
+          ],
+          "correct": 0,
+          "explanation": "A completed arrangement can use present perfect."
+        },
+        {
+          "id": "q5",
+          "prompt": "Are you ___ on Tuesday evening?",
+          "options": [
+            "available",
+            "probably",
+            "prepare",
+            "appointment"
+          ],
+          "correct": 0,
+          "explanation": "Available means free to meet."
+        },
+        {
+          "id": "q6",
+          "prompt": "She is looking forward ___ the concert.",
+          "options": [
+            "at",
+            "for",
+            "to",
+            "on"
+          ],
+          "correct": 2,
+          "explanation": "The phrase is look forward to."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "What are you doing this weekend?",
+        "What are you going to learn next?",
+        "What do you think life will be like in ten years?"
+      ],
+      "sampleAnswer": "I am meeting some friends on Saturday. We are going to try a new restaurant. On Sunday, I will probably stay home and prepare for next week.",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Arrange a weekend activity with a friend.",
+      "prompt": {
+        "situation": "Suggest a plan, give a time and place, and offer an alternative.",
+        "placeholder": "Write your answer here...",
+        "minWords": 55,
+        "maxWords": 90,
+        "referenceAnswer": "I am meeting some friends on Saturday. We are going to try a new restaurant. On Sunday, I will probably stay home and prepare for next week.",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}

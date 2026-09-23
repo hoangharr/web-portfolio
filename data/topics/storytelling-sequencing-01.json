@@ -1,0 +1,297 @@
+{
+  "id": "storytelling-sequencing-01",
+  "title": "Storytelling & Sequencing Events",
+  "level": "B1",
+  "subtitle": "B1 Core Path · Build clear narratives with background, main events, and outcomes.",
+  "themeIcon": "auto_stories",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "B1 Core Path",
+      "title": "Storytelling & Sequencing Events · Level B1",
+      "quote": "Build clear narratives with background, main events, and outcomes.",
+      "features": [
+        {
+          "icon": "translate",
+          "title": "Useful Language",
+          "description": "Learn high-frequency language for storytelling & sequencing events."
+        },
+        {
+          "icon": "account_tree",
+          "title": "Grammar Bridge",
+          "description": "Turn short A2 past-tense answers into connected B1 stories."
+        },
+        {
+          "icon": "record_voice_over",
+          "title": "Active Practice",
+          "description": "Use the target language in both speaking and writing."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
+        "alt": "Storytelling & Sequencing Events"
+      },
+      "badge": {
+        "icon": "route",
+        "title": "B1 LEARNING PATH",
+        "text": "Turn short A2 past-tense answers into connected B1 stories."
+      },
+      "tip": {
+        "title": "How to study",
+        "text": "Learn the examples aloud, complete the quiz, then produce your own answer without copying the model."
+      }
+    },
+    {
+      "id": "core-vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Section 01 · Vocabulary",
+      "title": "Core words and phrases",
+      "description": "Flip each card, listen, and create one personal example.",
+      "cards": [
+        {
+          "term": "at first",
+          "definition": "At first, everything seemed normal.",
+          "translation": "lúc đầu",
+          "icon": "first_page",
+          "category": "Storytelling & Sequencing Events",
+          "badge": "Essential",
+          "variant": "primary"
+        },
+        {
+          "term": "meanwhile",
+          "definition": "Meanwhile, we waited outside.",
+          "translation": "trong lúc đó",
+          "icon": "sync",
+          "category": "Storytelling & Sequencing Events",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "eventually",
+          "definition": "Eventually, the train arrived.",
+          "translation": "cuối cùng",
+          "icon": "flag",
+          "category": "Storytelling & Sequencing Events",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "realise",
+          "definition": "I realised that my phone was missing.",
+          "translation": "nhận ra",
+          "icon": "lightbulb",
+          "category": "Storytelling & Sequencing Events",
+          "variant": "highlight"
+        },
+        {
+          "term": "manage to",
+          "definition": "We managed to find another route.",
+          "translation": "xoay xở làm được",
+          "icon": "task_alt",
+          "category": "Storytelling & Sequencing Events",
+          "variant": "default"
+        },
+        {
+          "term": "unexpected",
+          "definition": "An unexpected problem changed our plans.",
+          "translation": "bất ngờ",
+          "icon": "error",
+          "category": "Storytelling & Sequencing Events",
+          "variant": "default"
+        },
+        {
+          "term": "relieved",
+          "definition": "I felt relieved when she called.",
+          "translation": "nhẹ nhõm",
+          "icon": "sentiment_satisfied",
+          "category": "Storytelling & Sequencing Events",
+          "variant": "default"
+        },
+        {
+          "term": "as soon as",
+          "definition": "Call me as soon as you arrive.",
+          "translation": "ngay khi",
+          "icon": "acute",
+          "category": "Storytelling & Sequencing Events",
+          "variant": "default"
+        }
+      ],
+      "tip": {
+        "title": "Recall practice",
+        "text": "Cover the English term, read the Vietnamese meaning, and retrieve the full phrase from memory."
+      }
+    },
+    {
+      "id": "grammar-bridge",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Section 02 · Grammar",
+      "title": "Grammar bridge",
+      "description": "Master the structures that connect this B1 module to the next stage.",
+      "points": [
+        {
+          "title": "Past continuous for background",
+          "icon": "schema",
+          "function": "Use was/were + -ing for an action in progress.",
+          "examples": [
+            "It was raining.",
+            "We were waiting for a taxi."
+          ]
+        },
+        {
+          "title": "Past simple for main events",
+          "icon": "schema",
+          "function": "Use the past simple for the actions that move a story forward.",
+          "examples": [
+            "A car stopped.",
+            "The driver offered to help."
+          ]
+        },
+        {
+          "title": "Past perfect and sequencing",
+          "icon": "schema",
+          "function": "Use had + past participle for an earlier past event.",
+          "examples": [
+            "I had left my wallet at home.",
+            "After we had eaten, we continued."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy first",
+        "text": "Notice the verb form in every example, then change the subject or time expression to make a new sentence."
+      }
+    },
+    {
+      "id": "guided-practice",
+      "type": "mcq",
+      "nav": "exercise",
+      "eyebrow": "Section 03 · Check",
+      "title": "Guided practice",
+      "description": "Choose the best answer, then read the explanation.",
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "While I ___ home, I saw an accident.",
+          "options": [
+            "walked",
+            "was walking",
+            "had walk",
+            "am walking"
+          ],
+          "correct": 1,
+          "explanation": "Past continuous gives the background action."
+        },
+        {
+          "id": "q2",
+          "prompt": "The film ___ by the time we arrived.",
+          "options": [
+            "started",
+            "has started",
+            "had started",
+            "was start"
+          ],
+          "correct": 2,
+          "explanation": "Past perfect marks the earlier past event."
+        },
+        {
+          "id": "q3",
+          "prompt": "___, we found a safe place to stay.",
+          "options": [
+            "Eventually",
+            "During",
+            "Ago",
+            "Since"
+          ],
+          "correct": 0,
+          "explanation": "Eventually introduces the final result."
+        },
+        {
+          "id": "q4",
+          "prompt": "She was cooking when the lights ___.",
+          "options": [
+            "were going out",
+            "went out",
+            "had go out",
+            "go out"
+          ],
+          "correct": 1,
+          "explanation": "Past simple marks the interrupting event."
+        },
+        {
+          "id": "q5",
+          "prompt": "I felt ___ when I found my passport.",
+          "options": [
+            "unexpected",
+            "relieved",
+            "meanwhile",
+            "first"
+          ],
+          "correct": 1,
+          "explanation": "Relieved describes worry ending."
+        },
+        {
+          "id": "q6",
+          "prompt": "As soon as he ___, we left.",
+          "options": [
+            "arrived",
+            "was arriving",
+            "has arrive",
+            "arrives yesterday"
+          ],
+          "correct": 0,
+          "explanation": "Use past simple for the completed event."
+        }
+      ],
+      "tip": {
+        "title": "Use the clue",
+        "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "speaking-practice",
+      "type": "speaking",
+      "nav": "exercise",
+      "eyebrow": "Section 04 · Speak",
+      "title": "Build a spoken answer",
+      "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
+      "questions": [
+        "Tell a story about a journey that went wrong.",
+        "Describe an unexpected but positive event.",
+        "What were you doing when you received important news?"
+      ],
+      "sampleAnswer": "I was travelling home when the bus broke down. At first, everyone was worried. Fortunately, another driver stopped, and eventually we reached the city safely.",
+      "tip": {
+        "title": "Speak in layers",
+        "text": "Start with a direct answer, add a reason, then give one example or detail."
+      }
+    },
+    {
+      "id": "writing-task",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Section 05 · Write",
+      "title": "Independent writing",
+      "description": "Write a short story titled “An unexpected journey”.",
+      "prompt": {
+        "situation": "Set the scene, sequence at least three events, and explain the outcome.",
+        "placeholder": "Write your answer here...",
+        "minWords": 100,
+        "maxWords": 150,
+        "referenceAnswer": "I was travelling home when the bus broke down. At first, everyone was worried. Fortunately, another driver stopped, and eventually we reached the city safely.",
+        "focus": [
+          "Use the module vocabulary",
+          "Use the target grammar accurately",
+          "Connect ideas clearly"
+        ]
+      },
+      "tip": {
+        "title": "Final check",
+        "text": "Check verb forms, word order, spelling, and whether every sentence helps answer the task."
+      }
+    }
+  ]
+}
