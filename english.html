@@ -200,6 +200,10 @@
         overflow: hidden;
       }
 
+      .welcome-quote {
+        text-wrap: balance;
+      }
+
       /* Flip Card CSS */
       .flip-card {
         perspective: 1000px;
@@ -406,8 +410,8 @@
           >
         </nav>
         <div class="flex items-center gap-1 border-l pl-2 md:pl-4 border-gray-200 dark:border-slate-700">
-          <a id="auth-button" href="login.html" class="px-3 py-2 text-sm font-semibold rounded-full text-indigo-900 hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10">Log in</a>
-          <button id="logout-button" type="button" hidden class="px-3 py-2 text-sm font-semibold rounded-full text-indigo-900 hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10">Log out</button>
+          <a id="auth-button" href="login.html" title="Log in" aria-label="Log in" class="p-2 text-sm font-semibold rounded-full text-indigo-900 hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10 flex items-center justify-center"><span class="material-symbols-outlined">login</span></a>
+          <button id="logout-button" type="button" hidden title="Log out" aria-label="Log out" class="p-2 rounded-full text-indigo-900 hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10 flex items-center justify-center"><span class="material-symbols-outlined">logout</span></button>
           <a
             href="https://hoangdm.com"
             class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
@@ -521,7 +525,7 @@
       </div>
     </div>
 
-    <script src="js/engine.js?v=8"></script>
+    <script src="js/engine.js?v=20"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

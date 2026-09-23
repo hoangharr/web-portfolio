@@ -1,4 +1,5 @@
 const CURRICULUM_URL = "data/curriculum.json";
+const LEARNING_QUOTES = ["Small progress each day adds up to big results.", "Learning never exhausts the mind.", "The expert in anything was once a beginner.", "Study a little today, understand a lot tomorrow.", "Every new word is another way to see the world."];
 
 const state = {
   lessons: [],
@@ -10,7 +11,13 @@ const state = {
   selectedMatchItem: null,
   currentAudio: null,
   user: null,
-  csrf: null
+  csrf: null,
+  exerciseResponses: {},
+  submissionResults: {},
+  lessonProgress: {},
+  vocabulary: [],
+  vocabularySelectionBound: false,
+  restoringResponses: false
 };
 
 const sectionNavMap = {
@@ -299,7 +306,8 @@ function renderMcq(section) {
             </div>
           </div>
         `).join("")}
-        <div class="mt-8 flex justify-end">
+        <div class="mt-8 flex flex-wrap justify-end items-center gap-3">
+          <p class="submission-status text-xs text-outline" aria-live="polite"></p>
           <button disabled class="btn-check-all-mcq bg-primary text-white font-bold py-3 px-8 md:py-4 md:px-12 rounded-lg opacity-50 cursor-not-allowed transition-all shadow-md flex items-center gap-3 w-full sm:w-auto justify-center">
             Check All Answers
             ${materialIcon("done_all", "text-sm md:text-base")}
@@ -330,7 +338,8 @@ function renderDragDrop(section) {
         `).join("")}
       </div>
     </div>
-    <div class="mt-8 flex gap-4 justify-center">
+    <div class="mt-8 flex flex-wrap gap-4 justify-center items-center">
+      <p class="submission-status text-xs text-outline basis-full text-center" aria-live="polite"></p>
       <button id="btn-reset-matching-${escapeHtml(section.id)}" class="px-8 py-3 border-2 border-outline text-outline font-bold rounded-full hover:bg-surface transition-all">RESET</button>
       <button id="btn-check-matching-${escapeHtml(section.id)}" class="px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary-container shadow-lg transition-all">CHECK ANSWERS</button>
     </div>
@@ -379,6 +388,7 @@ function renderReading(section) {
     <section class="bg-primary-container text-white p-4 md:p-8 mt-8 rounded-xl shadow-md">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <h3 class="font-h3 text-lg md:text-xl text-on-primary-container">Select the correct options above</h3>
+        <p class="submission-status text-xs text-on-primary-container/80" aria-live="polite"></p>
         <button disabled class="btn-check-reading bg-secondary-fixed text-on-secondary-fixed px-6 py-2 md:px-8 md:py-3 text-xs md:text-sm font-label-caps rounded-full opacity-50 cursor-not-allowed transition-all duration-150 w-full sm:w-auto">CHECK ANSWERS</button>
       </div>
     </section>
@@ -389,6 +399,9 @@ function renderWriting(section) {
   const draftKey = `${section.lesson?.id || "lesson"}:${section.id}`;
   const savedDraft = getWritingDraft(draftKey);
   const initialWords = countWords(savedDraft);
+  const submitted = state.submissionResults[draftKey]?.kind === "writing";
+  const submittedAt = state.submissionResults[draftKey]?.submittedAt;
+  const statusLabel = submitted ? "Submitted" : savedDraft ? "Draft in progress" : "Not submitted";
   return `
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter">
       <div class="lg:col-span-7 flex flex-col gap-6 md:gap-section-gap">
@@ -404,15 +417,16 @@ function renderWriting(section) {
           </div>
           <p class="font-quote text-base md:text-quote text-tertiary italic leading-relaxed border-l-4 border-primary pl-4 py-1">"${escapeHtml(section.prompt.situation)}"</p>
         </div>
-        <div class="flex flex-col gap-2 md:gap-4">
+        <div class="flex flex-col gap-2 md:gap-4 rounded-2xl border-2 p-4 md:p-6 shadow-sm transition-all ${submitted ? "border-green-500 bg-green-50/70" : "border-amber-300 bg-amber-50/50"}">
           <div class="flex justify-between items-end">
-            <label class="font-label-caps text-[10px] md:text-xs text-primary uppercase tracking-widest">Your Response</label>
+            <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest ${submitted ? "bg-green-600 text-white" : "bg-amber-100 text-amber-800 border border-amber-300"}">${materialIcon(submitted ? "check_circle" : "edit_note", "text-sm")}${statusLabel}</span>
             <span class="text-[10px] md:text-xs text-outline font-label-caps">Word Count: <span class="word-counter font-bold text-primary">${initialWords}</span> / ${section.prompt.maxWords} <span class="min-words">(min. ${section.prompt.minWords})</span></span>
           </div>
           <div class="relative">
             <textarea class="writing-input-text w-full p-4 md:p-6 font-body-md text-sm md:text-base border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary bg-white resize-none outline-none shadow-inner" data-max-words="${section.prompt.maxWords}" data-min-words="${section.prompt.minWords}" data-draft-key="${escapeHtml(draftKey)}" placeholder="${escapeHtml(section.prompt.placeholder)}" rows="8">${escapeHtml(savedDraft)}</textarea>
             <div class="absolute bottom-4 right-4 opacity-20 pointer-events-none">${materialIcon("edit_note", "text-2xl md:text-4xl")}</div>
           </div>
+          <div class="flex flex-wrap items-center gap-3"><button type="button" class="btn-submit-writing ${submitted ? "bg-green-700 hover:bg-green-800" : "bg-primary hover:bg-primary-container"} text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all">${submitted ? "Update submission" : "Submit Writing"}</button><p class="submission-status text-xs ${submitted ? "text-green-800" : "text-amber-800"}" aria-live="polite">${submittedAt ? "Last submitted " + new Date(submittedAt).toLocaleString() : "Your draft saves automatically."}</p></div>
           <p class="draft-status text-xs text-outline" aria-live="polite">${savedDraft ? "Draft restored from this browser." : "Draft saves automatically on this browser."}</p>
         </div>
         ${section.prompt.referenceAnswer ? `
@@ -441,9 +455,14 @@ function countWords(value) {
   return String(value || "").trim().split(/\s+/).filter(Boolean).length;
 }
 
+function accountStorageKey(kind, value) {
+  return state.user?.id ? `aptis_${kind}_user_${state.user.id}_${value}` : "";
+}
+
 function getWritingDraft(draftKey) {
   try {
-    return localStorage.getItem(`aptis_draft_${draftKey}`) || "";
+    const key = accountStorageKey("draft", draftKey);
+    return key ? localStorage.getItem(key) || "" : "";
   } catch (e) {
     return "";
   }
@@ -451,7 +470,8 @@ function getWritingDraft(draftKey) {
 
 function saveWritingDraft(draftKey, value) {
   try {
-    localStorage.setItem(`aptis_draft_${draftKey}`, value);
+    const key = accountStorageKey("draft", draftKey);
+    if (key) localStorage.setItem(key, value);
     if (state.user) void syncDraft(draftKey, value);
     return true;
   } catch (e) {
@@ -478,7 +498,8 @@ function renderLessonCompletionPanel(lesson) {
 
 function isLessonCompleted(lessonId) {
   try {
-    return localStorage.getItem(`aptis_completed_${lessonId}`) === "1";
+    const key = accountStorageKey("completed", lessonId);
+    return key ? localStorage.getItem(key) === "1" : false;
   } catch (e) {
     return false;
   }
@@ -487,9 +508,11 @@ function isLessonCompleted(lessonId) {
 function setLessonCompleted(lessonId, completed) {
   try {
     if (completed) {
-      localStorage.setItem(`aptis_completed_${lessonId}`, "1");
+      const key = accountStorageKey("completed", lessonId);
+      if (key) localStorage.setItem(key, "1");
     } else {
-      localStorage.removeItem(`aptis_completed_${lessonId}`);
+      const key = accountStorageKey("completed", lessonId);
+      if (key) localStorage.removeItem(key);
     }
   } catch (e) {
     // ignore storage errors
@@ -524,12 +547,126 @@ async function syncDraft(draftKey, content) {
   try { await apiWrite("/api/progress/drafts", "PUT", { lessonId, sectionId, content }); } catch (e) { /* local draft remains available */ }
 }
 
+async function syncSubmission(draftKey, content, score = null, total = null) {
+  const [lessonId, sectionId] = draftKey.split(":");
+  if (!lessonId || !sectionId) return;
+  try { await apiWrite("/api/progress/submissions", "PUT", { lessonId, sectionId, content, score, total }); } catch (e) { /* The local draft remains available for a later retry. */ }
+}
+
+function responseKeyFor(root) {
+  const section = state.sections.find(item => item.id === root?.dataset.sectionId);
+  return section ? section.lesson.id + ":" + section.id : "";
+}
+
+function captureExerciseResponse(root) {
+  const answers = {};
+  root.querySelectorAll(".mcq-question").forEach(question => {
+    const selected = Array.from(question.querySelectorAll(".mcq-option")).findIndex(option => option.dataset.selected === "true");
+    if (selected >= 0) answers[question.dataset.questionId] = selected;
+  });
+  const blanks = Array.from(root.querySelectorAll(".reading-blank")).map(blank => blank.value);
+  const matching = {};
+  root.querySelectorAll(".drop-zone").forEach(zone => {
+    matching[zone.dataset.match] = Array.from(zone.querySelectorAll(".drag-item")).map(item => item.textContent.trim());
+  });
+  return { answers, blanks, matching };
+}
+
+function saveExerciseResponse(root) {
+  if (!state.user || state.restoringResponses || !root) return;
+  const key = responseKeyFor(root);
+  if (!key) return;
+  const data = captureExerciseResponse(root);
+  state.exerciseResponses[key] = data;
+  void syncDraft(key, JSON.stringify({ kind: "exercise", data }));
+}
+
+function submissionStatus(root, message) {
+  const status = root?.querySelector(".submission-status");
+  if (status) status.textContent = message;
+}
+
+function recordCheckedExercise(root, type, score, total) {
+  if (!state.user || !root) return;
+  const key = responseKeyFor(root);
+  if (!key) return;
+  const checks = { ...(state.submissionResults[key]?.checks || {}), [type]: { score, total } };
+  const aggregate = Object.values(checks).reduce((result, check) => ({ score: result.score + check.score, total: result.total + check.total }), { score: 0, total: 0 });
+  const content = JSON.stringify({ kind: "exercise", data: captureExerciseResponse(root), checks });
+  state.submissionResults[key] = { kind: "exercise", checks, score: aggregate.score, total: aggregate.total };
+  void syncSubmission(key, content, aggregate.score, aggregate.total);
+  submissionStatus(root, "Saved check: " + aggregate.score + "/" + aggregate.total + " correct.");
+}
+
+function submitWriting(textarea) {
+  const root = textarea?.closest(".slide-section");
+  const key = textarea?.dataset.draftKey;
+  if (!state.user || !root || !key || !textarea.value.trim()) return;
+  const content = JSON.stringify({ kind: "writing", data: { content: textarea.value } });
+  state.submissionResults[key] = { kind: "writing", submittedAt: new Date().toISOString() };
+  void syncSubmission(key, content);
+  renderDeck(state.lessons);
+}
+
+async function saveVocabularyWord(word) {
+  const saved = await apiWrite("/api/vocabulary", "POST", { word });
+  state.vocabulary = [saved, ...state.vocabulary.filter(item => item.word !== saved.word)];
+}
+
+function bindVocabularySelection() {
+  if (state.vocabularySelectionBound) return;
+  state.vocabularySelectionBound = true;
+  const popover = document.createElement("div");
+  popover.className = "fixed z-50 hidden max-w-xs rounded-xl border border-primary/25 bg-white p-4 shadow-2xl dark:bg-slate-900";
+  document.body.appendChild(popover);
+  const hide = () => popover.classList.add("hidden");
+  document.addEventListener("mousedown", event => { if (!popover.contains(event.target)) hide(); });
+  document.addEventListener("mouseup", event => {
+    if (popover.contains(event.target)) return;
+    const selection = window.getSelection();
+    const word = selection?.toString().trim();
+    const anchor = selection?.anchorNode?.parentElement;
+    if (!state.user || !word || !/^[a-z]+(?:['-][a-z]+)*$/i.test(word) || !anchor?.closest("#lesson-root") || anchor.closest("textarea, input, button")) return;
+    const rect = selection.getRangeAt(0).getBoundingClientRect();
+    popover.style.left = Math.max(12, Math.min(window.innerWidth - 280, rect.left)) + "px";
+    popover.style.top = Math.min(window.innerHeight - 120, rect.bottom + 10) + "px";
+    popover.innerHTML = '<p class="text-sm font-bold text-primary dark:text-amber-300">Save “' + escapeHtml(word) + '”?</p><p class="mt-1 text-xs text-outline">Pronunciation and Vietnamese meaning will be added to your notebook.</p><div class="mt-3 flex gap-2"><button data-save-word class="rounded-lg bg-primary px-3 py-2 text-xs font-bold text-white">Save</button><button data-close-word class="rounded-lg border border-outline-variant px-3 py-2 text-xs font-bold">Not now</button></div>';
+    popover.classList.remove("hidden");
+    popover.querySelector("[data-close-word]").onclick = hide;
+    popover.querySelector("[data-save-word]").onclick = () => { hide(); window.getSelection()?.removeAllRanges(); const notice = document.createElement("div"); notice.className = "fixed bottom-5 left-1/2 z-50 -translate-x-1/2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-xl"; notice.textContent = "Saving " + word + " in the background..."; document.body.appendChild(notice); void saveVocabularyWord(word.toLowerCase()).then(() => { notice.textContent = "Saved to notebook"; setTimeout(() => notice.remove(), 1200); }).catch(() => { notice.textContent = "Could not save this word"; notice.classList.add("bg-red-700"); setTimeout(() => notice.remove(), 2500); }); };
+  });
+}
+
+function restoreExerciseResponses(root) {
+  state.restoringResponses = true;
+  root.querySelectorAll(".slide-section").forEach(sectionRoot => {
+    const saved = state.exerciseResponses[responseKeyFor(sectionRoot)];
+    if (!saved) return;
+    Object.entries(saved.answers || {}).forEach(([questionId, selected]) => {
+      const question = Array.from(sectionRoot.querySelectorAll(".mcq-question")).find(item => item.dataset.questionId === questionId);
+      const option = question?.querySelectorAll(".mcq-option")[selected];
+      if (option) selectMCQ(option);
+    });
+    sectionRoot.querySelectorAll(".reading-blank").forEach((blank, index) => { if (saved.blanks?.[index]) blank.value = saved.blanks[index]; });
+    Object.entries(saved.matching || {}).forEach(([target, texts]) => {
+      const zone = Array.from(sectionRoot.querySelectorAll(".drop-zone")).find(item => item.dataset.match === target);
+      (texts || []).forEach(text => {
+        const item = Array.from(sectionRoot.querySelectorAll(".drag-item")).find(candidate => candidate.textContent.trim() === text);
+        if (zone && item) { zone.appendChild(item); zone.classList.remove("border-dashed"); zone.classList.add("border-solid", "border-primary"); }
+      });
+    });
+  });
+  state.restoringResponses = false;
+}
+
 function updateAuthButton() {
   const button = document.getElementById("auth-button");
   const logoutButton = document.getElementById("logout-button");
   if (!button) return;
-  button.textContent = state.user ? state.user.displayName : "Log in";
-  button.href = state.user?.role === "ADMIN" ? "admin.html" : state.user ? "english.html" : "login.html";
+  button.innerHTML = state.user ? escapeHtml(state.user.displayName) : materialIcon("login");
+  button.title = state.user ? "My dashboard" : "Log in";
+  button.setAttribute("aria-label", state.user ? "My dashboard" : "Log in");
+  button.href = state.user?.role === "ADMIN" ? "admin.html" : state.user ? "dashboard.html" : "login.html";
   if (logoutButton) logoutButton.hidden = !state.user;
 }
 
@@ -538,9 +675,31 @@ async function restoreAccountState() {
     const response = await fetch("/api/auth/me", { credentials: "same-origin" });
     if (!response.ok) return;
     state.user = await response.json();
-    const [progressResponse, draftsResponse] = await Promise.all([fetch("/api/progress", { credentials: "same-origin" }), fetch("/api/progress/drafts", { credentials: "same-origin" })]);
-    if (progressResponse.ok) for (const item of await progressResponse.json()) if (item.completed) localStorage.setItem(`aptis_completed_${item.lessonId}`, "1");
-    if (draftsResponse.ok) for (const item of await draftsResponse.json()) localStorage.setItem(`aptis_draft_${item.lessonId}:${item.sectionId}`, item.content);
+    const [progressResponse, draftsResponse, submissionsResponse, vocabularyResponse] = await Promise.all([fetch("/api/progress", { credentials: "same-origin" }), fetch("/api/progress/drafts", { credentials: "same-origin" }), fetch("/api/progress/submissions", { credentials: "same-origin" }), fetch("/api/vocabulary", { credentials: "same-origin" })]);
+    state.exerciseResponses = {};
+    state.submissionResults = {};
+    state.lessonProgress = {};
+    if (progressResponse.ok) for (const item of await progressResponse.json()) {
+      state.lessonProgress[item.lessonId] = item;
+      if (item.completed) {
+      const key = accountStorageKey("completed", item.lessonId);
+      if (key) localStorage.setItem(key, "1");
+      }
+    }
+    state.vocabulary = vocabularyResponse.ok ? await vocabularyResponse.json() : [];
+    if (submissionsResponse.ok) for (const item of await submissionsResponse.json()) {
+      const key = item.lessonId + ":" + item.sectionId;
+      try { state.submissionResults[key] = { ...JSON.parse(item.content), submittedAt: item.submittedAt }; } catch (e) { /* Ignore malformed historic submission. */ }
+    }
+    if (draftsResponse.ok) for (const item of await draftsResponse.json()) {
+      const key = item.lessonId + ":" + item.sectionId;
+      try {
+        const saved = JSON.parse(item.content);
+        if (saved.kind === "exercise") { state.exerciseResponses[key] = saved.data; continue; }
+      } catch (e) { /* Writing drafts are plain text. */ }
+      const storageKey = accountStorageKey("draft", key);
+      if (storageKey) localStorage.setItem(storageKey, item.content);
+    }
   } catch (e) { /* Backend is optional until it is deployed. */ }
 }
 
@@ -551,6 +710,8 @@ async function logout() {
   } finally {
     state.user = null;
     state.csrf = null;
+    state.exerciseResponses = {};
+    state.submissionResults = {};
     window.location.assign("login.html");
   }
 }
@@ -631,7 +792,8 @@ function renderCheckpoint(section) {
             </div>
           </div>
         `).join("")}
-        <div class="mt-8 flex justify-end">
+        <div class="mt-8 flex flex-wrap justify-end items-center gap-3">
+          <p class="submission-status text-xs text-outline" aria-live="polite"></p>
           <button disabled class="btn-check-all-mcq bg-primary text-white font-bold py-3 px-8 md:py-4 md:px-12 rounded-lg opacity-50 cursor-not-allowed transition-all shadow-md flex items-center gap-3 w-full sm:w-auto justify-center">
             Check All Answers
             ${materialIcon("done_all", "text-sm md:text-base")}
@@ -692,8 +854,10 @@ function renderDeck(lessons) {
   const root = document.getElementById("lesson-root");
   root.innerHTML = state.sections.map(renderSection).join("");
 
+  restoreExerciseResponses(root);
   renderModulesMenu();
   bindLessonEvents();
+  bindVocabularySelection();
   updateUI();
 }
 
@@ -814,11 +978,15 @@ function bindLessonEvents() {
   });
 
   document.querySelectorAll(".reading-blank").forEach(blank => {
-    blank.addEventListener("change", checkReadingReady);
+    blank.addEventListener("change", () => { checkReadingReady(); saveExerciseResponse(blank.closest(".slide-section")); });
   });
 
   document.querySelectorAll(".btn-check-reading").forEach(button => {
     button.addEventListener("click", checkReading);
+  });
+
+  document.querySelectorAll(".btn-submit-writing").forEach(button => {
+    button.addEventListener("click", () => submitWriting(button.closest(".slide-section")?.querySelector(".writing-input-text")));
   });
 
   document.querySelectorAll("[data-complete-lesson]").forEach(button => {
@@ -884,6 +1052,7 @@ function bindDragDrop() {
       this.appendChild(state.draggedItem);
       this.classList.remove("border-dashed");
       this.classList.add("border-solid", "border-primary");
+      saveExerciseResponse(this.closest(".slide-section"));
     });
     zone.addEventListener("click", function () {
       if (!state.selectedMatchItem) return;
@@ -893,6 +1062,7 @@ function bindDragDrop() {
       state.selectedMatchItem.classList.remove("ring-2", "ring-secondary", "bg-secondary-container/20");
       state.selectedMatchItem.setAttribute("aria-pressed", "false");
       state.selectedMatchItem = null;
+      saveExerciseResponse(this.closest(".slide-section"));
     });
   });
 
@@ -1031,8 +1201,10 @@ function changeSlide(direction) {
   if (newSlide >= 1 && newSlide <= state.totalSlides) {
     state.currentSlide = newSlide;
     updateUI();
+    persistCurrentModuleProgress();
     try {
-      localStorage.setItem("aptis_lastSlide", String(state.currentSlide));
+      const key = accountStorageKey("lastSlide", "current");
+      if (key) localStorage.setItem(key, String(state.currentSlide));
     } catch (e) {
       // ignore
     }
@@ -1046,6 +1218,7 @@ function goToSlide(slideNum) {
   if (slideNum >= 1 && slideNum <= state.totalSlides) {
     state.currentSlide = slideNum;
     updateUI();
+    persistCurrentModuleProgress();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
@@ -1092,6 +1265,25 @@ function startFromWelcome(slideNum) {
   goToSlide(slideNum);
 }
 
+function moduleProgress(lesson) {
+  const stored = state.lessonProgress[lesson.id];
+  const current = state.sections[state.currentSlide - 1];
+  const currentStep = current?.lesson?.id === lesson.id ? current.sectionIndex + 1 : 0;
+  const completed = stored?.completed || isLessonCompleted(lesson.id);
+  const done = completed ? lesson.sections.length : Math.max(stored?.lastSlide || 0, currentStep);
+  const percent = lesson.sections.length ? Math.round((Math.min(done, lesson.sections.length) / lesson.sections.length) * 100) : 0;
+  return { done: Math.min(done, lesson.sections.length), total: lesson.sections.length, percent, completed };
+}
+
+function persistCurrentModuleProgress() {
+  const section = state.sections[state.currentSlide - 1];
+  if (!state.user || !section?.lesson) return;
+  const lessonId = section.lesson.id;
+  const completed = isLessonCompleted(lessonId);
+  state.lessonProgress[lessonId] = { ...(state.lessonProgress[lessonId] || {}), lessonId, lastSlide: section.sectionIndex + 1, completed };
+  void syncLessonProgress(lessonId, completed);
+}
+
 function renderWelcome() {
   const screen = document.getElementById("welcome-screen");
   const content = document.getElementById("welcome-content");
@@ -1111,7 +1303,7 @@ function renderWelcome() {
       const start = slideStart;
       slideStart += lesson.sections.length;
       moduleIndex += 1;
-      const completed = isLessonCompleted(lesson.id);
+      const progress = moduleProgress(lesson);
       cards.push(`
         <button data-welcome-slide="${start}" class="group flex items-center gap-4 w-full p-4 rounded-xl bg-surface-container-low dark:bg-slate-800 border border-outline-variant dark:border-slate-700 hover:border-primary dark:hover:border-amber-400 hover:bg-primary/5 transition-all text-left active:scale-[0.98]">
           <span class="w-11 h-11 shrink-0 rounded-full bg-primary-container dark:bg-indigo-900 flex items-center justify-center">
@@ -1119,9 +1311,9 @@ function renderWelcome() {
           </span>
           <span class="flex-grow">
             <span class="block font-label-caps text-label-caps text-secondary dark:text-amber-400 uppercase tracking-widest mb-0.5">Module ${moduleIndex}</span>
-            <span class="block font-bold text-primary dark:text-slate-100 text-base">${escapeHtml(lesson.title)}</span>
+            <span class="block font-bold text-primary dark:text-slate-100 text-base">${escapeHtml(lesson.title)}</span><span class="mt-2 block h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"><span class="block h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all" style="width: ${progress.percent}%"></span></span><span class="mt-1 block text-xs font-semibold text-outline dark:text-slate-400">${progress.done}/${progress.total} sections · ${progress.percent}%</span>
           </span>
-          ${completed ? materialIcon("check_circle", "text-green-600") : materialIcon("chevron_right", "text-outline group-hover:text-primary dark:group-hover:text-amber-400 transition-colors")}
+          ${progress.completed ? materialIcon("check_circle", "text-green-600") : materialIcon("chevron_right", "text-outline group-hover:text-primary dark:group-hover:text-amber-400 transition-colors")}
         </button>
       `);
     });
@@ -1129,44 +1321,33 @@ function renderWelcome() {
 
   let saved = null;
   try {
-    const value = Number(localStorage.getItem("aptis_lastSlide"));
+    const key = accountStorageKey("lastSlide", "current");
+    const value = Number(key ? localStorage.getItem(key) : 0);
     if (value && Number.isFinite(value) && value >= 1 && value <= state.totalSlides) saved = value;
   } catch (e) {
     // ignore
   }
 
   const welcomeSubtitle = state.user ? "Select a module to start learning" : "Log in to access your lessons and save your progress.";
+  const learningQuote = LEARNING_QUOTES[Math.floor(Math.random() * LEARNING_QUOTES.length)];
 
   content.innerHTML = `
-    <div class="flex items-center justify-between gap-3 mb-2">
-      <div class="flex items-center gap-2">
-        <button id="welcome-logout-button" type="button" hidden class="order-2 px-4 py-2 rounded-full border border-primary text-primary dark:border-amber-400 dark:text-amber-400 text-sm font-bold hover:bg-primary/5 dark:hover:bg-white/10 transition-colors">Log out</button>
-        ${state.user ? `<span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-bold tracking-wide text-primary shadow-sm dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-300">${escapeHtml(state.user.displayName)}</span>` : `<a href="login.html" class="px-4 py-2 rounded-full bg-primary dark:bg-indigo-900 text-on-primary dark:text-amber-400 text-sm font-bold hover:bg-primary-container dark:hover:bg-indigo-800 transition-colors">Log in</a>`}
-      </div>
-      <div class="flex items-center gap-1">
-      <a
-        href="https://hoangdm.com"
-        class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
-        title="Về trang chủ"
-      >
-        <span class="material-symbols-outlined">home</span>
-      </a>
-      <button
-        onclick="toggleDarkMode()"
-        class="p-2 rounded-full hover:bg-indigo-50 dark:hover:bg-white/10 transition-colors text-indigo-900 dark:text-amber-400 flex items-center justify-center"
-        title="Chuyển chế độ Sáng/Tối"
-      >
-        <span id="welcome-theme-icon" class="material-symbols-outlined">light_mode</span>
-      </button>
+    <div class="mb-7 flex min-h-10 items-center justify-between gap-3">
+      ${state.user ? `<a href="dashboard.html" class="min-w-0 truncate rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-bold tracking-wide text-primary shadow-sm transition hover:bg-primary/10 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-300 dark:hover:bg-amber-400/15">${escapeHtml(state.user.displayName)}</a>` : `<span></span>`}
+      <div class="flex shrink-0 items-center gap-1">
+        ${state.user ? `<button id="welcome-logout-button" type="button" title="Log out" aria-label="Log out" class="flex size-10 items-center justify-center rounded-full text-indigo-900 transition-colors hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10">${materialIcon("logout")}</button>` : `<a href="login.html" title="Log in" aria-label="Log in" class="flex size-10 items-center justify-center rounded-full text-indigo-900 transition-colors hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10">${materialIcon("login")}</a>`}
+        <a href="https://hoangdm.com" class="flex size-10 items-center justify-center rounded-full text-indigo-900 transition-colors hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10" title="Về trang chủ" aria-label="Về trang chủ">
+          <span class="material-symbols-outlined">home</span>
+        </a>
+        <button onclick="toggleDarkMode()" class="flex size-10 items-center justify-center rounded-full text-indigo-900 transition-colors hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10" title="Chuyển chế độ Sáng/Tối" aria-label="Chuyển chế độ Sáng/Tối">
+          <span id="welcome-theme-icon" class="material-symbols-outlined">light_mode</span>
+        </button>
       </div>
     </div>
-    <div class="text-center mb-8">
-      <span class="inline-flex w-16 h-16 rounded-full bg-primary-container dark:bg-indigo-900 items-center justify-center mb-4">
-        ${materialIcon("school", "text-on-primary dark:text-amber-400 text-4xl")}
-      </span>
-      <h1 class="font-h1 text-3xl md:text-4xl text-primary dark:text-slate-100 mb-2">English Academic Deck</h1>
-      <div class="w-16 h-1 bg-secondary-container mx-auto mb-4"></div>
-      <p class="font-body-md text-on-surface-variant dark:text-slate-400">${welcomeSubtitle}</p>
+    <div class="mb-8 text-center">
+      <div class="mb-5 flex items-center gap-4" aria-hidden="true"><span class="h-px flex-1 bg-gradient-to-r from-transparent to-secondary/50"></span><span class="font-serif text-4xl leading-none text-secondary dark:text-amber-400">“</span><span class="h-px flex-1 bg-gradient-to-l from-transparent to-secondary/50"></span></div>
+      <h1 class="welcome-quote mx-auto max-w-md font-h1 text-[clamp(1.45rem,5.5vw,2rem)] leading-[1.28] text-primary dark:text-slate-100">${learningQuote}</h1>
+      <p class="mt-5 font-body-md text-on-surface-variant dark:text-slate-400">${welcomeSubtitle}</p>
     </div>
     ${saved ? `
       <button data-welcome-continue="${saved}" class="flex items-center justify-center gap-2 w-full p-4 mb-4 rounded-xl bg-primary dark:bg-indigo-900 text-on-primary dark:text-amber-400 font-bold hover:bg-primary-container dark:hover:bg-indigo-800 transition-all active:scale-[0.98]">
@@ -1230,6 +1411,7 @@ function selectMCQ(btn) {
     icon.classList.add("text-primary");
   }
   btn.querySelectorAll("span").forEach(span => span.classList.add("font-bold", "text-primary"));
+  saveExerciseResponse(btn.closest(".slide-section"));
 
   const currentSection = document.querySelector(".slide-section.active");
   const unanswered = currentSection?.querySelectorAll(".mcq-question:not(.answered)") || [];
@@ -1286,6 +1468,9 @@ function checkAllMCQ() {
     checkMCQ(container);
   });
 
+  const questions = Array.from(currentSection?.querySelectorAll(".mcq-question") || []);
+  const score = questions.filter(question => question.querySelector(".mcq-option[data-selected='true'][data-correct='true']")).length;
+  recordCheckedExercise(currentSection, "mcq", score, questions.length);
   const button = currentSection?.querySelector(".btn-check-all-mcq");
   if (button) button.style.display = "none";
 }
@@ -1329,6 +1514,8 @@ function checkReading() {
 
   const button = document.querySelector(".slide-section.active .btn-check-reading");
   if (!button) return;
+  const score = Array.from(blanks).filter(blank => blank.value === blank.getAttribute("data-correct")).length;
+  recordCheckedExercise(document.querySelector(".slide-section.active"), "reading", score, blanks.length);
   if (allCorrect) {
     button.style.display = "none";
   } else {
@@ -1342,17 +1529,21 @@ function checkReading() {
 function checkMatching(sectionId) {
   const root = sectionId ? document.querySelector(`.slide-section[data-section-id="${sectionId}"]`) : document.querySelector('.slide-section.active');
   if (!root) return;
+  let score = 0;
+  const total = root.querySelectorAll(".drag-item").length;
   root.querySelectorAll(".drop-zone").forEach(zone => {
     const targetMatch = zone.dataset.match;
     Array.from(zone.children).forEach(item => {
       item.classList.remove("bg-white", "border-primary", "text-primary", "bg-green-100", "border-green-500", "text-green-800", "bg-red-50", "border-red-500", "text-red-700");
       if (item.dataset.match === targetMatch) {
+        score += 1;
         item.classList.add("bg-green-100", "border-green-500", "text-green-800");
       } else {
         item.classList.add("bg-red-50", "border-red-500", "text-red-700");
       }
     });
   });
+  recordCheckedExercise(root, "matching", score, total);
 }
 
 function resetMatching(sectionId) {
@@ -1370,6 +1561,7 @@ function resetMatching(sectionId) {
     zone.classList.add("border-dashed");
     zone.classList.remove("border-solid", "border-primary");
   });
+  saveExerciseResponse(root);
 
   // Shuffle container children
   const items = Array.from(container.children);
