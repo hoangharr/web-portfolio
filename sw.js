@@ -1,5 +1,5 @@
 // Bump this version on every deploy to bust the old cache
-const APP_VERSION = 'v22';
+const APP_VERSION = 'v24';
 const CACHE_NAME = `aptis-shell-${APP_VERSION}`;
 
 const SHELL_FILES = [

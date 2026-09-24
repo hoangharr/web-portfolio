@@ -101,6 +101,18 @@
       };
     </script>
     <style>
+      #lesson-root {
+        -webkit-user-select: text;
+        user-select: text;
+        -webkit-touch-callout: default;
+      }
+      #lesson-root button,
+      #lesson-root select,
+      #lesson-root [role="button"] {
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
       /* Header — tránh notch/Dynamic Island */
       header {
         padding-top: max(0px, env(safe-area-inset-top));
@@ -525,7 +537,7 @@
       </div>
     </div>
 
-    <script src="js/engine.js?v=22"></script>
+    <script src="js/engine.js?v=24"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

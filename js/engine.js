@@ -616,25 +616,96 @@ async function saveVocabularyWord(word) {
 function bindVocabularySelection() {
   if (state.vocabularySelectionBound) return;
   state.vocabularySelectionBound = true;
+
   const popover = document.createElement("div");
-  popover.className = "fixed z-50 hidden max-w-xs rounded-xl border border-primary/25 bg-white p-4 shadow-2xl dark:bg-slate-900";
+  popover.className = "fixed z-[110] hidden w-[min(320px,calc(100vw-24px))] rounded-2xl border border-primary/20 bg-white p-4 text-slate-900 shadow-2xl dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100";
+  popover.setAttribute("role", "dialog");
+  popover.setAttribute("aria-live", "polite");
   document.body.appendChild(popover);
-  const hide = () => popover.classList.add("hidden");
-  document.addEventListener("mousedown", event => { if (!popover.contains(event.target)) hide(); });
-  document.addEventListener("mouseup", event => {
-    if (popover.contains(event.target)) return;
+
+  let selectionTimer = 0;
+  let selectedWord = "";
+  const clearTimer = () => { if (selectionTimer) window.clearTimeout(selectionTimer); selectionTimer = 0; };
+  const hide = (clearSelection = false) => {
+    clearTimer();
+    popover.classList.add("hidden");
+    if (clearSelection) window.getSelection()?.removeAllRanges();
+  };
+  const selectedVocabulary = () => {
     const selection = window.getSelection();
-    const word = selection?.toString().trim();
-    const anchor = selection?.anchorNode?.parentElement;
-    if (!state.user || !word || !/^[a-z]+(?:['-][a-z]+)*$/i.test(word) || !anchor?.closest("#lesson-root") || anchor.closest("textarea, input, button")) return;
-    const rect = selection.getRangeAt(0).getBoundingClientRect();
-    popover.style.left = Math.max(12, Math.min(window.innerWidth - 280, rect.left)) + "px";
-    popover.style.top = Math.min(window.innerHeight - 120, rect.bottom + 10) + "px";
-    popover.innerHTML = '<p class="text-sm font-bold text-primary dark:text-amber-300">Save “' + escapeHtml(word) + '”?</p><p class="mt-1 text-xs text-outline">Pronunciation and Vietnamese meaning will be added to your notebook.</p><div class="mt-3 flex gap-2"><button data-save-word class="rounded-lg bg-primary px-3 py-2 text-xs font-bold text-white">Save</button><button data-close-word class="rounded-lg border border-outline-variant px-3 py-2 text-xs font-bold">Not now</button></div>';
+    if (!selection || selection.isCollapsed || selection.rangeCount === 0) return null;
+    const raw = selection.toString().trim().replace(/[’‘]/g, "'").replace(/[“”]/g, '"');
+    const match = raw.match(/^[“"']?([a-z]+(?:['-][a-z]+)*)[.,!?;:“"']?$/i);
+    if (!match) return null;
+    const range = selection.getRangeAt(0);
+    const node = range.commonAncestorContainer;
+    const element = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    if (!element?.closest("#lesson-root") || element.closest("textarea,input,select,button,a,[contenteditable='true']")) return null;
+    return { word: match[1], rect: range.getBoundingClientRect() };
+  };
+  const positionPopover = rect => {
+    const viewport = window.visualViewport;
+    const width = viewport?.width || window.innerWidth;
+    const height = viewport?.height || window.innerHeight;
+    const offsetLeft = viewport?.offsetLeft || 0;
+    const offsetTop = viewport?.offsetTop || 0;
+    if (width <= 640) {
+      popover.style.left = "12px";
+      popover.style.right = "12px";
+      popover.style.top = "auto";
+      popover.style.bottom = "calc(12px + env(safe-area-inset-bottom))";
+      popover.style.width = "auto";
+      return;
+    }
+    popover.style.right = "auto";
+    popover.style.bottom = "auto";
+    popover.style.width = "320px";
+    const left = Math.max(offsetLeft + 12, Math.min(offsetLeft + width - 332, rect.left + rect.width / 2 - 160));
+    popover.style.left = left + "px";
+    const popoverHeight = popover.offsetHeight || 150;
+    const below = rect.bottom + 12;
+    const top = below + popoverHeight <= offsetTop + height - 12 ? below : Math.max(offsetTop + 12, rect.top - popoverHeight - 12);
+    popover.style.top = top + "px";
+  };
+  const showForSelection = () => {
+    clearTimer();
+    const selected = selectedVocabulary();
+    if (!state.user || !selected) return;
+    selectedWord = selected.word;
+    const alreadySaved = state.vocabulary.some(item => item.word?.toLowerCase() === selectedWord.toLowerCase());
+    popover.innerHTML = '<div class="flex items-start gap-3"><span class="grid size-10 shrink-0 place-items-center rounded-full bg-indigo-50 text-primary dark:bg-indigo-950 dark:text-amber-300">' + materialIcon(alreadySaved ? "bookmark_added" : "bookmark_add") + '</span><div class="min-w-0 flex-1"><p class="break-words text-base font-bold text-primary dark:text-amber-300">“' + escapeHtml(selectedWord) + '”</p><p class="mt-1 text-sm leading-snug text-slate-600 dark:text-slate-300">' + (alreadySaved ? 'This word is already in your notebook.' : 'Save pronunciation and Vietnamese meaning to your notebook?') + '</p></div><button type="button" data-close-word aria-label="Close" class="grid size-11 shrink-0 place-items-center rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">' + materialIcon("close") + '</button></div>' + (alreadySaved ? '' : '<button type="button" data-save-word class="mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-white active:scale-[.98] dark:bg-amber-300 dark:text-slate-950">' + materialIcon("bookmark_add", "text-xl") + '<span>Save to notebook</span></button>');
     popover.classList.remove("hidden");
-    popover.querySelector("[data-close-word]").onclick = hide;
-    popover.querySelector("[data-save-word]").onclick = () => { hide(); window.getSelection()?.removeAllRanges(); const notice = document.createElement("div"); notice.className = "fixed bottom-5 left-1/2 z-50 -translate-x-1/2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white shadow-xl"; notice.textContent = "Saving " + word + " in the background..."; document.body.appendChild(notice); void saveVocabularyWord(word.toLowerCase()).then(() => { notice.textContent = "Saved to notebook"; setTimeout(() => notice.remove(), 1200); }).catch(() => { notice.textContent = "Could not save this word"; notice.classList.add("bg-red-700"); setTimeout(() => notice.remove(), 2500); }); };
-  });
+    requestAnimationFrame(() => positionPopover(selected.rect));
+    popover.querySelector("[data-close-word]").onclick = () => hide(true);
+    const saveButton = popover.querySelector("[data-save-word]");
+    if (saveButton) saveButton.onclick = () => {
+      const word = selectedWord;
+      saveButton.disabled = true;
+      saveButton.innerHTML = materialIcon("progress_activity", "animate-spin text-xl") + "<span>Saving…</span>";
+      window.getSelection()?.removeAllRanges();
+      void saveVocabularyWord(word.toLowerCase()).then(() => {
+        popover.innerHTML = '<div class="flex min-h-16 items-center justify-center gap-2 text-sm font-bold text-emerald-700 dark:text-emerald-300">' + materialIcon("check_circle") + '<span>Saved to notebook</span></div>';
+        window.setTimeout(() => hide(), 1000);
+      }).catch(() => {
+        saveButton.disabled = false;
+        saveButton.innerHTML = materialIcon("refresh", "text-xl") + "<span>Try again</span>";
+        const message = popover.querySelector("p.mt-1");
+        if (message) { message.textContent = "Could not save this word. Please try again."; message.className = "mt-1 text-sm text-red-700 dark:text-red-300"; }
+      });
+    };
+  };
+  const scheduleSelection = delay => {
+    clearTimer();
+    selectionTimer = window.setTimeout(showForSelection, delay);
+  };
+
+  document.addEventListener("selectionchange", () => scheduleSelection(350));
+  document.addEventListener("pointerup", event => { if (!popover.contains(event.target)) scheduleSelection(event.pointerType === "touch" ? 350 : 40); });
+  document.addEventListener("touchend", event => { if (!popover.contains(event.target)) scheduleSelection(400); }, { passive: true });
+  document.addEventListener("pointerdown", event => { if (!popover.contains(event.target)) hide(); });
+  document.addEventListener("scroll", () => { if (!popover.classList.contains("hidden")) hide(); }, { passive: true, capture: true });
+  window.visualViewport?.addEventListener("resize", () => hide());
+  window.addEventListener("orientationchange", () => hide());
 }
 
 function restoreExerciseResponses(root) {
@@ -960,13 +1031,17 @@ function renderModulesMenu() {
 function bindLessonEvents() {
   document.querySelectorAll(".flip-card").forEach(card => {
     card.addEventListener("click", event => {
+      if (!window.getSelection()?.isCollapsed) return;
       card.classList.toggle("flipped");
       speakText(card.dataset.speak, event);
     });
   });
 
   document.querySelectorAll(".speakable").forEach(element => {
-    element.addEventListener("click", event => speakText(element.dataset.speak, event));
+    element.addEventListener("click", event => {
+      if (!window.getSelection()?.isCollapsed) return;
+      speakText(element.dataset.speak, event);
+    });
   });
 
   document.querySelectorAll(".mcq-option").forEach(button => {
