@@ -178,24 +178,22 @@
           "id": "q1",
           "prompt": "I ___ my dentist at 10 tomorrow.",
           "options": [
-            "meet",
-            "met",
             "am meeting",
-            "will met"
+            "meet",
+            "met"
           ],
-          "correct": 2,
+          "correct": 0,
           "explanation": "A fixed arrangement uses the present continuous."
         },
         {
           "id": "q2",
           "prompt": "Look at the sky. It ___ rain.",
           "options": [
-            "is going to",
             "will to",
-            "goes to",
-            "is"
+            "is going to",
+            "goes to"
           ],
-          "correct": 0,
+          "correct": 1,
           "explanation": "Evidence now supports a going-to prediction."
         },
         {
@@ -203,12 +201,11 @@
           "prompt": "The phone is ringing. I ___ answer it.",
           "options": [
             "am going",
-            "will",
             "am",
-            "do"
+            "will"
           ],
-          "correct": 1,
-          "explanation": "Use will for an instant decision."
+          "correct": 2,
+          "explanation": "Use will for an instant decision. Read the complete context before rejecting the other options."
         },
         {
           "id": "q4",
@@ -216,8 +213,7 @@
           "options": [
             "have booked",
             "book yesterday",
-            "are book",
-            "will booking"
+            "are book"
           ],
           "correct": 0,
           "explanation": "A completed arrangement can use present perfect."
@@ -226,13 +222,12 @@
           "id": "q5",
           "prompt": "Are you ___ on Tuesday evening?",
           "options": [
-            "available",
             "probably",
-            "prepare",
-            "appointment"
+            "available",
+            "prepare"
           ],
-          "correct": 0,
-          "explanation": "Available means free to meet."
+          "correct": 1,
+          "explanation": "Available means free to meet. Read the complete context before rejecting the other options."
         },
         {
           "id": "q6",
@@ -240,16 +235,74 @@
           "options": [
             "at",
             "for",
-            "to",
-            "on"
+            "to"
           ],
           "correct": 2,
-          "explanation": "The phrase is look forward to."
+          "explanation": "The phrase is look forward to. Read the complete context before rejecting the other options."
         }
       ],
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-future-plans",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: Making Weekend Plans",
+      "description": "Listen to two friends arranging a time and place to meet.",
+      "audio": {
+        "src": "/audio/future-plans-01.mp3?v=1",
+        "transcript": "Are you free this Saturday, Emma? There's a food festival in the town square. I'd love to go, but I'm visiting my grandmother in the morning. What time does the festival start? It opens at ten and finishes at six. How about meeting at the station at two? I have a dentist appointment at half past one, so could we meet at three instead? That's fine. The weather forecast says it may rain, so I'll bring an umbrella. Great. I'll book our train tickets tonight.",
+        "highlights": [
+          "Saturday",
+          "three",
+          "may rain",
+          "book our train tickets"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "future-listening-gist",
+          "prompt": "What are the speakers arranging?",
+          "options": [
+            "A visit to a food festival",
+            "A dentist appointment",
+            "A family dinner"
+          ],
+          "correct": 0,
+          "explanation": "They are deciding when to meet for the food festival."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "future-listening-detail-1",
+          "prompt": "What time will they meet?",
+          "options": [
+            "Two o'clock",
+            "Half past one",
+            "Three o'clock"
+          ],
+          "correct": 2,
+          "explanation": "They finally agree to meet at three. Read the complete context before rejecting the other options."
+        },
+        {
+          "id": "future-listening-detail-2",
+          "prompt": "What will one speaker book tonight?",
+          "options": [
+            "Train tickets",
+            "A restaurant",
+            "A hotel"
+          ],
+          "correct": 0,
+          "explanation": "The final plan is to book their train tickets."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "The first time you hear a time may not be the final arrangement. Listen for changes such as instead."
       }
     },
     {

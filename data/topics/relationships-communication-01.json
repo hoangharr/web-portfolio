@@ -1,0 +1,344 @@
+{
+  "id": "relationships-communication-01",
+  "title": "Relationships & Communication",
+  "level": "A2",
+  "subtitle": "Describe people, communication habits and social situations",
+  "themeIcon": "forum",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A2 Core Module",
+      "title": "Relationships & Communication",
+      "quote": "Describe people, communication habits and social situations",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Relationships & Communication"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Describe people, communication habits and social situations"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Relationships & Communication",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "get along",
+          "definition": "have a friendly relationship",
+          "translation": "hòa hợp",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "keep in touch",
+          "definition": "continue communicating",
+          "translation": "giữ liên lạc",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "have an argument",
+          "definition": "disagree angrily",
+          "translation": "tranh cãi",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "apologise",
+          "definition": "say that you are sorry",
+          "translation": "xin lỗi",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "supportive",
+          "definition": "giving help and encouragement",
+          "translation": "biết hỗ trợ",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "honest",
+          "definition": "telling the truth",
+          "translation": "trung thực",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "message",
+          "definition": "send written information",
+          "translation": "nhắn tin",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "relationship",
+          "definition": "the connection between people",
+          "translation": "mối quan hệ",
+          "icon": "school",
+          "category": "Relationships & Communication",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Defining relative clauses",
+          "icon": "rule",
+          "function": "who for people; which/that for things",
+          "examples": [
+            "A friend is someone who supports you.",
+            "This is the message that I sent."
+          ]
+        },
+        {
+          "title": "Verb + -ing",
+          "icon": "schema",
+          "function": "enjoy, avoid, finish + verb-ing",
+          "examples": [
+            "We enjoy talking together.",
+            "He avoids discussing money."
+          ]
+        },
+        {
+          "title": "Too and enough",
+          "icon": "edit_note",
+          "function": "too + adjective; adjective + enough",
+          "examples": [
+            "The message was too short.",
+            "She was calm enough to listen."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Relationships & Communication",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/relationships-communication-01.mp3?v=1",
+        "transcript": "My closest friend is someone who lives in another city. We enjoy sending voice messages because they feel more personal than short texts. Last week, we had an argument about a plan that changed at the last minute. I was too annoyed to listen properly. Later, I realised she had a good reason, so I apologised. We are close enough to discuss problems honestly, and that helps us keep in touch.",
+        "highlights": [
+          "get along",
+          "keep in touch",
+          "have an argument",
+          "apologise"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "What is the talk mainly about?",
+          "options": [
+            "Repairing a friendship after an argument",
+            "Choosing a messaging app",
+            "Moving to another city"
+          ],
+          "correct": 0,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "Why do the friends like voice messages?",
+          "options": [
+            "They are cheaper",
+            "They feel more personal",
+            "They are shorter"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Relationships & Communication",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Relationships & Communication",
+        "parts": [
+          "A supportive friend is someone ",
+          {
+            "blank": "r1"
+          },
+          " listens carefully. Good friends enjoy ",
+          {
+            "blank": "r2"
+          },
+          " ideas and are honest ",
+          {
+            "blank": "r3"
+          },
+          " to discuss problems."
+        ],
+        "options": [
+          "who",
+          "sharing",
+          "enough",
+          "get along",
+          "keep in touch",
+          "have an argument"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "who"
+          },
+          {
+            "id": "r2",
+            "correct": "sharing"
+          },
+          {
+            "id": "r3",
+            "correct": "enough"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Relationships & Communication",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe a person you communicate with often.",
+        "How do you keep in touch?",
+        "What makes communication effective?"
+      ],
+      "sampleAnswer": "My best friend is someone who listens carefully. We enjoy talking after work and keep in touch by message. We are honest enough to solve small disagreements quickly.",
+      "preparationSeconds": 30,
+      "recordingSeconds": 60,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Relationships & Communication",
+      "description": "Write 60-90 words using this module's language.",
+      "prompt": {
+        "situation": "Write a message explaining a misunderstanding and suggesting how to solve it.",
+        "placeholder": "Write your response here...",
+        "minWords": 60,
+        "maxWords": 90,
+        "referenceAnswer": "My best friend is someone who listens carefully. We enjoy talking after work and keep in touch by message. We are honest enough to solve small disagreements quickly.",
+        "focus": [
+          "Defining relative clauses",
+          "Verb + -ing",
+          "Too and enough"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "A colleague is a person ___ works with you.",
+          "options": [
+            "which",
+            "who",
+            "where"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

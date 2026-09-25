@@ -8,7 +8,10 @@
       "lessons": [
         "data/topics/daily-life-personal-info-01.json",
         "data/topics/family-home-01.json",
-        "data/topics/food-shopping-01.json"
+        "data/topics/food-shopping-01.json",
+        "data/topics/people-appearance-01.json",
+        "data/topics/places-directions-01.json",
+        "data/topics/free-time-weather-01.json"
       ]
     },
     {
@@ -19,7 +22,10 @@
       "lessons": [
         "data/topics/past-events-01.json",
         "data/topics/future-plans-01.json",
-        "data/topics/comparisons-experiences-01.json"
+        "data/topics/comparisons-experiences-01.json",
+        "data/topics/travel-transport-01.json",
+        "data/topics/work-study-routines-01.json",
+        "data/topics/relationships-communication-01.json"
       ]
     },
     {
@@ -30,7 +36,10 @@
       "lessons": [
         "data/topics/storytelling-sequencing-01.json",
         "data/topics/advice-conditionals-01.json",
-        "data/topics/opinions-media-society-01.json"
+        "data/topics/opinions-media-society-01.json",
+        "data/topics/money-consumer-choices-01.json",
+        "data/topics/environment-community-01.json",
+        "data/topics/culture-entertainment-01.json"
       ]
     },
     {

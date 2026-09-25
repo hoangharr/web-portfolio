@@ -26,6 +26,7 @@
         { "$ref": "#/$defs/grammarSection" },
         { "$ref": "#/$defs/mcqSection" },
         { "$ref": "#/$defs/dragDropSection" },
+        { "$ref": "#/$defs/listeningSection" },
         { "$ref": "#/$defs/readingSection" },
         { "$ref": "#/$defs/writingSection" },
         { "$ref": "#/$defs/speakingSection" },
@@ -38,7 +39,7 @@
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
         "type": { "type": "string" },
-        "nav": { "enum": ["intro", "vocabulary", "grammar", "exercise", "reading", "writing"] },
+        "nav": { "enum": ["intro", "vocabulary", "grammar", "listening", "exercise", "reading", "speaking", "writing"] },
         "eyebrow": { "type": "string" },
         "title": { "type": "string", "minLength": 1 },
         "description": { "type": "string" },
@@ -354,6 +355,28 @@
         }
       ]
     },
+    "listeningSection": {
+      "allOf": [
+        { "$ref": "#/$defs/baseSection" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "audio", "gistQuestions", "detailQuestions"],
+          "properties": {
+            "id": true, "type": { "const": "listening" }, "nav": true, "eyebrow": true, "title": true, "description": true, "tip": { "$ref": "#/$defs/tip" },
+            "audio": {
+              "type": "object", "additionalProperties": false, "required": ["src", "transcript"],
+              "properties": {
+                "src": { "type": "string", "minLength": 1 }, "transcript": { "type": "string", "minLength": 1 },
+                "highlights": { "type": "array", "items": { "type": "string" } }
+              }
+            },
+            "gistQuestions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/mcqQuestion" } },
+            "detailQuestions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/mcqQuestion" } }
+          }
+        }
+      ]
+    },
     "writingSection": {
       "allOf": [
         { "$ref": "#/$defs/baseSection" },
@@ -395,7 +418,7 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["type", "questions", "sampleAnswer"],
+            "required": ["type", "questions", "sampleAnswer"],
           "properties": {
             "id": true,
             "type": { "const": "speaking" },
@@ -410,6 +433,9 @@
             },
             "sampleAnswer": { "type": "string" },
             "sampleAnswerTranslation": { "type": "string" },
+            "preparationSeconds": { "type": "integer", "minimum": 0, "maximum": 60 },
+            "recordingSeconds": { "type": "integer", "minimum": 10, "maximum": 180 },
+            "prompts": { "type": "array", "items": { "type": "string" } },
             "tip": { "$ref": "#/$defs/tip" }
           }
         }

@@ -1,4 +1,7 @@
 const CURRICULUM_URL = "/data/curriculum.json?v=2";
+const MEDIA_BASE_URL = String(
+  window.MEDIA_BASE_URL || document.querySelector('meta[name="media-base-url"]')?.content || ""
+).replace(/\/$/, "");
 const LEARNING_QUOTES = ["Small progress each day adds up to big results.", "Learning never exhausts the mind.", "The expert in anything was once a beginner.", "Study a little today, understand a lot tomorrow.", "Every new word is another way to see the world."];
 
 const state = {
@@ -16,14 +19,19 @@ const state = {
   submissionResults: {},
   lessonProgress: {},
   vocabulary: [],
+  neuralAudio: {},
   vocabularySelectionBound: false,
-  restoringResponses: false
+  restoringResponses: false,
+  recording: null
 };
 
 const sectionNavMap = {
   vocabulary: ["vocabulary", "synonyms"],
   grammar: ["grammar"],
-  exercise: ["mcq", "drag-drop", "reading", "writing", "speaking", "checkpoint"]
+  listening: ["listening"],
+  exercise: ["mcq", "drag-drop", "reading", "speaking", "writing", "checkpoint"],
+  reading: ["reading"],
+  speaking: ["speaking"]
 };
 
 function escapeHtml(value) {
@@ -33,6 +41,11 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function resolveMediaUrl(source) {
+  if (!source || !MEDIA_BASE_URL || !String(source).startsWith("/audio/")) return source;
+  return `${MEDIA_BASE_URL}${source}`;
 }
 
 function materialIcon(icon, classes = "") {
@@ -298,12 +311,13 @@ function renderMcq(section) {
             <p class="font-h3 text-lg text-primary italic">${questionIndex + 1}. ${escapeHtml(question.prompt)}</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               ${question.options.map((option, optionIndex) => `
-                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-correct="${optionIndex === question.correct}">
+                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-correct="${optionIndex === question.correct}" data-explanation="${escapeHtml(question.explanation || "")}">
                   ${materialIcon("radio_button_unchecked", "text-outline icon-state text-lg")}
                   <span>${optionLabel(optionIndex)}. ${escapeHtml(option)}</span>
                 </button>
               `).join("")}
             </div>
+            <p class="answer-explanation hidden rounded-lg bg-surface-container-low px-4 py-3 text-sm text-on-surface-variant" aria-live="polite"></p>
           </div>
         `).join("")}
         <div class="mt-8 flex flex-wrap justify-end items-center gap-3">
@@ -353,9 +367,12 @@ function renderReading(section) {
     ${renderHeader(section)}
     <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-gutter">
       <div class="col-span-12 xl:col-span-8 bg-white border border-gray-200 p-6 md:p-10 rounded-xl">
-        <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8 text-primary">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6 md:mb-8 text-primary">
+          <div class="flex items-center gap-2 md:gap-3">
           ${materialIcon("menu_book")}
           <span class="font-label-caps text-xs md:text-sm">${escapeHtml(section.passage.title)}</span>
+          </div>
+          <span class="rounded-full bg-surface-container-low px-3 py-1 text-xs font-bold text-outline">${countWords(section.passage.parts.filter(part => typeof part === "string").join(" "))} words · about ${Math.max(1, Math.ceil(countWords(section.passage.parts.filter(part => typeof part === "string").join(" ")) / 180))} min</span>
         </div>
         <article class="font-body-lg text-sm md:text-lg leading-[2.5] text-on-surface">
           ${section.passage.parts.map(part => {
@@ -393,6 +410,24 @@ function renderReading(section) {
       </div>
     </section>
   `;
+}
+
+function renderListeningQuestions(title, questions, phase) {
+  return `<section class="mt-6 rounded-xl border border-outline-variant bg-white p-5"><div class="mb-4 flex items-center gap-2 text-primary">${materialIcon(phase === "gist" ? "visibility" : "fact_check")}<h3 class="font-h3 text-lg">${escapeHtml(title)}</h3></div><div class="space-y-4">${questions.map((question, index) => `<div class="mcq-question rounded-lg border border-outline-variant p-4" data-question-id="${escapeHtml(question.id)}"><p class="font-bold text-primary">${index + 1}. ${escapeHtml(question.prompt)}</p><div class="mt-3 grid gap-2">${question.options.map((option, optionIndex) => `<button class="mcq-option flex items-center gap-2 rounded border border-outline-variant p-3 text-left" data-correct="${optionIndex === question.correct}" data-explanation="${escapeHtml(question.explanation || "")}">${materialIcon("radio_button_unchecked", "icon-state text-outline")}<span>${optionLabel(optionIndex)}. ${escapeHtml(option)}</span></button>`).join("")}</div><p class="answer-explanation mt-3 hidden text-sm text-on-surface-variant"></p></div>`).join("")}</div></section>`;
+}
+
+function renderListening(section) {
+  return `${renderHeader(section)}
+    <div class="grid grid-cols-1 gap-6 xl:grid-cols-12">
+      <section class="xl:col-span-8 rounded-xl border border-outline-variant bg-white p-6 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3"><div><p class="font-label-caps text-secondary uppercase">First listen: gist. Then listen again for details.</p><p class="listen-count text-sm text-outline">Listens: 0</p></div><span class="rounded-full bg-primary-fixed px-3 py-1 text-sm font-bold text-primary">MP3 audio</span></div>
+        <audio class="listening-audio mt-5 w-full" controls preload="metadata" src="${escapeHtml(resolveMediaUrl(section.audio.src))}">Your browser cannot play this audio.</audio>
+        ${renderListeningQuestions("Listening for gist", section.gistQuestions, "gist")}
+        ${renderListeningQuestions("Listening for detail", section.detailQuestions, "detail")}
+        <div class="mt-6 flex flex-wrap items-center gap-3"><button type="button" class="btn-check-listening rounded-lg bg-primary px-6 py-3 font-bold text-white">Check Answer</button><p class="submission-status text-xs text-outline" aria-live="polite"></p></div>
+        <details class="listening-transcript mt-5 hidden rounded-lg border border-secondary-container bg-surface-container-low p-4"><summary class="cursor-pointer font-bold text-primary">Transcript and answer clues</summary><p class="mt-3 whitespace-pre-line leading-relaxed">${escapeHtml(section.audio.transcript)}</p>${section.audio.highlights?.length ? `<p class="mt-3 text-sm font-bold text-secondary">Answer clues: ${escapeHtml(section.audio.highlights.join(" · "))}</p>` : ""}</details>
+      </section><aside class="xl:col-span-4">${renderTip(section.tip)}</aside>
+    </div>`;
 }
 
 function renderWriting(section) {
@@ -565,11 +600,12 @@ function captureExerciseResponse(root) {
     if (selected >= 0) answers[question.dataset.questionId] = selected;
   });
   const blanks = Array.from(root.querySelectorAll(".reading-blank")).map(blank => blank.value);
+  const listens = Array.from(root.querySelectorAll(".listening-audio")).map(audio => Number(audio.dataset.listenCount || 0));
   const matching = {};
   root.querySelectorAll(".drop-zone").forEach(zone => {
     matching[zone.dataset.match] = Array.from(zone.querySelectorAll(".drag-item")).map(item => item.textContent.trim());
   });
-  return { answers, blanks, matching };
+  return { answers, blanks, listens, matching };
 }
 
 function saveExerciseResponse(root) {
@@ -719,6 +755,12 @@ function restoreExerciseResponses(root) {
       if (option) selectMCQ(option);
     });
     sectionRoot.querySelectorAll(".reading-blank").forEach((blank, index) => { if (saved.blanks?.[index]) blank.value = saved.blanks[index]; });
+    sectionRoot.querySelectorAll(".listening-audio").forEach((audio, index) => {
+      const count = Number(saved.listens?.[index] || 0);
+      audio.dataset.listenCount = String(count);
+      const label = sectionRoot.querySelector(".listen-count");
+      if (label) label.textContent = `Listens: ${count}`;
+    });
     Object.entries(saved.matching || {}).forEach(([target, texts]) => {
       const zone = Array.from(sectionRoot.querySelectorAll(".drop-zone")).find(item => item.dataset.match === target);
       (texts || []).forEach(text => {
@@ -807,6 +849,10 @@ function renderNextStepCard(nextStep) {
 }
 
 function renderSpeaking(section) {
+  const key = `${section.lesson?.id || "lesson"}:${section.id}`;
+  const completed = state.submissionResults[key]?.kind === "speaking";
+  const prepSeconds = section.preparationSeconds ?? 20;
+  const recordingSeconds = section.recordingSeconds ?? 60;
   return `
     ${renderHeader(section)}
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter items-start">
@@ -820,10 +866,16 @@ function renderSpeaking(section) {
             </div>
           </div>
         `).join("")}
+        <section class="speaking-recorder rounded-xl border border-outline-variant bg-white p-6 shadow-sm" data-draft-key="${escapeHtml(key)}" data-prep-seconds="${prepSeconds}" data-recording-seconds="${recordingSeconds}">
+          <div class="flex items-center justify-between gap-3"><div><p class="font-label-caps text-secondary uppercase">Preparation</p><p class="speaking-status mt-1 font-bold text-primary">Prepare for ${prepSeconds} seconds.</p></div><span class="speaking-timer text-3xl font-black text-primary">${prepSeconds}s</span></div>
+          ${section.prompts?.length ? `<ul class="mt-4 list-disc space-y-1 pl-5 text-sm text-on-surface-variant">${section.prompts.map(prompt => `<li>${escapeHtml(prompt)}</li>`).join("")}</ul>` : ""}
+          <div class="mt-5 flex flex-wrap gap-3"><button type="button" class="btn-start-prep rounded-lg bg-secondary-container px-5 py-3 font-bold text-on-secondary-container">Start preparation</button><button type="button" disabled class="btn-start-recording rounded-lg bg-primary px-5 py-3 font-bold text-white opacity-50">Record</button><button type="button" disabled class="btn-stop-recording rounded-lg border border-primary px-5 py-3 font-bold text-primary">Stop</button><button type="button" disabled class="btn-delete-recording rounded-lg border border-outline px-5 py-3 font-bold text-outline">Delete</button></div>
+          <audio class="speaking-playback mt-5 hidden w-full" controls></audio><label class="mt-5 flex items-center gap-2 text-sm text-on-surface-variant"><input class="speaking-complete" type="checkbox" ${completed ? "checked" : ""}> I recorded my response and reviewed it: ideas, tense, clarity and linking words.</label><p class="submission-status mt-3 text-xs text-outline" aria-live="polite"></p>
+        </section>
         ${renderTip(section.tip)}
       </div>
       <div class="lg:col-span-5 flex flex-col gap-6">
-        <div class="bg-primary-container text-white p-6 rounded-xl shadow-sm">
+        <div class="speaking-sample ${completed ? "" : "hidden"} bg-primary-container text-white p-6 rounded-xl shadow-sm">
           <div class="flex justify-between items-center mb-4 border-b border-white/20 pb-3">
             <span class="font-label-caps text-label-caps uppercase">Sample Answer</span>
             <button class="speakable flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-full text-sm font-bold" data-speak="${escapeHtml(section.sampleAnswer)}">
@@ -855,12 +907,13 @@ function renderCheckpoint(section) {
             <p class="font-h3 text-lg text-primary italic">${questionIndex + 1}. ${escapeHtml(question.prompt)}</p>
             <div class="grid grid-cols-1 gap-3">
               ${question.options.map((option, optionIndex) => `
-                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-correct="${optionIndex === question.correct}">
+                <button class="mcq-option flex items-center gap-2 p-4 border border-outline-variant rounded hover:bg-indigo-50 text-left transition-all" data-correct="${optionIndex === question.correct}" data-explanation="${escapeHtml(question.explanation || "")}">
                   ${materialIcon("radio_button_unchecked", "text-outline icon-state text-lg")}
                   <span>${optionLabel(optionIndex)}. ${escapeHtml(option)}</span>
                 </button>
               `).join("")}
             </div>
+            <p class="answer-explanation hidden rounded-lg bg-surface-container-low px-4 py-3 text-sm text-on-surface-variant" aria-live="polite"></p>
           </div>
         `).join("")}
         <div class="mt-8 flex flex-wrap justify-end items-center gap-3">
@@ -891,15 +944,28 @@ function renderSection(section, index) {
     grammar: renderGrammar,
     mcq: renderMcq,
     "drag-drop": renderDragDrop,
+    listening: renderListening,
     reading: renderReading,
     writing: renderWriting,
     speaking: renderSpeaking,
     checkpoint: renderCheckpoint
   };
 
+  const renderer = renderers[section.type];
+  if (typeof renderer !== "function") {
+    console.error(`Unsupported lesson section type: ${section.type}`, section);
+    return `
+      <section id="slide-${index + 1}" class="slide-section ${index === 0 ? "active" : ""} w-full" data-section-id="${escapeHtml(section.id)}" data-section-type="${escapeHtml(section.type)}" data-nav="${escapeHtml(section.nav)}">
+        <div class="rounded-xl border border-error bg-error-container p-6 text-on-error-container">
+          <h2 class="font-h2 text-2xl">Section unavailable</h2>
+          <p class="mt-2">Unsupported section type: ${escapeHtml(section.type)}</p>
+        </div>
+      </section>`;
+  }
+
   return `
     <section id="slide-${index + 1}" class="slide-section ${index === 0 ? "active" : ""} w-full" data-section-id="${escapeHtml(section.id)}" data-section-type="${escapeHtml(section.type)}" data-nav="${escapeHtml(section.nav)}">
-      ${renderers[section.type](section)}
+      ${renderer(section)}
       ${section.sectionIndex === section.lesson.sections.length - 1 && section.type !== "checkpoint" ? renderLessonCompletionPanel(section.lesson) : ""}
     </section>
   `;
@@ -1060,6 +1126,23 @@ function bindLessonEvents() {
     button.addEventListener("click", checkReading);
   });
 
+  document.querySelectorAll(".listening-audio").forEach(audio => {
+    audio.addEventListener("play", () => {
+      const root = audio.closest(".slide-section");
+      if (audio.dataset.playing !== "true") {
+        audio.dataset.playing = "true";
+        const count = Number(audio.dataset.listenCount || 0) + 1;
+        audio.dataset.listenCount = String(count);
+        const label = root?.querySelector(".listen-count");
+        if (label) label.textContent = `Listens: ${count}`;
+      }
+    });
+    audio.addEventListener("ended", () => { audio.dataset.playing = "false"; });
+    audio.addEventListener("pause", () => { audio.dataset.playing = "false"; });
+  });
+  document.querySelectorAll(".btn-check-listening").forEach(button => button.addEventListener("click", () => checkListening(button.closest(".slide-section"))));
+  document.querySelectorAll(".speaking-recorder").forEach(bindSpeakingRecorder);
+
   document.querySelectorAll(".btn-submit-writing").forEach(button => {
     button.addEventListener("click", () => submitWriting(button.closest(".slide-section")?.querySelector(".writing-input-text")));
   });
@@ -1191,27 +1274,31 @@ function speakText(text, event, ipa = null) {
     }
   }
 
+  if (state.currentAudio) state.currentAudio.pause();
+  const source = state.neuralAudio[text];
+  if (source) {
+    state.currentAudio = new Audio(resolveMediaUrl(source));
+    state.currentAudio.play().catch(error => console.error("Unable to play neural TTS audio:", error));
+    return;
+  }
+
+  // Static neural assets are optional: deployments can keep them in object
+  // storage instead of committing hundreds of binary files to this repository.
+  // Prefer a high-quality installed voice when an asset has not been published.
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "en-US";
-    utterance.rate = 0.85;
+    utterance.rate = 0.88;
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(voice => voice.lang === "en-US" && voice.name.includes("Samantha"));
-    if (preferredVoice) utterance.voice = preferredVoice;
+    const preferredNames = ["Natural", "Neural", "Samantha", "Ava", "Jenny", "Sonia"];
+    utterance.voice = voices.find(voice =>
+      voice.lang?.startsWith("en") && preferredNames.some(name => voice.name.includes(name))
+    ) || voices.find(voice => voice.lang === "en-US") || null;
     window.speechSynthesis.speak(utterance);
-    return;
+  } else {
+    console.error("No pronunciation audio is available for:", text);
   }
-
-  const encodedText = encodeURIComponent(text);
-  const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encodedText}`;
-  if (state.currentAudio) state.currentAudio.pause();
-  state.currentAudio = new Audio(url);
-  state.currentAudio.play().catch(() => {});
-}
-
-if ("speechSynthesis" in window) {
-  window.speechSynthesis.onvoiceschanged = function () {};
 }
 
 function updateUI() {
@@ -1252,6 +1339,9 @@ function updateNav(section) {
   const navItems = {
     vocabulary: document.getElementById("nav-vocab"),
     grammar: document.getElementById("nav-grammar"),
+    listening: document.getElementById("nav-listening"),
+    reading: document.getElementById("nav-reading"),
+    speaking: document.getElementById("nav-speaking"),
     exercise: document.getElementById("nav-exercise")
   };
   const inactiveClass = "nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded";
@@ -1259,7 +1349,7 @@ function updateNav(section) {
 
   Object.entries(navItems).forEach(([nav, element]) => {
     if (!element) return;
-    const active = nav === section.nav || (nav === "exercise" && ["reading", "writing"].includes(section.nav));
+    const active = nav === section.nav || (nav === "exercise" && ["writing", "checkpoint"].includes(section.nav));
     element.className = active ? activeClass : inactiveClass;
   });
 }
@@ -1518,13 +1608,15 @@ function selectMCQ(btn) {
 function checkMCQ(container) {
   if (!container) return;
   container.classList.add("answered");
+  const hasSelection = Boolean(container.querySelector(".mcq-option[data-selected='true']"));
 
   container.querySelectorAll(".mcq-option").forEach(option => {
     const icon = option.querySelector(".icon-state");
     const textSpans = option.querySelectorAll("span");
-    if (option.getAttribute("data-selected") !== "true") return;
+    const selected = option.getAttribute("data-selected") === "true";
+    const correct = option.getAttribute("data-correct") === "true";
 
-    if (option.getAttribute("data-correct") === "true") {
+    if (correct && (selected || hasSelection)) {
       option.classList.remove("border-outline-variant", "border-primary", "bg-primary/5");
       option.classList.add("border-2", "border-green-600", "bg-green-50");
       if (icon) {
@@ -1536,7 +1628,7 @@ function checkMCQ(container) {
         span.classList.add("font-bold", "text-green-700");
         span.classList.remove("text-primary");
       });
-    } else {
+    } else if (selected) {
       option.classList.remove("border-primary", "bg-primary/5");
       option.classList.add("border-2", "border-red-500", "bg-red-50");
       if (icon) {
@@ -1549,6 +1641,68 @@ function checkMCQ(container) {
         span.classList.remove("text-primary");
       });
     }
+  });
+  const selected = container.querySelector(".mcq-option[data-selected='true']");
+  const correct = container.querySelector(".mcq-option[data-correct='true']");
+  const explanation = container.querySelector(".answer-explanation");
+  if (selected && explanation && correct?.dataset.explanation) {
+    explanation.textContent = correct.dataset.explanation;
+    explanation.classList.remove("hidden");
+  }
+}
+
+function checkListening(root) {
+  if (!root) return;
+  const questions = Array.from(root.querySelectorAll(".mcq-question"));
+  const unanswered = questions.filter(question => !question.querySelector(".mcq-option[data-selected='true']"));
+  if (unanswered.length) { submissionStatus(root, `Answer all ${questions.length} questions first.`); return; }
+  questions.forEach(checkMCQ);
+  const score = questions.filter(question => question.querySelector(".mcq-option[data-selected='true'][data-correct='true']")).length;
+  root.querySelector(".listening-transcript")?.classList.remove("hidden");
+  recordCheckedExercise(root, "listening", score, questions.length);
+}
+
+function formatSeconds(seconds) { return `${Math.max(0, Math.ceil(seconds))}s`; }
+
+function bindSpeakingRecorder(root) {
+  const prep = root.querySelector(".btn-start-prep"), start = root.querySelector(".btn-start-recording"), stop = root.querySelector(".btn-stop-recording"), remove = root.querySelector(".btn-delete-recording"), timer = root.querySelector(".speaking-timer"), status = root.querySelector(".speaking-status"), playback = root.querySelector(".speaking-playback"), checklist = root.querySelector(".speaking-complete");
+  const setStatus = text => { status.textContent = text; };
+  prep.addEventListener("click", () => {
+    let remaining = Number(root.dataset.prepSeconds);
+    prep.disabled = true; prep.classList.add("opacity-50");
+    timer.textContent = formatSeconds(remaining); setStatus("Think of two or three ideas.");
+    const interval = window.setInterval(() => {
+      remaining -= 1; timer.textContent = formatSeconds(remaining);
+      if (remaining <= 0) { window.clearInterval(interval); start.disabled = false; start.classList.remove("opacity-50"); setStatus("Preparation finished. You can record now."); }
+    }, 1000);
+  });
+  start.addEventListener("click", async () => {
+    if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) { setStatus("Recording is not supported in this browser."); return; }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const chunks = []; const recorder = new MediaRecorder(stream);
+      const startedAt = Date.now();
+      state.recording = { recorder, stream, root, startedAt };
+      recorder.ondataavailable = event => { if (event.data.size) chunks.push(event.data); };
+      recorder.onstop = () => {
+        stream.getTracks().forEach(track => track.stop());
+        const url = URL.createObjectURL(new Blob(chunks, { type: recorder.mimeType || "audio/webm" }));
+        if (playback.src) URL.revokeObjectURL(playback.src);
+        playback.src = url; playback.classList.remove("hidden"); remove.disabled = false; remove.classList.remove("opacity-50"); state.recording = null; setStatus("Recording ready. Listen, delete, or mark your review complete.");
+      };
+      recorder.start(); start.disabled = true; start.classList.add("opacity-50"); stop.disabled = false; stop.classList.remove("opacity-50");
+      const limit = Number(root.dataset.recordingSeconds); timer.textContent = formatSeconds(limit); setStatus("Recording… speak naturally.");
+      const interval = window.setInterval(() => { const left = limit - Math.floor((Date.now() - startedAt) / 1000); timer.textContent = formatSeconds(left); if (left <= 0 && recorder.state === "recording") { window.clearInterval(interval); recorder.stop(); } }, 250);
+    } catch (error) { setStatus("Microphone permission is needed to record."); }
+  });
+  stop.addEventListener("click", () => { if (state.recording?.root === root && state.recording.recorder.state === "recording") state.recording.recorder.stop(); stop.disabled = true; });
+  remove.addEventListener("click", () => { if (playback.src) URL.revokeObjectURL(playback.src); playback.removeAttribute("src"); playback.classList.add("hidden"); remove.disabled = true; checklist.checked = false; setStatus("Recording deleted. You can record again."); });
+  checklist.addEventListener("change", () => {
+    if (!checklist.checked || !playback.src) { if (checklist.checked) { checklist.checked = false; setStatus("Record your response before completing the review."); } return; }
+    const slide = root.closest(".slide-section"), key = root.dataset.draftKey;
+    state.submissionResults[key] = { kind: "speaking", completedAt: new Date().toISOString() };
+    void syncSubmission(key, JSON.stringify({ kind: "speaking", data: { completed: true } }));
+    slide?.querySelector(".speaking-sample")?.classList.remove("hidden"); submissionStatus(slide, "Speaking practice marked complete.");
   });
 }
 
@@ -1680,8 +1834,12 @@ async function loadLesson() {
   const root = document.getElementById("lesson-root");
   try {
     // Load curriculum (tracks object or legacy array of lesson URLs)
-    const curriculumResp = await fetch(CURRICULUM_URL);
+    const [curriculumResp, neuralAudioResp] = await Promise.all([
+      fetch(CURRICULUM_URL),
+      fetch("/data/tts-manifest.json?v=1").catch(() => null)
+    ]);
     if (!curriculumResp.ok) throw new Error(`Unable to load curriculum`);
+    state.neuralAudio = neuralAudioResp?.ok ? await neuralAudioResp.json() : {};
     const curriculumData = await curriculumResp.json();
     const tracks = Array.isArray(curriculumData)
       ? [{ id: "all", label: "Modules", lessons: curriculumData }]

@@ -177,12 +177,11 @@
           "id": "q1",
           "prompt": "While I ___ home, I saw an accident.",
           "options": [
-            "walked",
             "was walking",
-            "had walk",
-            "am walking"
+            "walked",
+            "had walk"
           ],
-          "correct": 1,
+          "correct": 0,
           "explanation": "Past continuous gives the background action."
         },
         {
@@ -190,35 +189,32 @@
           "prompt": "The film ___ by the time we arrived.",
           "options": [
             "started",
-            "has started",
             "had started",
-            "was start"
+            "has started"
           ],
-          "correct": 2,
+          "correct": 1,
           "explanation": "Past perfect marks the earlier past event."
         },
         {
           "id": "q3",
           "prompt": "___, we found a safe place to stay.",
           "options": [
-            "Eventually",
             "During",
             "Ago",
-            "Since"
+            "Eventually"
           ],
-          "correct": 0,
-          "explanation": "Eventually introduces the final result."
+          "correct": 2,
+          "explanation": "Eventually introduces the final result. Read the complete context before rejecting the other options."
         },
         {
           "id": "q4",
           "prompt": "She was cooking when the lights ___.",
           "options": [
-            "were going out",
             "went out",
-            "had go out",
-            "go out"
+            "were going out",
+            "had go out"
           ],
-          "correct": 1,
+          "correct": 0,
           "explanation": "Past simple marks the interrupting event."
         },
         {
@@ -227,28 +223,85 @@
           "options": [
             "unexpected",
             "relieved",
-            "meanwhile",
-            "first"
+            "meanwhile"
           ],
           "correct": 1,
-          "explanation": "Relieved describes worry ending."
+          "explanation": "Relieved describes worry ending. Read the complete context before rejecting the other options."
         },
         {
           "id": "q6",
           "prompt": "As soon as he ___, we left.",
           "options": [
-            "arrived",
             "was arriving",
             "has arrive",
-            "arrives yesterday"
+            "arrived"
           ],
-          "correct": 0,
+          "correct": 2,
           "explanation": "Use past simple for the completed event."
         }
       ],
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-story",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: The Journey That Went Wrong",
+      "description": "Follow a short incident and identify its turning point and outcome.",
+      "audio": {
+        "src": "/audio/storytelling-sequencing-01.mp3?v=1",
+        "transcript": "Two months ago, I travelled to Bristol for an important interview. I had checked the route the night before and left home early. At first, everything went smoothly. However, halfway through the journey, the train stopped because of a signal problem. After waiting for nearly forty minutes, the driver announced that everyone had to change trains. I called the company to explain, expecting them to cancel my interview. Surprisingly, the manager offered to interview me online from a quiet room at the station. A member of staff helped me find one, and the interview began only ten minutes late. A week later, I received a job offer. The experience taught me that a calm explanation can sometimes turn a disaster into an opportunity.",
+        "highlights": [
+          "signal problem",
+          "change trains",
+          "interview online",
+          "job offer"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "story-listening-gist",
+          "prompt": "What is the main point of the story?",
+          "options": [
+            "The speaker missed an opportunity",
+            "A travel problem led to an unexpected solution",
+            "The company changed its office"
+          ],
+          "correct": 1,
+          "explanation": "A delayed train created a problem, but the interview was moved online and succeeded."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "story-listening-detail-1",
+          "prompt": "Why did the train stop?",
+          "options": [
+            "Bad weather",
+            "A signal problem",
+            "A passenger was ill"
+          ],
+          "correct": 1,
+          "explanation": "The train stopped because of a signal problem."
+        },
+        {
+          "id": "story-listening-detail-2",
+          "prompt": "What was the final outcome?",
+          "options": [
+            "The interview was cancelled",
+            "The speaker received a job offer",
+            "The speaker returned home"
+          ],
+          "correct": 1,
+          "explanation": "A week later, the speaker received a job offer."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Track the situation, complication, response and outcome rather than trying to remember every word."
       }
     },
     {

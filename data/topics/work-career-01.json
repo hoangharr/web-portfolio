@@ -117,23 +117,41 @@
       "rows": [
         {
           "basic": "Job/Work",
-          "advanced": ["Occupation", "Profession", "Employment"]
+          "advanced": [
+            "Occupation",
+            "Profession",
+            "Employment"
+          ]
         },
         {
           "basic": "Good at",
-          "advanced": ["Proficient in", "Competent at"]
+          "advanced": [
+            "Proficient in",
+            "Competent at"
+          ]
         },
         {
           "basic": "Salary",
-          "advanced": ["Income", "Remuneration", "Earnings"]
+          "advanced": [
+            "Income",
+            "Remuneration",
+            "Earnings"
+          ]
         },
         {
           "basic": "Colleagues",
-          "advanced": ["Co-workers", "Peers"]
+          "advanced": [
+            "Co-workers",
+            "Peers"
+          ]
         },
         {
           "basic": "Boss",
-          "advanced": ["Employer", "Supervisor", "Management"]
+          "advanced": [
+            "Employer",
+            "Supervisor",
+            "Management"
+          ]
         }
       ],
       "practiceTasks": [
@@ -169,27 +187,53 @@
           "title": "Highly",
           "icon": "star",
           "function": "Modifies ability or trait",
-          "examples": ["Highly skilled", "Highly motivated", "He is a highly effective leader."]
+          "examples": [
+            "Highly skilled",
+            "Highly motivated",
+            "He is a highly effective leader."
+          ]
         },
         {
           "title": "Consistently",
           "icon": "sync",
           "function": "Modifies frequency or action",
-          "examples": ["Consistently meet targets", "The team consistently delivers results."]
+          "examples": [
+            "Consistently meet targets",
+            "The team consistently delivers results."
+          ]
         },
         {
           "title": "Extremely",
           "icon": "priority_high",
           "function": "Modifies magnitude or state",
-          "examples": ["Extremely demanding job", "Managing this project is extremely complex."]
+          "examples": [
+            "Extremely demanding job",
+            "Managing this project is extremely complex."
+          ]
         }
       ],
       "table": {
-        "headers": ["Adverb", "Function", "Professional Phrase"],
+        "headers": [
+          "Adverb",
+          "Function",
+          "Professional Phrase"
+        ],
         "rows": [
-          ["Highly", "Modifies Ability/Trait", "He is a highly effective leader."],
-          ["Consistently", "Modifies Frequency/Action", "The team consistently delivers results."],
-          ["Extremely", "Modifies Magnitude/State", "Managing this project is extremely complex."]
+          [
+            "Highly",
+            "Modifies Ability/Trait",
+            "He is a highly effective leader."
+          ],
+          [
+            "Consistently",
+            "Modifies Frequency/Action",
+            "The team consistently delivers results."
+          ],
+          [
+            "Extremely",
+            "Modifies Magnitude/State",
+            "Managing this project is extremely complex."
+          ]
         ]
       },
       "tip": {
@@ -208,38 +252,68 @@
         {
           "id": "m1q1",
           "prompt": "\"To succeed in marketing, you need to ________ a clear career path early on.\"",
-          "options": ["follow", "pursue", "trace", "walk"],
-          "correct": 1
+          "options": [
+            "pursue",
+            "follow",
+            "trace"
+          ],
+          "correct": 0,
+          "explanation": "Pursue a career path is the standard collocation for actively following a professional direction; trace does not express that goal."
         },
         {
           "id": "m1q2",
           "prompt": "\"Internships are the best way to gain ________ experience before graduating.\"",
-          "options": ["hands-on", "theoretical", "remote", "manual"],
-          "correct": 0
+          "options": [
+            "theoretical",
+            "hands-on",
+            "remote"
+          ],
+          "correct": 1,
+          "explanation": "Hands-on experience comes from doing practical work; theoretical and remote describe different ways of learning or working."
         },
         {
           "id": "m1q3",
           "prompt": "\"Our team is ________ motivated to achieve the annual targets.\"",
-          "options": ["absolutely", "widely", "completely", "highly"],
-          "correct": 3
+          "options": [
+            "absolutely",
+            "widely",
+            "highly"
+          ],
+          "correct": 2,
+          "explanation": "Highly motivated is the standard degree collocation; widely and absolutely do not normally modify motivated in this context."
         },
         {
           "id": "m1q4",
           "prompt": "\"Managing this project requires the ability to work well under ________.\"",
-          "options": ["pressure", "weight", "control", "force"],
-          "correct": 0
+          "options": [
+            "pressure",
+            "weight",
+            "control"
+          ],
+          "correct": 0,
+          "explanation": "Work under pressure is the established expression for performing despite stress or deadlines; weight and control do not fit the collocation."
         },
         {
           "id": "m1q5",
           "prompt": "\"Many employees struggle to achieve a healthy work-life ________.\"",
-          "options": ["equality", "status", "balance", "center"],
-          "correct": 2
+          "options": [
+            "equality",
+            "balance",
+            "status"
+          ],
+          "correct": 1,
+          "explanation": "Work-life balance is the established term for managing professional and personal demands; equality and status do not complete it."
         },
         {
           "id": "m1q6",
           "prompt": "\"You must ________ the deadline if you want to keep this client.\"",
-          "options": ["finish", "catch", "accomplish", "meet"],
-          "correct": 3
+          "options": [
+            "finish",
+            "catch",
+            "meet"
+          ],
+          "correct": 2,
+          "explanation": "Meet a deadline means complete work by the required time; catch and finish do not form the target collocation with deadline."
         }
       ]
     },
@@ -251,31 +325,117 @@
       "title": "Work Synonym Matching Lab",
       "description": "Drag each professional synonym to the correct basic word group.",
       "targets": [
-        { "id": "salary", "label": "Salary" },
-        { "id": "boss", "label": "Boss" },
-        { "id": "colleagues", "label": "Colleagues" },
-        { "id": "good-at", "label": "Good at" },
-        { "id": "job", "label": "Job" },
-        { "id": "none", "label": "Not a match" }
+        {
+          "id": "salary",
+          "label": "Salary"
+        },
+        {
+          "id": "boss",
+          "label": "Boss"
+        },
+        {
+          "id": "colleagues",
+          "label": "Colleagues"
+        },
+        {
+          "id": "good-at",
+          "label": "Good at"
+        },
+        {
+          "id": "job",
+          "label": "Job"
+        },
+        {
+          "id": "none",
+          "label": "Not a match"
+        }
       ],
       "items": [
-        { "id": "drag-1", "text": "Proficient in", "match": "good-at" },
-        { "id": "drag-2", "text": "Co-workers", "match": "colleagues" },
-        { "id": "drag-3", "text": "Income", "match": "salary" },
-        { "id": "drag-4", "text": "Proficient at", "match": "none" },
-        { "id": "drag-5", "text": "Employer", "match": "boss" },
-        { "id": "drag-6", "text": "Occupation", "match": "job" },
-        { "id": "drag-7", "text": "Remuneration", "match": "salary" },
-        { "id": "drag-8", "text": "Salaryman", "match": "none" },
-        { "id": "drag-9", "text": "Supervisor", "match": "boss" },
-        { "id": "drag-10", "text": "Profession", "match": "job" },
-        { "id": "drag-11", "text": "Peers", "match": "colleagues" },
-        { "id": "drag-12", "text": "Competent at", "match": "good-at" },
-        { "id": "drag-13", "text": "Earnings", "match": "salary" },
-        { "id": "drag-14", "text": "Competent in", "match": "none" },
-        { "id": "drag-15", "text": "Employment", "match": "job" },
-        { "id": "drag-16", "text": "Bosses", "match": "none" },
-        { "id": "drag-17", "text": "Management", "match": "boss" }
+        {
+          "id": "drag-1",
+          "text": "Proficient in",
+          "match": "good-at"
+        },
+        {
+          "id": "drag-2",
+          "text": "Co-workers",
+          "match": "colleagues"
+        },
+        {
+          "id": "drag-3",
+          "text": "Income",
+          "match": "salary"
+        },
+        {
+          "id": "drag-4",
+          "text": "Proficient at",
+          "match": "none"
+        },
+        {
+          "id": "drag-5",
+          "text": "Employer",
+          "match": "boss"
+        },
+        {
+          "id": "drag-6",
+          "text": "Occupation",
+          "match": "job"
+        },
+        {
+          "id": "drag-7",
+          "text": "Remuneration",
+          "match": "salary"
+        },
+        {
+          "id": "drag-8",
+          "text": "Salaryman",
+          "match": "none"
+        },
+        {
+          "id": "drag-9",
+          "text": "Supervisor",
+          "match": "boss"
+        },
+        {
+          "id": "drag-10",
+          "text": "Profession",
+          "match": "job"
+        },
+        {
+          "id": "drag-11",
+          "text": "Peers",
+          "match": "colleagues"
+        },
+        {
+          "id": "drag-12",
+          "text": "Competent at",
+          "match": "good-at"
+        },
+        {
+          "id": "drag-13",
+          "text": "Earnings",
+          "match": "salary"
+        },
+        {
+          "id": "drag-14",
+          "text": "Competent in",
+          "match": "none"
+        },
+        {
+          "id": "drag-15",
+          "text": "Employment",
+          "match": "job"
+        },
+        {
+          "id": "drag-16",
+          "text": "Bosses",
+          "match": "none"
+        },
+        {
+          "id": "drag-17",
+          "text": "Management",
+          "match": "boss"
+        }
       ]
     },
     {
@@ -287,42 +447,143 @@
       "description": "Complete the passage using the most appropriate workplace vocabulary.",
       "passage": {
         "title": "Career Development in a Modern Company",
-        "options": ["balance", "deadline", "hands-on", "highly", "occupation", "pressure"],
+        "options": [
+          "balance",
+          "deadline",
+          "hands-on",
+          "highly",
+          "occupation",
+          "pressure"
+        ],
         "parts": [
           "For many young professionals, choosing an ",
-          { "blank": "r1" },
+          {
+            "blank": "r1"
+          },
           " is only the first step. They often look for roles where they can gain ",
-          { "blank": "r2" },
+          {
+            "blank": "r2"
+          },
           " experience and become ",
-          { "blank": "r3" },
+          {
+            "blank": "r3"
+          },
           " skilled in a specific area. However, modern workplaces can be demanding. Employees may need to work under ",
-          { "blank": "r4" },
+          {
+            "blank": "r4"
+          },
           " and still meet every ",
-          { "blank": "r5" },
+          {
+            "blank": "r5"
+          },
           ". To stay healthy and productive, they should also protect their work-life ",
-          { "blank": "r6" },
+          {
+            "blank": "r6"
+          },
           "."
         ],
         "blanks": [
-          { "id": "r1", "correct": "occupation" },
-          { "id": "r2", "correct": "hands-on" },
-          { "id": "r3", "correct": "highly" },
-          { "id": "r4", "correct": "pressure" },
-          { "id": "r5", "correct": "deadline" },
-          { "id": "r6", "correct": "balance" }
+          {
+            "id": "r1",
+            "correct": "occupation"
+          },
+          {
+            "id": "r2",
+            "correct": "hands-on"
+          },
+          {
+            "id": "r3",
+            "correct": "highly"
+          },
+          {
+            "id": "r4",
+            "correct": "pressure"
+          },
+          {
+            "id": "r5",
+            "correct": "deadline"
+          },
+          {
+            "id": "r6",
+            "correct": "balance"
+          }
         ]
       },
       "questions": [
         {
           "id": "rq1",
           "prompt": "What is the passage mainly about?",
-          "options": ["Changing schools", "Professional growth and workplace demands", "Salary negotiation", "Office design"],
-          "correct": 1
+          "options": [
+            "Professional growth and workplace demands",
+            "Changing schools",
+            "Salary negotiation"
+          ],
+          "correct": 0,
+          "explanation": "The passage directly supports “Professional growth and workplace demands”; the other options either contradict its purpose or introduce information not stated in the text."
         }
       ],
       "tip": {
         "title": "Reading Tip",
         "text": "Look for collocations around each blank: gain hands-on experience, work under pressure, meet a deadline, and work-life balance."
+      }
+    },
+    {
+      "id": "listening-job-interview",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Advanced Listening",
+      "title": "Listening: A Competency-Based Interview",
+      "description": "Listen for the candidate's example, evidence and reflection.",
+      "audio": {
+        "src": "/audio/work-career-01.mp3?v=1",
+        "transcript": "Could you tell us about a time when you had to manage conflicting priorities? Certainly. In my previous role, I was coordinating a product launch when a major client reported a technical problem. Both tasks were urgent, but I couldn't handle them effectively on my own. I first assessed the commercial impact and informed the launch team that our internal deadline might move by several hours. Then I brought together an engineer and an account manager to deal with the client issue while I continued preparing the launch materials. I scheduled brief updates every thirty minutes so that everyone had the same information. We resolved the fault before midday and launched the product that afternoon. The client later renewed its contract. Looking back, the key was not simply working faster; it was communicating the trade-offs clearly and giving each person a defined responsibility. If the same situation arose now, I would document the initial decision more carefully so that senior managers could review it afterwards.",
+        "highlights": [
+          "assessed the impact",
+          "delegated",
+          "updates every thirty minutes",
+          "client renewed"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "work-listening-gist",
+          "prompt": "Which ability is the candidate mainly demonstrating?",
+          "options": [
+            "Designing products",
+            "Managing priorities and coordinating people",
+            "Negotiating salary"
+          ],
+          "correct": 1,
+          "explanation": "The example focuses on prioritisation, delegation and communication."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "work-listening-detail-1",
+          "prompt": "How often were updates scheduled?",
+          "options": [
+            "Every fifteen minutes",
+            "Every thirty minutes",
+            "Every hour"
+          ],
+          "correct": 1,
+          "explanation": "The candidate scheduled updates every thirty minutes."
+        },
+        {
+          "id": "work-listening-detail-2",
+          "prompt": "What would the candidate improve next time?",
+          "options": [
+            "Cancel the launch",
+            "Contact fewer people",
+            "Document the initial decision more carefully"
+          ],
+          "correct": 2,
+          "explanation": "The reflection identifies documentation as the improvement."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Interview answers often follow situation, action, result and reflection. Use that structure to organise your notes."
       }
     },
     {
@@ -338,7 +599,12 @@
         "minWords": 30,
         "maxWords": 50,
         "referenceAnswer": "I am applying for this internship because I want to gain hands-on experience in a professional environment. I am highly motivated, able to work under pressure, and eager to pursue a clear career path in international business.",
-        "focus": ["hands-on experience", "highly motivated", "career path", "work under pressure"]
+        "focus": [
+          "hands-on experience",
+          "highly motivated",
+          "career path",
+          "work under pressure"
+        ]
       },
       "tip": {
         "title": "B2 Writing Tip",

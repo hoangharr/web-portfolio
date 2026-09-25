@@ -176,15 +176,14 @@
       "questions": [
         {
           "id": "q1",
-          "prompt": "You ___ see a doctor if the pain continues.",
+          "prompt": "Your doctor has advised you not to ignore the pain. If it continues for another two days, you ___ make an appointment.",
           "options": [
             "should",
-            "would",
-            "might to",
-            "had"
+            "will have",
+            "would"
           ],
           "correct": 0,
-          "explanation": "Should gives advice."
+          "explanation": "Should gives advice. Read the complete context before rejecting the other options."
         },
         {
           "id": "q2",
@@ -192,11 +191,10 @@
           "options": [
             "could",
             "have to",
-            "would",
-            "should have"
+            "would"
           ],
           "correct": 1,
-          "explanation": "Have to expresses an external rule."
+          "explanation": "Have to expresses an external rule. Read the complete context before rejecting the other options."
         },
         {
           "id": "q3",
@@ -204,8 +202,7 @@
           "options": [
             "move",
             "moved",
-            "will move",
-            "would moved"
+            "will move"
           ],
           "correct": 2,
           "explanation": "First conditional uses will in the result."
@@ -214,13 +211,12 @@
           "id": "q4",
           "prompt": "Unless you ___ now, you will be late.",
           "options": [
-            "left",
             "leave",
-            "will leave",
-            "would leave"
+            "left",
+            "will leave"
           ],
-          "correct": 1,
-          "explanation": "After unless, use the present simple."
+          "correct": 0,
+          "explanation": "After unless, use the present simple. Read the complete context before rejecting the other options."
         },
         {
           "id": "q5",
@@ -228,28 +224,85 @@
           "options": [
             "will",
             "would",
-            "must",
-            "am"
+            "must"
           ],
           "correct": 1,
-          "explanation": "Second conditional uses would + verb."
+          "explanation": "Second conditional uses would + verb. Read the complete context before rejecting the other options."
         },
         {
           "id": "q6",
           "prompt": "Take some cash ___ the card machine is broken.",
           "options": [
             "unless",
-            "in case",
             "although",
-            "because of"
+            "in case"
           ],
-          "correct": 1,
+          "correct": 2,
           "explanation": "In case prepares for a possible problem."
         }
       ],
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-advice",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: Asking for Study Advice",
+      "description": "Listen to a caller describe a problem and an adviser suggest practical solutions.",
+      "audio": {
+        "src": "/audio/advice-conditionals-01.mp3?v=1",
+        "transcript": "I've recently started an evening course, but I'm struggling to keep up. I work full time, and by the time I get home, I'm often too tired to study. If I leave everything until the weekend, I feel overwhelmed. What should I do? First, you should make the task smaller. If you study for twenty minutes each weekday, you won't have so much work left on Saturday. You could also use your journey to review vocabulary. Most importantly, speak to your teacher. If they know about your schedule, they may help you choose the most important exercises. You shouldn't aim for a perfect routine immediately. Try the new plan for two weeks, and then adjust it according to what actually works.",
+        "highlights": [
+          "twenty minutes",
+          "review vocabulary",
+          "speak to your teacher",
+          "two weeks"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "advice-listening-gist",
+          "prompt": "What problem does the caller have?",
+          "options": [
+            "The course is too easy",
+            "There is not enough time and energy to study",
+            "The teacher gives no exercises"
+          ],
+          "correct": 1,
+          "explanation": "The caller works full time and feels too tired to keep up."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "advice-listening-detail-1",
+          "prompt": "What does the adviser suggest doing during the journey?",
+          "options": [
+            "Sleeping",
+            "Reviewing vocabulary",
+            "Calling the teacher"
+          ],
+          "correct": 1,
+          "explanation": "The journey can be used to review vocabulary."
+        },
+        {
+          "id": "advice-listening-detail-2",
+          "prompt": "How long should the caller test the new plan?",
+          "options": [
+            "Two days",
+            "One week",
+            "Two weeks"
+          ],
+          "correct": 2,
+          "explanation": "The adviser recommends trying it for two weeks."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Separate the caller's problem from the adviser's suggestions and conditional consequences."
       }
     },
     {

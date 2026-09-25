@@ -120,19 +120,35 @@
       "rows": [
         {
           "basic": "Students",
-          "advanced": ["Learners", "Candidates", "Participants"]
+          "advanced": [
+            "Learners",
+            "Candidates",
+            "Participants"
+          ]
         },
         {
           "basic": "Teacher",
-          "advanced": ["Educator", "Instructor", "Tutor"]
+          "advanced": [
+            "Educator",
+            "Instructor",
+            "Tutor"
+          ]
         },
         {
           "basic": "Difficult",
-          "advanced": ["Challenging", "Demanding", "Sophisticated"]
+          "advanced": [
+            "Challenging",
+            "Demanding",
+            "Sophisticated"
+          ]
         },
         {
           "basic": "Important",
-          "advanced": ["Crucial", "Essential", "Vital"]
+          "advanced": [
+            "Crucial",
+            "Essential",
+            "Vital"
+          ]
         }
       ],
       "practiceTasks": [
@@ -164,20 +180,36 @@
           "title": "Conditionals Type 2",
           "icon": "school",
           "function": "If + S + V-past, S + would/could + V-inf",
-          "examples": ["If I had more spare time, I would enroll in an advanced data science course."]
+          "examples": [
+            "If I had more spare time, I would enroll in an advanced data science course."
+          ]
         },
         {
           "title": "Wish structures",
           "icon": "history_edu",
           "function": "S + wish + S + V-past",
-          "examples": ["I wish our university offered more hands-on workshops for students."]
+          "examples": [
+            "I wish our university offered more hands-on workshops for students."
+          ]
         }
       ],
       "table": {
-        "headers": ["Structure", "Focus", "Usage"],
+        "headers": [
+          "Structure",
+          "Focus",
+          "Usage"
+        ],
         "rows": [
-          ["Second Conditional", "Hypothetical condition and potential result", "If I had more time, I would enroll."],
-          ["Wish Structure", "Regret or desire about the current state", "I wish the course offered more workshops."]
+          [
+            "Second Conditional",
+            "Hypothetical condition and potential result",
+            "If I had more time, I would enroll."
+          ],
+          [
+            "Wish Structure",
+            "Regret or desire about the current state",
+            "I wish the course offered more workshops."
+          ]
         ]
       },
       "tip": {
@@ -196,14 +228,24 @@
         {
           "id": "edu-gq1",
           "prompt": "\"If the government ________ more in vocational training, the skills gap would narrow significantly.\"",
-          "options": ["invests", "invested", "would invest", "had invested"],
-          "correct": 1
+          "options": [
+            "invested",
+            "invests",
+            "would invest"
+          ],
+          "correct": 0,
+          "explanation": "Would narrow marks a hypothetical result, so the if-clause takes the past form invested; would invest is not used in this clause."
         },
         {
           "id": "edu-gq2",
           "prompt": "\"I wish I ________ more opportunities to acquire specialized knowledge during my undergraduate years.\"",
-          "options": ["have", "am having", "had", "will have"],
-          "correct": 2
+          "options": [
+            "have",
+            "had",
+            "am having"
+          ],
+          "correct": 1,
+          "explanation": "The speaker regrets a past lack of opportunities, so wish is followed by had; have and am having refer to present possession."
         }
       ],
       "tip": {
@@ -220,23 +262,48 @@
       "description": "Text completion: assessing contextual coherence.",
       "passage": {
         "title": "Exercise 2.4: Digital Education",
-        "options": ["requirements", "acquire", "distance", "essential"],
+        "options": [
+          "requirements",
+          "acquire",
+          "distance",
+          "essential"
+        ],
         "parts": [
           "In the modern world, ",
-          { "blank": "edu-r1" },
+          {
+            "blank": "edu-r1"
+          },
           " learning has become increasingly popular due to its flexibility. It allows students to ",
-          { "blank": "edu-r2" },
+          {
+            "blank": "edu-r2"
+          },
           " new skills without attending a traditional classroom. However, it is ",
-          { "blank": "edu-r3" },
+          {
+            "blank": "edu-r3"
+          },
           " for learners to stay self-motivated to meet all the academic ",
-          { "blank": "edu-r4" },
+          {
+            "blank": "edu-r4"
+          },
           " of the course."
         ],
         "blanks": [
-          { "id": "edu-r1", "correct": "distance" },
-          { "id": "edu-r2", "correct": "acquire" },
-          { "id": "edu-r3", "correct": "essential" },
-          { "id": "edu-r4", "correct": "requirements" }
+          {
+            "id": "edu-r1",
+            "correct": "distance"
+          },
+          {
+            "id": "edu-r2",
+            "correct": "acquire"
+          },
+          {
+            "id": "edu-r3",
+            "correct": "essential"
+          },
+          {
+            "id": "edu-r4",
+            "correct": "requirements"
+          }
         ]
       },
       "tip": {
@@ -254,39 +321,69 @@
       "questions": [
         {
           "id": "edu-vq1",
-          "prompt": "\"Biology is a demanding academic _________ that requires a lot of research.\"",
-          "options": ["subject", "discipline", "field", "sector"],
-          "correct": 1
+          "prompt": "\"At this university, Biology is treated as an academic _________, alongside Chemistry and Physics, rather than as a single school subject.\"",
+          "options": [
+            "discipline",
+            "curriculum",
+            "qualification"
+          ],
+          "correct": 0,
+          "explanation": "An academic discipline is an established branch of knowledge. A curriculum is a programme, and a qualification is an award."
         },
         {
           "id": "edu-vq2",
           "prompt": "\"To be accepted into the Master's program, candidates must _________ all the entry requirements.\"",
-          "options": ["meet", "get", "fill", "achieve"],
-          "correct": 0
+          "options": [
+            "meet",
+            "get",
+            "fill"
+          ],
+          "correct": 0,
+          "explanation": "Meet the requirements is the standard collocation meaning satisfy every stated condition; get and fill do not carry that meaning here."
         },
         {
           "id": "edu-vq3",
           "prompt": "\"Many professionals choose _________ learning because they can study while working full-time.\"",
-          "options": ["far", "remote", "distance", "away"],
-          "correct": 2
+          "options": [
+            "far",
+            "distance",
+            "remote"
+          ],
+          "correct": 1,
+          "explanation": "Distance learning is the fixed term for study away from a campus; far learning and remote learning are not the target collocation."
         },
         {
           "id": "edu-vq4",
           "prompt": "\"Internships provide an excellent opportunity for students to _________ practical skills before graduating.\"",
-          "options": ["collect", "acquire", "hold", "gather"],
-          "correct": 1
+          "options": [
+            "collect",
+            "hold",
+            "acquire"
+          ],
+          "correct": 2,
+          "explanation": "Acquire skills means gain them through learning or experience; collect and hold do not express development of ability."
         },
         {
           "id": "edu-vq5",
-          "prompt": "\"Make sure to _________ in the advanced grammar course before the registration deadline.\"",
-          "options": ["enroll", "apply", "enter", "join"],
-          "correct": 0
+          "prompt": "\"Places are limited, so make sure to _________ in the advanced grammar course before the registration deadline.\"",
+          "options": [
+            "enroll",
+            "register",
+            "attend"
+          ],
+          "correct": 0,
+          "explanation": "Enroll in a course means officially join it. Register normally takes for here, while attend describes participation after joining."
         },
         {
           "id": "edu-vq6",
           "prompt": "\"The company highly values employees who demonstrate a commitment to continuous professional _________.\"",
-          "options": ["growing", "advancing", "development", "progression"],
-          "correct": 2
+          "options": [
+            "growing",
+            "development",
+            "advancing"
+          ],
+          "correct": 1,
+          "explanation": "Continuous professional development is the established workplace term; growing and advancing do not complete this noun phrase."
         }
       ],
       "tip": {
@@ -303,43 +400,144 @@
       "description": "Fill in the blanks with the correct words: acquire | continuous | discipline | enrolled | essential | meet | recognized",
       "passage": {
         "title": "Education Practice Passage",
-        "options": ["acquire", "continuous", "discipline", "enrolled", "essential", "meet", "recognized"],
+        "options": [
+          "acquire",
+          "continuous",
+          "discipline",
+          "enrolled",
+          "essential",
+          "meet",
+          "recognized"
+        ],
         "parts": [
           "After I ",
-          { "blank": "edu-r2-1" },
+          {
+            "blank": "edu-r2-1"
+          },
           " in the course, I realized that self-study is ",
-          { "blank": "edu-r2-2" },
+          {
+            "blank": "edu-r2-2"
+          },
           " for success. The program helps students ",
-          { "blank": "edu-r2-3" },
+          {
+            "blank": "edu-r2-3"
+          },
           " specialized knowledge that is widely ",
-          { "blank": "edu-r2-4" },
+          {
+            "blank": "edu-r2-4"
+          },
           " by international employers. Furthermore, maintaining a commitment to ",
-          { "blank": "edu-r2-5" },
+          {
+            "blank": "edu-r2-5"
+          },
           " professional development is vital in today's fast-paced economy. Therefore, I also plan to pursue a more advanced academic ",
-          { "blank": "edu-r2-6" },
+          {
+            "blank": "edu-r2-6"
+          },
           " once I ",
-          { "blank": "edu-r2-7" },
+          {
+            "blank": "edu-r2-7"
+          },
           " all the current graduation requirements."
         ],
         "blanks": [
-          { "id": "edu-r2-1", "correct": "enrolled" },
-          { "id": "edu-r2-2", "correct": "essential" },
-          { "id": "edu-r2-3", "correct": "acquire" },
-          { "id": "edu-r2-4", "correct": "recognized" },
-          { "id": "edu-r2-5", "correct": "continuous" },
-          { "id": "edu-r2-6", "correct": "discipline" },
-          { "id": "edu-r2-7", "correct": "meet" }
+          {
+            "id": "edu-r2-1",
+            "correct": "enrolled"
+          },
+          {
+            "id": "edu-r2-2",
+            "correct": "essential"
+          },
+          {
+            "id": "edu-r2-3",
+            "correct": "acquire"
+          },
+          {
+            "id": "edu-r2-4",
+            "correct": "recognized"
+          },
+          {
+            "id": "edu-r2-5",
+            "correct": "continuous"
+          },
+          {
+            "id": "edu-r2-6",
+            "correct": "discipline"
+          },
+          {
+            "id": "edu-r2-7",
+            "correct": "meet"
+          }
         ]
       },
       "tip": {
         "title": "Pro-Tip",
         "text": "Look for collocations and context clues. Pay attention to prepositions like \"in\" or \"by\" which often follow specific verbs."
-      }
-    ,
+      },
       "video": {
         "type": "iframe",
         "src": "https://www.youtube.com/embed/z7Qp9Q_Br88",
         "title": "Education - short reel"
+      }
+    },
+    {
+      "id": "listening-mini-lecture",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Advanced Listening",
+      "title": "Listening: Why Retrieval Practice Works",
+      "description": "Listen to a mini lecture and distinguish the main claim from supporting evidence.",
+      "audio": {
+        "src": "/audio/education-lifelong-learning-01.mp3?v=1",
+        "transcript": "Students often assume that rereading is the safest way to remember new material. It feels productive because the text becomes familiar. Familiarity, however, is not the same as being able to retrieve an idea when the book is closed. Retrieval practice asks learners to bring information to mind through a quiz, a flashcard or a short written summary. The effort involved strengthens access to that knowledge. This does not mean that every lesson should become a test. Low-stakes retrieval works best when mistakes are followed by clear feedback and when questions are revisited after increasing intervals. Research also suggests that mixing related topics can improve discrimination: students learn not only how to apply a method, but when it is appropriate. There is one important caution. If learners retrieve an incorrect answer repeatedly without correction, the error may become stronger. Effective retrieval practice therefore combines effort, spacing and timely feedback. The wider lesson is that learning should sometimes feel difficult. A strategy that feels fluent during study may produce weaker memory later, whereas a challenging activity can create more durable understanding.",
+        "highlights": [
+          "familiarity is not retrieval",
+          "low stakes",
+          "spacing",
+          "timely feedback"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "education-listening-gist",
+          "prompt": "What is the lecture's central argument?",
+          "options": [
+            "Rereading is always ineffective",
+            "Effortful retrieval with feedback improves durable learning",
+            "All learning should be formally tested"
+          ],
+          "correct": 1,
+          "explanation": "The lecture supports retrieval combined with spacing and feedback."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "education-listening-detail-1",
+          "prompt": "Why can rereading be misleading?",
+          "options": [
+            "Books contain errors",
+            "Familiarity can be mistaken for recall",
+            "It requires too much effort"
+          ],
+          "correct": 1,
+          "explanation": "A familiar text does not guarantee the learner can retrieve its ideas."
+        },
+        {
+          "id": "education-listening-detail-2",
+          "prompt": "What risk does the lecturer identify?",
+          "options": [
+            "Repeated incorrect retrieval may strengthen an error",
+            "Quizzes always reduce motivation",
+            "Spacing makes study impossible"
+          ],
+          "correct": 0,
+          "explanation": "Uncorrected wrong answers can become more firmly learned."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Separate the thesis, mechanisms, conditions and caution; these are common mini-lecture signposts."
       }
     },
     {
@@ -355,7 +553,14 @@
         "minWords": 30,
         "maxWords": 50,
         "referenceAnswer": "I wish the study materials were more up to date. If I were responsible for the course, I would provide more academic resources and practical guidance to help learners acquire the skills they need.",
-        "focus": ["curriculum", "obsolete", "academic", "practitioner", "pedagogy", "resources"]
+        "focus": [
+          "curriculum",
+          "obsolete",
+          "academic",
+          "practitioner",
+          "pedagogy",
+          "resources"
+        ]
       },
       "tip": {
         "title": "B2 Writing Tip",

@@ -1,0 +1,343 @@
+{
+  "id": "people-appearance-01",
+  "title": "People & Appearance",
+  "level": "A1",
+  "subtitle": "Describe people clearly and politely",
+  "themeIcon": "face",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A1 Core Module",
+      "title": "People & Appearance",
+      "quote": "Describe people clearly and politely",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for People & Appearance"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Describe people clearly and politely"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: People & Appearance",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "tall",
+          "definition": "having more than average height",
+          "translation": "cao",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "short",
+          "definition": "having less than average height",
+          "translation": "thấp",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "young",
+          "definition": "not old",
+          "translation": "trẻ",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "friendly",
+          "definition": "kind and pleasant",
+          "translation": "thân thiện",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "quiet",
+          "definition": "not talking very much",
+          "translation": "ít nói",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "curly hair",
+          "definition": "hair with curls",
+          "translation": "tóc xoăn",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "wear glasses",
+          "definition": "have glasses on your face",
+          "translation": "đeo kính",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "look like",
+          "definition": "have a similar appearance",
+          "translation": "trông giống",
+          "icon": "school",
+          "category": "People & Appearance",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Be for description",
+          "icon": "rule",
+          "function": "subject + am/is/are + adjective",
+          "examples": [
+            "My brother is tall.",
+            "They are very friendly."
+          ]
+        },
+        {
+          "title": "Have and has",
+          "icon": "schema",
+          "function": "I/you/we/they have; he/she has",
+          "examples": [
+            "She has curly hair.",
+            "They have brown eyes."
+          ]
+        },
+        {
+          "title": "Pronouns and possessives",
+          "icon": "edit_note",
+          "function": "subject pronoun + possessive adjective",
+          "examples": [
+            "He is my uncle.",
+            "Her hair is short."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: People & Appearance",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/people-appearance-01.mp3?v=1",
+        "transcript": "This is my friend Nina. She is twenty years old and she is quite tall. She has long curly hair and wears glasses. Nina is friendly, but she is quiet when she meets new people. She loves drawing portraits. Her younger brother, Leo, looks like her, but he has short straight hair. He is very talkative and often makes everyone laugh.",
+        "highlights": [
+          "tall",
+          "short",
+          "young",
+          "friendly"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "What is the speaker mainly doing?",
+          "options": [
+            "Describing two people",
+            "Giving directions",
+            "Ordering food"
+          ],
+          "correct": 0,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "How is Nina different when meeting new people?",
+          "options": [
+            "She is noisy",
+            "She is quiet",
+            "She is angry"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: People & Appearance",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "People & Appearance",
+        "parts": [
+          "Sam is my new classmate. He is ",
+          {
+            "blank": "r1"
+          },
+          " and helpful. He has short dark hair and ",
+          {
+            "blank": "r2"
+          },
+          " glasses. His sister is tall, but Sam is quite ",
+          {
+            "blank": "r3"
+          },
+          ". They both love music."
+        ],
+        "options": [
+          "friendly",
+          "wears",
+          "short",
+          "tall",
+          "young"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "friendly"
+          },
+          {
+            "id": "r2",
+            "correct": "wears"
+          },
+          {
+            "id": "r3",
+            "correct": "short"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: People & Appearance",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe a friend or family member.",
+        "What does this person look like?",
+        "What is this person like?"
+      ],
+      "sampleAnswer": "My cousin Minh is twenty-two years old. He is tall and has short black hair. He wears glasses. He is friendly and very funny, but he is sometimes quiet with new people.",
+      "preparationSeconds": 20,
+      "recordingSeconds": 40,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: People & Appearance",
+      "description": "Write 35-55 words using this module's language.",
+      "prompt": {
+        "situation": "Write a short profile of a person you know. Describe appearance and personality.",
+        "placeholder": "Write your response here...",
+        "minWords": 35,
+        "maxWords": 55,
+        "referenceAnswer": "My cousin Minh is twenty-two years old. He is tall and has short black hair. He wears glasses. He is friendly and very funny, but he is sometimes quiet with new people.",
+        "focus": [
+          "Be for description",
+          "Have and has",
+          "Pronouns and possessives"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "My sister ___ curly hair.",
+          "options": [
+            "have",
+            "has",
+            "is"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

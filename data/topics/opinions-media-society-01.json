@@ -177,24 +177,22 @@
           "id": "q1",
           "prompt": "A reporter is someone ___ collects information.",
           "options": [
-            "which",
             "who",
-            "where",
-            "whose it"
+            "which",
+            "where"
           ],
-          "correct": 1,
-          "explanation": "Use who for a person."
+          "correct": 0,
+          "explanation": "Use who for a person. Read the complete context before rejecting the other options."
         },
         {
           "id": "q2",
           "prompt": "This is the website ___ I use for fact-checking.",
           "options": [
             "who",
-            "where is",
             "that",
-            "what"
+            "where is"
           ],
-          "correct": 2,
+          "correct": 1,
           "explanation": "Use that for a thing in a defining clause."
         },
         {
@@ -202,23 +200,21 @@
           "prompt": "Millions of messages ___ every day.",
           "options": [
             "send",
-            "are sent",
             "sent",
-            "are sending"
+            "are sent"
           ],
-          "correct": 1,
-          "explanation": "The present passive is are sent."
+          "correct": 2,
+          "explanation": "The present passive is are sent. Read the complete context before rejecting the other options."
         },
         {
           "id": "q4",
           "prompt": "The service is fast; ___, it is not always reliable.",
           "options": [
-            "because",
             "however",
-            "therefore because",
-            "whereas of"
+            "because",
+            "therefore because"
           ],
-          "correct": 1,
+          "correct": 0,
           "explanation": "However introduces contrast between sentences."
         },
         {
@@ -227,8 +223,7 @@
           "options": [
             "reliable",
             "misleading",
-            "benefit",
-            "evidence"
+            "benefit"
           ],
           "correct": 1,
           "explanation": "Misleading information creates a false impression."
@@ -237,18 +232,76 @@
           "id": "q6",
           "prompt": "Online news is convenient, ___ printed news can be easier to focus on.",
           "options": [
-            "whereas",
             "because of",
             "unless",
-            "in case"
+            "whereas"
           ],
-          "correct": 0,
-          "explanation": "Whereas contrasts two clauses."
+          "correct": 2,
+          "explanation": "Whereas contrasts two clauses. Read the complete context before rejecting the other options."
         }
       ],
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-media-opinions",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: Can We Trust News on Social Media?",
+      "description": "Compare two viewpoints and identify the evidence each speaker uses.",
+      "audio": {
+        "src": "/audio/opinions-media-society-01.mp3?v=1",
+        "transcript": "I get most of my news through social media because it's quick and gives me access to many different voices. Traditional newspapers sometimes report an event hours later. Of course, I don't believe every post. I check who published it and compare it with another source before sharing it. I disagree that speed is the main advantage. False claims spread just as quickly as accurate reports, and people often share a headline without opening the article. Professional news organisations can make mistakes too, but they usually have editors and a correction process. Social media is useful for discovering a story, but it shouldn't be the final source. We actually agree on that last point. The important skill is not avoiding social media; it's learning how to verify what appears there.",
+        "highlights": [
+          "compare another source",
+          "false claims",
+          "editors",
+          "verify"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "media-listening-gist",
+          "prompt": "What do both speakers ultimately agree about?",
+          "options": [
+            "Social media should be banned",
+            "Every newspaper is reliable",
+            "People need to verify online news"
+          ],
+          "correct": 2,
+          "explanation": "Both viewpoints conclude that verification is essential."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "media-listening-detail-1",
+          "prompt": "What advantage does the first speaker mention?",
+          "options": [
+            "Speed and diverse voices",
+            "Professional editing",
+            "Longer articles"
+          ],
+          "correct": 0,
+          "explanation": "The first speaker values speed and access to different voices."
+        },
+        {
+          "id": "media-listening-detail-2",
+          "prompt": "What safeguard does the second speaker associate with news organisations?",
+          "options": [
+            "Anonymous accounts",
+            "Editors and corrections",
+            "Popular headlines"
+          ],
+          "correct": 1,
+          "explanation": "Professional organisations usually have editors and a correction process."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Note agreement and disagreement markers; speakers may differ in reasoning but share a conclusion."
       }
     },
     {

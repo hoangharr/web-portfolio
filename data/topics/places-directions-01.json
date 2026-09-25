@@ -1,0 +1,344 @@
+{
+  "id": "places-directions-01",
+  "title": "Places & Directions",
+  "level": "A1",
+  "subtitle": "Find places and give simple directions",
+  "themeIcon": "map",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A1 Core Module",
+      "title": "Places & Directions",
+      "quote": "Find places and give simple directions",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Places & Directions"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Find places and give simple directions"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Places & Directions",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "bank",
+          "definition": "a place that manages money",
+          "translation": "ngân hàng",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "pharmacy",
+          "definition": "a shop that sells medicine",
+          "translation": "nhà thuốc",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "library",
+          "definition": "a place where people borrow books",
+          "translation": "thư viện",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "opposite",
+          "definition": "on the other side",
+          "translation": "đối diện",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "between",
+          "definition": "in the middle of two things",
+          "translation": "ở giữa",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "next to",
+          "definition": "beside something",
+          "translation": "bên cạnh",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "turn left",
+          "definition": "go to the left side",
+          "translation": "rẽ trái",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "go straight",
+          "definition": "continue without turning",
+          "translation": "đi thẳng",
+          "icon": "school",
+          "category": "Places & Directions",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "There is / There are",
+          "icon": "rule",
+          "function": "there is + singular; there are + plural",
+          "examples": [
+            "There is a bank near here.",
+            "There are two cafés."
+          ]
+        },
+        {
+          "title": "Place prepositions",
+          "icon": "schema",
+          "function": "next to, between, opposite, behind",
+          "examples": [
+            "The pharmacy is opposite the bank.",
+            "The café is between the shops."
+          ]
+        },
+        {
+          "title": "Direction imperatives",
+          "icon": "edit_note",
+          "function": "base verb for instructions",
+          "examples": [
+            "Go straight for 100 metres.",
+            "Turn left at the library."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Places & Directions",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/places-directions-01.mp3?v=1",
+        "transcript": "Excuse me, is there a pharmacy near here? Yes. Go straight along King Street and turn left at the library. There is a small supermarket on the corner. The pharmacy is next to it, opposite the bank. It takes about five minutes to walk there. Thank you. You're welcome.",
+        "highlights": [
+          "bank",
+          "pharmacy",
+          "library",
+          "opposite"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "What does the visitor need?",
+          "options": [
+            "A pharmacy",
+            "A station",
+            "A restaurant"
+          ],
+          "correct": 0,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "Where should the visitor turn left?",
+          "options": [
+            "At the bank",
+            "At the library",
+            "At the supermarket"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Places & Directions",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Places & Directions",
+        "parts": [
+          "The town library is ",
+          {
+            "blank": "r1"
+          },
+          " the park. There is a café ",
+          {
+            "blank": "r2"
+          },
+          " the library. To reach the bank, go ",
+          {
+            "blank": "r3"
+          },
+          " and turn right at the traffic lights."
+        ],
+        "options": [
+          "opposite",
+          "next to",
+          "straight",
+          "bank",
+          "pharmacy",
+          "library"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "opposite"
+          },
+          {
+            "id": "r2",
+            "correct": "next to"
+          },
+          {
+            "id": "r3",
+            "correct": "straight"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Places & Directions",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe your neighbourhood.",
+        "What places are near your home?",
+        "Give directions to one place."
+      ],
+      "sampleAnswer": "There is a supermarket near my home. It is opposite a small park and next to a pharmacy. To get there, go straight along my street and turn right at the bank.",
+      "preparationSeconds": 20,
+      "recordingSeconds": 40,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Places & Directions",
+      "description": "Write 35-55 words using this module's language.",
+      "prompt": {
+        "situation": "Write directions from your home to a nearby place.",
+        "placeholder": "Write your response here...",
+        "minWords": 35,
+        "maxWords": 55,
+        "referenceAnswer": "There is a supermarket near my home. It is opposite a small park and next to a pharmacy. To get there, go straight along my street and turn right at the bank.",
+        "focus": [
+          "There is / There are",
+          "Place prepositions",
+          "Direction imperatives"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "There ___ two cafés near the station.",
+          "options": [
+            "is",
+            "are",
+            "be"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

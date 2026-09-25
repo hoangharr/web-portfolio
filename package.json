@@ -4,6 +4,10 @@
   "type": "module",
   "scripts": {
     "validate:content": "node scripts/validate-content.mjs",
-    "check": "node --check js/engine.js && npm run validate:content"
+    "check": "node --check js/engine.js && npm run validate:content",
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
   }
 }

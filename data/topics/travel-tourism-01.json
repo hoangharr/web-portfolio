@@ -117,23 +117,43 @@
       "rows": [
         {
           "basic": "Trip/Journey",
-          "advanced": ["Expedition", "Voyage", "Adventure"]
+          "advanced": [
+            "Expedition",
+            "Voyage",
+            "Adventure"
+          ]
         },
         {
           "basic": "Beautiful",
-          "advanced": ["Stunning", "Picturesque", "Breathtaking"]
+          "advanced": [
+            "Stunning",
+            "Picturesque",
+            "Breathtaking"
+          ]
         },
         {
           "basic": "Hotel",
-          "advanced": ["Accommodation", "Lodging", "Establishment"]
+          "advanced": [
+            "Accommodation",
+            "Lodging",
+            "Establishment"
+          ]
         },
         {
           "basic": "See/Look",
-          "advanced": ["Explore", "Discover", "Witness"]
+          "advanced": [
+            "Explore",
+            "Discover",
+            "Witness"
+          ]
         },
         {
           "basic": "Good",
-          "advanced": ["Memorable", "Unforgettable", "Remarkable"]
+          "advanced": [
+            "Memorable",
+            "Unforgettable",
+            "Remarkable"
+          ]
         }
       ],
       "practiceTasks": [
@@ -169,27 +189,52 @@
           "title": "Past Simple for Completed Actions",
           "icon": "history",
           "function": "To describe completed travel experiences in chronological order",
-          "examples": ["I visited the Eiffel Tower last summer.", "We stayed in a boutique hotel in Paris."]
+          "examples": [
+            "I visited the Eiffel Tower last summer.",
+            "We stayed in a boutique hotel in Paris."
+          ]
         },
         {
           "title": "Past Continuous for Background Actions",
           "icon": "hourglass_bottom",
           "function": "To describe ongoing actions during which something else happened",
-          "examples": ["I was taking photos when the sun set behind the mountains.", "They were exploring the market when they found the antique shop."]
+          "examples": [
+            "I was taking photos when the sun set behind the mountains.",
+            "They were exploring the market when they found the antique shop."
+          ]
         },
         {
           "title": "Present Perfect for Recent Experiences",
           "icon": "update",
           "function": "To describe travel experiences that have relevance to the present",
-          "examples": ["I have traveled to over 15 countries.", "She has never experienced such breathtaking scenery before."]
+          "examples": [
+            "I have traveled to over 15 countries.",
+            "She has never experienced such breathtaking scenery before."
+          ]
         }
       ],
       "table": {
-        "headers": ["Tense", "Function", "Travel Example"],
+        "headers": [
+          "Tense",
+          "Function",
+          "Travel Example"
+        ],
         "rows": [
-          ["Past Simple", "Completed actions in the past", "I visited three museums during my trip."],
-          ["Past Continuous", "Ongoing actions in the past", "We were hiking when it started to rain."],
-          ["Present Perfect", "Experiences with present relevance", "I have explored many European cities."]
+          [
+            "Past Simple",
+            "Completed actions in the past",
+            "I visited three museums during my trip."
+          ],
+          [
+            "Past Continuous",
+            "Ongoing actions in the past",
+            "We were hiking when it started to rain."
+          ],
+          [
+            "Present Perfect",
+            "Experiences with present relevance",
+            "I have explored many European cities."
+          ]
         ]
       },
       "tip": {
@@ -208,62 +253,112 @@
         {
           "id": "t1q1",
           "prompt": "\"The ________ views from the mountain top were absolutely stunning.\"",
-          "options": ["breathtaking", "boring", "tiring", "confusing"],
-          "correct": 0
+          "options": [
+            "breathtaking",
+            "boring",
+            "tiring"
+          ],
+          "correct": 0,
+          "explanation": "Breathtaking describes scenery so impressive that it leaves a strong emotional reaction; boring and tiring describe different experiences."
         },
         {
           "id": "t1q2",
           "prompt": "\"To truly understand a culture, you need to experience ________ with the local community.\"",
-          "options": ["cultural immersion", "fast food", "shopping malls", "airport transfers"],
-          "correct": 0
+          "options": [
+            "fast food",
+            "cultural immersion",
+            "shopping malls"
+          ],
+          "correct": 1,
+          "explanation": "Cultural immersion involves close participation in local life; shopping malls and fast food do not provide that depth of experience."
         },
         {
           "id": "t1q3",
           "prompt": "\"We decided to explore ________ areas instead of popular tourist destinations.\"",
-          "options": ["off the beaten path", "on the beaten track", "in the beaten zone", "under the beaten route"],
-          "correct": 0
+          "options": [
+            "on the beaten track",
+            "in the beaten zone",
+            "off the beaten path"
+          ],
+          "correct": 2,
+          "explanation": "Off the beaten path is the fixed expression for places away from common tourist routes; the other phrases are not idiomatic."
         },
         {
           "id": "t1q4",
           "prompt": "\"________ focuses on minimizing environmental impact and supporting local communities.\"",
-          "options": ["Sustainable tourism", "Luxury travel", "Budget backpacking", "Cruise tourism"],
-          "correct": 0
+          "options": [
+            "Sustainable tourism",
+            "Luxury travel",
+            "Budget backpacking"
+          ],
+          "correct": 0,
+          "explanation": "Sustainable tourism aims to limit environmental harm and benefit local communities; luxury and budget describe cost or style."
         },
         {
           "id": "t1q5",
           "prompt": "\"One of the highlights of my trip was trying the local ________ at traditional restaurants.\"",
-          "options": ["cuisine", "menu", "waiter", "reservation"],
-          "correct": 0
+          "options": [
+            "menu",
+            "cuisine",
+            "waiter"
+          ],
+          "correct": 1,
+          "explanation": "Local cuisine means the food and cooking tradition of a place; menu is a list of dishes and waiter is a person."
         },
         {
           "id": "t1q6",
           "prompt": "\"Before our vacation, we spent weeks planning our travel ________.\"",
-          "options": ["itinerary", "insurance", "passport", "luggage"],
-          "correct": 0
+          "options": [
+            "insurance",
+            "passport",
+            "itinerary"
+          ],
+          "correct": 2,
+          "explanation": "A travel itinerary is the planned sequence of places and activities; insurance and passport are travel documents, not the plan."
         },
         {
           "id": "t1q7",
           "prompt": "\"The hotel was a charming boutique ________ with excellent service.\"",
-          "options": ["establishment", "airport", "restaurant", "shopping mall"],
-          "correct": 0
+          "options": [
+            "establishment",
+            "airport",
+            "restaurant"
+          ],
+          "correct": 0,
+          "explanation": "Establishment can formally refer to a hotel or business; airport and restaurant identify different types of place."
         },
         {
           "id": "t1q8",
           "prompt": "\"During our ________, we discovered a hidden waterfall in the jungle.\"",
-          "options": ["adventure", "homework", "meeting", "shopping"],
-          "correct": 0
+          "options": [
+            "homework",
+            "adventure",
+            "meeting"
+          ],
+          "correct": 1,
+          "explanation": "Adventure describes an unusual, exciting experience such as discovering a waterfall; homework and meeting do not fit the journey context."
         },
         {
           "id": "t1q9",
           "prompt": "\"The village was so ________ that it looked like it was from another century.\"",
-          "options": ["picturesque", "expensive", "crowded", "modern"],
-          "correct": 0
+          "options": [
+            "expensive",
+            "crowded",
+            "picturesque"
+          ],
+          "correct": 2,
+          "explanation": "Picturesque describes an attractively old-fashioned scene; expensive and crowded concern cost or population rather than appearance."
         },
         {
           "id": "t1q10",
-          "prompt": "\"This was a truly ________ experience that I will never forget.\"",
-          "options": ["unforgettable", "forgettable", "forgettable", "forgettable"],
-          "correct": 0
+          "prompt": "\"Even years later, everyone in our group still talks about the trip because it was an ________ experience.\"",
+          "options": [
+            "unforgettable",
+            "unfamiliar",
+            "unforgiving"
+          ],
+          "correct": 0,
+          "explanation": "Unforgettable means impossible to forget and matches the fact that the group still discusses the trip years later."
         }
       ]
     },
@@ -275,23 +370,80 @@
       "title": "Travel Experience Matching",
       "description": "Drag each travel experience to the correct category.",
       "targets": [
-        { "id": "planning", "label": "Travel Planning" },
-        { "id": "experience", "label": "Travel Experience" },
-        { "id": "description", "label": "Descriptive Language" }
+        {
+          "id": "planning",
+          "label": "Travel Planning"
+        },
+        {
+          "id": "experience",
+          "label": "Travel Experience"
+        },
+        {
+          "id": "description",
+          "label": "Descriptive Language"
+        }
       ],
       "items": [
-        { "id": "drag-1", "text": "Travel itinerary", "match": "planning" },
-        { "id": "drag-2", "text": "Breathtaking scenery", "match": "description" },
-        { "id": "drag-3", "text": "Cultural immersion", "match": "experience" },
-        { "id": "drag-4", "text": "Off the beaten path", "match": "description" },
-        { "id": "drag-5", "text": "Sustainable tourism", "match": "planning" },
-        { "id": "drag-6", "text": "Local cuisine", "match": "experience" },
-        { "id": "drag-7", "text": "Picturesque village", "match": "description" },
-        { "id": "drag-8", "text": "Travel insurance", "match": "planning" },
-        { "id": "drag-9", "text": "Unforgettable adventure", "match": "experience" },
-        { "id": "drag-10", "text": "Memorable journey", "match": "experience" },
-        { "id": "drag-11", "text": "Stunning landscape", "match": "description" },
-        { "id": "drag-12", "text": "Packing essentials", "match": "planning" }
+        {
+          "id": "drag-1",
+          "text": "Travel itinerary",
+          "match": "planning"
+        },
+        {
+          "id": "drag-2",
+          "text": "Breathtaking scenery",
+          "match": "description"
+        },
+        {
+          "id": "drag-3",
+          "text": "Cultural immersion",
+          "match": "experience"
+        },
+        {
+          "id": "drag-4",
+          "text": "Off the beaten path",
+          "match": "description"
+        },
+        {
+          "id": "drag-5",
+          "text": "Sustainable tourism",
+          "match": "planning"
+        },
+        {
+          "id": "drag-6",
+          "text": "Local cuisine",
+          "match": "experience"
+        },
+        {
+          "id": "drag-7",
+          "text": "Picturesque village",
+          "match": "description"
+        },
+        {
+          "id": "drag-8",
+          "text": "Travel insurance",
+          "match": "planning"
+        },
+        {
+          "id": "drag-9",
+          "text": "Unforgettable adventure",
+          "match": "experience"
+        },
+        {
+          "id": "drag-10",
+          "text": "Memorable journey",
+          "match": "experience"
+        },
+        {
+          "id": "drag-11",
+          "text": "Stunning landscape",
+          "match": "description"
+        },
+        {
+          "id": "drag-12",
+          "text": "Packing essentials",
+          "match": "planning"
+        }
       ]
     },
     {
@@ -303,51 +455,162 @@
       "description": "Complete the passage using the most appropriate travel vocabulary.",
       "passage": {
         "title": "Planning the Perfect Adventure",
-        "options": ["breathtaking", "cultural", "itinerary", "memorable", "picturesque", "sustainable"],
+        "options": [
+          "breathtaking",
+          "cultural",
+          "itinerary",
+          "memorable",
+          "picturesque",
+          "sustainable"
+        ],
         "parts": [
           "When planning a ",
-          { "blank": "tr1" },
+          {
+            "blank": "tr1"
+          },
           " trip, it's important to consider ",
-          { "blank": "tr2" },
+          {
+            "blank": "tr2"
+          },
           " tourism practices. A well-organized ",
-          { "blank": "tr3" },
+          {
+            "blank": "tr3"
+          },
           " should include time to explore ",
-          { "blank": "tr4" },
+          {
+            "blank": "tr4"
+          },
           " villages and experience ",
-          { "blank": "tr5" },
+          {
+            "blank": "tr5"
+          },
           " immersion with local communities. Don't forget to pack your camera to capture ",
-          { "blank": "tr6" },
+          {
+            "blank": "tr6"
+          },
           " views that will create ",
-          { "blank": "tr7" },
+          {
+            "blank": "tr7"
+          },
           " memories for years to come."
         ],
         "blanks": [
-          { "id": "tr1", "correct": "memorable" },
-          { "id": "tr2", "correct": "sustainable" },
-          { "id": "tr3", "correct": "itinerary" },
-          { "id": "tr4", "correct": "picturesque" },
-          { "id": "tr5", "correct": "cultural" },
-          { "id": "tr6", "correct": "breathtaking" },
-          { "id": "tr7", "correct": "memorable" }
+          {
+            "id": "tr1",
+            "correct": "memorable"
+          },
+          {
+            "id": "tr2",
+            "correct": "sustainable"
+          },
+          {
+            "id": "tr3",
+            "correct": "itinerary"
+          },
+          {
+            "id": "tr4",
+            "correct": "picturesque"
+          },
+          {
+            "id": "tr5",
+            "correct": "cultural"
+          },
+          {
+            "id": "tr6",
+            "correct": "breathtaking"
+          },
+          {
+            "id": "tr7",
+            "correct": "memorable"
+          }
         ]
       },
       "questions": [
         {
           "id": "trq1",
           "prompt": "What is the main purpose of the passage?",
-          "options": ["To describe a past trip", "To provide advice on travel planning", "To sell travel insurance", "To review a hotel"],
-          "correct": 1
+          "options": [
+            "To describe a past trip",
+            "To provide advice on travel planning",
+            "To sell travel insurance"
+          ],
+          "correct": 1,
+          "explanation": "The passage directly supports “To provide advice on travel planning”; the other options either contradict its purpose or introduce information not stated in the text."
         },
         {
           "id": "trq2",
           "prompt": "According to the passage, what should travelers do to create lasting memories?",
-          "options": ["Stay in luxury hotels", "Take lots of photos", "Buy souvenirs", "Visit crowded tourist attractions"],
-          "correct": 1
+          "options": [
+            "Stay in luxury hotels",
+            "Buy souvenirs",
+            "Take lots of photos"
+          ],
+          "correct": 2,
+          "explanation": "The passage directly supports “Take lots of photos”; the other options either contradict its purpose or introduce information not stated in the text."
         }
       ],
       "tip": {
         "title": "Reading Tip",
         "text": "Look for collocations such as \"breathtaking views\" and \"memorable memories\" to help you choose the correct words."
+      }
+    },
+    {
+      "id": "listening-travel-complaint",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Advanced Listening",
+      "title": "Listening: Resolving a Hotel Complaint",
+      "description": "Listen for the guest's priorities and evaluate the proposed resolution.",
+      "audio": {
+        "src": "/audio/travel-tourism-01.mp3?v=1",
+        "transcript": "Good evening. I'm calling from room four twelve. I booked a quiet room because I have an early flight, but there's a wedding reception directly below me. I understand the music is scheduled to continue until midnight. I'm very sorry. The reception was moved at short notice because another room developed a plumbing problem. We can move you to room six thirty, which is on the opposite side of the building. Is that room available now? I need to sleep soon, and I don't want to wait while it is prepared. It was cleaned this afternoon, so a colleague can bring a new key within five minutes. The room is smaller, but it has been upgraded with breakfast and a late checkout. The breakfast won't help because I leave before it opens. Could you arrange a taxi and a takeaway breakfast instead? Yes, we can book a taxi for five fifteen and prepare a breakfast bag. I'll also remove tonight's parking charge. That sounds reasonable. Please confirm the arrangements by text so I have the times in writing. Of course. You'll receive the message shortly, and the duty manager will call after you move to ensure the new room is quiet.",
+        "highlights": [
+          "quiet room",
+          "five minutes",
+          "taxi at five fifteen",
+          "confirm by text"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "travel-listening-gist",
+          "prompt": "What outcome do the speakers reach?",
+          "options": [
+            "The guest cancels the booking",
+            "The guest moves rooms and receives practical alternatives",
+            "The wedding ends immediately"
+          ],
+          "correct": 1,
+          "explanation": "They agree on a quieter room, taxi, breakfast bag and removed parking charge."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "travel-listening-detail-1",
+          "prompt": "Why is the original room noisy?",
+          "options": [
+            "Roadworks",
+            "A wedding reception",
+            "A plumbing repair"
+          ],
+          "correct": 1,
+          "explanation": "The wedding reception is directly below the room."
+        },
+        {
+          "id": "travel-listening-detail-2",
+          "prompt": "Why does the guest reject the normal breakfast?",
+          "options": [
+            "It costs extra",
+            "The guest dislikes the menu",
+            "The flight requires an earlier departure"
+          ],
+          "correct": 2,
+          "explanation": "The guest leaves before breakfast opens."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "In service encounters, distinguish the original complaint, constraints, rejected offers and final agreement."
       }
     },
     {
@@ -363,7 +626,14 @@
         "minWords": 80,
         "maxWords": 140,
         "referenceAnswer": "Last summer, I had the opportunity to experience cultural immersion in a picturesque village in Vietnam. The breathtaking scenery and warm hospitality of the locals made this an unforgettable adventure. I explored off the beaten path locations and tried the delicious local cuisine. This sustainable tourism experience taught me the importance of respecting local communities while traveling. It was truly a memorable journey that broadened my perspective on different cultures.",
-        "focus": ["breathtaking", "cultural immersion", "picturesque", "unforgettable", "sustainable tourism", "off the beaten path"]
+        "focus": [
+          "breathtaking",
+          "cultural immersion",
+          "picturesque",
+          "unforgettable",
+          "sustainable tourism",
+          "off the beaten path"
+        ]
       },
       "tip": {
         "title": "B2 Writing Tip",

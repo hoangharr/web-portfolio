@@ -1,0 +1,344 @@
+{
+  "id": "money-consumer-choices-01",
+  "title": "Money & Consumer Choices",
+  "level": "B1",
+  "subtitle": "Evaluate purchases, budgets and consumer decisions",
+  "themeIcon": "payments",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "B1 Core Module",
+      "title": "Money & Consumer Choices",
+      "quote": "Evaluate purchases, budgets and consumer decisions",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Money & Consumer Choices"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Evaluate purchases, budgets and consumer decisions"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Money & Consumer Choices",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "afford",
+          "definition": "have enough money for something",
+          "translation": "có khả năng chi trả",
+          "icon": "school",
+          "category": "Money & Consumer Choices",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "budget",
+          "definition": "a plan for spending money",
+          "translation": "ngân sách",
+          "icon": "payments",
+          "category": "Money & Consumer Choices",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "value for money",
+          "definition": "good quality for the price",
+          "translation": "đáng tiền",
+          "icon": "payments",
+          "category": "Money & Consumer Choices",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "refund",
+          "definition": "money returned after a purchase",
+          "translation": "hoàn tiền",
+          "icon": "payments",
+          "category": "Money & Consumer Choices",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "subscription",
+          "definition": "regular payment for a service",
+          "translation": "gói đăng ký",
+          "icon": "school",
+          "category": "Money & Consumer Choices",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "impulse purchase",
+          "definition": "something bought without planning",
+          "translation": "mua bốc đồng",
+          "icon": "school",
+          "category": "Money & Consumer Choices",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "compare prices",
+          "definition": "check costs from different sellers",
+          "translation": "so sánh giá",
+          "icon": "payments",
+          "category": "Money & Consumer Choices",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "consumer rights",
+          "definition": "legal protections for buyers",
+          "translation": "quyền người tiêu dùng",
+          "icon": "school",
+          "category": "Money & Consumer Choices",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Modal deduction",
+          "icon": "rule",
+          "function": "must, might, can't + base form",
+          "examples": [
+            "The offer must be genuine.",
+            "There might be an extra fee."
+          ]
+        },
+        {
+          "title": "Quantifiers",
+          "icon": "schema",
+          "function": "few/little, fewer/less, enough",
+          "examples": [
+            "I have little money left.",
+            "This plan has fewer charges."
+          ]
+        },
+        {
+          "title": "Zero conditional",
+          "icon": "edit_note",
+          "function": "if + present, present for general results",
+          "examples": [
+            "If you miss a payment, the service stops.",
+            "If prices rise, people compare more carefully."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Money & Consumer Choices",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/money-consumer-choices-01.mp3?v=1",
+        "transcript": "A low monthly price might look attractive, but it can't be the only detail you check. Some subscriptions renew automatically and include fees that appear only after a trial period. If consumers compare the total annual cost, they often make a different choice. A service with fewer features may actually offer better value for money. Before paying, check the cancellation rules and whether you can receive a refund. The cheapest option must not be assumed to be the best one.",
+        "highlights": [
+          "afford",
+          "budget",
+          "value for money",
+          "refund"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "What is the speaker advising consumers to do?",
+          "options": [
+            "Always choose the lowest monthly price",
+            "Compare full costs and conditions",
+            "Avoid every subscription"
+          ],
+          "correct": 1,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "What may happen after a trial?",
+          "options": [
+            "Extra fees may appear",
+            "The price always falls",
+            "A refund is automatic"
+          ],
+          "correct": 0,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Money & Consumer Choices",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Money & Consumer Choices",
+        "parts": [
+          "If shoppers ",
+          {
+            "blank": "r1"
+          },
+          " the full cost, they make better choices. A cheap product might have ",
+          {
+            "blank": "r2"
+          },
+          " features, while a reliable item can offer better ",
+          {
+            "blank": "r3"
+          },
+          " for money."
+        ],
+        "options": [
+          "compare",
+          "fewer",
+          "value",
+          "afford",
+          "budget",
+          "value for money"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "compare"
+          },
+          {
+            "id": "r2",
+            "correct": "fewer"
+          },
+          {
+            "id": "r3",
+            "correct": "value"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Money & Consumer Choices",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe a purchase you considered carefully.",
+        "What influenced your decision?",
+        "How can consumers avoid poor choices?"
+      ],
+      "sampleAnswer": "I recently compared two phone plans. The cheaper one had fewer benefits and might have included extra fees. I chose the clearer plan because it offered better value for money and flexible cancellation.",
+      "preparationSeconds": 30,
+      "recordingSeconds": 90,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Money & Consumer Choices",
+      "description": "Write 100-140 words using this module's language.",
+      "prompt": {
+        "situation": "Write a review comparing two products or services and recommend one.",
+        "placeholder": "Write your response here...",
+        "minWords": 100,
+        "maxWords": 140,
+        "referenceAnswer": "I recently compared two phone plans. The cheaper one had fewer benefits and might have included extra fees. I chose the clearer plan because it offered better value for money and flexible cancellation.",
+        "focus": [
+          "Modal deduction",
+          "Quantifiers",
+          "Zero conditional"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "If a trial ends, the subscription often ___ automatically.",
+          "options": [
+            "renews",
+            "renewed",
+            "will renewing"
+          ],
+          "correct": 0,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

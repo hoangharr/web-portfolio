@@ -1,0 +1,343 @@
+{
+  "id": "culture-entertainment-01",
+  "title": "Culture & Entertainment",
+  "level": "B1",
+  "subtitle": "Discuss changing tastes, reviews and cultural experiences",
+  "themeIcon": "theater_comedy",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "B1 Core Module",
+      "title": "Culture & Entertainment",
+      "quote": "Discuss changing tastes, reviews and cultural experiences",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Culture & Entertainment"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Discuss changing tastes, reviews and cultural experiences"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Culture & Entertainment",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "performance",
+          "definition": "an event where people entertain an audience",
+          "translation": "buổi biểu diễn",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "audience",
+          "definition": "people watching or listening",
+          "translation": "khán giả",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "plot",
+          "definition": "the main events in a story",
+          "translation": "cốt truyện",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "review",
+          "definition": "an opinion and evaluation",
+          "translation": "bài đánh giá",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "recommend",
+          "definition": "suggest that something is good",
+          "translation": "đề xuất",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "live music",
+          "definition": "music performed in front of an audience",
+          "translation": "nhạc sống",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "take part",
+          "definition": "participate in an activity",
+          "translation": "tham gia",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "cultural event",
+          "definition": "a public arts or traditions activity",
+          "translation": "sự kiện văn hóa",
+          "icon": "school",
+          "category": "Culture & Entertainment",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Reported speech",
+          "icon": "rule",
+          "function": "backshift after said/told",
+          "examples": [
+            "She said the show was excellent.",
+            "He told me he had booked tickets."
+          ]
+        },
+        {
+          "title": "Present perfect continuous",
+          "icon": "schema",
+          "function": "have/has been + verb-ing",
+          "examples": [
+            "They have been performing for an hour.",
+            "I have been reading reviews."
+          ]
+        },
+        {
+          "title": "Used to",
+          "icon": "edit_note",
+          "function": "past states and repeated habits",
+          "examples": [
+            "I used to watch films at home.",
+            "The hall used to be a factory."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Culture & Entertainment",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/culture-entertainment-01.mp3?v=1",
+        "transcript": "I've been attending the Riverside Festival since I moved here three years ago. The old theatre used to be an empty factory, but it has become the festival's main venue. This year, a friend told me that the opening performance was worth seeing, so I booked a ticket. The plot was simple, yet the actors involved the audience in surprising ways. Afterwards, several people said they had never enjoyed experimental theatre before. Events like this have been changing how local residents think about the arts.",
+        "highlights": [
+          "performance",
+          "audience",
+          "plot",
+          "review"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "How has the festival affected the community?",
+          "options": [
+            "It has encouraged new interest in the arts",
+            "It has replaced every cinema",
+            "It has reduced the local audience"
+          ],
+          "correct": 0,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "What did the theatre building use to be?",
+          "options": [
+            "A school",
+            "A factory",
+            "A station"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Culture & Entertainment",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Culture & Entertainment",
+        "parts": [
+          "The reviewer said the ",
+          {
+            "blank": "r1"
+          },
+          " had been excellent. The company has been ",
+          {
+            "blank": "r2"
+          },
+          " locally for years, and the venue used to be a ",
+          {
+            "blank": "r3"
+          },
+          "."
+        ],
+        "options": [
+          "performance",
+          "performing",
+          "factory",
+          "audience",
+          "plot"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "performance"
+          },
+          {
+            "id": "r2",
+            "correct": "performing"
+          },
+          {
+            "id": "r3",
+            "correct": "factory"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Culture & Entertainment",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe a film, performance or cultural event.",
+        "What did someone tell you about it?",
+        "How have your tastes changed?"
+      ],
+      "sampleAnswer": "I recently saw a play that a friend had recommended. She said the acting was excellent. I used to prefer films, but I have been attending more live performances this year.",
+      "preparationSeconds": 30,
+      "recordingSeconds": 90,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Culture & Entertainment",
+      "description": "Write 100-140 words using this module's language.",
+      "prompt": {
+        "situation": "Write a review of a cultural event and explain whether you recommend it.",
+        "placeholder": "Write your response here...",
+        "minWords": 100,
+        "maxWords": 140,
+        "referenceAnswer": "I recently saw a play that a friend had recommended. She said the acting was excellent. I used to prefer films, but I have been attending more live performances this year.",
+        "focus": [
+          "Reported speech",
+          "Present perfect continuous",
+          "Used to"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "He said the performance ___ excellent.",
+          "options": [
+            "is",
+            "was",
+            "has"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "id": "work-study-routines-01",
+  "title": "Work & Study Routines",
+  "level": "A2",
+  "subtitle": "Discuss responsibilities and activities over time",
+  "themeIcon": "school",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A2 Core Module",
+      "title": "Work & Study Routines",
+      "quote": "Discuss responsibilities and activities over time",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Work & Study Routines"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Discuss responsibilities and activities over time"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Work & Study Routines",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "assignment",
+          "definition": "a task given for study",
+          "translation": "bài tập",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "shift",
+          "definition": "a scheduled period of work",
+          "translation": "ca làm việc",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "deadline",
+          "definition": "the final time for completing work",
+          "translation": "hạn chót",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "colleague",
+          "definition": "a person you work with",
+          "translation": "đồng nghiệp",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "attend a course",
+          "definition": "go regularly to lessons",
+          "translation": "tham gia khóa học",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "take notes",
+          "definition": "write important information",
+          "translation": "ghi chú",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "hand in",
+          "definition": "give completed work to a teacher",
+          "translation": "nộp bài",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "revise",
+          "definition": "study again before a test",
+          "translation": "ôn tập",
+          "icon": "school",
+          "category": "Work & Study Routines",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Present perfect with for/since",
+          "icon": "rule",
+          "function": "have/has + past participle + duration/start",
+          "examples": [
+            "I have worked here for two years.",
+            "She has studied since September."
+          ]
+        },
+        {
+          "title": "Must and have to",
+          "icon": "schema",
+          "function": "obligation and external rules",
+          "examples": [
+            "You must submit the form.",
+            "I have to work on Friday."
+          ]
+        },
+        {
+          "title": "Don't have to / mustn't",
+          "icon": "edit_note",
+          "function": "no necessity versus prohibition",
+          "examples": [
+            "You don't have to come early.",
+            "You mustn't copy answers."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Work & Study Routines",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/work-study-routines-01.mp3?v=1",
+        "transcript": "I've attended an evening design course since September. I work during the day, so I have to study after dinner. We must hand in an assignment every two weeks, but we don't have to attend class on Fridays. This month has been busy because my colleague is away and I have worked extra shifts. I haven't missed a deadline yet, although I have had to plan my time carefully.",
+        "highlights": [
+          "assignment",
+          "shift",
+          "deadline",
+          "colleague"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "What challenge does the speaker describe?",
+          "options": [
+            "Combining work and study",
+            "Finding a new home",
+            "Learning to drive"
+          ],
+          "correct": 0,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "How often is an assignment due?",
+          "options": [
+            "Every week",
+            "Every two weeks",
+            "Every month"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Work & Study Routines",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Work & Study Routines",
+        "parts": [
+          "Lena has studied here ",
+          {
+            "blank": "r1"
+          },
+          " January. She has worked part-time ",
+          {
+            "blank": "r2"
+          },
+          " six months. Students must ",
+          {
+            "blank": "r3"
+          },
+          " their assignments online."
+        ],
+        "options": [
+          "since",
+          "for",
+          "hand in",
+          "assignment",
+          "shift",
+          "deadline"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "since"
+          },
+          {
+            "id": "r2",
+            "correct": "for"
+          },
+          {
+            "id": "r3",
+            "correct": "hand in"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Work & Study Routines",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe your work or study routine.",
+        "What responsibilities do you have?",
+        "How long have you followed this routine?"
+      ],
+      "sampleAnswer": "I have studied English for one year. I attend class twice a week and have to complete homework online. I must practise regularly, but I don't have to study at the same time every day.",
+      "preparationSeconds": 30,
+      "recordingSeconds": 60,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Work & Study Routines",
+      "description": "Write 60-90 words using this module's language.",
+      "prompt": {
+        "situation": "Write about your work or study routine, responsibilities and duration.",
+        "placeholder": "Write your response here...",
+        "minWords": 60,
+        "maxWords": 90,
+        "referenceAnswer": "I have studied English for one year. I attend class twice a week and have to complete homework online. I must practise regularly, but I don't have to study at the same time every day.",
+        "focus": [
+          "Present perfect with for/since",
+          "Must and have to",
+          "Don't have to / mustn't"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "She has worked here ___ 2024.",
+          "options": [
+            "for",
+            "since",
+            "during"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

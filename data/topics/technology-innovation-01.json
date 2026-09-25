@@ -117,23 +117,43 @@
       "rows": [
         {
           "basic": "Computer",
-          "advanced": ["Device", "System", "Technology"]
+          "advanced": [
+            "Device",
+            "System",
+            "Technology"
+          ]
         },
         {
           "basic": "Good/Nice",
-          "advanced": ["Efficient", "Effective", "Innovative"]
+          "advanced": [
+            "Efficient",
+            "Effective",
+            "Innovative"
+          ]
         },
         {
           "basic": "Change",
-          "advanced": ["Transform", "Revolutionize", "Disrupt"]
+          "advanced": [
+            "Transform",
+            "Revolutionize",
+            "Disrupt"
+          ]
         },
         {
           "basic": "Fast/Quick",
-          "advanced": ["Rapid", "Swift", "Instantaneous"]
+          "advanced": [
+            "Rapid",
+            "Swift",
+            "Instantaneous"
+          ]
         },
         {
           "basic": "Problem",
-          "advanced": ["Challenge", "Issue", "Obstacle"]
+          "advanced": [
+            "Challenge",
+            "Issue",
+            "Obstacle"
+          ]
         }
       ],
       "practiceTasks": [
@@ -169,27 +189,52 @@
           "title": "Will for Predictions",
           "icon": "psychology",
           "function": "To make predictions about future technological developments",
-          "examples": ["Artificial intelligence will revolutionize healthcare within the next decade.", "Smart homes will become standard in most households by 2030."]
+          "examples": [
+            "Artificial intelligence will revolutionize healthcare within the next decade.",
+            "Smart homes will become standard in most households by 2030."
+          ]
         },
         {
           "title": "Be Going To for Plans",
           "icon": "event_note",
           "function": "To talk about planned technological developments or personal intentions",
-          "examples": ["Our company is going to launch a new app next month.", "I'm going to upgrade my computer next week."]
+          "examples": [
+            "Our company is going to launch a new app next month.",
+            "I'm going to upgrade my computer next week."
+          ]
         },
         {
           "title": "Future Continuous for Ongoing Actions",
           "icon": "hourglass_bottom",
           "function": "To describe actions that will be in progress at a specific time in the future",
-          "examples": ["This time next year, I'll be using virtual reality for remote meetings.", "By 2025, most people will be working with AI assistants."]
+          "examples": [
+            "This time next year, I'll be using virtual reality for remote meetings.",
+            "By 2025, most people will be working with AI assistants."
+          ]
         }
       ],
       "table": {
-        "headers": ["Form", "Function", "Technology Example"],
+        "headers": [
+          "Form",
+          "Function",
+          "Technology Example"
+        ],
         "rows": [
-          ["Will", "Predictions", "5G technology will transform mobile communications."],
-          ["Be going to", "Plans", "The government is going to invest in digital infrastructure."],
-          ["Will be + -ing", "Future ongoing actions", "We'll be using voice recognition software in most devices."]
+          [
+            "Will",
+            "Predictions",
+            "5G technology will transform mobile communications."
+          ],
+          [
+            "Be going to",
+            "Plans",
+            "The government is going to invest in digital infrastructure."
+          ],
+          [
+            "Will be + -ing",
+            "Future ongoing actions",
+            "We'll be using voice recognition software in most devices."
+          ]
         ]
       },
       "tip": {
@@ -208,62 +253,112 @@
         {
           "id": "t1q1",
           "prompt": "\"________ involves integrating digital technology into all areas of a business, fundamentally changing how it operates.\"",
-          "options": ["Digital transformation", "Computer upgrade", "Software installation", "Internet connection"],
-          "correct": 0
+          "options": [
+            "Digital transformation",
+            "Computer upgrade",
+            "Software installation"
+          ],
+          "correct": 0,
+          "explanation": "Digital transformation is organisation-wide change enabled by digital technology, not a single upgrade or installation."
         },
         {
           "id": "t1q2",
           "prompt": "\"A ________ is designed to be easy to use, even for people with little technical knowledge.\"",
-          "options": ["user-friendly interface", "complex system", "difficult program", "advanced software"],
-          "correct": 0
+          "options": [
+            "complex system",
+            "user-friendly interface",
+            "difficult program"
+          ],
+          "correct": 1,
+          "explanation": "A user-friendly interface is designed for ease of use; a complex system or difficult program contradicts that requirement."
         },
         {
           "id": "t1q3",
           "prompt": "\"________ refers to the newest and most advanced technology available in a particular field.\"",
-          "options": ["Cutting-edge technology", "Old equipment", "Basic tools", "Simple devices"],
-          "correct": 0
+          "options": [
+            "Old equipment",
+            "Basic tools",
+            "Cutting-edge technology"
+          ],
+          "correct": 2,
+          "explanation": "Cutting-edge technology means the newest and most advanced available; old equipment and basic tools express the opposite."
         },
         {
           "id": "t1q4",
           "prompt": "\"________ relates to the right of individuals to control how their personal information is collected and used.\"",
-          "options": ["Data privacy", "Public information", "Open access", "Free sharing"],
-          "correct": 0
+          "options": [
+            "Data privacy",
+            "Public information",
+            "Open access"
+          ],
+          "correct": 0,
+          "explanation": "Data privacy concerns control over the collection and use of personal information; public information and open access concern availability."
         },
         {
           "id": "t1q5",
           "prompt": "\"________ involves computer systems designed to perform tasks that normally require human intelligence.\"",
-          "options": ["Artificial intelligence", "Manual labor", "Human resources", "Traditional methods"],
-          "correct": 0
+          "options": [
+            "Manual labor",
+            "Artificial intelligence",
+            "Human resources"
+          ],
+          "correct": 1,
+          "explanation": "Artificial intelligence performs tasks associated with human intelligence; manual labour and human resources are not computer systems."
         },
         {
           "id": "t1q6",
           "prompt": "\"________ describes the smooth incorporation of new technology with existing systems without disruption.\"",
-          "options": ["Seamless integration", "Rough connection", "Difficult merger", "Complex combination"],
-          "correct": 0
+          "options": [
+            "Rough connection",
+            "Difficult merger",
+            "Seamless integration"
+          ],
+          "correct": 2,
+          "explanation": "Seamless integration means systems work together without noticeable disruption; rough connection and difficult merger imply friction."
         },
         {
           "id": "t1q7",
           "prompt": "\"________ technology will likely become more prevalent in healthcare diagnostics.\"",
-          "options": ["Artificial intelligence", "Manual processes", "Paper records", "Traditional methods"],
-          "correct": 0
+          "options": [
+            "Artificial intelligence",
+            "Manual processes",
+            "Paper records"
+          ],
+          "correct": 0,
+          "explanation": "Artificial intelligence performs tasks associated with human intelligence; manual labour and human resources are not computer systems."
         },
         {
           "id": "t1q8",
           "prompt": "\"Companies must ensure ________ to maintain customer trust in the digital age.\"",
-          "options": ["data privacy", "public exposure", "open access", "free sharing"],
-          "correct": 0
+          "options": [
+            "public exposure",
+            "data privacy",
+            "open access"
+          ],
+          "correct": 1,
+          "explanation": "Data privacy protects personal information and therefore supports customer trust; exposure and open access would weaken that protection."
         },
         {
           "id": "t1q9",
           "prompt": "\"The new smartphone features a ________ that makes it accessible to users of all ages.\"",
-          "options": ["user-friendly interface", "complex system", "difficult program", "advanced software"],
-          "correct": 0
+          "options": [
+            "complex system",
+            "difficult program",
+            "user-friendly interface"
+          ],
+          "correct": 2,
+          "explanation": "A user-friendly interface is designed for ease of use; a complex system or difficult program contradicts that requirement."
         },
         {
           "id": "t1q10",
           "prompt": "\"________ has enabled businesses to operate more efficiently and reach global markets.\"",
-          "options": ["Digital transformation", "Paper-based systems", "Manual processes", "Traditional methods"],
-          "correct": 0
+          "options": [
+            "Digital transformation",
+            "Paper-based systems",
+            "Manual processes"
+          ],
+          "correct": 0,
+          "explanation": "Digital transformation is organisation-wide change enabled by digital technology, not a single upgrade or installation."
         }
       ]
     },
@@ -275,23 +370,80 @@
       "title": "Technology Concepts Matching",
       "description": "Drag each technology concept to the correct category.",
       "targets": [
-        { "id": "development", "label": "Technology Development" },
-        { "id": "impact", "label": "Societal Impact" },
-        { "id": "future", "label": "Future Trends" }
+        {
+          "id": "development",
+          "label": "Technology Development"
+        },
+        {
+          "id": "impact",
+          "label": "Societal Impact"
+        },
+        {
+          "id": "future",
+          "label": "Future Trends"
+        }
       ],
       "items": [
-        { "id": "drag-1", "text": "Digital transformation", "match": "development" },
-        { "id": "drag-2", "text": "Social media influence", "match": "impact" },
-        { "id": "drag-3", "text": "Artificial intelligence", "match": "future" },
-        { "id": "drag-4", "text": "User-friendly interface", "match": "development" },
-        { "id": "drag-5", "text": "Remote work culture", "match": "impact" },
-        { "id": "drag-6", "text": "Virtual reality", "match": "future" },
-        { "id": "drag-7", "text": "Seamless integration", "match": "development" },
-        { "id": "drag-8", "text": "Digital communication", "match": "impact" },
-        { "id": "drag-9", "text": "Quantum computing", "match": "future" },
-        { "id": "drag-10", "text": "Data privacy concerns", "match": "impact" },
-        { "id": "drag-11", "text": "Cutting-edge technology", "match": "development" },
-        { "id": "drag-12", "text": "Internet of Things (IoT)", "match": "future" }
+        {
+          "id": "drag-1",
+          "text": "Digital transformation",
+          "match": "development"
+        },
+        {
+          "id": "drag-2",
+          "text": "Social media influence",
+          "match": "impact"
+        },
+        {
+          "id": "drag-3",
+          "text": "Artificial intelligence",
+          "match": "future"
+        },
+        {
+          "id": "drag-4",
+          "text": "User-friendly interface",
+          "match": "development"
+        },
+        {
+          "id": "drag-5",
+          "text": "Remote work culture",
+          "match": "impact"
+        },
+        {
+          "id": "drag-6",
+          "text": "Virtual reality",
+          "match": "future"
+        },
+        {
+          "id": "drag-7",
+          "text": "Seamless integration",
+          "match": "development"
+        },
+        {
+          "id": "drag-8",
+          "text": "Digital communication",
+          "match": "impact"
+        },
+        {
+          "id": "drag-9",
+          "text": "Quantum computing",
+          "match": "future"
+        },
+        {
+          "id": "drag-10",
+          "text": "Data privacy concerns",
+          "match": "impact"
+        },
+        {
+          "id": "drag-11",
+          "text": "Cutting-edge technology",
+          "match": "development"
+        },
+        {
+          "id": "drag-12",
+          "text": "Internet of Things (IoT)",
+          "match": "future"
+        }
       ]
     },
     {
@@ -303,48 +455,154 @@
       "description": "Complete the passage using the most appropriate technology vocabulary.",
       "passage": {
         "title": "The Future of Work in the Digital Age",
-        "options": ["artificial", "digital", "interface", "privacy", "seamless", "transformation"],
+        "options": [
+          "artificial",
+          "digital",
+          "interface",
+          "privacy",
+          "seamless",
+          "transformation"
+        ],
         "parts": [
           "The ",
-          { "blank": "tech1" },
+          {
+            "blank": "tech1"
+          },
           " ________ has fundamentally changed how we work and communicate. Companies are investing in ",
-          { "blank": "tech2" },
+          {
+            "blank": "tech2"
+          },
           " ________ to create more efficient processes. A user-friendly ",
-          { "blank": "tech3" },
+          {
+            "blank": "tech3"
+          },
           " ________ is essential for employee adoption of new systems. However, as we integrate more ",
-          { "blank": "tech4" },
+          {
+            "blank": "tech4"
+          },
           " ________ intelligence tools, data ",
-          { "blank": "tech5" },
+          {
+            "blank": "tech5"
+          },
           " ________ becomes increasingly important. The goal is ",
-          { "blank": "tech6" },
+          {
+            "blank": "tech6"
+          },
           " ________ integration of technology that enhances productivity without compromising security."
         ],
         "blanks": [
-          { "id": "tech1", "correct": "digital" },
-          { "id": "tech2", "correct": "cutting-edge" },
-          { "id": "tech3", "correct": "interface" },
-          { "id": "tech4", "correct": "artificial" },
-          { "id": "tech5", "correct": "privacy" },
-          { "id": "tech6", "correct": "seamless" }
+          {
+            "id": "tech1",
+            "correct": "digital"
+          },
+          {
+            "id": "tech2",
+            "correct": "cutting-edge"
+          },
+          {
+            "id": "tech3",
+            "correct": "interface"
+          },
+          {
+            "id": "tech4",
+            "correct": "artificial"
+          },
+          {
+            "id": "tech5",
+            "correct": "privacy"
+          },
+          {
+            "id": "tech6",
+            "correct": "seamless"
+          }
         ]
       },
       "questions": [
         {
           "id": "techq1",
           "prompt": "What is the main theme of the passage?",
-          "options": ["The importance of traditional office work", "How technology is changing the workplace", "The dangers of artificial intelligence", "The history of computer development"],
-          "correct": 1
+          "options": [
+            "The importance of traditional office work",
+            "How technology is changing the workplace",
+            "The dangers of artificial intelligence"
+          ],
+          "correct": 1,
+          "explanation": "The passage directly supports “How technology is changing the workplace”; the other options either contradict its purpose or introduce information not stated in the text."
         },
         {
           "id": "techq2",
           "prompt": "According to the passage, what is essential for employee adoption of new systems?",
-          "options": ["Free lunch in the office", "A user-friendly interface", "Higher salaries", "More meetings"],
-          "correct": 1
+          "options": [
+            "Free lunch in the office",
+            "Higher salaries",
+            "A user-friendly interface"
+          ],
+          "correct": 2,
+          "explanation": "The passage directly supports “A user-friendly interface”; the other options either contradict its purpose or introduce information not stated in the text."
         }
       ],
       "tip": {
         "title": "Reading Tip",
         "text": "Look for collocations such as \"digital transformation\" and \"seamless integration\" to help you choose the correct words."
+      }
+    },
+    {
+      "id": "listening-technology-debate",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Advanced Listening",
+      "title": "Listening: Should AI Make Workplace Decisions?",
+      "description": "Compare competing claims about efficiency, accountability and human oversight.",
+      "audio": {
+        "src": "/audio/technology-innovation-01.mp3?v=1",
+        "transcript": "Automated systems can help organisations process more information than an individual manager ever could. In recruitment, for example, a well-designed tool can apply the same initial criteria to thousands of applications and identify patterns that humans might overlook. That consistency is valuable. Consistency is not the same as fairness. A system can apply a biased rule perfectly consistently, especially if it learns from historical decisions that already disadvantaged certain groups. Efficiency should not prevent applicants from understanding or challenging an outcome. I agree that transparency matters, but removing automation would return us to slower and often equally biased human judgement. The better approach is to test systems continuously and assign responsibility clearly. Yet responsibility is precisely where organisations become vague. A manager may say the algorithm recommended a decision, while the vendor says the employer chose how to use the tool. Human oversight becomes symbolic if the reviewer lacks time, authority or technical understanding. Then perhaps the real question is not whether artificial intelligence should make decisions, but which decisions can be delegated, what evidence must be recorded and who has the power to reverse an error. On that point we agree. Automation may support judgement, but accountability must remain with identifiable people and institutions.",
+        "highlights": [
+          "consistency",
+          "historical bias",
+          "symbolic oversight",
+          "accountability"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "technology-listening-gist",
+          "prompt": "What conclusion do the speakers share?",
+          "options": [
+            "Automation should replace managers",
+            "AI should never be used at work",
+            "AI may support decisions, but people must remain accountable"
+          ],
+          "correct": 2,
+          "explanation": "Both accept support from automation while insisting on identifiable accountability."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "technology-listening-detail-1",
+          "prompt": "Why can a consistent system still be unfair?",
+          "options": [
+            "It may learn from biased historical decisions",
+            "It processes too little information",
+            "Applicants always reject technology"
+          ],
+          "correct": 0,
+          "explanation": "Consistency can reproduce a biased rule or biased historical data."
+        },
+        {
+          "id": "technology-listening-detail-2",
+          "prompt": "When does human oversight become symbolic?",
+          "options": [
+            "When decisions are documented",
+            "When reviewers lack time, authority or understanding",
+            "When vendors explain the tool"
+          ],
+          "correct": 1,
+          "explanation": "Oversight has little value if the reviewer cannot meaningfully intervene."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Map each speaker's claim, counterargument and concession before identifying their shared conclusion."
       }
     },
     {
@@ -360,7 +618,14 @@
         "minWords": 80,
         "maxWords": 140,
         "referenceAnswer": "In my opinion, technology will continue to bring more benefits than problems to our lives. Digital transformation has already revolutionized how we work, communicate, and access information. Cutting-edge technology such as artificial intelligence will solve complex problems in healthcare and education. However, we must ensure seamless integration of new systems while protecting data privacy. In the future, I believe we'll see even more user-friendly interfaces that make technology accessible to everyone. Although there are challenges, the potential for positive change is enormous if we approach technological development responsibly.",
-        "focus": ["digital transformation", "cutting-edge technology", "artificial intelligence", "seamless integration", "data privacy", "user-friendly interface"]
+        "focus": [
+          "digital transformation",
+          "cutting-edge technology",
+          "artificial intelligence",
+          "seamless integration",
+          "data privacy",
+          "user-friendly interface"
+        ]
       },
       "tip": {
         "title": "B2 Writing Tip",

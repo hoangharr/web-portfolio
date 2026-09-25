@@ -6,6 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
+    <!-- Set this to the public origin of the uploaded audio, e.g. https://media.example.com. -->
+    <meta name="media-base-url" content="" />
     <title>English Academic Deck</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
@@ -415,6 +417,24 @@
             >Grammar</span
           >
           <span
+            id="nav-listening"
+            onclick="navigateToSection('listening')"
+            class="nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded"
+            >Listening</span
+          >
+          <span
+            id="nav-reading"
+            onclick="navigateToSection('reading')"
+            class="nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded"
+            >Reading</span
+          >
+          <span
+            id="nav-speaking"
+            onclick="navigateToSection('speaking')"
+            class="nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded"
+            >Speaking</span
+          >
+          <span
             id="nav-exercise"
             onclick="navigateToSection('exercise')"
             class="nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded"
@@ -537,7 +557,7 @@
       </div>
     </div>
 
-    <script src="js/engine.js?v=24"></script>
+    <script src="js/engine.js?v=27"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

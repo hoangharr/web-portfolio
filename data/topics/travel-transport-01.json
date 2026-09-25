@@ -1,0 +1,343 @@
+{
+  "id": "travel-transport-01",
+  "title": "Travel & Transport",
+  "level": "A2",
+  "subtitle": "Explain journeys, delays and travel choices",
+  "themeIcon": "train",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A2 Core Module",
+      "title": "Travel & Transport",
+      "quote": "Explain journeys, delays and travel choices",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Travel & Transport"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Explain journeys, delays and travel choices"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Travel & Transport",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "platform",
+          "definition": "the place where passengers wait for a train",
+          "translation": "sân ga",
+          "icon": "directions_transit",
+          "category": "Travel & Transport",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "delay",
+          "definition": "a period of waiting",
+          "translation": "sự trì hoãn",
+          "icon": "school",
+          "category": "Travel & Transport",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "cancelled",
+          "definition": "stopped before it happens",
+          "translation": "bị hủy",
+          "icon": "school",
+          "category": "Travel & Transport",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "return ticket",
+          "definition": "a ticket for going and coming back",
+          "translation": "vé khứ hồi",
+          "icon": "directions_transit",
+          "category": "Travel & Transport",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "traffic jam",
+          "definition": "many vehicles moving very slowly",
+          "translation": "tắc đường",
+          "icon": "school",
+          "category": "Travel & Transport",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "miss a connection",
+          "definition": "arrive too late for the next service",
+          "translation": "lỡ chuyến nối",
+          "icon": "school",
+          "category": "Travel & Transport",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "set off",
+          "definition": "begin a journey",
+          "translation": "khởi hành",
+          "icon": "school",
+          "category": "Travel & Transport",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "on time",
+          "definition": "at the planned time",
+          "translation": "đúng giờ",
+          "icon": "school",
+          "category": "Travel & Transport",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Past continuous",
+          "icon": "rule",
+          "function": "was/were + verb-ing for background",
+          "examples": [
+            "We were waiting on platform three.",
+            "It was raining heavily."
+          ]
+        },
+        {
+          "title": "Past simple interruption",
+          "icon": "schema",
+          "function": "past simple for the event that happened",
+          "examples": [
+            "The announcement suddenly changed.",
+            "Our bus arrived late."
+          ]
+        },
+        {
+          "title": "Adverbs of manner",
+          "icon": "edit_note",
+          "function": "adjective + -ly describes how",
+          "examples": [
+            "The train moved slowly.",
+            "She explained the route clearly."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Travel & Transport",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/travel-transport-01.mp3?v=1",
+        "transcript": "We were travelling to Manchester when our train suddenly stopped outside Birmingham. At first, nobody knew what was happening. After twenty minutes, the driver explained that heavy rain had damaged a signal. We were moving again slowly when another announcement told us to change trains. We missed our connection, but a station employee calmly arranged new tickets. We finally arrived two hours late.",
+        "highlights": [
+          "platform",
+          "delay",
+          "cancelled",
+          "return ticket"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "What happened during the journey?",
+          "options": [
+            "The travellers got lost in a city",
+            "A signal problem caused delays",
+            "They chose the wrong airport"
+          ],
+          "correct": 1,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "Who arranged new tickets?",
+          "options": [
+            "The driver",
+            "A station employee",
+            "Another passenger"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Travel & Transport",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Travel & Transport",
+        "parts": [
+          "We ",
+          {
+            "blank": "r1"
+          },
+          " for the bus when a message arrived. The service was ",
+          {
+            "blank": "r2"
+          },
+          " because of snow, so we travelled by train ",
+          {
+            "blank": "r3"
+          },
+          "."
+        ],
+        "options": [
+          "were waiting",
+          "cancelled",
+          "instead",
+          "platform",
+          "delay"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "were waiting"
+          },
+          {
+            "id": "r2",
+            "correct": "cancelled"
+          },
+          {
+            "id": "r3",
+            "correct": "instead"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Travel & Transport",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe a journey that did not go as planned.",
+        "What happened first?",
+        "How was the problem solved?"
+      ],
+      "sampleAnswer": "Last month, I was travelling home when my bus broke down. We waited for thirty minutes. Then the driver arranged another bus, and I arrived about an hour late.",
+      "preparationSeconds": 30,
+      "recordingSeconds": 60,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Travel & Transport",
+      "description": "Write 60-90 words using this module's language.",
+      "prompt": {
+        "situation": "Write an email explaining a travel delay and what happened.",
+        "placeholder": "Write your response here...",
+        "minWords": 60,
+        "maxWords": 90,
+        "referenceAnswer": "Last month, I was travelling home when my bus broke down. We waited for thirty minutes. Then the driver arranged another bus, and I arrived about an hour late.",
+        "focus": [
+          "Past continuous",
+          "Past simple interruption",
+          "Adverbs of manner"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "We ___ for the train when the announcement changed.",
+          "options": [
+            "waited",
+            "were waiting",
+            "are waiting"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

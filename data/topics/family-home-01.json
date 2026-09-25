@@ -180,13 +180,12 @@
           "id": "q1",
           "prompt": "My brother ___ a teacher.",
           "options": [
-            "am",
             "is",
-            "are",
-            "be"
+            "am",
+            "are"
           ],
-          "correct": 1,
-          "explanation": "Brother is singular, so use is."
+          "correct": 0,
+          "explanation": "Brother is singular, so use is. Read the complete context before rejecting the other options."
         },
         {
           "id": "q2",
@@ -194,35 +193,32 @@
           "options": [
             "has",
             "have",
-            "are",
-            "is"
+            "are"
           ],
           "correct": 1,
-          "explanation": "We takes have got."
+          "explanation": "We takes have got. Read the complete context before rejecting the other options."
         },
         {
           "id": "q3",
           "prompt": "This is Hoa. ___ room is upstairs.",
           "options": [
             "His",
-            "Her",
             "Our",
-            "Their"
+            "Her"
           ],
-          "correct": 1,
-          "explanation": "Hoa is female, so use her."
+          "correct": 2,
+          "explanation": "Hoa is female, so use her. Read the complete context before rejecting the other options."
         },
         {
           "id": "q4",
           "prompt": "Those keys belong ___ my father.",
           "options": [
-            "at",
-            "on",
             "to",
-            "for"
+            "at",
+            "on"
           ],
-          "correct": 2,
-          "explanation": "The phrase is belong to."
+          "correct": 0,
+          "explanation": "The phrase is belong to. Read the complete context before rejecting the other options."
         },
         {
           "id": "q5",
@@ -230,11 +226,10 @@
           "options": [
             "Has",
             "Have",
-            "Are",
-            "Do"
+            "Are"
           ],
           "correct": 1,
-          "explanation": "Use Have they got...?"
+          "explanation": "Use Have they got...? Read the complete context before rejecting the other options."
         },
         {
           "id": "q6",
@@ -242,8 +237,7 @@
           "options": [
             "parents",
             "parents’s",
-            "parents’",
-            "parent"
+            "parents’"
           ],
           "correct": 2,
           "explanation": "Use parents’ for something owned by both parents."
@@ -252,6 +246,65 @@
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-family-home",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: My Family and Home",
+      "description": "Listen for the main idea, then listen again for details.",
+      "audio": {
+        "src": "/audio/family-home-01.mp3?v=1",
+        "transcript": "Hello, I'm Ben. I live in a small house with my parents and my younger sister, Lucy. Our house has two bedrooms, a kitchen, a bathroom and a living room. My favourite room is the kitchen because we eat and talk there every evening. Lucy's favourite room is our bedroom. She keeps her books and toys next to her bed. We also have a little garden behind the house. My father grows tomatoes there.",
+        "highlights": [
+          "younger sister",
+          "kitchen",
+          "behind the house",
+          "tomatoes"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "family-listening-gist",
+          "prompt": "What is Ben mainly describing?",
+          "options": [
+            "His school",
+            "His family and home",
+            "His weekend"
+          ],
+          "correct": 1,
+          "explanation": "Ben describes who he lives with and the rooms in his home."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "family-listening-detail-1",
+          "prompt": "Why does Ben like the kitchen?",
+          "options": [
+            "He studies there",
+            "The family eats and talks there",
+            "It has many toys"
+          ],
+          "correct": 1,
+          "explanation": "His family eats and talks in the kitchen every evening."
+        },
+        {
+          "id": "family-listening-detail-2",
+          "prompt": "What does Ben's father grow?",
+          "options": [
+            "Flowers",
+            "Apples",
+            "Tomatoes"
+          ],
+          "correct": 2,
+          "explanation": "His father grows tomatoes in the garden."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Listen for family words and room names first; focus on small details on the second listen."
       }
     },
     {

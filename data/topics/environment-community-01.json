@@ -1,0 +1,344 @@
+{
+  "id": "environment-community-01",
+  "title": "Environment & Community",
+  "level": "B1",
+  "subtitle": "Discuss local action, causes and practical change",
+  "themeIcon": "eco",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "B1 Core Module",
+      "title": "Environment & Community",
+      "quote": "Discuss local action, causes and practical change",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Environment & Community"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Discuss local action, causes and practical change"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Environment & Community",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "recycle",
+          "definition": "process material so it can be used again",
+          "translation": "tái chế",
+          "icon": "school",
+          "category": "Environment & Community",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "waste reduction",
+          "definition": "creating less rubbish",
+          "translation": "giảm rác thải",
+          "icon": "school",
+          "category": "Environment & Community",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "public transport",
+          "definition": "shared buses, trains and similar services",
+          "translation": "giao thông công cộng",
+          "icon": "directions_transit",
+          "category": "Environment & Community",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "green space",
+          "definition": "an area with plants in a town",
+          "translation": "không gian xanh",
+          "icon": "school",
+          "category": "Environment & Community",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "local initiative",
+          "definition": "a community action or project",
+          "translation": "sáng kiến địa phương",
+          "icon": "school",
+          "category": "Environment & Community",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "raise awareness",
+          "definition": "help people understand an issue",
+          "translation": "nâng cao nhận thức",
+          "icon": "school",
+          "category": "Environment & Community",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "energy efficient",
+          "definition": "using less energy",
+          "translation": "tiết kiệm năng lượng",
+          "icon": "school",
+          "category": "Environment & Community",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "take action",
+          "definition": "do something to address a problem",
+          "translation": "hành động",
+          "icon": "school",
+          "category": "Environment & Community",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Passive across tenses",
+          "icon": "rule",
+          "function": "be + past participle",
+          "examples": [
+            "Glass is recycled locally.",
+            "The park was improved last year."
+          ]
+        },
+        {
+          "title": "Relative clauses",
+          "icon": "schema",
+          "function": "who, which, that, where",
+          "examples": [
+            "Volunteers who joined received training.",
+            "The centre where we meet is accessible."
+          ]
+        },
+        {
+          "title": "Purpose clauses",
+          "icon": "edit_note",
+          "function": "to, so that, in order to",
+          "examples": [
+            "We planted trees to create shade.",
+            "Signs were added so that people could sort waste."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Environment & Community",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/environment-community-01.mp3?v=1",
+        "transcript": "Our neighbourhood recycling project was started by six volunteers last spring. At first, only paper and glass were collected. After residents who used the service completed a survey, food-waste bins were added so that less rubbish would be sent to landfill. Clear signs were designed by local students, and monthly workshops are now held at the community centre. The project has not solved every problem, but recycling rates have doubled and more residents are asking how they can take action.",
+        "highlights": [
+          "recycle",
+          "waste reduction",
+          "public transport",
+          "green space"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "What is the main achievement described?",
+          "options": [
+            "A local recycling project expanded and increased participation",
+            "A park was permanently closed",
+            "Students stopped attending workshops"
+          ],
+          "correct": 0,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "Why were food-waste bins added?",
+          "options": [
+            "To collect paper",
+            "To reduce landfill waste",
+            "To advertise the centre"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Environment & Community",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Environment & Community",
+        "parts": [
+          "The project was ",
+          {
+            "blank": "r1"
+          },
+          " by local volunteers. Bins were added so that waste could be ",
+          {
+            "blank": "r2"
+          },
+          ". Residents who joined helped ",
+          {
+            "blank": "r3"
+          },
+          " awareness."
+        ],
+        "options": [
+          "started",
+          "recycled",
+          "raise",
+          "recycle",
+          "waste reduction",
+          "public transport"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "started"
+          },
+          {
+            "id": "r2",
+            "correct": "recycled"
+          },
+          {
+            "id": "r3",
+            "correct": "raise"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Environment & Community",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "Describe an environmental issue in your area.",
+        "What has been done about it?",
+        "What further action would help?"
+      ],
+      "sampleAnswer": "Traffic is a major issue where I live. New bus routes were introduced last year to reduce car use. People who travel at busy times now have more options, but safer cycle paths are still needed.",
+      "preparationSeconds": 30,
+      "recordingSeconds": 90,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Environment & Community",
+      "description": "Write 100-140 words using this module's language.",
+      "prompt": {
+        "situation": "Write to a community group proposing an environmental improvement.",
+        "placeholder": "Write your response here...",
+        "minWords": 100,
+        "maxWords": 140,
+        "referenceAnswer": "Traffic is a major issue where I live. New bus routes were introduced last year to reduce car use. People who travel at busy times now have more options, but safer cycle paths are still needed.",
+        "focus": [
+          "Passive across tenses",
+          "Relative clauses",
+          "Purpose clauses"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "The new recycling bins ___ last month.",
+          "options": [
+            "installed",
+            "were installed",
+            "are installing"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

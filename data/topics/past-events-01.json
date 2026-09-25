@@ -178,80 +178,133 @@
       "questions": [
         {
           "id": "q1",
-          "prompt": "We ___ to the museum last Saturday.",
+          "prompt": "Last Saturday, we missed the bus, so we ___ to the museum instead.",
           "options": [
-            "go",
             "went",
-            "gone",
-            "going"
+            "have gone",
+            "were going"
           ],
-          "correct": 1,
-          "explanation": "Went is the past form of go."
+          "correct": 0,
+          "explanation": "“Last Saturday” and the completed sequence require the past simple: went. “Have gone” connects a past action to the present, while “were going” needs an ongoing action or interruption."
         },
         {
           "id": "q2",
-          "prompt": "___ you call Mai yesterday?",
+          "prompt": "When you were at the station yesterday, ___ you call Mai to tell her about the delay?",
           "options": [
-            "Do",
-            "Were",
             "Did",
+            "Were",
             "Have"
           ],
-          "correct": 2,
-          "explanation": "Use Did for a past simple question."
+          "correct": 0,
+          "explanation": "Use Did + base verb for a finished past action: “Did you call…?” “Were” would need an -ing form, and “Have” does not fit with the finished-time marker “yesterday”."
         },
         {
           "id": "q3",
-          "prompt": "She did not ___ the email.",
+          "prompt": "Although she checked her phone twice last night, she did not ___ the email until this morning.",
           "options": [
-            "received",
-            "receives",
             "receive",
-            "receiving"
+            "received",
+            "was receiving"
           ],
-          "correct": 2,
-          "explanation": "After did not, use the base verb."
+          "correct": 0,
+          "explanation": "After did not, use the base form: receive. The time phrase “last night” makes the negative action a finished past event."
         },
         {
           "id": "q4",
-          "prompt": "They ___ at the hotel at 9 p.m.",
+          "prompt": "After their flight landed last night, they ___ at the hotel at 9 p.m. and checked in immediately.",
           "options": [
             "arrived",
-            "arrive",
-            "were arrive",
-            "have arrived"
+            "had arrived",
+            "were arriving"
           ],
           "correct": 0,
-          "explanation": "Arrived describes a finished past action."
+          "explanation": "The arrival is the next completed event after the flight landed, so arrived is the natural past-simple choice. “Had arrived” would need a later past reference point; “were arriving” describes an action in progress."
         },
         {
           "id": "q5",
-          "prompt": "I ___ a new bag at the market.",
+          "prompt": "Yesterday afternoon, I needed a bag for work, so I ___ one at the market.",
           "options": [
-            "buyed",
             "bought",
-            "buy",
-            "was buy"
+            "have bought",
+            "was buying"
           ],
-          "correct": 1,
-          "explanation": "Bought is the irregular past of buy."
+          "correct": 0,
+          "explanation": "“Yesterday afternoon” and “so” describe one finished event, so use bought, the past form of buy. “Have bought” does not normally go with a finished past time, and “was buying” needs an interrupted or ongoing context."
         },
         {
           "id": "q6",
-          "prompt": "___, a stranger helped us find the station.",
+          "prompt": "We were lost and becoming worried. ___, a stranger stopped and helped us find the station.",
           "options": [
-            "Last",
             "Fortunately",
-            "Ago",
-            "Yet"
+            "However",
+            "Meanwhile"
           ],
-          "correct": 1,
-          "explanation": "Fortunately introduces a positive result."
+          "correct": 0,
+          "explanation": "Fortunately signals a positive result after a problem. However introduces contrast, and meanwhile introduces a separate action happening at the same time."
         }
       ],
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-past-event",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: A Memorable Saturday",
+      "description": "Listen to the story and follow the sequence of events.",
+      "audio": {
+        "src": "/audio/past-events-01.mp3?v=1",
+        "transcript": "Last Saturday, I planned to meet my cousin at the city museum. I left home at nine, but the bus was twenty minutes late. When I arrived, my cousin was waiting outside with two tickets. First, we visited an exhibition about space travel. Then we had lunch in the museum café. In the afternoon, it started raining, so we decided not to walk in the park. Instead, we watched a film near the station. I got home at seven, tired but very happy.",
+        "highlights": [
+          "bus was late",
+          "space travel",
+          "started raining",
+          "watched a film"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "past-listening-gist",
+          "prompt": "What is the speaker describing?",
+          "options": [
+            "A difficult workday",
+            "A memorable day out",
+            "A family celebration"
+          ],
+          "correct": 1,
+          "explanation": "The speaker tells the story of a day at the museum and cinema."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "past-listening-detail-1",
+          "prompt": "Why did the speaker arrive late?",
+          "options": [
+            "The bus was late",
+            "The museum was closed",
+            "The tickets were missing"
+          ],
+          "correct": 0,
+          "explanation": "The bus was twenty minutes late. Read the complete context before rejecting the other options."
+        },
+        {
+          "id": "past-listening-detail-2",
+          "prompt": "What did they do after it started raining?",
+          "options": [
+            "Walked in the park",
+            "Went home",
+            "Watched a film"
+          ],
+          "correct": 2,
+          "explanation": "They changed their plan and watched a film."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Notice sequence markers such as first, then, in the afternoon and instead."
       }
     },
     {

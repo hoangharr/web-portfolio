@@ -180,12 +180,11 @@
           "id": "q1",
           "prompt": "We need ___ apple for the salad.",
           "options": [
-            "a",
             "an",
-            "some",
-            "any"
+            "a",
+            "some"
           ],
-          "correct": 1,
+          "correct": 0,
           "explanation": "Apple begins with a vowel sound, so use an."
         },
         {
@@ -193,11 +192,10 @@
           "prompt": "Is there ___ cheese in the fridge?",
           "options": [
             "a",
-            "many",
             "any",
-            "an"
+            "many"
           ],
-          "correct": 2,
+          "correct": 1,
           "explanation": "Use any in questions with uncountable nouns."
         },
         {
@@ -205,12 +203,11 @@
           "prompt": "How ___ oranges would you like?",
           "options": [
             "much",
-            "many",
             "some",
-            "any"
+            "many"
           ],
-          "correct": 1,
-          "explanation": "Oranges are countable, so use many."
+          "correct": 2,
+          "explanation": "Oranges are countable, so use many. Read the complete context before rejecting the other options."
         },
         {
           "id": "q4",
@@ -218,11 +215,10 @@
           "options": [
             "bottles",
             "bottle",
-            "waters",
-            "glass"
+            "waters"
           ],
           "correct": 0,
-          "explanation": "After two, use the plural bottles."
+          "explanation": "After two, use the plural bottles. Read the complete context before rejecting the other options."
         },
         {
           "id": "q5",
@@ -230,8 +226,7 @@
           "options": [
             "change",
             "price",
-            "cash",
-            "size"
+            "cash"
           ],
           "correct": 1,
           "explanation": "A good price means the cost is reasonable."
@@ -242,16 +237,74 @@
           "options": [
             "having",
             "has",
-            "have",
-            "had"
+            "have"
           ],
           "correct": 2,
-          "explanation": "After can, use the base verb have."
+          "explanation": "After can, use the base verb have. Read the complete context before rejecting the other options."
         }
       ],
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-food-order",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: Ordering Lunch",
+      "description": "Listen to a customer ordering food and identify prices and choices.",
+      "audio": {
+        "src": "/audio/food-shopping-01.mp3?v=1",
+        "transcript": "Good afternoon. Can I have a chicken sandwich, please? Certainly. Would you like a drink with that? Yes, an orange juice, please. Anything else? How much is the chocolate cake? It's three pounds fifty. No cake, thank you. I'll have an apple instead. That's six pounds eighty altogether. Here you are. Thank you. Your sandwich will be ready in five minutes.",
+        "highlights": [
+          "chicken sandwich",
+          "orange juice",
+          "six pounds eighty",
+          "five minutes"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "food-listening-gist",
+          "prompt": "Where are the speakers?",
+          "options": [
+            "At a café",
+            "At a station",
+            "At a clothes shop"
+          ],
+          "correct": 0,
+          "explanation": "They are ordering a sandwich and drink at a café."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "food-listening-detail-1",
+          "prompt": "What drink does the customer choose?",
+          "options": [
+            "Tea",
+            "Orange juice",
+            "Water"
+          ],
+          "correct": 1,
+          "explanation": "The customer asks for orange juice. Read the complete context before rejecting the other options."
+        },
+        {
+          "id": "food-listening-detail-2",
+          "prompt": "How much is the order?",
+          "options": [
+            "£3.50",
+            "£5.80",
+            "£6.80"
+          ],
+          "correct": 2,
+          "explanation": "The server says the total is six pounds eighty."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Prices often contain similar-sounding numbers. Listen to the whole amount before choosing."
       }
     },
     {

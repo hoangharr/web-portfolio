@@ -1,0 +1,343 @@
+{
+  "id": "free-time-weather-01",
+  "title": "Free Time & Weather",
+  "level": "A1",
+  "subtitle": "Talk about abilities, hobbies and what is happening now",
+  "themeIcon": "sunny",
+  "sections": [
+    {
+      "id": "overview",
+      "type": "intro",
+      "nav": "intro",
+      "eyebrow": "A1 Core Module",
+      "title": "Free Time & Weather",
+      "quote": "Talk about abilities, hobbies and what is happening now",
+      "features": [
+        {
+          "icon": "spellcheck",
+          "title": "Language Core",
+          "description": "Build accurate grammar and useful topic vocabulary."
+        },
+        {
+          "icon": "headphones",
+          "title": "Four Skills",
+          "description": "Practise real-life listening, reading, speaking and writing."
+        },
+        {
+          "icon": "task_alt",
+          "title": "Aptis Practice",
+          "description": "Check understanding with focused questions and a checkpoint."
+        }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80",
+        "alt": "Learning theme for Free Time & Weather"
+      },
+      "tip": {
+        "title": "Learning Goal",
+        "text": "Talk about abilities, hobbies and what is happening now"
+      }
+    },
+    {
+      "id": "vocabulary",
+      "type": "vocabulary",
+      "nav": "vocabulary",
+      "eyebrow": "Vocabulary",
+      "title": "Topic Vocabulary: Free Time & Weather",
+      "description": "Learn each item as a complete meaning-and-use unit.",
+      "cards": [
+        {
+          "term": "sunny",
+          "definition": "bright with light from the sun",
+          "translation": "có nắng",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "cloudy",
+          "definition": "covered with clouds",
+          "translation": "nhiều mây",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Essential",
+          "variant": "highlight"
+        },
+        {
+          "term": "rainy",
+          "definition": "with a lot of rain",
+          "translation": "có mưa",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "go cycling",
+          "definition": "ride a bicycle for pleasure",
+          "translation": "đạp xe",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Essential",
+          "variant": "default"
+        },
+        {
+          "term": "take photos",
+          "definition": "use a camera to make pictures",
+          "translation": "chụp ảnh",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Useful",
+          "variant": "highlight"
+        },
+        {
+          "term": "play chess",
+          "definition": "play a board game",
+          "translation": "chơi cờ",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "indoors",
+          "definition": "inside a building",
+          "translation": "trong nhà",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Useful",
+          "variant": "default"
+        },
+        {
+          "term": "outdoors",
+          "definition": "outside a building",
+          "translation": "ngoài trời",
+          "icon": "school",
+          "category": "Free Time & Weather",
+          "badge": "Useful",
+          "variant": "highlight"
+        }
+      ],
+      "tip": {
+        "title": "Vocabulary Strategy",
+        "text": "Say each item aloud, notice its common partners and use it in a personal sentence."
+      }
+    },
+    {
+      "id": "grammar",
+      "type": "grammar",
+      "nav": "grammar",
+      "eyebrow": "Grammar",
+      "title": "Grammar for Clear Communication",
+      "description": "Study the form, meaning and use before completing the skills tasks.",
+      "points": [
+        {
+          "title": "Like + -ing",
+          "icon": "rule",
+          "function": "like/love/enjoy + verb-ing",
+          "examples": [
+            "I like taking photos.",
+            "She loves playing chess."
+          ]
+        },
+        {
+          "title": "Can and can't",
+          "icon": "schema",
+          "function": "can/can't + base verb",
+          "examples": [
+            "I can swim.",
+            "He can't ride a bike."
+          ]
+        },
+        {
+          "title": "Present continuous",
+          "icon": "edit_note",
+          "function": "am/is/are + verb-ing for now",
+          "examples": [
+            "It is raining now.",
+            "We are playing indoors."
+          ]
+        }
+      ],
+      "tip": {
+        "title": "Accuracy Tip",
+        "text": "Choose grammar from the meaning you need, then check the verb form and subject."
+      }
+    },
+    {
+      "id": "listening",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening",
+      "title": "Listening: Free Time & Weather",
+      "description": "Listen once for gist and again for detail.",
+      "audio": {
+        "src": "/audio/free-time-weather-01.mp3?v=1",
+        "transcript": "It's raining this morning, so my family is staying indoors. My father is reading and my mother is making tea. I am playing chess with my sister. We usually go cycling on Sundays, but we can't cycle in this weather. The forecast says it will be sunny this afternoon, so we can take photos in the park later.",
+        "highlights": [
+          "sunny",
+          "cloudy",
+          "rainy",
+          "go cycling"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "listen-gist",
+          "prompt": "Why is the family indoors?",
+          "options": [
+            "It is raining",
+            "It is very late",
+            "They are working"
+          ],
+          "correct": 0,
+          "explanation": "The complete recording supports this main idea."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "listen-detail",
+          "prompt": "What may they do later?",
+          "options": [
+            "Go shopping",
+            "Take photos",
+            "Watch a film"
+          ],
+          "correct": 1,
+          "explanation": "This detail is stated in the recording. Read the complete context before rejecting the other options."
+        }
+      ],
+      "tip": {
+        "title": "Listening Strategy",
+        "text": "Use the first listen for context and the second listen to confirm exact details."
+      }
+    },
+    {
+      "id": "reading",
+      "type": "reading",
+      "nav": "reading",
+      "eyebrow": "Reading",
+      "title": "Reading: Free Time & Weather",
+      "description": "Complete the text, then answer the comprehension question.",
+      "passage": {
+        "title": "Free Time & Weather",
+        "parts": [
+          "Today it is ",
+          {
+            "blank": "r1"
+          },
+          " but warm. Mia likes ",
+          {
+            "blank": "r2"
+          },
+          " in the park. Her brother can't ride a bike, so he is ",
+          {
+            "blank": "r3"
+          },
+          " chess indoors."
+        ],
+        "options": [
+          "cloudy",
+          "cycling",
+          "playing",
+          "sunny",
+          "rainy"
+        ],
+        "blanks": [
+          {
+            "id": "r1",
+            "correct": "cloudy"
+          },
+          {
+            "id": "r2",
+            "correct": "cycling"
+          },
+          {
+            "id": "r3",
+            "correct": "playing"
+          }
+        ]
+      },
+      "questions": [],
+      "tip": {
+        "title": "Reading Strategy",
+        "text": "Read around each gap and check both meaning and grammar before choosing."
+      }
+    },
+    {
+      "id": "speaking",
+      "type": "speaking",
+      "nav": "speaking",
+      "eyebrow": "Speaking",
+      "title": "Speaking: Free Time & Weather",
+      "description": "Prepare briefly, record your response and review it.",
+      "questions": [
+        "What do you enjoy doing in your free time?",
+        "What can you do well?",
+        "What are people doing today?"
+      ],
+      "sampleAnswer": "I enjoy reading and taking photos. I can play chess, but I can't swim very well. Today it is sunny, so my friends are playing football outdoors.",
+      "preparationSeconds": 20,
+      "recordingSeconds": 40,
+      "prompts": [
+        "Answer every part of the prompt.",
+        "Use the target grammar.",
+        "Add one reason or example."
+      ],
+      "tip": {
+        "title": "Speaking Tip",
+        "text": "Organise your answer into a clear beginning, two details and a short ending."
+      }
+    },
+    {
+      "id": "writing",
+      "type": "writing",
+      "nav": "writing",
+      "eyebrow": "Writing",
+      "title": "Writing: Free Time & Weather",
+      "description": "Write 35-55 words using this module's language.",
+      "prompt": {
+        "situation": "Write about your favourite free-time activities and today's weather.",
+        "placeholder": "Write your response here...",
+        "minWords": 35,
+        "maxWords": 55,
+        "referenceAnswer": "I enjoy reading and taking photos. I can play chess, but I can't swim very well. Today it is sunny, so my friends are playing football outdoors.",
+        "focus": [
+          "Like + -ing",
+          "Can and can't",
+          "Present continuous"
+        ]
+      },
+      "tip": {
+        "title": "Writing Checklist",
+        "text": "Check task coverage, verb forms, vocabulary choice, spelling and word count."
+      }
+    },
+    {
+      "id": "checkpoint",
+      "type": "checkpoint",
+      "nav": "exercise",
+      "eyebrow": "Checkpoint",
+      "title": "Module Checkpoint",
+      "description": "Check the key grammar and vocabulary before moving on.",
+      "questions": [
+        {
+          "id": "check-grammar",
+          "prompt": "Look! They ___ football now.",
+          "options": [
+            "play",
+            "are playing",
+            "playing"
+          ],
+          "correct": 1,
+          "explanation": "This is the target grammar form from the module."
+        }
+      ],
+      "tip": {
+        "title": "Progress",
+        "text": "Review any incorrect answer, then record a final speaking response."
+      }
+    }
+  ]
+}

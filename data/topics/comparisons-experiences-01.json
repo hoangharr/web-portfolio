@@ -178,24 +178,22 @@
           "id": "q1",
           "prompt": "This route is ___ than the old one.",
           "options": [
-            "short",
             "shorter",
-            "shortest",
-            "more short"
+            "short",
+            "shortest"
           ],
-          "correct": 1,
-          "explanation": "Use shorter than to compare two routes."
+          "correct": 0,
+          "explanation": "Use shorter than to compare two routes. Read the complete context before rejecting the other options."
         },
         {
           "id": "q2",
           "prompt": "It is ___ restaurant in town.",
           "options": [
-            "the most popular",
             "more popular",
-            "popular than",
-            "most popular"
+            "the most popular",
+            "popular than"
           ],
-          "correct": 0,
+          "correct": 1,
           "explanation": "Use the most popular for the superlative."
         },
         {
@@ -204,8 +202,7 @@
           "options": [
             "eat",
             "ate",
-            "eaten",
-            "eating"
+            "eaten"
           ],
           "correct": 2,
           "explanation": "Present perfect needs the past participle eaten."
@@ -214,12 +211,11 @@
           "id": "q4",
           "prompt": "I have ___ visited Canada.",
           "options": [
-            "ever",
             "never",
-            "ago",
-            "last"
+            "ever",
+            "ago"
           ],
-          "correct": 1,
+          "correct": 0,
           "explanation": "Never describes an experience that has not happened."
         },
         {
@@ -227,29 +223,86 @@
           "prompt": "The village is quieter ___ the city.",
           "options": [
             "that",
-            "then",
             "than",
-            "as"
+            "then"
           ],
-          "correct": 2,
-          "explanation": "Comparatives use than."
+          "correct": 1,
+          "explanation": "Comparatives use than. Read the complete context before rejecting the other options."
         },
         {
           "id": "q6",
           "prompt": "She ___ recently started a new course.",
           "options": [
             "have",
-            "has",
             "did",
-            "is"
+            "has"
           ],
-          "correct": 1,
-          "explanation": "She takes has in the present perfect."
+          "correct": 2,
+          "explanation": "She takes has in the present perfect. Read the complete context before rejecting the other options."
         }
       ],
       "tip": {
         "title": "Use the clue",
         "text": "Look for time expressions, the subject, and words before or after the gap before choosing."
+      }
+    },
+    {
+      "id": "listening-comparisons",
+      "type": "listening",
+      "nav": "listening",
+      "eyebrow": "Listening Practice",
+      "title": "Listening: City Break or Beach Holiday?",
+      "description": "Listen to a comparison of two destinations and identify the recommendation.",
+      "audio": {
+        "src": "/audio/comparisons-experiences-01.mp3?v=1",
+        "transcript": "I've visited both Brighton and York, but they offer very different holidays. Brighton is livelier and has a long beach, so it's better for people who enjoy music, cafés and the sea. York is smaller and quieter, but its historic centre is more beautiful. Accommodation in York was slightly cheaper when I visited. However, Brighton was easier to reach from London. For a summer weekend with friends, I'd choose Brighton. For a relaxed trip with my parents, York would be the better option.",
+        "highlights": [
+          "livelier",
+          "quieter",
+          "cheaper",
+          "easier to reach"
+        ]
+      },
+      "gistQuestions": [
+        {
+          "id": "comparisons-listening-gist",
+          "prompt": "What is the purpose of the talk?",
+          "options": [
+            "To complain about two hotels",
+            "To compare two destinations",
+            "To explain train prices"
+          ],
+          "correct": 1,
+          "explanation": "The speaker compares Brighton and York for different trips."
+        }
+      ],
+      "detailQuestions": [
+        {
+          "id": "comparisons-listening-detail-1",
+          "prompt": "Which city was slightly cheaper?",
+          "options": [
+            "Brighton",
+            "York",
+            "London"
+          ],
+          "correct": 1,
+          "explanation": "The speaker says accommodation in York was slightly cheaper."
+        },
+        {
+          "id": "comparisons-listening-detail-2",
+          "prompt": "Which place does the speaker recommend for friends in summer?",
+          "options": [
+            "Brighton",
+            "York",
+            "Neither"
+          ],
+          "correct": 0,
+          "explanation": "Brighton is recommended for a summer weekend with friends."
+        }
+      ],
+      "tip": {
+        "title": "Listening Tip",
+        "text": "Listen for comparative forms and for the speaker's final recommendation."
       }
     },
     {

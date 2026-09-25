@@ -1,3 +1,7 @@
 node_modules/
 server/target/
 .env
+
+# Generated/deployed media artifacts. Keep them locally for upload to object
+# storage, but do not grow the Git history with binary audio files.
+public/audio/**/*.mp3
