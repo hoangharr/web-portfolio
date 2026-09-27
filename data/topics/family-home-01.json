@@ -200,14 +200,14 @@
         },
         {
           "id": "q3",
-          "prompt": "This is Hoa. ___ room is upstairs.",
+          "prompt": "This is Hoa. She is looking for ___ room.",
           "options": [
             "His",
             "Our",
             "Her"
           ],
           "correct": 2,
-          "explanation": "Hoa is female, so use her. Read the complete context before rejecting the other options."
+          "explanation": "The preceding sentence explicitly identifies Hoa as she, so the correct possessive adjective is her."
         },
         {
           "id": "q4",

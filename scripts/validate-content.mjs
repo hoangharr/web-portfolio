@@ -40,6 +40,9 @@ function checkAptisItem(question, location) {
   if (/^The correct answer is/i.test(question.explanation || "")) {
     fail(location, "uses generic feedback instead of an item-specific rationale");
   }
+  if (/\b(?:is|are)\s+(?:female|male)\b/i.test(question.explanation || "")) {
+    fail(location, "must not infer a person's gender from a name; establish any required pronoun in the item context");
+  }
   if (/^Which item belongs to the topic |^What is the text mainly demonstrating\?$/i.test(question.prompt || "")) {
     fail(location, "uses a topic-label trivia template instead of a language task");
   }

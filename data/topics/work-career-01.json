@@ -251,14 +251,14 @@
       "questions": [
         {
           "id": "m1q1",
-          "prompt": "\"To succeed in marketing, you need to ________ a clear career path early on.\"",
+          "prompt": "\"After graduating, she hopes to ________ a career in engineering.\"",
           "options": [
             "pursue",
-            "follow",
-            "trace"
+            "pursuit",
+            "pursuing"
           ],
           "correct": 0,
-          "explanation": "Pursue a career path is the standard collocation for actively following a professional direction; trace does not express that goal."
+          "explanation": "The infinitive marker to requires the base verb pursue. Pursuit is a noun and pursuing is an -ing form, so neither can complete this structure."
         },
         {
           "id": "m1q2",
@@ -275,12 +275,12 @@
           "id": "m1q3",
           "prompt": "\"Our team is ________ motivated to achieve the annual targets.\"",
           "options": [
-            "absolutely",
-            "widely",
-            "highly"
+            "highly",
+            "high",
+            "height"
           ],
-          "correct": 2,
-          "explanation": "Highly motivated is the standard degree collocation; widely and absolutely do not normally modify motivated in this context."
+          "correct": 0,
+          "explanation": "Highly is the adverb that modifies motivated. High is an adjective and height is a noun, so neither has the required grammatical form."
         },
         {
           "id": "m1q4",

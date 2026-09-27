@@ -3,6 +3,13 @@ const MEDIA_BASE_URL = String(
   window.MEDIA_BASE_URL || document.querySelector('meta[name="media-base-url"]')?.content || ""
 ).replace(/\/$/, "");
 const LEARNING_QUOTES = ["Small progress each day adds up to big results.", "Learning never exhausts the mind.", "The expert in anything was once a beginner.", "Study a little today, understand a lot tomorrow.", "Every new word is another way to see the world."];
+const LEVEL_ACCENTS = Object.freeze({
+  A1: { color: "#0f766e", soft: "#ccfbf1", strong: "#14b8a6" },
+  A2: { color: "#0369a1", soft: "#e0f2fe", strong: "#38bdf8" },
+  B1: { color: "#6d28d9", soft: "#ede9fe", strong: "#8b5cf6" },
+  B2: { color: "#be123c", soft: "#ffe4e6", strong: "#fb7185" }
+});
+const THEME_STORAGE_KEY = "theme";
 
 const state = {
   lessons: [],
@@ -50,6 +57,10 @@ function resolveMediaUrl(source) {
 
 function materialIcon(icon, classes = "") {
   return `<span class="material-symbols-outlined ${classes}">${escapeHtml(icon)}</span>`;
+}
+
+function levelAccent(level) {
+  return LEVEL_ACCENTS[String(level).toUpperCase()] || { color: "#3730a3", soft: "#e0e7ff", strong: "#6366f1" };
 }
 
 function renderTip(tip, extraClasses = "") {
@@ -336,6 +347,7 @@ function renderDragDrop(section) {
   return `
     ${renderHeader(section)}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white p-6 rounded-2xl border border-outline-variant shadow-sm items-start">
+      <p class="lg:col-span-2 rounded-lg bg-primary-fixed/30 px-4 py-3 text-sm text-primary"><span class="font-bold">Touch-friendly:</span> tap an item, then tap the category where it belongs. You can also drag on devices that support it.</p>
       <div class="space-y-4" id="drop-zones-container-${escapeHtml(section.id)}">
         ${section.targets.map(target => `
           <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
@@ -346,7 +358,7 @@ function renderDragDrop(section) {
       </div>
       <div class="flex flex-wrap gap-3 content-start p-4 bg-surface-container-low rounded-lg border border-outline-variant min-h-[400px]" id="draggables-container-${escapeHtml(section.id)}">
         ${section.items.map(item => `
-          <button type="button" draggable="true" data-match="${escapeHtml(item.match)}" class="drag-item px-3 py-1.5 text-sm bg-white border border-primary text-primary rounded-full cursor-grab active:scale-95 shadow-sm transition-colors" aria-pressed="false">
+          <button type="button" draggable="true" data-match="${escapeHtml(item.match)}" class="drag-item min-h-11 px-3 py-1.5 text-sm bg-white border border-primary text-primary rounded-full cursor-grab active:scale-95 shadow-sm transition-colors" aria-pressed="false">
             ${escapeHtml(item.text)}
           </button>
         `).join("")}
@@ -445,23 +457,23 @@ function renderWriting(section) {
           <h2 class="font-h2 text-2xl md:text-h2 text-primary mb-2">${escapeHtml(section.title)}</h2>
           <p class="font-body-lg text-sm md:text-body-lg text-on-surface-variant">${escapeHtml(section.description)}</p>
         </div>
-        <div class="bg-white border border-outline-variant p-4 md:p-8 rounded-xl shadow-sm">
+        <div class="writing-situation bg-white border border-outline-variant p-4 md:p-8 rounded-xl shadow-sm">
           <div class="flex items-center gap-2 md:gap-unit mb-3 md:mb-element-gap">
             ${materialIcon("description", "text-primary")}
             <span class="font-label-caps text-[10px] md:text-xs text-outline uppercase tracking-widest">The Situation</span>
           </div>
-          <p class="font-quote text-base md:text-quote text-tertiary italic leading-relaxed border-l-4 border-primary pl-4 py-1">"${escapeHtml(section.prompt.situation)}"</p>
+          <p class="writing-situation-copy font-quote text-base md:text-quote text-tertiary italic leading-relaxed border-l-4 border-primary pl-4 py-1">"${escapeHtml(section.prompt.situation)}"</p>
         </div>
-        <div class="flex flex-col gap-2 md:gap-4 rounded-2xl border-2 p-4 md:p-6 shadow-sm transition-all ${submitted ? "border-green-500 bg-green-50/70" : "border-amber-300 bg-amber-50/50"}">
+        <div class="writing-workspace flex flex-col gap-2 md:gap-4 rounded-2xl border-2 p-4 md:p-6 shadow-sm transition-all ${submitted ? "border-green-500 bg-green-50/70" : "border-amber-300 bg-amber-50/50"}">
           <div class="flex justify-between items-end">
             <span class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest ${submitted ? "bg-green-600 text-white" : "bg-amber-100 text-amber-800 border border-amber-300"}">${materialIcon(submitted ? "check_circle" : "edit_note", "text-sm")}${statusLabel}</span>
             <span class="text-[10px] md:text-xs text-outline font-label-caps">Word Count: <span class="word-counter font-bold text-primary">${initialWords}</span> / ${section.prompt.maxWords} <span class="min-words">(min. ${section.prompt.minWords})</span></span>
           </div>
           <div class="relative">
-            <textarea class="writing-input-text w-full p-4 md:p-6 font-body-md text-sm md:text-base border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary bg-white resize-none outline-none shadow-inner" data-max-words="${section.prompt.maxWords}" data-min-words="${section.prompt.minWords}" data-draft-key="${escapeHtml(draftKey)}" placeholder="${escapeHtml(section.prompt.placeholder)}" rows="8">${escapeHtml(savedDraft)}</textarea>
+            <textarea class="writing-input writing-input-text w-full p-4 md:p-6 font-body-md text-sm md:text-base border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary bg-white resize-none outline-none shadow-inner" data-max-words="${section.prompt.maxWords}" data-min-words="${section.prompt.minWords}" data-draft-key="${escapeHtml(draftKey)}" placeholder="${escapeHtml(section.prompt.placeholder)}" rows="8">${escapeHtml(savedDraft)}</textarea>
             <div class="absolute bottom-4 right-4 opacity-20 pointer-events-none">${materialIcon("edit_note", "text-2xl md:text-4xl")}</div>
           </div>
-          <div class="flex flex-wrap items-center gap-3"><button type="button" class="btn-submit-writing ${submitted ? "bg-green-700 hover:bg-green-800" : "bg-primary hover:bg-primary-container"} text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all">${submitted ? "Update submission" : "Submit Writing"}</button><p class="submission-status text-xs ${submitted ? "text-green-800" : "text-amber-800"}" aria-live="polite">${submittedAt ? "Last submitted " + new Date(submittedAt).toLocaleString() : "Your draft saves automatically."}</p></div>
+          <div class="flex flex-wrap items-center gap-3"><button type="button" class="btn-submit-writing ${submitted ? "bg-green-700 hover:bg-green-800" : "bg-primary hover:bg-primary-container"} text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all">${submitted ? "Update submission" : "Submit Writing"}</button><p class="writing-status submission-status text-xs ${submitted ? "text-green-800" : "text-amber-800"}" aria-live="polite">${submittedAt ? "Last submitted " + new Date(submittedAt).toLocaleString() : "Your draft saves automatically."}</p></div>
           <p class="draft-status text-xs text-outline" aria-live="polite">${savedDraft ? "Draft restored from this browser." : "Draft saves automatically on this browser."}</p>
         </div>
         ${section.prompt.referenceAnswer ? `
@@ -776,7 +788,12 @@ function updateAuthButton() {
   const button = document.getElementById("auth-button");
   const logoutButton = document.getElementById("logout-button");
   if (!button) return;
-  button.innerHTML = state.user ? escapeHtml(state.user.displayName) : materialIcon("login");
+  button.innerHTML = state.user
+    ? `${materialIcon("account_circle", "text-xl")}<span class="hidden lg:inline">${escapeHtml(state.user.displayName)}</span>`
+    : materialIcon("login");
+  button.className = state.user
+    ? "flex size-11 items-center justify-center gap-2 rounded-full text-sm font-semibold text-indigo-900 hover:bg-indigo-50 lg:w-auto lg:px-3 dark:text-amber-400 dark:hover:bg-white/10"
+    : "grid size-11 place-items-center rounded-full text-sm font-semibold text-indigo-900 hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10";
   button.title = state.user ? "My dashboard" : "Log in";
   button.setAttribute("aria-label", state.user ? "My dashboard" : "Log in");
   button.href = state.user?.role === "ADMIN" ? "admin.html" : state.user ? "dashboard.html" : "login.html";
@@ -1336,21 +1353,18 @@ function updateHeaderForCurrentSlide() {
 }
 
 function updateNav(section) {
-  const navItems = {
-    vocabulary: document.getElementById("nav-vocab"),
-    grammar: document.getElementById("nav-grammar"),
-    listening: document.getElementById("nav-listening"),
-    reading: document.getElementById("nav-reading"),
-    speaking: document.getElementById("nav-speaking"),
-    exercise: document.getElementById("nav-exercise")
-  };
-  const inactiveClass = "nav-item text-gray-500 font-serif antialiased hover:bg-indigo-50 transition-colors px-2 cursor-pointer rounded";
-  const activeClass = "nav-item text-indigo-900 font-bold font-serif antialiased cursor-pointer px-2 rounded transition-colors";
-
-  Object.entries(navItems).forEach(([nav, element]) => {
-    if (!element) return;
+  ["vocabulary", "grammar", "listening", "reading", "speaking", "exercise"].forEach(nav => {
     const active = nav === section.nav || (nav === "exercise" && ["writing", "checkpoint"].includes(section.nav));
-    element.className = active ? activeClass : inactiveClass;
+    document.querySelectorAll(`[data-section-nav="${nav}"]`).forEach(element => {
+      element.dataset.active = String(active);
+      element.classList.toggle("text-indigo-900", active);
+      element.classList.toggle("font-bold", active);
+      element.classList.toggle("text-gray-500", !active);
+      element.classList.toggle("font-serif", true);
+      if (active && element.classList.contains("mobile-section-nav")) {
+        element.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+      }
+    });
   });
 }
 
@@ -1454,38 +1468,6 @@ function renderWelcome() {
   const content = document.getElementById("welcome-content");
   if (!screen || !content) return;
 
-  let slideStart = 1;
-  let moduleIndex = 0;
-  const levelGroups = [];
-  const tracks = state.tracks && state.tracks.length
-    ? state.tracks
-    : [{ id: "all", level: "ALL", label: "Modules", lessons: state.lessons.map(() => "") }];
-
-  tracks.forEach(track => {
-    const level = track.level || track.id.toUpperCase();
-    const groupCards = [];
-    track.lessons.forEach((unused, trackModuleIndex) => {
-      const lesson = state.lessons[moduleIndex];
-      if (!lesson) return;
-      const start = slideStart;
-      slideStart += lesson.sections.length;
-      moduleIndex += 1;
-      const progress = moduleProgress(lesson);
-      groupCards.push(`
-        <button data-welcome-slide="${start}" class="group flex items-center gap-4 w-full p-4 rounded-xl bg-surface-container-low dark:bg-slate-800 border border-outline-variant dark:border-slate-700 hover:border-primary dark:hover:border-amber-400 hover:bg-primary/5 transition-all text-left active:scale-[0.98]">
-          <span class="w-11 h-11 shrink-0 rounded-full bg-primary-container dark:bg-indigo-900 flex items-center justify-center">
-            ${materialIcon(lesson.themeIcon, "text-on-primary dark:text-amber-400 text-2xl")}
-          </span>
-          <span class="min-w-0 flex-grow">
-            <span class="block font-label-caps text-label-caps text-secondary dark:text-amber-400 uppercase tracking-widest mb-0.5">${escapeHtml(level)} · Module ${trackModuleIndex + 1}</span>
-            <span class="block font-bold text-primary dark:text-slate-100 text-base">${escapeHtml(lesson.title)}</span><span class="mt-2 block h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"><span class="block h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all" style="width: ${progress.percent}%"></span></span><span class="mt-1 block text-xs font-semibold text-outline dark:text-slate-400">${progress.done}/${progress.total} sections · ${progress.percent}%</span>
-          </span>
-          ${progress.completed ? materialIcon("check_circle", "text-green-600 dark:text-emerald-400") : materialIcon("chevron_right", "text-outline group-hover:text-primary dark:group-hover:text-amber-400 transition-colors")}
-        </button>
-      `);
-    });
-    if (groupCards.length) levelGroups.push({ level, label: track.label, description: track.description || "", cards: groupCards });
-  });
   let saved = null;
   try {
     const key = accountStorageKey("lastSlide", "current");
@@ -1495,12 +1477,63 @@ function renderWelcome() {
     // ignore
   }
 
+  let slideStart = 1;
+  let moduleIndex = 0;
+  const levelGroups = [];
+  const modules = [];
+  const tracks = state.tracks && state.tracks.length
+    ? state.tracks
+    : [{ id: "all", level: "ALL", label: "Modules", lessons: state.lessons.map(() => "") }];
+
+  tracks.forEach(track => {
+    const level = track.level || track.id.toUpperCase();
+    const accent = levelAccent(level);
+    const groupCards = [];
+    track.lessons.forEach((unused, trackModuleIndex) => {
+      const lesson = state.lessons[moduleIndex];
+      if (!lesson) return;
+      const start = slideStart;
+      slideStart += lesson.sections.length;
+      moduleIndex += 1;
+      const progress = moduleProgress(lesson);
+      const module = {
+        lesson,
+        level,
+        moduleNumber: trackModuleIndex + 1,
+        progress,
+        start,
+        updatedAt: state.lessonProgress[lesson.id]?.updatedAt,
+        accent
+      };
+      module.card = `
+        <button data-welcome-slide="${start}" style="--level-accent: ${accent.color}; --level-soft: ${accent.soft}; --level-strong: ${accent.strong}; border-left-color: var(--level-accent)" class="welcome-module-card group flex w-full items-center gap-4 rounded-xl border border-outline-variant border-l-4 bg-surface-container-low p-4 text-left transition-all hover:brightness-[0.98] active:scale-[0.98] dark:border-slate-700 dark:bg-slate-800" >
+          <span style="background-color: var(--level-soft); color: var(--level-accent)" class="welcome-module-icon flex size-11 shrink-0 items-center justify-center rounded-full">
+            ${materialIcon(lesson.themeIcon, "text-2xl")}
+          </span>
+          <span class="min-w-0 flex-grow">
+            <span style="color: var(--level-accent)" class="welcome-module-label mb-0.5 block font-label-caps text-label-caps uppercase tracking-widest">${escapeHtml(level)} · Module ${trackModuleIndex + 1}</span>
+            <span class="block font-bold text-primary dark:text-slate-100 text-base">${escapeHtml(lesson.title)}</span><span class="mt-2 block h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"><span class="block h-full rounded-full transition-all" style="width: ${progress.percent}%; background: linear-gradient(90deg, var(--level-accent), var(--level-strong))"></span></span><span class="mt-1 block text-xs font-semibold text-outline dark:text-slate-400">${progress.done}/${progress.total} sections · ${progress.percent}%</span>
+          </span>
+          ${progress.completed ? materialIcon("check_circle", "text-green-600 dark:text-emerald-400") : materialIcon("chevron_right", "text-outline transition-colors group-hover:text-primary")}
+        </button>
+      `;
+      modules.push(module);
+      groupCards.push(module.card);
+    });
+    if (groupCards.length) levelGroups.push({ level, label: track.label, description: track.description || "", cards: groupCards, accent });
+  });
+  const recentModule = modules.reduce((latest, module) => {
+    const updatedAt = Date.parse(module.updatedAt || "") || 0;
+    const latestUpdatedAt = Date.parse(latest?.updatedAt || "") || 0;
+    return updatedAt > latestUpdatedAt ? module : latest;
+  }, null) || modules.find(module => saved >= module.start && saved < module.start + module.lesson.sections.length) || modules[0];
+
   const welcomeSubtitle = state.user ? "Select a module to start learning" : "Log in to access your lessons and save your progress.";
   const learningQuote = LEARNING_QUOTES[Math.floor(Math.random() * LEARNING_QUOTES.length)];
 
   content.innerHTML = `
     <div class="mb-7 flex min-h-10 items-center justify-between gap-3">
-      ${state.user ? `<a href="dashboard.html" class="min-w-0 truncate rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-bold tracking-wide text-primary shadow-sm transition hover:bg-primary/10 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-300 dark:hover:bg-amber-400/15">${escapeHtml(state.user.displayName)}</a>` : `<span></span>`}
+      ${state.user ? `<a href="dashboard.html" class="flex min-w-0 items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-bold tracking-wide text-primary shadow-sm transition hover:bg-primary/10 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-300 dark:hover:bg-amber-400/15">${materialIcon("account_circle", "shrink-0 text-lg")}<span class="truncate">${escapeHtml(state.user.displayName)}</span></a>` : `<span></span>`}
       <div class="flex shrink-0 items-center gap-1">
         ${state.user ? `<button id="welcome-logout-button" type="button" title="Log out" aria-label="Log out" class="flex size-10 items-center justify-center rounded-full text-indigo-900 transition-colors hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10">${materialIcon("logout")}</button>` : `<a href="login.html" title="Log in" aria-label="Log in" class="flex size-10 items-center justify-center rounded-full text-indigo-900 transition-colors hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10">${materialIcon("login")}</a>`}
         <a href="https://hoangdm.com" class="flex size-10 items-center justify-center rounded-full text-indigo-900 transition-colors hover:bg-indigo-50 dark:text-amber-400 dark:hover:bg-white/10" title="Về trang chủ" aria-label="Về trang chủ">
@@ -1522,24 +1555,43 @@ function renderWelcome() {
         <span>Continue learning</span>
       </button>
     ` : ""}
-    <div class="space-y-8">
+    ${recentModule ? `
+      <section class="mb-7" aria-labelledby="continue-module-title">
+        <div class="mb-3 flex items-center gap-2">
+          ${materialIcon("history", "text-secondary dark:text-amber-400")}
+          <h2 id="continue-module-title" class="font-serif text-lg font-black text-primary dark:text-slate-100">Continue where you left off</h2>
+        </div>
+        ${recentModule.card}
+      </section>
+    ` : ""}
+    <div class="space-y-3">
+      <p class="px-1 text-sm font-semibold text-on-surface-variant dark:text-slate-400">Browse all modules by level</p>
       ${levelGroups.map(group => `
-        <section aria-labelledby="level-${escapeHtml(group.level.toLowerCase())}">
-          <div class="mb-3 flex items-start gap-3">
-            <span class="grid h-11 min-w-14 place-items-center rounded-xl bg-primary text-sm font-black tracking-wider text-white shadow-sm dark:bg-amber-300 dark:text-slate-950">${escapeHtml(group.level)}</span>
+        <details style="--level-accent: ${group.accent.color}; --level-wash: ${group.accent.soft}; border-top: 4px solid var(--level-accent)" class="welcome-level group rounded-2xl border border-outline-variant dark:border-slate-700">
+          <summary class="flex cursor-pointer list-none items-center gap-3 p-4 marker:content-none">
+            <span style="background-color: ${group.accent.color}" class="grid h-11 min-w-14 place-items-center rounded-xl text-sm font-black tracking-wider text-white shadow-sm">${escapeHtml(group.level)}</span>
             <span class="min-w-0">
-              <h2 id="level-${escapeHtml(group.level.toLowerCase())}" class="font-serif text-lg font-black leading-tight text-primary dark:text-slate-100">${escapeHtml(group.label)}</h2>
+              <span id="level-${escapeHtml(group.level.toLowerCase())}" class="block font-serif text-lg font-black leading-tight text-primary dark:text-slate-100">${escapeHtml(group.label)}</span>
               ${group.description ? `<p class="mt-1 text-sm leading-snug text-on-surface-variant dark:text-slate-400">${escapeHtml(group.description)}</p>` : ""}
             </span>
-          </div>
-          <div class="flex flex-col gap-3">${group.cards.join("")}</div>
-        </section>
+            ${materialIcon("expand_more", "ml-auto shrink-0 text-outline transition-transform group-open:rotate-180")}
+          </summary>
+          <div class="flex flex-col gap-3 border-t border-outline-variant p-3 dark:border-slate-700">${group.cards.join("")}</div>
+        </details>
       `).join("")}
     </div>
   `;
 
   content.querySelectorAll("[data-welcome-slide]").forEach(button => {
     button.addEventListener("click", () => startFromWelcome(Number(button.dataset.welcomeSlide)));
+  });
+  content.querySelectorAll("details").forEach(level => {
+    level.addEventListener("toggle", () => {
+      if (!level.open) return;
+      content.querySelectorAll("details").forEach(otherLevel => {
+        if (otherLevel !== level) otherLevel.open = false;
+      });
+    });
   });
   const continueBtn = content.querySelector("[data-welcome-continue]");
   if (continueBtn) {
@@ -1812,22 +1864,38 @@ function resetMatching(sectionId) {
   for (const it of items.sort(() => Math.random() - 0.5)) container.appendChild(it);
 }
 
-function toggleDarkMode() {
+function automaticThemeIsDark() {
+  const hour = new Date().getHours();
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches || hour >= 19 || hour < 7;
+}
+
+function savedThemePreference() {
+  try { return localStorage.getItem(THEME_STORAGE_KEY); } catch (e) { return null; }
+}
+
+function preferredThemeIsDark() {
+  const saved = savedThemePreference();
+  return saved === "dark" ? true : saved === "light" ? false : automaticThemeIsDark();
+}
+
+function applyTheme(isDark) {
   const html = document.documentElement;
   const icon = document.getElementById("theme-icon");
   const welcomeIcon = document.getElementById("welcome-theme-icon");
-  const nextIcon = html.classList.contains("dark") ? "light_mode" : "dark_mode";
+  html.classList.toggle("dark", isDark);
+  html.classList.toggle("light", !isDark);
+  const nextIcon = isDark ? "light_mode" : "dark_mode";
+  [icon, welcomeIcon].filter(Boolean).forEach(buttonIcon => {
+    buttonIcon.textContent = nextIcon;
+    buttonIcon.closest("button")?.setAttribute("title", isDark ? "Use light theme" : "Use dark theme");
+    buttonIcon.closest("button")?.setAttribute("aria-label", isDark ? "Use light theme" : "Use dark theme");
+  });
+}
 
-  if (html.classList.contains("dark")) {
-    html.classList.remove("dark");
-    html.classList.add("light");
-  } else {
-    html.classList.remove("light");
-    html.classList.add("dark");
-  }
-  if (icon) icon.textContent = nextIcon;
-  if (welcomeIcon) welcomeIcon.textContent = nextIcon;
-  localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+function toggleDarkMode() {
+  const nextThemeIsDark = !document.documentElement.classList.contains("dark");
+  try { localStorage.setItem(THEME_STORAGE_KEY, nextThemeIsDark ? "dark" : "light"); } catch (e) { /* Use this session only. */ }
+  applyTheme(nextThemeIsDark);
 }
 
 async function loadLesson() {
@@ -1870,19 +1938,18 @@ async function loadLesson() {
   }
 }
 
-(function applySavedTheme() {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.documentElement.classList.add("dark");
-    document.documentElement.classList.remove("light");
-    document.addEventListener("DOMContentLoaded", () => {
-      const icon = document.getElementById("theme-icon");
-      if (icon) icon.textContent = "dark_mode";
-    });
-  }
+(function initializeTheme() {
+  applyTheme(preferredThemeIsDark());
+  const systemTheme = window.matchMedia?.("(prefers-color-scheme: dark)");
+  systemTheme?.addEventListener?.("change", () => {
+    if (!savedThemePreference()) applyTheme(preferredThemeIsDark());
+  });
+  window.setInterval(() => {
+    if (!savedThemePreference()) applyTheme(preferredThemeIsDark());
+  }, 60_000);
 })();
 
-document.addEventListener("DOMContentLoaded", () => { bindAuth(); loadLesson(); });
+document.addEventListener("DOMContentLoaded", () => { applyTheme(preferredThemeIsDark()); bindAuth(); loadLesson(); });
 
 window.speakText = speakText;
 window.updateUI = updateUI;

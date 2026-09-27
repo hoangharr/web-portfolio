@@ -176,14 +176,14 @@
       "questions": [
         {
           "id": "q1",
-          "prompt": "I ___ my dentist at 10 tomorrow.",
+          "prompt": "I ___ meeting my dentist at 10 tomorrow; it is already in my calendar.",
           "options": [
-            "am meeting",
-            "meet",
-            "met"
+            "am",
+            "will",
+            "was"
           ],
           "correct": 0,
-          "explanation": "A fixed arrangement uses the present continuous."
+          "explanation": "Am meeting is the present continuous for a fixed future arrangement. Will meeting and was meeting do not fit this planned future event."
         },
         {
           "id": "q2",

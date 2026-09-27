@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>My Learning · APTIS B2 Prep</title>
-  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
+  <script>(()=>{const saved=localStorage.getItem('theme');const hour=new Date().getHours();if(saved==='dark'||(!saved&&(matchMedia('(prefers-color-scheme: dark)').matches||hour>=19||hour<7)))document.documentElement.classList.add('dark')})()</script>
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <script>tailwind.config={darkMode:'class'}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
