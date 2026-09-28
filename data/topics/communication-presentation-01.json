@@ -281,14 +281,14 @@
         },
         {
           "id": "pres-q4",
-          "prompt": "A good introduction should ________ the audience and present the topic.",
+          "prompt": "A good introduction should ________ the audience's attention and present the topic.",
           "options": [
             "capture",
             "avoid",
             "reduce"
           ],
           "correct": 0,
-          "explanation": "Capture the audience means gain their attention at the start; avoid and reduce do not collocate with audience in this meaning."
+          "explanation": "Capture the audience's attention means gain their interest. Avoid and reduce do not express the purpose of an effective introduction."
         },
         {
           "id": "pres-q5",
@@ -399,7 +399,7 @@
       "nav": "reading",
       "eyebrow": "Reading Skills",
       "title": "6. Reading Practice: A Good Presentation",
-      "description": "Complete the text with the best words from the box.",
+      "description": "Complete the text using the meaning clues in brackets, then answer the questions below.",
       "passage": {
         "title": "Useful Habits for a Strong Presentation",
         "options": [
@@ -418,11 +418,11 @@
           {
             "blank": "pres-r2"
           },
-          " the audience by using stories, questions, or examples. It is also helpful to ",
+          " (hold the attention of) the audience by using stories, questions, or examples. It is also helpful to ",
           {
             "blank": "pres-r3"
           },
-          " important points in simple language so that everyone understands. During the talk, the presenter should speak ",
+          " (make easier to understand) important points in simple language so that everyone understands. During the talk, the presenter should speak ",
           {
             "blank": "pres-r4"
           },
@@ -430,7 +430,7 @@
           {
             "blank": "pres-r5"
           },
-          " difficult questions calmly."
+          " (respond to) difficult questions calmly."
         ],
         "blanks": [
           {
@@ -551,11 +551,11 @@
       "title": "7. Write a Short Presentation Response",
       "description": "Practice writing a clear, structured response for an Aptis-style task.",
       "prompt": {
-        "situation": "You have been asked to give a short presentation about a skill that is important for students today. Describe the skill, explain why it matters, and give one example.",
+        "situation": "Write the script of a short presentation for your classmates about one skill that is important for students today. Name the skill, explain two reasons it matters, and give one example of how a student can use it.",
         "placeholder": "Write about a useful skill such as communication, teamwork, or digital literacy.",
         "minWords": 80,
         "maxWords": 140,
-        "referenceAnswer": "Communication is an essential skill for students because it helps them express ideas clearly and work well with others. In my view, it matters in both academic and professional life. For example, a student who can explain a project confidently is more likely to succeed in group work and interviews.",
+        "referenceAnswer": "Today I would like to talk about communication, a skill that is essential for students. Clear communication helps us explain ideas confidently and work with people who have different opinions. It also allows us to ask for help before a small misunderstanding becomes a serious problem. For example, during a group project, each student can state their responsibilities and clarify the deadline. In my view, listening is just as important as speaking. We should address questions calmly and check that everyone understands. To conclude, practising communication can improve both our studies and our future working lives.",
         "focus": [
           "Communication",
           "Important",

@@ -883,8 +883,9 @@ function renderSpeaking(section) {
             </div>
           </div>
         `).join("")}
-        <section class="speaking-recorder rounded-xl border border-outline-variant bg-white p-6 shadow-sm" data-draft-key="${escapeHtml(key)}" data-prep-seconds="${prepSeconds}" data-recording-seconds="${recordingSeconds}">
+        <section class="speaking-recorder rounded-xl border border-outline-variant bg-white p-6 shadow-sm" data-draft-key="${escapeHtml(key)}" data-prep-seconds="${prepSeconds}">
           <div class="flex items-center justify-between gap-3"><div><p class="font-label-caps text-secondary uppercase">Preparation</p><p class="speaking-status mt-1 font-bold text-primary">Prepare for ${prepSeconds} seconds.</p></div><span class="speaking-timer text-3xl font-black text-primary">${prepSeconds}s</span></div>
+          <p class="mt-3 text-sm text-on-surface-variant">Suggested practice time: about ${recordingSeconds} seconds. There is no recording time limit. Tap Stop when you have finished.</p>
           ${section.prompts?.length ? `<ul class="mt-4 list-disc space-y-1 pl-5 text-sm text-on-surface-variant">${section.prompts.map(prompt => `<li>${escapeHtml(prompt)}</li>`).join("")}</ul>` : ""}
           <div class="mt-5 flex flex-wrap gap-3"><button type="button" class="btn-start-prep rounded-lg bg-secondary-container px-5 py-3 font-bold text-on-secondary-container">Start preparation</button><button type="button" disabled class="btn-start-recording rounded-lg bg-primary px-5 py-3 font-bold text-white opacity-50">Record</button><button type="button" disabled class="btn-stop-recording rounded-lg border border-primary px-5 py-3 font-bold text-primary">Stop</button><button type="button" disabled class="btn-delete-recording rounded-lg border border-outline px-5 py-3 font-bold text-outline">Delete</button></div>
           <audio class="speaking-playback mt-5 hidden w-full" controls></audio><label class="mt-5 flex items-center gap-2 text-sm text-on-surface-variant"><input class="speaking-complete" type="checkbox" ${completed ? "checked" : ""}> I recorded my response and reviewed it: ideas, tense, clarity and linking words.</label><p class="submission-status mt-3 text-xs text-outline" aria-live="polite"></p>
@@ -1519,6 +1520,27 @@ function renderWelcome() {
       `;
       modules.push(module);
       groupCards.push(module.card);
+      if (trackModuleIndex === 2 || trackModuleIndex === track.lessons.length - 1) {
+        const isProgressCheck = trackModuleIndex === 2;
+        const assessmentId = `${String(level).toLowerCase()}-${isProgressCheck ? "progress-check" : "level-mock"}`;
+        const assessmentTitle = isProgressCheck ? "Progress Check" : "Level Mock";
+        const moduleRange = isProgressCheck ? "1–3" : "1–6";
+        const unlocked = modules.every(item => item.progress.completed);
+        const assessmentMeta = unlocked
+          ? (isProgressCheck ? "Review the topics you have learned" : "Cumulative review for this level")
+          : `Complete all earlier modules to unlock`;
+        const assessmentCard = `
+          <a href="tests.html?assessment=${escapeHtml(assessmentId)}" style="--level-accent: ${accent.color}" class="flex min-h-16 items-center gap-4 rounded-xl border border-dashed border-outline-variant bg-white/70 p-4 text-left transition hover:bg-white active:scale-[.98] dark:border-slate-600 dark:bg-slate-900/60 dark:hover:bg-slate-800">
+            <span style="background-color: var(--level-accent)" class="grid size-11 shrink-0 place-items-center rounded-full text-white">${materialIcon(isProgressCheck ? "fact_check" : "workspace_premium")}</span>
+            <span class="min-w-0 flex-1"><span class="block font-bold text-primary dark:text-slate-100">${assessmentTitle}</span><span class="block text-sm text-on-surface-variant dark:text-slate-300">${assessmentMeta}</span></span>
+            ${materialIcon("arrow_forward", "shrink-0 text-outline")}
+          </a>`;
+        groupCards.push(unlocked ? assessmentCard : `
+          <div aria-label="${assessmentTitle} locked: complete Modules ${moduleRange} first" class="flex min-h-16 items-center gap-4 rounded-xl border border-dashed border-outline-variant bg-slate-100/70 p-4 text-left opacity-75 dark:border-slate-700 dark:bg-slate-900/50">
+            <span class="grid size-11 shrink-0 place-items-center rounded-full bg-slate-300 text-slate-700 dark:bg-slate-700 dark:text-slate-200">${materialIcon("lock")}</span>
+            <span class="min-w-0 flex-1"><span class="block font-bold text-primary dark:text-slate-100">${assessmentTitle}</span><span class="block text-sm text-on-surface-variant dark:text-slate-300">${assessmentMeta}</span></span>
+          </div>`);
+      }
     });
     if (groupCards.length) levelGroups.push({ level, label: track.label, description: track.description || "", cards: groupCards, accent });
   });
@@ -1564,6 +1586,9 @@ function renderWelcome() {
         ${recentModule.card}
       </section>
     ` : ""}
+    <a href="tests.html" class="mb-7 flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-left shadow-sm transition hover:bg-amber-100 active:scale-[.99] dark:border-amber-500/40 dark:bg-amber-400/10 dark:hover:bg-amber-400/15">
+      <span class="flex items-center gap-3"><span class="grid size-11 place-items-center rounded-xl bg-amber-400 text-slate-950">${materialIcon("assignment")}</span><span><span class="block font-serif text-lg font-black text-primary dark:text-amber-200">Exam Centre</span><span class="block text-sm text-on-surface-variant dark:text-slate-300">Mock Aptis General tests available here.</span></span></span>${materialIcon("arrow_forward", "text-secondary dark:text-amber-300")}
+    </a>
     <div class="space-y-3">
       <p class="px-1 text-sm font-semibold text-on-surface-variant dark:text-slate-400">Browse all modules by level</p>
       ${levelGroups.map(group => `
@@ -1733,18 +1758,27 @@ function bindSpeakingRecorder(root) {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const chunks = []; const recorder = new MediaRecorder(stream);
+      let recordingInterval = null;
       const startedAt = Date.now();
       state.recording = { recorder, stream, root, startedAt };
       recorder.ondataavailable = event => { if (event.data.size) chunks.push(event.data); };
       recorder.onstop = () => {
+        window.clearInterval(recordingInterval);
         stream.getTracks().forEach(track => track.stop());
         const url = URL.createObjectURL(new Blob(chunks, { type: recorder.mimeType || "audio/webm" }));
         if (playback.src) URL.revokeObjectURL(playback.src);
-        playback.src = url; playback.classList.remove("hidden"); remove.disabled = false; remove.classList.remove("opacity-50"); state.recording = null; setStatus("Recording ready. Listen, delete, or mark your review complete.");
+        playback.src = url; playback.classList.remove("hidden"); remove.disabled = false; remove.classList.remove("opacity-50");
+        start.disabled = false; start.classList.remove("opacity-50"); stop.disabled = true;
+        if (state.recording?.recorder === recorder) state.recording = null;
+        setStatus("Recording ready. Listen, delete, or record again.");
       };
       recorder.start(); start.disabled = true; start.classList.add("opacity-50"); stop.disabled = false; stop.classList.remove("opacity-50");
-      const limit = Number(root.dataset.recordingSeconds); timer.textContent = formatSeconds(limit); setStatus("Recording… speak naturally.");
-      const interval = window.setInterval(() => { const left = limit - Math.floor((Date.now() - startedAt) / 1000); timer.textContent = formatSeconds(left); if (left <= 0 && recorder.state === "recording") { window.clearInterval(interval); recorder.stop(); } }, 250);
+      checklist.checked = false; timer.textContent = formatSeconds(0); setStatus("Recording… tap Stop when you have finished.");
+      recordingInterval = window.setInterval(() => {
+        timer.textContent = formatSeconds((Date.now() - startedAt) / 1000);
+        // Release the microphone if the learner leaves this section, not after a time limit.
+        if ((root.isConnected === false || root.closest(".slide-section")?.classList.contains("active") === false) && recorder.state === "recording") recorder.stop();
+      }, 250);
     } catch (error) { setStatus("Microphone permission is needed to record."); }
   });
   stop.addEventListener("click", () => { if (state.recording?.root === root && state.recording.recorder.state === "recording") state.recording.recorder.stop(); stop.disabled = true; });

@@ -187,25 +187,25 @@
         },
         {
           "id": "q2",
-          "prompt": "Employees ___ wear an ID card; it is company policy.",
+          "prompt": "Company policy requires every employee to wear an ID card. Employees ___ wear one at work.",
           "options": [
-            "could",
+            "could to",
             "have to",
-            "would"
+            "would to"
           ],
           "correct": 1,
-          "explanation": "Have to expresses an external rule. Read the complete context before rejecting the other options."
+          "explanation": "Have to expresses the requirement in the company policy. Could to and would to are not grammatical modal constructions."
         },
         {
           "id": "q3",
           "prompt": "If it rains, we ___ the event indoors.",
           "options": [
-            "move",
+            "will moving",
             "moved",
             "will move"
           ],
           "correct": 2,
-          "explanation": "First conditional uses will in the result."
+          "explanation": "Will move expresses the future result. Will moving has the wrong verb form, and moved does not match the future condition."
         },
         {
           "id": "q4",
@@ -222,12 +222,12 @@
           "id": "q5",
           "prompt": "If I knew the answer, I ___ tell you.",
           "options": [
-            "will",
+            "will to",
             "would",
-            "must"
+            "must to"
           ],
           "correct": 1,
-          "explanation": "Second conditional uses would + verb. Read the complete context before rejecting the other options."
+          "explanation": "Would tell forms the result of this imagined condition. Will to and must to are not grammatical modal constructions."
         },
         {
           "id": "q6",
@@ -331,11 +331,11 @@
       "title": "Independent writing",
       "description": "Reply to a friend who is struggling to study and work at the same time.",
       "prompt": {
-        "situation": "Give practical advice, explain one obligation, and use both a first and second conditional.",
+        "situation": "Your friend works full time and is too tired to study for an evening course. Write an email to your friend. Suggest two practical changes, explain one responsibility they still need to fulfil, and use one first conditional and one second conditional.",
         "placeholder": "Write your answer here...",
         "minWords": 100,
         "maxWords": 150,
-        "referenceAnswer": "A stressed student should make a simple study plan and take regular breaks. If they sleep well, they will concentrate better. I would also recommend asking for help.",
+        "referenceAnswer": "Hi Alex, I am sorry you are finding it hard to study after work. You should divide your homework into short tasks instead of leaving everything until the weekend. If you study for twenty minutes each evening, you will have less to finish on Saturday. You could also review vocabulary on the bus. You still have to submit your assignments on time, so tell your teacher when your workload becomes difficult. If I were in your position, I would ask which exercises are most important. Try this plan for two weeks and then adjust it. You do not need a perfect routine immediately.",
         "focus": [
           "Use the module vocabulary",
           "Use the target grammar accurately",

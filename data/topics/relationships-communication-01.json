@@ -219,7 +219,7 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Relationships & Communication",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Relationships & Communication",
         "parts": [
@@ -275,7 +275,7 @@
       "description": "Prepare briefly, record your response and review it.",
       "questions": [
         "Describe a person you communicate with often.",
-        "How do you keep in touch?",
+        "How do you keep in touch with the person you described in Question 1?",
         "What makes communication effective?"
       ],
       "sampleAnswer": "My best friend is someone who listens carefully. We enjoy talking after work and keep in touch by message. We are honest enough to solve small disagreements quickly.",
@@ -299,11 +299,11 @@
       "title": "Writing: Relationships & Communication",
       "description": "Write 60-90 words using this module's language.",
       "prompt": {
-        "situation": "Write a message explaining a misunderstanding and suggesting how to solve it.",
+        "situation": "Imagine you agreed to meet a friend at 3 p.m., but your friend understood 4 p.m. Write a message to that friend. Explain the misunderstanding, say how you felt, and suggest how to confirm meeting times in future.",
         "placeholder": "Write your response here...",
         "minWords": 60,
         "maxWords": 90,
-        "referenceAnswer": "My best friend is someone who listens carefully. We enjoy talking after work and keep in touch by message. We are honest enough to solve small disagreements quickly.",
+        "referenceAnswer": "Hi Alex, I think we misunderstood each other yesterday. I thought we were meeting at three, but you thought I meant four. I was too upset to listen when you called, and I am sorry about that. I enjoy spending time with you and do not want this to cause an argument. Next time, can we send a message with the time and place so that we are both sure?",
         "focus": [
           "Defining relative clauses",
           "Verb + -ing",

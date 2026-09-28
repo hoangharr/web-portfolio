@@ -274,14 +274,14 @@
         },
         {
           "id": "h1q3",
-          "prompt": "\"Maintaining a healthy ________ is essential for reducing stress and increasing productivity.\"",
+          "prompt": "\"Having enough time for both your job and your personal life means maintaining a healthy ________.\"",
           "options": [
             "office environment",
             "salary level",
             "work-life balance"
           ],
           "correct": 2,
-          "explanation": "Work-life balance describes a sustainable division between employment and personal life, matching the stress context."
+          "explanation": "Work-life balance describes the distribution of time and energy between work and personal life. Office environment and salary level do not describe that balance."
         },
         {
           "id": "h1q4",
@@ -368,7 +368,7 @@
       "nav": "exercise",
       "eyebrow": "Practice Part 2",
       "title": "Health Advice Matching",
-      "description": "Drag each health recommendation to the correct modal verb category.",
+      "description": "Match each sentence by the modal expression it contains: should/ought to, must/have to, or need to. Do not classify it by how strong the advice sounds.",
       "targets": [
         {
           "id": "should",
@@ -442,11 +442,10 @@
       "nav": "reading",
       "eyebrow": "Practice Part 3",
       "title": "Reading Part 2: Health Advice",
-      "description": "Complete the passage using the most appropriate health vocabulary.",
+      "description": "Complete each gap using the words provided. You may use a word more than once.",
       "passage": {
         "title": "Maintaining a Healthy Lifestyle",
         "options": [
-          "balanced",
           "exhausted",
           "holistic",
           "nutritious",

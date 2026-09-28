@@ -33,6 +33,12 @@ object storage or replace the generator with a supported TTS provider. Use
 `STRICT_MEDIA=1 npm run validate:content` before a media-complete release to
 require every listening and pronunciation file to exist.
 
+To generate just the Edge Neural audio for the ten Aptis mock listening scripts
+while preserving the existing lesson manifest, run
+`python3 scripts/generate-neural-tts.py --mock-only` after installing `edge-tts`.
+The generated MP3s go under `public/audio/tts/`; sync them to the configured
+object-storage bucket when publishing so the mock players can load them online.
+
 Run `python3 scripts/generate-neural-tts.py --manifest-only` to rebuild the
 manifest without installing or contacting `edge-tts` when all MP3 files already
 exist locally.

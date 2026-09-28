@@ -298,12 +298,12 @@
           "id": "t1q5",
           "prompt": "\"One of the highlights of my trip was trying the local ________ at traditional restaurants.\"",
           "options": [
-            "menu",
+            "reservation",
             "cuisine",
             "waiter"
           ],
           "correct": 1,
-          "explanation": "Local cuisine means the food and cooking tradition of a place; menu is a list of dishes and waiter is a person."
+          "explanation": "Cuisine refers to the food and cooking tradition that travellers try. A reservation is a booking and a waiter is a person, neither of which is food."
         },
         {
           "id": "t1q6",
@@ -340,14 +340,14 @@
         },
         {
           "id": "t1q9",
-          "prompt": "\"The village was so ________ that it looked like it was from another century.\"",
+          "prompt": "\"The village looked like a beautiful painting, with charming old houses beside a river. It was ________.\"",
           "options": [
             "expensive",
             "crowded",
             "picturesque"
           ],
           "correct": 2,
-          "explanation": "Picturesque describes an attractively old-fashioned scene; expensive and crowded concern cost or population rather than appearance."
+          "explanation": "Picturesque means visually charming, like a picture. Expensive describes price and crowded describes the number of people, neither of which is established by this description."
         },
         {
           "id": "t1q10",
@@ -368,19 +368,19 @@
       "nav": "exercise",
       "eyebrow": "Practice Part 2",
       "title": "Travel Experience Matching",
-      "description": "Drag each travel experience to the correct category.",
+      "description": "Match each phrase by its explicit purpose: preparing for a trip, taking part in an activity during a trip, or describing scenery.",
       "targets": [
         {
           "id": "planning",
-          "label": "Travel Planning"
+          "label": "Preparing for a trip"
         },
         {
           "id": "experience",
-          "label": "Travel Experience"
+          "label": "Activities during a trip"
         },
         {
           "id": "description",
-          "label": "Descriptive Language"
+          "label": "Descriptions of scenery"
         }
       ],
       "items": [
@@ -401,17 +401,17 @@
         },
         {
           "id": "drag-4",
-          "text": "Off the beaten path",
+          "text": "Quiet scenery far off the beaten path",
           "match": "description"
         },
         {
           "id": "drag-5",
-          "text": "Sustainable tourism",
+          "text": "Choosing a sustainable tourism provider before booking",
           "match": "planning"
         },
         {
           "id": "drag-6",
-          "text": "Local cuisine",
+          "text": "Tasting local cuisine",
           "match": "experience"
         },
         {
@@ -426,12 +426,12 @@
         },
         {
           "id": "drag-9",
-          "text": "Unforgettable adventure",
+          "text": "Going on an unforgettable adventure",
           "match": "experience"
         },
         {
           "id": "drag-10",
-          "text": "Memorable journey",
+          "text": "Taking a memorable journey",
           "match": "experience"
         },
         {
@@ -452,7 +452,7 @@
       "nav": "reading",
       "eyebrow": "Practice Part 3",
       "title": "Reading Part 2: Travel Planning",
-      "description": "Complete the passage using the most appropriate travel vocabulary.",
+      "description": "Complete each gap with the word that matches the definition in brackets. You may use a word more than once.",
       "passage": {
         "title": "Planning the Perfect Adventure",
         "options": [
@@ -468,19 +468,19 @@
           {
             "blank": "tr1"
           },
-          " trip, it's important to consider ",
+          " (easy-to-remember) trip, it is important to consider ",
           {
             "blank": "tr2"
           },
-          " tourism practices. A well-organized ",
+          " (protecting the environment and local communities) tourism practices. A well-organized ",
           {
             "blank": "tr3"
           },
-          " should include time to explore ",
+          " (plan of places to visit and activities to do) should include time to explore ",
           {
             "blank": "tr4"
           },
-          " villages and experience ",
+          " (pretty like a painting) villages and experience ",
           {
             "blank": "tr5"
           },
@@ -488,11 +488,11 @@
           {
             "blank": "tr6"
           },
-          " views that will create ",
+          " (so impressive they take your breath away) views that will create ",
           {
             "blank": "tr7"
           },
-          " memories for years to come."
+          " (easy-to-remember) memories for years to come."
         ],
         "blanks": [
           {
@@ -625,7 +625,7 @@
         "placeholder": "Begin your article here...",
         "minWords": 80,
         "maxWords": 140,
-        "referenceAnswer": "Last summer, I had the opportunity to experience cultural immersion in a picturesque village in Vietnam. The breathtaking scenery and warm hospitality of the locals made this an unforgettable adventure. I explored off the beaten path locations and tried the delicious local cuisine. This sustainable tourism experience taught me the importance of respecting local communities while traveling. It was truly a memorable journey that broadened my perspective on different cultures.",
+        "referenceAnswer": "Last summer, I visited a picturesque village in central Vietnam with two friends. Our travel itinerary included a bicycle tour and a cooking class with a local family. The mountain scenery was breathtaking, and we enjoyed trying local cuisine at a small restaurant. The cooking class offered cultural immersion because our hosts explained their family traditions as we prepared lunch together. We chose a guide who supported sustainable tourism and reminded us to take our rubbish home. This unforgettable adventure was memorable because we learned from local people rather than only taking photographs.",
         "focus": [
           "breathtaking",
           "cultural immersion",

@@ -331,11 +331,11 @@
       "title": "Independent writing",
       "description": "Arrange a weekend activity with a friend.",
       "prompt": {
-        "situation": "Suggest a plan, give a time and place, and offer an alternative.",
+        "situation": "Write a message inviting a friend to do an activity this weekend. Choose the activity and state a meeting time and place. Suggest a different time or activity if your friend cannot join the first plan.",
         "placeholder": "Write your answer here...",
         "minWords": 55,
         "maxWords": 90,
-        "referenceAnswer": "I am meeting some friends on Saturday. We are going to try a new restaurant. On Sunday, I will probably stay home and prepare for next week.",
+        "referenceAnswer": "Hi Alex, would you like to visit the food festival with me on Saturday? I am going to try some local dishes. We can meet outside the station at two in the afternoon. If you are busy then, how about going on Sunday morning instead? Let me know which day works better for you, and I will book our tickets.",
         "focus": [
           "Use the module vocabulary",
           "Use the target grammar accurately",

@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "validate:content": "node scripts/validate-content.mjs",
-    "check": "node --check js/engine.js && npm run validate:content",
+    "check": "node --check js/engine.js && node --check js/tests.js && node --check js/mock-store.js && node --check js/mock-scoring.js && node --test scripts/test-mock-scoring.mjs scripts/test-mock-store.mjs scripts/test-speaking-prompts.mjs scripts/test-content-clarity.mjs scripts/test-speaking-recorder.mjs && npm run validate:content",
     "dev": "vite"
   },
   "devDependencies": {

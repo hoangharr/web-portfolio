@@ -219,7 +219,7 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Travel & Transport",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Travel & Transport",
         "parts": [
@@ -274,8 +274,8 @@
       "description": "Prepare briefly, record your response and review it.",
       "questions": [
         "Describe a journey that did not go as planned.",
-        "What happened first?",
-        "How was the problem solved?"
+        "During the journey you described in Question 1, what happened before the problem began?",
+        "What did you or someone else do to deal with that problem?"
       ],
       "sampleAnswer": "Last month, I was travelling home when my bus broke down. We waited for thirty minutes. Then the driver arranged another bus, and I arrived about an hour late.",
       "preparationSeconds": 30,
@@ -298,11 +298,11 @@
       "title": "Writing: Travel & Transport",
       "description": "Write 60-90 words using this module's language.",
       "prompt": {
-        "situation": "Write an email explaining a travel delay and what happened.",
+        "situation": "Imagine you were travelling to meet a friend when your bus broke down. Write an email to that friend. Explain what you were doing when the problem happened, how long you waited, how you continued the journey, and when you arrived. Make up those travel details.",
         "placeholder": "Write your response here...",
         "minWords": 60,
         "maxWords": 90,
-        "referenceAnswer": "Last month, I was travelling home when my bus broke down. We waited for thirty minutes. Then the driver arranged another bus, and I arrived about an hour late.",
+        "referenceAnswer": "Hi Alex, I am sorry I arrived late yesterday. I was travelling to meet you when my bus broke down near the station. We waited for thirty minutes while the driver checked the engine. Then the driver arranged another bus, and we continued the journey slowly. I finally arrived at four o'clock, an hour later than we had planned. Thank you for waiting for me.",
         "focus": [
           "Past continuous",
           "Past simple interruption",

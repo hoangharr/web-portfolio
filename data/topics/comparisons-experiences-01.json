@@ -279,7 +279,7 @@
       "detailQuestions": [
         {
           "id": "comparisons-listening-detail-1",
-          "prompt": "Which city was slightly cheaper?",
+          "prompt": "According to the speaker, which city had slightly cheaper accommodation?",
           "options": [
             "Brighton",
             "York",
@@ -313,7 +313,7 @@
       "title": "Build a spoken answer",
       "description": "Answer each question aloud. Aim for a clear answer plus one reason or detail.",
       "questions": [
-        "Compare your town with another place.",
+        "Choose another town or city you know. Name it and compare it with your town in two ways.",
         "What is the best trip you have ever taken?",
         "What new thing have you tried recently?"
       ],
@@ -331,11 +331,11 @@
       "title": "Independent writing",
       "description": "Recommend one of two places to a visitor.",
       "prompt": {
-        "situation": "Compare transport, atmosphere and price, then mention your own experience.",
+        "situation": "Choose two towns or cities you have visited and name both. Write a message to a friend who is choosing a holiday destination. Compare transport, atmosphere and prices in the two places, describe one experience you had there, and recommend one destination with a reason.",
         "placeholder": "Write your answer here...",
         "minWords": 70,
         "maxWords": 110,
-        "referenceAnswer": "My town is quieter than Hanoi, but Hanoi is more convenient. The best place I have ever visited is Da Nang because the beaches are beautiful.",
+        "referenceAnswer": "I have visited both Hanoi and Da Nang. Hanoi has more bus routes, but Da Nang is quieter and easier to explore on foot. When I visited, my hotel in Da Nang was slightly cheaper than my hotel in Hanoi. I enjoyed walking along the beach in Da Nang, whereas Hanoi offered more museums. For a relaxed holiday, I recommend Da Nang because you can spend time outdoors without rushing.",
         "focus": [
           "Use the module vocabulary",
           "Use the target grammar accurately",

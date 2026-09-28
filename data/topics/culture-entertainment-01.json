@@ -219,7 +219,7 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Culture & Entertainment",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Culture & Entertainment",
         "parts": [
@@ -273,9 +273,9 @@
       "title": "Speaking: Culture & Entertainment",
       "description": "Prepare briefly, record your response and review it.",
       "questions": [
-        "Describe a film, performance or cultural event.",
-        "What did someone tell you about it?",
-        "How have your tastes changed?"
+        "Choose a film you have watched or a performance or cultural event you have attended. Name it and describe it.",
+        "Imagine a friend recommended that film, performance or event to you. What did your friend say? Use reported speech.",
+        "How have your tastes in films, performances or cultural events changed since you were younger?"
       ],
       "sampleAnswer": "I recently saw a play that a friend had recommended. She said the acting was excellent. I used to prefer films, but I have been attending more live performances this year.",
       "preparationSeconds": 30,
@@ -298,11 +298,11 @@
       "title": "Writing: Culture & Entertainment",
       "description": "Write 100-140 words using this module's language.",
       "prompt": {
-        "situation": "Write a review of a cultural event and explain whether you recommend it.",
+        "situation": "Choose a cultural event you attended, or invent one. Name the event, say where and when it took place, describe two things you liked or disliked, and explain whether you would recommend it to a friend.",
         "placeholder": "Write your response here...",
         "minWords": 100,
         "maxWords": 140,
-        "referenceAnswer": "I recently saw a play that a friend had recommended. She said the acting was excellent. I used to prefer films, but I have been attending more live performances this year.",
+        "referenceAnswer": "Last Saturday, I attended the Riverside Arts Festival at the old theatre in my town. A friend had told me that the opening play was worth seeing, so I bought a ticket. I liked the actors because they involved the audience instead of simply performing on stage. The music also made the story more exciting. However, the seats were uncomfortable, and the performance started late. I used to prefer watching films at home, but I have been attending more live events this year. I would recommend this festival to a friend who enjoys unusual stories. Next time, I would arrive early to choose a better seat.",
         "focus": [
           "Reported speech",
           "Present perfect continuous",
@@ -326,12 +326,12 @@
           "id": "check-grammar",
           "prompt": "He said the performance ___ excellent.",
           "options": [
-            "is",
+            "were",
             "was",
             "has"
           ],
           "correct": 1,
-          "explanation": "This is the target grammar form from the module."
+          "explanation": "The singular subject performance takes was in this reported statement. Were does not agree with the subject, and has cannot precede excellent on its own."
         }
       ],
       "tip": {

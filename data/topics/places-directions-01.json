@@ -219,15 +219,15 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Places & Directions",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Places & Directions",
         "parts": [
-          "The town library is ",
+          "The library and the park are on different sides of the same road, facing each other. The town library is ",
           {
             "blank": "r1"
           },
-          " the park. There is a café ",
+          " the park. A café shares a wall with the library, so it is ",
           {
             "blank": "r2"
           },
@@ -276,7 +276,7 @@
       "questions": [
         "Describe your neighbourhood.",
         "What places are near your home?",
-        "Give directions to one place."
+        "Choose one place near your home. Give walking directions from your home to that place."
       ],
       "sampleAnswer": "There is a supermarket near my home. It is opposite a small park and next to a pharmacy. To get there, go straight along my street and turn right at the bank.",
       "preparationSeconds": 20,
@@ -299,11 +299,11 @@
       "title": "Writing: Places & Directions",
       "description": "Write 35-55 words using this module's language.",
       "prompt": {
-        "situation": "Write directions from your home to a nearby place.",
+        "situation": "Choose and name a place near your home. Write walking directions for a friend, starting at your front door and ending at that place. Include two direction instructions and one landmark.",
         "placeholder": "Write your response here...",
         "minWords": 35,
         "maxWords": 55,
-        "referenceAnswer": "There is a supermarket near my home. It is opposite a small park and next to a pharmacy. To get there, go straight along my street and turn right at the bank.",
+        "referenceAnswer": "To walk from my front door to the supermarket, turn right and go straight along King Street. Turn left at the bank. The supermarket is next to a pharmacy, opposite the small park. You will see its green sign.",
         "focus": [
           "There is / There are",
           "Place prepositions",

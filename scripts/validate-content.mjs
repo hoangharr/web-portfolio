@@ -141,6 +141,19 @@ for (const file of topicFiles) {
         fail(location, "writing prompt needs valid minWords and maxWords");
       }
     }
+    if (section.type === "reading") {
+      const passage = section.passage || {};
+      const blanks = passage.blanks || [];
+      const ids = new Set(blanks.map(blank => blank.id));
+      checkUnique(blanks, location, blank => blank.id);
+      for (const blank of blanks) {
+        if (!(passage.options || []).includes(blank.correct)) fail(`${location}/${blank.id}`, "correct gap answer is missing from the word bank");
+      }
+      const references = (passage.parts || []).filter(part => typeof part === "object").map(part => part.blank);
+      if (references.length !== ids.size || references.some(id => !ids.has(id)) || new Set(references).size !== references.length) fail(location, "passage gaps and answer keys must match one-to-one");
+      if ((passage.parts || []).some(part => typeof part === "string" && /_{3,}/.test(part))) fail(location, "contains an extra unanswerable printed gap");
+      if (!(section.questions || []).length && /answer.*comprehension/i.test(section.description || "")) fail(location, "instructions refer to comprehension questions that are not supplied");
+    }
   }
 }
 

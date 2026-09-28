@@ -219,7 +219,7 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Environment & Community",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Environment & Community",
         "parts": [
@@ -299,11 +299,11 @@
       "title": "Writing: Environment & Community",
       "description": "Write 100-140 words using this module's language.",
       "prompt": {
-        "situation": "Write to a community group proposing an environmental improvement.",
+        "situation": "Write an email to a community group in your neighbourhood. Choose one environmental problem, describe its effect on local residents, propose one practical improvement, and explain who could carry it out. You may invent a neighbourhood and its details.",
         "placeholder": "Write your response here...",
         "minWords": 100,
         "maxWords": 140,
-        "referenceAnswer": "Traffic is a major issue where I live. New bus routes were introduced last year to reduce car use. People who travel at busy times now have more options, but safer cycle paths are still needed.",
+        "referenceAnswer": "Dear Community Group, I am writing about litter in the park beside our library. Plastic bottles and food packaging are often left near the playground, making the area unpleasant for families. I suggest installing clearly labelled recycling bins at both entrances so that visitors can dispose of rubbish properly. Local volunteers could organise a monthly clean-up, while the council could empty the bins each week. Students who use the park could also design signs explaining why litter harms wildlife. A similar clean-up was organised last spring, but no permanent bins were added. These practical changes would help keep the park clean throughout the year. Thank you for considering my proposal.",
         "focus": [
           "Passive across tenses",
           "Relative clauses",

@@ -333,11 +333,11 @@
       "title": "Independent writing",
       "description": "Write a shopping message for a family member.",
       "prompt": {
-        "situation": "List what you need, give quantities, and ask them to check one price.",
+        "situation": "Write a message asking a family member to buy three food items. Choose the items, give a quantity for each, and ask the person to check the price of one item before buying it.",
         "placeholder": "Write your answer here...",
         "minWords": 35,
         "maxWords": 70,
-        "referenceAnswer": "I usually shop at a market near my home. I buy vegetables, eggs and some rice. In a café, I say: Can I have a tea and a sandwich, please?",
+        "referenceAnswer": "Hi, could you buy two bottles of water, six eggs and three apples, please? We need them for breakfast tomorrow. Please check the price of the apples before you buy them. If they cost more than three pounds, call me. Thank you!",
         "focus": [
           "Use the module vocabulary",
           "Use the target grammar accurately",

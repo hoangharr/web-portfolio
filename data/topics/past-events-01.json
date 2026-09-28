@@ -182,10 +182,10 @@
           "options": [
             "went",
             "have gone",
-            "were going"
+            "going"
           ],
           "correct": 0,
-          "explanation": "“Last Saturday” and the completed sequence require the past simple: went. “Have gone” connects a past action to the present, while “were going” needs an ongoing action or interruption."
+          "explanation": "Went is the past simple verb for this completed trip last Saturday. Have gone does not go with that finished past time, and going has no auxiliary."
         },
         {
           "id": "q2",
@@ -226,21 +226,21 @@
           "options": [
             "bought",
             "have bought",
-            "was buying"
+            "buyed"
           ],
           "correct": 0,
-          "explanation": "“Yesterday afternoon” and “so” describe one finished event, so use bought, the past form of buy. “Have bought” does not normally go with a finished past time, and “was buying” needs an interrupted or ongoing context."
+          "explanation": "Bought is the irregular past simple of buy for yesterday's completed purchase. Have bought conflicts with the finished past time, and buyed is not a valid verb form."
         },
         {
           "id": "q6",
           "prompt": "We were lost and becoming worried. ___, a stranger stopped and helped us find the station.",
           "options": [
             "Fortunately",
-            "However",
-            "Meanwhile"
+            "Unfortunately",
+            "Regrettably"
           ],
           "correct": 0,
-          "explanation": "Fortunately signals a positive result after a problem. However introduces contrast, and meanwhile introduces a separate action happening at the same time."
+          "explanation": "Fortunately marks the stranger's help as a welcome outcome after the travellers became worried. Unfortunately and regrettably would describe an unwelcome outcome."
         }
       ],
       "tip": {
@@ -337,7 +337,7 @@
         "placeholder": "Write your answer here...",
         "minWords": 60,
         "maxWords": 100,
-        "referenceAnswer": "Last weekend, I visited my grandparents. We cooked lunch and talked for hours. On Sunday, I missed my bus, but fortunately my uncle drove me home.",
+        "referenceAnswer": "Last Saturday, I visited the city museum with my cousin. We met outside the entrance at ten and first explored an exhibition about space travel. I enjoyed seeing an old space suit because I had never seen one before. After lunch, it started raining, so we watched a film instead of walking in the park. I felt disappointed about the weather, but spending the day with my cousin made the weekend memorable.",
         "focus": [
           "Use the module vocabulary",
           "Use the target grammar accurately",

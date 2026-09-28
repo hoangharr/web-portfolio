@@ -200,14 +200,14 @@
         },
         {
           "id": "q3",
-          "prompt": "This is Hoa. She is looking for ___ room.",
+          "prompt": "This is Hoa. She is looking for ___ own room.",
           "options": [
-            "His",
-            "Our",
+            "Hers",
+            "She",
             "Her"
           ],
           "correct": 2,
-          "explanation": "The preceding sentence explicitly identifies Hoa as she, so the correct possessive adjective is her."
+          "explanation": "Her is the possessive determiner before own room. Hers is a possessive pronoun used without a following noun, and she is a subject pronoun."
         },
         {
           "id": "q4",
@@ -233,14 +233,14 @@
         },
         {
           "id": "q6",
-          "prompt": "This is my ___ car.",
+          "prompt": "The car belongs to both of my parents. This is my ___ car.",
           "options": [
             "parents",
             "parents’s",
             "parents’"
           ],
           "correct": 2,
-          "explanation": "Use parents’ for something owned by both parents."
+          "explanation": "Parents’ is the plural possessive form because the car belongs to both parents. Parents has no possessive apostrophe, and parents’s is not the standard plural possessive."
         }
       ],
       "tip": {
@@ -333,11 +333,11 @@
       "title": "Independent writing",
       "description": "Introduce your family and describe your home to a new online friend.",
       "prompt": {
-        "situation": "Write about the people in your family, your rooms, and one possession that is important to you.",
+        "situation": "Write a message to a new online friend introducing your family and home. Say who lives with you, describe two rooms, and explain why one possession matters to you.",
         "placeholder": "Write your answer here...",
         "minWords": 45,
         "maxWords": 80,
-        "referenceAnswer": "There are four people in my family. We live in a small flat. My favourite room is the living room because it is bright and comfortable.",
+        "referenceAnswer": "There are four people in my family: my parents, my sister and me. We live in a small flat. Our living room is bright, and our kitchen has a big table. My favourite possession is my guitar because I play it with my sister in the evening. It was a gift from my parents.",
         "focus": [
           "Use the module vocabulary",
           "Use the target grammar accurately",

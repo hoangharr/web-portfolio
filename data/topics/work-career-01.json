@@ -262,14 +262,14 @@
         },
         {
           "id": "m1q2",
-          "prompt": "\"Internships are the best way to gain ________ experience before graduating.\"",
+          "prompt": "\"By repairing machines themselves in a workshop rather than only reading about repairs, interns gain ________ experience.\"",
           "options": [
             "theoretical",
             "hands-on",
-            "remote"
+            "remotely"
           ],
           "correct": 1,
-          "explanation": "Hands-on experience comes from doing practical work; theoretical and remote describe different ways of learning or working."
+          "explanation": "Hands-on describes practical experience gained by doing repairs. Theoretical conflicts with doing the work rather than only reading, and remotely is an adverb, not a modifier for experience here."
         },
         {
           "id": "m1q3",
@@ -323,27 +323,27 @@
       "nav": "exercise",
       "eyebrow": "Practice Part 2",
       "title": "Work Synonym Matching Lab",
-      "description": "Drag each professional synonym to the correct basic word group.",
+      "description": "Match each phrase to its workplace meaning. Use 'Not a match' only when the phrase does not fit any meaning shown.",
       "targets": [
         {
           "id": "salary",
-          "label": "Salary"
+          "label": "Money received for work"
         },
         {
           "id": "boss",
-          "label": "Boss"
+          "label": "A person or group that employs or supervises staff"
         },
         {
           "id": "colleagues",
-          "label": "Colleagues"
+          "label": "People you work with"
         },
         {
           "id": "good-at",
-          "label": "Good at"
+          "label": "Skilled at a task"
         },
         {
           "id": "job",
-          "label": "Job"
+          "label": "Work or occupation"
         },
         {
           "id": "none",
@@ -369,7 +369,7 @@
         {
           "id": "drag-4",
           "text": "Proficient at",
-          "match": "none"
+          "match": "good-at"
         },
         {
           "id": "drag-5",
@@ -403,7 +403,7 @@
         },
         {
           "id": "drag-11",
-          "text": "Peers",
+          "text": "Workplace peers",
           "match": "colleagues"
         },
         {
@@ -419,7 +419,7 @@
         {
           "id": "drag-14",
           "text": "Competent in",
-          "match": "none"
+          "match": "good-at"
         },
         {
           "id": "drag-15",
@@ -429,7 +429,7 @@
         {
           "id": "drag-16",
           "text": "Bosses",
-          "match": "none"
+          "match": "boss"
         },
         {
           "id": "drag-17",

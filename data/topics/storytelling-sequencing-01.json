@@ -178,22 +178,22 @@
           "prompt": "While I ___ home, I saw an accident.",
           "options": [
             "was walking",
-            "walked",
+            "were walking",
             "had walk"
           ],
           "correct": 0,
-          "explanation": "Past continuous gives the background action."
+          "explanation": "I was walking describes the action in progress when the accident was seen. Were walking does not agree with I, and had walk lacks a past participle."
         },
         {
           "id": "q2",
           "prompt": "The film ___ by the time we arrived.",
           "options": [
-            "started",
+            "was start",
             "had started",
             "has started"
           ],
           "correct": 1,
-          "explanation": "Past perfect marks the earlier past event."
+          "explanation": "Had started places the start before the past arrival. Was start is not grammatical, and has started does not place the event before a finished past arrival."
         },
         {
           "id": "q3",
@@ -211,11 +211,11 @@
           "prompt": "She was cooking when the lights ___.",
           "options": [
             "went out",
-            "were going out",
+            "going out",
             "had go out"
           ],
           "correct": 0,
-          "explanation": "Past simple marks the interrupting event."
+          "explanation": "Went out supplies the finite past simple verb for the interruption. Going out lacks an auxiliary, and had go out lacks the past participle."
         },
         {
           "id": "q5",
@@ -334,7 +334,7 @@
         "placeholder": "Write your answer here...",
         "minWords": 100,
         "maxWords": 150,
-        "referenceAnswer": "I was travelling home when the bus broke down. At first, everyone was worried. Fortunately, another driver stopped, and eventually we reached the city safely.",
+        "referenceAnswer": "Last month, I was travelling to Bristol for a job interview when my train stopped outside the city. I had checked the route the night before and expected to arrive early. At first, I waited calmly, but then the driver announced a long delay. I called the company and explained what had happened. Fortunately, the manager offered to interview me online. Next, a station employee helped me find a quiet room with an internet connection. Finally, I joined the interview only ten minutes late. A week later, I received a job offer. The unexpected journey taught me to explain problems clearly instead of giving up immediately.",
         "focus": [
           "Use the module vocabulary",
           "Use the target grammar accurately",

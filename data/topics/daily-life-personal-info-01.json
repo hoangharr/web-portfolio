@@ -382,38 +382,38 @@
       "nav": "exercise",
       "eyebrow": "Practice Part 2",
       "title": "Matching: When Does It Happen?",
-      "description": "Drag each activity or word to the correct group.",
+      "description": "Match each phrase using the time stated in that phrase, or whether it names a person or a place. Do not assume when people usually do an activity.",
       "targets": [
         {
           "id": "morning",
-          "label": "Morning"
+          "label": "Morning activities (before noon)"
         },
         {
           "id": "evening",
-          "label": "Evening"
+          "label": "Evening activities (after 6 p.m.)"
         },
         {
           "id": "weekend",
-          "label": "Weekend"
+          "label": "Weekend activities (Saturday/Sunday)"
         },
         {
           "id": "people",
-          "label": "People"
+          "label": "Names of people or relationships"
         },
         {
           "id": "home",
-          "label": "Home"
+          "label": "Names of places to live"
         }
       ],
       "items": [
         {
           "id": "drag-1",
-          "text": "have breakfast",
+          "text": "have breakfast at 7 a.m. on a weekday",
           "match": "morning"
         },
         {
           "id": "drag-2",
-          "text": "watch TV",
+          "text": "watch TV at 8 p.m. on a weekday",
           "match": "evening"
         },
         {
@@ -423,22 +423,22 @@
         },
         {
           "id": "drag-4",
-          "text": "go to bed",
+          "text": "go to bed at 11 p.m. on a weekday",
           "match": "evening"
         },
         {
           "id": "drag-5",
-          "text": "cook dinner",
+          "text": "cook dinner at 7 p.m. on a weekday",
           "match": "evening"
         },
         {
           "id": "drag-6",
-          "text": "visit my parents",
+          "text": "visit my parents on Saturday",
           "match": "weekend"
         },
         {
           "id": "drag-7",
-          "text": "take a shower",
+          "text": "take a shower at 6 a.m. on a weekday",
           "match": "morning"
         },
         {
@@ -448,12 +448,12 @@
         },
         {
           "id": "drag-9",
-          "text": "stay at home",
+          "text": "my house",
           "match": "home"
         },
         {
           "id": "drag-10",
-          "text": "go to work",
+          "text": "go to work at 8 a.m. on a weekday",
           "match": "morning"
         }
       ],

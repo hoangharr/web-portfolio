@@ -219,7 +219,7 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: People & Appearance",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with a word from the box. Use the meaning clues in brackets.",
       "passage": {
         "title": "People & Appearance",
         "parts": [
@@ -227,7 +227,7 @@
           {
             "blank": "r1"
           },
-          " and helpful. He has short dark hair and ",
+          " (kind and welcoming) and helpful. He has short dark hair and ",
           {
             "blank": "r2"
           },
@@ -235,14 +235,14 @@
           {
             "blank": "r3"
           },
-          ". They both love music."
+          " (not tall). They both love music."
         ],
         "options": [
           "friendly",
           "wears",
           "short",
-          "tall",
-          "young"
+          "friendship",
+          "glasses"
         ],
         "blanks": [
           {
@@ -302,7 +302,7 @@
         "placeholder": "Write your response here...",
         "minWords": 35,
         "maxWords": 55,
-        "referenceAnswer": "My cousin Minh is twenty-two years old. He is tall and has short black hair. He wears glasses. He is friendly and very funny, but he is sometimes quiet with new people.",
+        "referenceAnswer": "My cousin Minh is twenty-two years old. He is tall and has short black hair. He wears glasses and usually wears a blue shirt. He is friendly and very funny, but he is sometimes quiet when he meets new people.",
         "focus": [
           "Be for description",
           "Have and has",

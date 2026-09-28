@@ -368,80 +368,80 @@
       "nav": "exercise",
       "eyebrow": "Practice Part 2",
       "title": "Technology Concepts Matching",
-      "description": "Drag each technology concept to the correct category.",
+      "description": "Match each sentence by its main focus: building a system now, an effect on people's lives, or a prediction about future technology.",
       "targets": [
         {
           "id": "development",
-          "label": "Technology Development"
+          "label": "Building or integrating a system now"
         },
         {
           "id": "impact",
-          "label": "Societal Impact"
+          "label": "Effects on people's lives"
         },
         {
           "id": "future",
-          "label": "Future Trends"
+          "label": "Predictions about future technology"
         }
       ],
       "items": [
         {
           "id": "drag-1",
-          "text": "Digital transformation",
+          "text": "Engineers are integrating digital technology into the company's systems this month.",
           "match": "development"
         },
         {
           "id": "drag-2",
-          "text": "Social media influence",
+          "text": "Social media has changed how people discuss news and form opinions.",
           "match": "impact"
         },
         {
           "id": "drag-3",
-          "text": "Artificial intelligence",
+          "text": "In ten years, artificial intelligence may handle more routine administrative tasks.",
           "match": "future"
         },
         {
           "id": "drag-4",
-          "text": "User-friendly interface",
+          "text": "The design team is building a user-friendly interface for the new app.",
           "match": "development"
         },
         {
           "id": "drag-5",
-          "text": "Remote work culture",
+          "text": "Remote work has changed how families organise their daily lives.",
           "match": "impact"
         },
         {
           "id": "drag-6",
-          "text": "Virtual reality",
+          "text": "Virtual reality may become a common teaching tool in the next decade.",
           "match": "future"
         },
         {
           "id": "drag-7",
-          "text": "Seamless integration",
+          "text": "Developers are connecting the new tool to existing systems for seamless integration.",
           "match": "development"
         },
         {
           "id": "drag-8",
-          "text": "Digital communication",
+          "text": "Digital communication has helped distant relatives keep in touch.",
           "match": "impact"
         },
         {
           "id": "drag-9",
-          "text": "Quantum computing",
+          "text": "Quantum computing could solve new types of problems in the coming decades.",
           "match": "future"
         },
         {
           "id": "drag-10",
-          "text": "Data privacy concerns",
+          "text": "Data privacy concerns have affected people's trust in online services.",
           "match": "impact"
         },
         {
           "id": "drag-11",
-          "text": "Cutting-edge technology",
+          "text": "Engineers are installing cutting-edge technology in the factory this week.",
           "match": "development"
         },
         {
           "id": "drag-12",
-          "text": "Internet of Things (IoT)",
+          "text": "In the future, more household devices may be connected through the Internet of Things.",
           "match": "future"
         }
       ]
@@ -461,34 +461,34 @@
           "interface",
           "privacy",
           "seamless",
-          "transformation"
+          "cutting-edge"
         ],
         "parts": [
           "The ",
           {
             "blank": "tech1"
           },
-          " ________ has fundamentally changed how we work and communicate. Companies are investing in ",
+          " transformation has fundamentally changed how we work and communicate. Companies are investing in ",
           {
             "blank": "tech2"
           },
-          " ________ to create more efficient processes. A user-friendly ",
+          " technology, the newest and most advanced tools, to create more efficient processes. A user-friendly ",
           {
             "blank": "tech3"
           },
-          " ________ is essential for employee adoption of new systems. However, as we integrate more ",
+          " is essential for employee adoption of new systems. However, as we integrate more ",
           {
             "blank": "tech4"
           },
-          " ________ intelligence tools, data ",
+          " intelligence tools, data ",
           {
             "blank": "tech5"
           },
-          " ________ becomes increasingly important. The goal is ",
+          " becomes increasingly important. The goal is ",
           {
             "blank": "tech6"
           },
-          " ________ integration of technology that enhances productivity without compromising security."
+          " integration of technology that enhances productivity without compromising security."
         ],
         "blanks": [
           {

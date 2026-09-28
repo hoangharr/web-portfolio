@@ -238,14 +238,14 @@
         },
         {
           "id": "edu-gq2",
-          "prompt": "\"I wish I ________ more opportunities to acquire specialized knowledge during my undergraduate years.\"",
+          "prompt": "\"I wish I ________ more opportunities to acquire specialized knowledge on my current course.\"",
           "options": [
             "have",
             "had",
             "am having"
           ],
           "correct": 1,
-          "explanation": "The speaker regrets a past lack of opportunities, so wish is followed by had; have and am having refer to present possession."
+          "explanation": "Had follows I wish to express dissatisfaction with a present situation. Have and am having do not form this hypothetical structure."
         }
       ],
       "tip": {
@@ -347,10 +347,10 @@
           "options": [
             "far",
             "distance",
-            "remote"
+            "distant"
           ],
           "correct": 1,
-          "explanation": "Distance learning is the fixed term for study away from a campus; far learning and remote learning are not the target collocation."
+          "explanation": "Distance learning is the established term for studying without attending a classroom. Far learning and distant learning do not form that term."
         },
         {
           "id": "edu-vq4",
@@ -368,11 +368,11 @@
           "prompt": "\"Places are limited, so make sure to _________ in the advanced grammar course before the registration deadline.\"",
           "options": [
             "enroll",
-            "register",
-            "attend"
+            "registration",
+            "attendance"
           ],
           "correct": 0,
-          "explanation": "Enroll in a course means officially join it. Register normally takes for here, while attend describes participation after joining."
+          "explanation": "Enroll in a course is the required verb phrase. Registration and attendance are nouns, not verbs that can follow make sure to."
         },
         {
           "id": "edu-vq6",

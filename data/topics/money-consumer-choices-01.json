@@ -219,7 +219,7 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Money & Consumer Choices",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Money & Consumer Choices",
         "parts": [
@@ -299,11 +299,11 @@
       "title": "Writing: Money & Consumer Choices",
       "description": "Write 100-140 words using this module's language.",
       "prompt": {
-        "situation": "Write a review comparing two products or services and recommend one.",
+        "situation": "Choose two products of the same type or two services with the same purpose, such as two phones or two phone plans. Name both options, compare their prices and at least two features, and recommend one for a customer on a limited budget. You may invent names, prices and features.",
         "placeholder": "Write your response here...",
         "minWords": 100,
         "maxWords": 140,
-        "referenceAnswer": "I recently compared two phone plans. The cheaper one had fewer benefits and might have included extra fees. I chose the clearer plan because it offered better value for money and flexible cancellation.",
+        "referenceAnswer": "I compared two phone plans, Basic and Flex, for a customer on a limited budget. Basic costs ten pounds a month and includes five gigabytes of data. Flex costs fifteen pounds and includes twenty gigabytes. Both offer unlimited local calls, but Basic has a twelve-month contract whereas Flex can be cancelled at any time. Basic also charges for calls abroad, so it might be more expensive for someone who phones family overseas. If you mainly use Wi-Fi and make local calls, Basic offers better value for money. I recommend it for that customer because the lower monthly price matters more than extra data. Check the full charges before signing.",
         "focus": [
           "Modal deduction",
           "Quantifiers",

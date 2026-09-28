@@ -219,7 +219,7 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Work & Study Routines",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Work & Study Routines",
         "parts": [
@@ -299,11 +299,11 @@
       "title": "Writing: Work & Study Routines",
       "description": "Write 60-90 words using this module's language.",
       "prompt": {
-        "situation": "Write about your work or study routine, responsibilities and duration.",
+        "situation": "Choose your work routine or your study routine. Describe two regular activities, explain one obligation, and say when you started or how long you have followed that routine. If you are not currently working or studying, imagine a routine and make up these details.",
         "placeholder": "Write your response here...",
         "minWords": 60,
         "maxWords": 90,
-        "referenceAnswer": "I have studied English for one year. I attend class twice a week and have to complete homework online. I must practise regularly, but I don't have to study at the same time every day.",
+        "referenceAnswer": "I have attended an evening English course since January. I work during the day, so I study after dinner three times a week. I usually review vocabulary first and then complete a reading activity. We have to submit an assignment every Friday, but we do not have to attend class at weekends. I have followed this routine for six months, and it helps me finish my homework without staying up late.",
         "focus": [
           "Present perfect with for/since",
           "Must and have to",

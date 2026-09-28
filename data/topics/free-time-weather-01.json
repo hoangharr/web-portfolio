@@ -219,11 +219,11 @@
       "nav": "reading",
       "eyebrow": "Reading",
       "title": "Reading: Free Time & Weather",
-      "description": "Complete the text, then answer the comprehension question.",
+      "description": "Complete each gap with the word or phrase that fits the text.",
       "passage": {
         "title": "Free Time & Weather",
         "parts": [
-          "Today it is ",
+          "The sky is covered with clouds, but it is not raining. Today it is ",
           {
             "blank": "r1"
           },
@@ -274,15 +274,15 @@
       "description": "Prepare briefly, record your response and review it.",
       "questions": [
         "What do you enjoy doing in your free time?",
-        "What can you do well?",
-        "What are people doing today?"
+        "Which sport or hobby can you do well?",
+        "Imagine you and two friends are in a park on a sunny day. Your friends are doing different activities. Choose an activity for each friend and describe what each friend is doing now."
       ],
-      "sampleAnswer": "I enjoy reading and taking photos. I can play chess, but I can't swim very well. Today it is sunny, so my friends are playing football outdoors.",
+      "sampleAnswer": "I enjoy reading and taking photos. I can play chess, but I can't swim very well. I am in a park with two friends. One friend is playing football, and the other friend is reading a book.",
       "preparationSeconds": 20,
       "recordingSeconds": 40,
       "prompts": [
         "Answer every part of the prompt.",
-        "Use the target grammar.",
+        "For Question 3, make up one activity for each of your two friends. Say 'One friend is ...' and 'The other friend is ...'.",
         "Add one reason or example."
       ],
       "tip": {
@@ -298,11 +298,11 @@
       "title": "Writing: Free Time & Weather",
       "description": "Write 35-55 words using this module's language.",
       "prompt": {
-        "situation": "Write about your favourite free-time activities and today's weather.",
+        "situation": "Write a message to a friend about one activity you enjoy and one activity you can do well. Then imagine you are in a park on a sunny day with two friends. Choose an activity for each friend and say what they are doing now.",
         "placeholder": "Write your response here...",
         "minWords": 35,
         "maxWords": 55,
-        "referenceAnswer": "I enjoy reading and taking photos. I can play chess, but I can't swim very well. Today it is sunny, so my friends are playing football outdoors.",
+        "referenceAnswer": "I enjoy reading, and I can play chess well. Today it is sunny. I am in a park with two friends. One friend is playing football, and the other friend is taking photos. I am reading a book under a tree.",
         "focus": [
           "Like + -ing",
           "Can and can't",
