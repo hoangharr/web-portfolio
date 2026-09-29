@@ -1,0 +1,837 @@
+{
+  "version": 4,
+  "modules": {
+    "daily-life-personal-info-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Text messages to a friend",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a1/text-messages-friend",
+        "source": "British Council LearnEnglish",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 6,
+        "topicMatch": "Related topic",
+        "focus": "Read the messages and note the agreed meeting time and place.",
+        "keywords": [
+          "friend",
+          "coffee",
+          "closed"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Where are you from?",
+        "url": "https://www.elllo.org/video/A1BEG/A1-003-BILLIE-WHERE-FROM.htm",
+        "source": "ELLLO",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 6,
+        "topicMatch": "Related topic",
+        "focus": "Listen for where Billie lives and where he is from. Then introduce your own country and home town.",
+        "access": "source-link",
+        "transcriptUrl": "https://www.elllo.org/video/A1BEG/A1-003-BILLIE-WHERE-FROM.htm",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "family-home-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Be Verbs — Jobs and Family",
+        "url": "https://elllo.org/class/A1/A1-01-Be-Verbs-Jobs-Family.html",
+        "source": "ELLLO",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 8,
+        "topicMatch": "Related topic",
+        "focus": "Read the four short dialogues. Identify the family members and their jobs.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "video",
+        "title": "Lesson 12: Meet My Family",
+        "url": "https://www.youtube.com/watch?v=ncA2an5c1_g",
+        "source": "VOA Learning English",
+        "level": "A1",
+        "levelBasis": "estimated",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen for the family relationships Anna describes, then introduce two members of your own family.",
+        "access": "youtube-embed",
+        "youtubeId": "ncA2an5c1_g",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "food-shopping-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "A restaurant menu",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a1/restaurant-menu",
+        "source": "British Council LearnEnglish",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 6,
+        "topicMatch": "Same topic",
+        "focus": "Find one main dish and one drink. Note their prices before choosing an order.",
+        "keywords": [
+          "menu",
+          "drink",
+          "price"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Likes and Dislikes",
+        "url": "https://elllo.org/class/A1/A1-03-Likes-Fruits.html",
+        "source": "ELLLO",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 8,
+        "topicMatch": "Related topic",
+        "focus": "Listen to the four short conversations. List one food and one drink each speaker likes.",
+        "access": "source-link",
+        "transcriptUrl": "https://elllo.org/class/A1/A1-03-Likes-Fruits.html",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "people-appearance-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Business cards",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a1/business-cards",
+        "source": "British Council LearnEnglish",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 6,
+        "topicMatch": "Related topic",
+        "focus": "Read the cards and identify each person's job and contact details.",
+        "keywords": [
+          "job",
+          "contact",
+          "company"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "What do they look like?",
+        "url": "https://www.cambridgeenglish.org/learning-english/activities-for-learners/a2p054-what-do-they-look-like",
+        "source": "Cambridge English",
+        "level": "A1–A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 15,
+        "topicMatch": "Related topic",
+        "focus": "Listen to the descriptions and choose the matching pictures on the source page.",
+        "access": "source-link",
+        "transcriptUrl": "https://www.cambridgeenglish.org/learning-english/activities-for-learners/a2p054-what-do-they-look-like",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "places-directions-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Notes at work",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a1/notes-work",
+        "source": "British Council LearnEnglish",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 6,
+        "topicMatch": "Different topic",
+        "focus": "Identify who each note is for and what action it requests. This short workplace text broadens your A1 reading.",
+        "keywords": [
+          "note",
+          "office",
+          "meeting"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Prepositions of Place — Hotel Language",
+        "url": "https://www.elllo.org/english/class/beg/beg-01.htm",
+        "source": "ELLLO",
+        "level": "A1",
+        "levelBasis": "estimated",
+        "practiceMinutes": 8,
+        "topicMatch": "Related topic",
+        "focus": "Watch the two hotel conversations. Note three expressions that describe where places are.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "free-time-weather-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "A study timetable",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a1/study-timetable",
+        "source": "British Council LearnEnglish",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 6,
+        "topicMatch": "Related topic",
+        "focus": "Compare the activities scheduled across the week and choose a time you could study.",
+        "keywords": [
+          "timetable",
+          "week",
+          "afternoon"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Is your house cold in winter?",
+        "url": "https://www.elllo.org/video/A1BEG/A1-007-JULIE-HOUSE-COLD-WINTER.htm",
+        "source": "ELLLO",
+        "level": "A1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 6,
+        "topicMatch": "Related topic",
+        "focus": "Listen for what Julie says about winter and summer. Describe the weather in your home town in two sentences.",
+        "access": "source-link",
+        "transcriptUrl": "https://www.elllo.org/video/A1BEG/A1-007-JULIE-HOUSE-COLD-WINTER.htm",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "past-events-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "A camping adventure",
+        "url": "https://www.cambridgeenglish.org/learning-english/activities-for-learners/a2r051-a-camping-adventure",
+        "source": "Cambridge English",
+        "level": "A1–A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Read the camping story and answer the questions on the source page.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Changing plans",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/listening/a2/changing-plans",
+        "source": "British Council LearnEnglish",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen for the original plan and the reason it changes.",
+        "transcriptUrl": "https://learnenglish.britishcouncil.org/free-resources/listening/a2/changing-plans",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "future-plans-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "An email from a friend",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a2/email-friend",
+        "source": "British Council LearnEnglish",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 8,
+        "topicMatch": "Same topic",
+        "focus": "Identify the proposed day, activities and directions to the friend's home.",
+        "keywords": [
+          "Saturday",
+          "address",
+          "afternoon"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Holiday Plans — Will / Future Tense",
+        "url": "https://www.elllo.org/english/grammar/A2-04-Future-Will-Sarah-Holidays.htm",
+        "source": "ELLLO",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen to Sarah and Todd's holiday plans. Write one planned activity for each speaker.",
+        "access": "source-link",
+        "transcriptUrl": "https://www.elllo.org/english/grammar/A2-04-Future-Will-Sarah-Holidays.htm",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "comparisons-experiences-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Choosing a conference venue",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a2/choosing-conference-venue",
+        "source": "British Council LearnEnglish",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 8,
+        "topicMatch": "Related topic",
+        "focus": "Compare the two venues by location, facilities and capacity.",
+        "keywords": [
+          "venue",
+          "parking",
+          "facilities"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Comparatives",
+        "url": "https://elllo.org/class/A2/A2-09-Comparatives.html",
+        "source": "ELLLO",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen to the comparisons of people, places, films and food. Note three comparative adjectives.",
+        "access": "source-link",
+        "transcriptUrl": "https://elllo.org/class/A2/A2-09-Comparatives.html",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "travel-transport-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "An airport notice",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/a2/airport-notice",
+        "source": "British Council LearnEnglish",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 8,
+        "topicMatch": "Same topic",
+        "focus": "Find the notice's instruction and decide what a traveller needs to do.",
+        "keywords": [
+          "airport",
+          "passenger",
+          "flight"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Mongolian Vacation",
+        "url": "https://elllo.org/english/1001/1010-MongoliaVacation.htm",
+        "source": "ELLLO",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen for Heidi's recommended season and activities for visitors to Mongolia.",
+        "access": "source-link",
+        "transcriptUrl": "https://elllo.org/english/1001/1010-MongoliaVacation.htm",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "work-study-routines-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Talking About Your Daily Routine",
+        "url": "https://www.oxfordonlineenglish.com/talking-about-daily-routine",
+        "source": "Oxford Online English (independent provider)",
+        "level": "A2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Read Part 1 about morning routines. Choose three useful expressions and describe your own morning.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Present Continuous",
+        "url": "https://www.elllo.org/class/A2/A2-03-Present-Continuous.html",
+        "source": "ELLLO",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen to the four conversations. Note what each person is doing and where they are.",
+        "access": "source-link",
+        "transcriptUrl": "https://www.elllo.org/class/A2/A2-03-Present-Continuous.html",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "relationships-communication-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "An email to a friend",
+        "url": "https://www.cambridgeenglish.org/learning-english/activities-for-learners/a1w001-an-email-to-a-friend",
+        "source": "Cambridge English",
+        "level": "A1–A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 8,
+        "topicMatch": "Related topic",
+        "focus": "Read the email activity. Choose the informal expressions, then write two sentences to a friend.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Changing a meeting time",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/listening/a2/changing-meeting-time",
+        "source": "British Council LearnEnglish",
+        "level": "A2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen for the proposed times and the final agreement between colleagues.",
+        "transcriptUrl": "https://learnenglish.britishcouncil.org/free-resources/listening/a2/changing-meeting-time",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "storytelling-sequencing-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "The legend of fairies",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/b1/legend-fairies",
+        "source": "British Council LearnEnglish",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Follow how ideas about fairies changed over time. Write three events in chronological order.",
+        "keywords": [
+          "legend",
+          "origins",
+          "creatures"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "The Bus Story",
+        "url": "https://www.elllo.org/english/0001/022-Jessica-Bus.htm",
+        "source": "ELLLO",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen to Jessica's story. Retell what happened in three steps: first, then, finally.",
+        "access": "source-link",
+        "transcriptUrl": "https://www.elllo.org/english/0001/022-Jessica-Bus.htm",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "advice-conditionals-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "A flyer for a gym",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/b1/flyer-gym",
+        "source": "British Council LearnEnglish",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Identify the membership conditions and the support offered to new members.",
+        "keywords": [
+          "membership",
+          "support",
+          "training"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Giving Suggestions",
+        "url": "https://www.elllo.org/class/B1/B1-05-Should.html",
+        "source": "ELLLO",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen to the advice in the conversations. Choose one suggestion and explain when you would use it.",
+        "access": "source-link",
+        "transcriptUrl": "https://www.elllo.org/class/B1/B1-05-Should.html",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "opinions-media-society-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "How to spot fake news",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/b1/how-spot-fake-news",
+        "source": "British Council LearnEnglish",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Choose two checks you could apply before sharing a news story.",
+        "keywords": [
+          "source",
+          "headline",
+          "evidence"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "video",
+        "title": "Is this the era of distrust?",
+        "url": "https://www.youtube.com/watch?v=AhoslePC6yI",
+        "source": "BBC Learning English",
+        "level": "B1–B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Use English captions if needed. Note two reasons people distrust information and one way to check it.",
+        "access": "youtube-embed",
+        "youtubeId": "AhoslePC6yI",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "money-consumer-choices-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Millionaires and billionaires",
+        "url": "https://www.cambridgeenglish.org/learning-english/activities-for-learners/b2r051-millionaires-and-billionaires",
+        "source": "Cambridge English",
+        "level": "B1–B2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Scan the text for the information requested in the source activities. Check names, numbers and details before answering.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Making a decision",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/listening/b1/making-decision",
+        "source": "British Council LearnEnglish",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 15,
+        "topicMatch": "Related topic",
+        "focus": "Listen for the choices considered and the reasons behind the final decision.",
+        "transcriptUrl": "https://learnenglish.britishcouncil.org/free-resources/listening/b1/making-decision",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "environment-community-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "What Is Climate Change?",
+        "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-climate-change-grades-k-4/",
+        "source": "NASA",
+        "level": "B1",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Read the explanation. Describe the difference between weather and climate and name one cause of climate change.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "A weather forecast",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/listening/b1/weather-forecast",
+        "source": "British Council LearnEnglish",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 15,
+        "topicMatch": "Different topic",
+        "focus": "Listen for the weather in each region and the forecast changes.",
+        "transcriptUrl": "https://learnenglish.britishcouncil.org/free-resources/listening/b1/weather-forecast",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "culture-entertainment-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Jazz",
+        "url": "https://music.si.edu/story/jazz",
+        "source": "Smithsonian Institution",
+        "level": "B1–B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Read the opening paragraphs as an optional challenge. Explain what makes different performances of the same song sound different.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Movie Take",
+        "url": "https://elllo.org/english/1501/1505-Ben-Hanna-Movie.htm",
+        "source": "ELLLO",
+        "level": "B1",
+        "levelBasis": "publisher",
+        "practiceMinutes": 10,
+        "topicMatch": "Related topic",
+        "focus": "Listen to Ben and Hanna discussing films. Note one opinion from each speaker.",
+        "access": "source-link",
+        "transcriptUrl": "https://elllo.org/english/1501/1505-Ben-Hanna-Movie.htm",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "work-career-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Millennials in the workplace",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/b2/millennials-workplace",
+        "source": "British Council LearnEnglish",
+        "level": "B2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 12,
+        "topicMatch": "Same topic",
+        "focus": "Distinguish the report's assumptions from its findings and recommendations.",
+        "keywords": [
+          "workforce",
+          "retention",
+          "flexibility"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "video",
+        "title": "Are you unhappy at work?",
+        "url": "https://www.youtube.com/watch?v=V2eW5jGQe8I",
+        "source": "BBC Learning English",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Listen for the causes of unhappiness at work. Summarise two suggestions from the discussion.",
+        "access": "youtube-embed",
+        "youtubeId": "V2eW5jGQe8I",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "education-lifelong-learning-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Asteroids",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/b2/asteroids",
+        "source": "British Council LearnEnglish",
+        "level": "B2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 12,
+        "topicMatch": "Different topic",
+        "focus": "Read a B2 scientific explanation and identify the purpose of each section. This is a different-topic reading choice.",
+        "keywords": [
+          "asteroid",
+          "impact",
+          "orbit"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "video",
+        "title": "The benefits of a bilingual brain — Mia Nacamulli",
+        "url": "https://www.youtube.com/watch?v=MMmOLN5zBLY",
+        "source": "TED-Ed",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Use English captions if needed. Summarise two benefits of using more than one language.",
+        "access": "youtube-embed",
+        "youtubeId": "MMmOLN5zBLY",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "technology-innovation-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Why bridges collapse",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/b2/why-bridges-collapse",
+        "source": "British Council LearnEnglish",
+        "level": "B2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Identify the causes discussed and the evidence used to explain engineering failures.",
+        "keywords": [
+          "engineering",
+          "structure",
+          "design"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "video",
+        "title": "Introducing How Computers Work",
+        "url": "https://www.khanacademy.org/computing/code-org/computers-and-the-internet/how-computers-work/v/khan-academy-and-codeorg-introducing-how-computers-work",
+        "source": "Khan Academy / Code.org",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Watch the introduction. Explain why understanding computers matters, using two examples from the video.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "health-wellness-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Why Is Sleep Important?",
+        "url": "https://www.nhlbi.nih.gov/health/sleep/why-sleep-important",
+        "source": "NIH / NHLBI",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Read the introduction and 'Problems with thinking and memory'. Explain how sleep supports learning; the other sections are optional.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "listening",
+        "title": "Joining a gym",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/listening/b2/joining-gym",
+        "source": "British Council LearnEnglish",
+        "level": "B2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 15,
+        "topicMatch": "Same topic",
+        "focus": "Listen for membership conditions and the visitor's priorities.",
+        "transcriptUrl": "https://learnenglish.britishcouncil.org/free-resources/listening/b2/joining-gym",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "ted-stress",
+        "type": "video",
+        "title": "How stress affects your brain — Madhumita Murgia",
+        "url": "https://www.youtube.com/watch?v=WuyPuH9ojCE",
+        "source": "TED-Ed",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Same topic",
+        "focus": "Optional challenge: use English captions, then explain one difference between short-term and long-term stress.",
+        "youtubeId": "WuyPuH9ojCE",
+        "transcriptUrl": "https://www.ted.com/talks/madhumita_murgia_how_stress_affects_your_brain/transcript",
+        "access": "youtube-embed",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "travel-tourism-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Pollution",
+        "url": "https://kids.nationalgeographic.com/science/article/pollution",
+        "source": "National Geographic Kids",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Read about the types of pollution. Describe two ways a visitor could reduce their impact on a destination.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "video",
+        "title": "What really happens to the plastic you throw away — Emma Bryce",
+        "url": "https://ed.ted.com/lessons/what-really-happens-to-the-plastic-you-throw-away-emma-bryce",
+        "source": "TED-Ed",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Follow the different journeys of the plastic bottles. Explain one way tourists can reduce plastic waste.",
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      }
+    ],
+    "communication-presentation-01": [
+      {
+        "id": "reading",
+        "type": "reading",
+        "title": "Cultural expectations and leadership",
+        "url": "https://learnenglish.britishcouncil.org/free-resources/reading/b2/cultural-expectations-leadership",
+        "source": "British Council LearnEnglish",
+        "level": "B2",
+        "levelBasis": "publisher",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Compare leadership expectations across cultures and note examples supporting the claims.",
+        "keywords": [
+          "leadership",
+          "expectations",
+          "culture"
+        ],
+        "access": "source-link",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "listening",
+        "type": "video",
+        "title": "How to spot a misleading graph — Lea Gaslowitz",
+        "url": "https://www.youtube.com/watch?v=E91bGT9BjYk",
+        "source": "TED-Ed",
+        "level": "B2",
+        "levelBasis": "estimated",
+        "practiceMinutes": 12,
+        "topicMatch": "Related topic",
+        "focus": "Identify two ways a graph can mislead its audience. Explain how you would avoid them in a presentation.",
+        "access": "youtube-embed",
+        "youtubeId": "E91bGT9BjYk",
+        "verifiedAt": "2026-09-29"
+      }
+    ]
+  }
+}

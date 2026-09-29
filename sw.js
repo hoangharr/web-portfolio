@@ -1,5 +1,5 @@
 // Bump this version on every deploy to bust the old cache
-const APP_VERSION = 'v52';
+const APP_VERSION = 'v57';
 const CACHE_NAME = `aptis-shell-${APP_VERSION}`;
 
 const SHELL_FILES = [
@@ -7,7 +7,10 @@ const SHELL_FILES = [
   '/index.html',
   '/english.html',
   '/tests.html',
-  '/js/engine.js?v=38',
+  '/js/engine.js?v=43',
+  '/js/recommendations.js?v=1',
+  '/css/recommendations.css?v=1',
+  '/data/recommendations.json?v=4',
   '/js/mock-scoring.js?v=1',
   '/js/mock-store.js?v=1',
   '/js/tests.js?v=13',

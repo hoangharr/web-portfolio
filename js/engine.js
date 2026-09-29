@@ -985,6 +985,7 @@ function renderSection(section, index) {
     <section id="slide-${index + 1}" class="slide-section ${index === 0 ? "active" : ""} w-full" data-section-id="${escapeHtml(section.id)}" data-section-type="${escapeHtml(section.type)}" data-nav="${escapeHtml(section.nav)}">
       ${renderer(section)}
       ${section.sectionIndex === section.lesson.sections.length - 1 && section.type !== "checkpoint" ? renderLessonCompletionPanel(section.lesson) : ""}
+      ${section.sectionIndex === section.lesson.sections.length - 1 ? globalThis.RecommendationUI?.render(section.lesson, state.recommendationsCatalog?.[section.lesson.id]) || "" : ""}
     </section>
   `;
 }
@@ -1013,6 +1014,7 @@ function renderDeck(lessons) {
   renderModulesMenu();
   bindLessonEvents();
   bindVocabularySelection();
+  globalThis.RecommendationUI?.bind(root, { isSignedIn: () => Boolean(state.user), saveWord: saveVocabularyWord });
   updateUI();
 }
 
@@ -1041,6 +1043,7 @@ function applyTrackVisibility(menuList, trackId, collapsed) {
   const group = menuList.querySelector(`[data-track-group="${trackId}"]`);
   if (!header || !group) return;
   group.classList.toggle("hidden", collapsed);
+  header.setAttribute("aria-expanded", String(!collapsed));
   const chevron = header.querySelector(".track-chevron");
   if (chevron) chevron.style.transform = collapsed ? "rotate(-90deg)" : "rotate(0deg)";
 }
@@ -1048,10 +1051,12 @@ function applyTrackVisibility(menuList, trackId, collapsed) {
 function renderModulesMenu() {
   const menuList = document.getElementById("modules-list");
   if (!menuList || !state.lessons.length) return;
+  const activeLessonId = state.sections[state.currentSlide - 1]?.lesson?.id;
 
   let slideStart = 1;
   let lessonPointer = 0;
   let globalIndex = 0;
+  const collapsedByTrack = new Map();
   let html = `<div class="max-h-[55vh] overflow-y-auto pr-1 flex flex-col gap-2" id="tracks-scroll">`;
 
   const tracks = state.tracks && state.tracks.length
@@ -1061,7 +1066,9 @@ function renderModulesMenu() {
   tracks.forEach(track => {
     const trackCount = track.lessons.length;
     if (!trackCount) return;
-    const collapsed = getCollapsedTracks().includes(track.id);
+    const trackContainsActive = state.lessons.slice(lessonPointer, lessonPointer + trackCount).some(lesson => lesson.id === activeLessonId);
+    const collapsed = !trackContainsActive && getCollapsedTracks().includes(track.id);
+    collapsedByTrack.set(track.id, collapsed);
     html += `
       <button data-track-header="${track.id}" class="flex items-center justify-between w-full p-3 rounded-lg bg-surface-container-low hover:bg-primary/5 transition-all text-left">
         <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">${escapeHtml(track.label)}</span>
@@ -1080,12 +1087,14 @@ function renderModulesMenu() {
       const start = slideStart;
       slideStart += lesson.sections.length;
       const completed = isLessonCompleted(lesson.id);
+      const active = lesson.id === activeLessonId;
       html += `
-        <button data-module-slide="${start}" class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary hover:bg-primary/5 transition-all text-left">
+        <button data-module-slide="${start}" ${active ? 'aria-current="true"' : ''} class="flex min-h-11 items-center gap-4 p-4 rounded-xl border ${active ? 'border-indigo-500 bg-indigo-50 dark:border-amber-300 dark:bg-indigo-950' : 'border-outline-variant dark:border-slate-700'} hover:border-primary hover:bg-primary/5 transition-all text-left">
           ${materialIcon(lesson.themeIcon, "text-primary text-3xl")}
           <div class="flex-grow">
-            <p class="font-bold text-primary text-base">${escapeHtml(track.level || track.id.toUpperCase())} · Module ${i + 1}</p>
-            <p class="text-sm text-on-surface-variant">${escapeHtml(lesson.title)}</p>
+            <p class="font-bold text-primary dark:text-slate-100 text-base">${escapeHtml(track.level || track.id.toUpperCase())} · Module ${i + 1}</p>
+            <p class="text-sm text-on-surface-variant dark:text-slate-300">${escapeHtml(lesson.title)}</p>
+            ${active ? '<span class="mt-2 inline-block rounded-full bg-indigo-700 px-3 py-1 text-xs font-bold text-white dark:bg-amber-300 dark:text-slate-950">Currently learning</span>' : ''}
           </div>
           ${completed ? materialIcon("check_circle", "text-green-600") : ""}
         </button>
@@ -1103,9 +1112,9 @@ function renderModulesMenu() {
 
   menuList.querySelectorAll("[data-track-header]").forEach(header => {
     const trackId = header.dataset.trackHeader;
-    applyTrackVisibility(menuList, trackId, getCollapsedTracks().includes(trackId));
+    applyTrackVisibility(menuList, trackId, collapsedByTrack.get(trackId));
     header.addEventListener("click", () => {
-      const collapsed = !getCollapsedTracks().includes(trackId);
+      const collapsed = header.getAttribute("aria-expanded") === "true";
       setTrackCollapsed(trackId, collapsed);
       applyTrackVisibility(menuList, trackId, collapsed);
     });
@@ -1349,6 +1358,14 @@ function updateHeaderForCurrentSlide() {
   const headerTitle = document.getElementById("header-title");
   if (headerTitle) headerTitle.textContent = lesson.title;
 
+  const selector = document.getElementById("module-selector-button");
+  const selectorLabel = document.getElementById("module-selector-label");
+  if (selectorLabel) selectorLabel.textContent = "Modules";
+  if (selector) {
+    selector.title = "Select module";
+    selector.setAttribute("aria-label", selector.title);
+  }
+
   const headerIcon = document.querySelector("[data-icon='lesson-theme']");
   if (headerIcon) headerIcon.textContent = lesson.themeIcon || "school";
 }
@@ -1420,6 +1437,7 @@ function toggleModulesMenu() {
   if (!menu || !content) return;
 
   if (menu.classList.contains("hidden")) {
+    renderModulesMenu();
     menu.classList.remove("hidden");
     setTimeout(() => content.classList.remove("translate-y-full"), 10);
   } else {
@@ -1431,6 +1449,17 @@ function toggleModulesMenu() {
 function selectModule(startSlideNum) {
   goToSlide(startSlideNum);
   toggleModulesMenu();
+}
+
+function showWelcome() {
+  persistCurrentModuleProgress();
+  if (state.recording?.recorder.state === "recording") state.recording.recorder.stop();
+  state.currentAudio?.pause();
+  window.speechSynthesis?.cancel();
+  document.getElementById("modules-menu")?.classList.add("hidden");
+  document.getElementById("modules-content")?.classList.add("translate-y-full");
+  renderWelcome();
+  document.getElementById("welcome-screen")?.scrollTo({ top: 0 });
 }
 
 function hideWelcome() {
@@ -1936,12 +1965,14 @@ async function loadLesson() {
   const root = document.getElementById("lesson-root");
   try {
     // Load curriculum (tracks object or legacy array of lesson URLs)
-    const [curriculumResp, neuralAudioResp] = await Promise.all([
+    const [curriculumResp, neuralAudioResp, recommendationsResp] = await Promise.all([
       fetch(CURRICULUM_URL),
-      fetch("/data/tts-manifest.json?v=1").catch(() => null)
+      fetch("/data/tts-manifest.json?v=1").catch(() => null),
+      fetch("/data/recommendations.json?v=4").catch(() => null)
     ]);
     if (!curriculumResp.ok) throw new Error(`Unable to load curriculum`);
     state.neuralAudio = neuralAudioResp?.ok ? await neuralAudioResp.json() : {};
+    state.recommendationsCatalog = recommendationsResp?.ok ? await recommendationsResp.json().then(data => data.modules || {}).catch(() => ({})) : {};
     const curriculumData = await curriculumResp.json();
     const tracks = Array.isArray(curriculumData)
       ? [{ id: "all", label: "Modules", lessons: curriculumData }]
@@ -1991,6 +2022,7 @@ window.changeSlide = changeSlide;
 window.goToSlide = goToSlide;
 window.navigateToSection = navigateToSection;
 window.toggleModulesMenu = toggleModulesMenu;
+window.showWelcome = showWelcome;
 window.selectModule = selectModule;
 window.selectMCQ = selectMCQ;
 window.checkMCQ = checkMCQ;
