@@ -37,7 +37,7 @@
         try {
           const response = await secureRequest('/api/auth/login', { email: document.getElementById('email').value, password: document.getElementById('password').value, rememberDevice: document.getElementById('remember-device').checked });
           if (!response.ok) throw new Error(response.status === 401 ? 'Email or password is incorrect.' : 'Could not log in. Please try again.');
-          window.location.assign('english.html');
+          window.location.assign('dashboard.html');
         } catch (err) {
           error.textContent = err.message;
           error.classList.remove('hidden');

@@ -1,4 +1,4 @@
-let csrfToken=null,vocabularyWords=[];
+let csrfToken=null,vocabularyWords=[],reviewWords=[],flashcardDeck=[],lessonTitles={},progressItems=[],submissionItems=[],lessonTitlesLoading=null;
 const $=selector=>document.querySelector(selector);
 const escapeHtml=value=>{const el=document.createElement('span');el.textContent=value||'';return el.innerHTML};
 async function api(path,method='GET',body){if(method!=='GET'&&!csrfToken){const r=await fetch('/api/auth/csrf',{credentials:'same-origin'});if(!r.ok)throw Error('Secure session unavailable');csrfToken=await r.json()}const r=await fetch(path,{method,credentials:'same-origin',headers:method==='GET'?{}:{'Content-Type':'application/json',[csrfToken.headerName]:csrfToken.token},body:body?JSON.stringify(body):undefined});if(!r.ok)throw Error('Request failed ('+r.status+')');return r.status===204?null:r.json()}
@@ -9,9 +9,140 @@ function bindNotebook(){const list=$('#notebook-list');list.querySelectorAll('[d
 function renderNotebook(){const list=$('#notebook-list');vocabularyWords.sort((a,b)=>Number(b.pinned)-Number(a.pinned)||String(b.createdAt).localeCompare(String(a.createdAt)));$('#word-count').textContent=vocabularyWords.length+' words';list.innerHTML=vocabularyWords.length?vocabularyWords.map(card).join(''):'<div class="md:col-span-2 rounded-2xl border-2 border-dashed border-amber-300/70 bg-white/45 py-12 text-center text-slate-500 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-400"><span class="material-symbols-outlined text-4xl">menu_book</span><p class="mt-2 text-sm font-semibold">Highlight a word in a lesson to save it here.</p></div>';bindNotebook()}
 function renderProgress(items){$('#progress-list').innerHTML=items.length?items.slice(0,5).map(item=>`<div class="flex items-center justify-between border-b border-slate-100 py-2 text-sm last:border-0 dark:border-slate-800"><span class="max-w-[70%] truncate font-semibold">${escapeHtml(item.lessonId)}</span><span class="rounded-full px-2 py-1 text-xs font-bold ${item.completed?'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-200':'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-200'}">${item.completed?'Done':'Step '+item.lastSlide}</span></div>`).join(''):'<p class="text-sm text-slate-500 dark:text-slate-400">No progress yet.</p>'}
 function renderSubmissions(items){$('#submission-list').innerHTML=items.length?items.slice(0,5).map(item=>`<div class="flex items-center justify-between border-b border-slate-100 py-2 text-sm last:border-0 dark:border-slate-800"><span class="max-w-[70%] truncate font-semibold">${escapeHtml(item.lessonId)}</span><span class="font-black text-emerald-700 dark:text-emerald-300">${item.total==null?'Sent':item.score+'/'+item.total}</span></div>`).join(''):'<p class="text-sm text-slate-500 dark:text-slate-400">No submissions yet.</p>'}
+function renderHabitSummary(summary){const root=$('#habit-summary');if(!summary){root.innerHTML='<p class="text-sm text-slate-500 dark:text-slate-400">Your learning rhythm will appear here after your first activity.</p>';return}const byDate=new Map(summary.days.map(day=>[day.date,day]));const dates=Array.from({length:7},(_,index)=>{const date=new Date();date.setDate(date.getDate()-6+index);return date});root.innerHTML=`<div class="flex items-end justify-between"><div><p class="font-serif text-3xl font-black text-indigo-950 dark:text-amber-300">${summary.streak}</p><p class="text-sm font-semibold text-slate-600 dark:text-slate-300">day streak</p></div><p class="rounded-full px-3 py-1 text-xs font-bold ${summary.todayActions?'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200':'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-200'}">${summary.todayActions?'Today complete':'One focused action today'}</p></div><div class="mt-5 grid grid-cols-7 gap-1.5">${dates.map(date=>{const key=date.toISOString().slice(0,10),day=byDate.get(key),label=date.toLocaleDateString(undefined,{weekday:'narrow'});return `<div class="text-center"><span title="${day?day.actions:0} learning actions" class="mx-auto grid size-8 place-items-center rounded-full text-xs font-black ${day?.complete?'bg-indigo-700 text-white dark:bg-amber-300 dark:text-slate-950':'bg-slate-100 text-slate-400 dark:bg-slate-800'}">${day?.complete?'✓':'·'}</span><span class="mt-1 block text-[10px] font-bold text-slate-500 dark:text-slate-400">${label}</span></div>`}).join('')}</div><p class="mt-4 text-xs leading-5 text-slate-500 dark:text-slate-400">A lesson, mock, or vocabulary review keeps your daily goal moving.</p>`}
+function renderVocabularyReview(){const root=$('#vocabulary-review');const word=reviewWords[0];if(!word){root.innerHTML='<div class="rounded-xl bg-white/80 p-4 text-sm text-slate-600 dark:bg-slate-800 dark:text-slate-300"><p class="font-bold text-emerald-700 dark:text-emerald-300">All caught up for now.</p><p class="mt-1">Save words from a lesson and they will appear here when it is time to recall them.</p></div>';return}root.innerHTML=`<div class="rounded-xl bg-white p-4 dark:bg-slate-950"><p class="text-xs font-bold uppercase tracking-[.14em] text-indigo-700 dark:text-amber-300">Due now · ${reviewWords.length} word${reviewWords.length===1?'':'s'}</p><h3 class="mt-3 font-serif text-3xl font-black text-indigo-950 dark:text-white">${escapeHtml(word.word)}</h3><p class="mt-1 text-sm text-slate-500 dark:text-slate-400">${escapeHtml(word.phonetic||'Say it aloud, then recall the meaning.')}</p><div id="review-answer" class="mt-4"><button id="show-review-answer" class="min-h-11 rounded-xl bg-indigo-800 px-4 font-bold text-white dark:bg-amber-300 dark:text-slate-950">Show answer</button></div></div>`;$('#show-review-answer').onclick=()=>{const answer=$('#review-answer');answer.innerHTML=`<p class="rounded-xl bg-indigo-50 p-3 font-semibold text-indigo-950 dark:bg-slate-800 dark:text-slate-100">${escapeHtml(word.vietnameseMeaning||word.definition||'Add a meaning in your notebook.')}</p>${word.customExample?`<p class="mt-2 text-sm italic text-slate-600 dark:text-slate-300">${escapeHtml(word.customExample)}</p>`:''}<p class="mt-4 text-sm font-bold">How well did you recall it?</p><div class="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4"><button data-review-rating="AGAIN" class="min-h-11 rounded-lg border border-rose-200 px-2 text-sm font-bold text-rose-700 dark:border-rose-900 dark:text-rose-300">Again</button><button data-review-rating="HARD" class="min-h-11 rounded-lg border border-amber-200 px-2 text-sm font-bold text-amber-700 dark:border-amber-900 dark:text-amber-300">Hard</button><button data-review-rating="GOOD" class="min-h-11 rounded-lg border border-emerald-200 px-2 text-sm font-bold text-emerald-700 dark:border-emerald-900 dark:text-emerald-300">Good</button><button data-review-rating="EASY" class="min-h-11 rounded-lg border border-sky-200 px-2 text-sm font-bold text-sky-700 dark:border-sky-900 dark:text-sky-300">Easy</button></div>`;answer.querySelectorAll('[data-review-rating]').forEach(button=>button.onclick=async()=>{answer.querySelectorAll('button').forEach(item=>item.disabled=true);try{await api('/api/vocabulary/'+encodeURIComponent(word.word)+'/review','PUT',{rating:button.dataset.reviewRating});await api('/api/habits/activity','POST',{type:'VOCABULARY'});reviewWords.shift();renderVocabularyReview();refreshHabitSummary()}catch(error){answer.insertAdjacentHTML('beforeend',`<p class="mt-2 text-sm font-semibold text-red-700 dark:text-red-300">${escapeHtml(error.message)}</p>`);answer.querySelectorAll('button').forEach(item=>item.disabled=false)}})}}
+// The compact due-review card above is retained for older cached shells. This
+// deck is the current flashcard experience and also allows deliberate practice.
+function renderFlashcardDeck(){
+  const root=$('#vocabulary-review');
+  if(!flashcardDeck.length&&reviewWords.length)flashcardDeck=[...reviewWords];
+  const word=flashcardDeck[0];
+  if(!word){
+    const canPractise=vocabularyWords.length>0;
+    root.innerHTML=`<div class="rounded-xl bg-white/80 p-4 text-sm text-slate-600 dark:bg-slate-800 dark:text-slate-300"><p class="font-bold text-emerald-700 dark:text-emerald-300">All caught up for now.</p><p class="mt-1">${canPractise?'You can still practise your full notebook.':'Save words from a lesson and they will appear here when it is time to recall them.'}</p>${canPractise?'<button id="practise-notebook" class="mt-4 min-h-11 rounded-xl bg-indigo-800 px-4 font-bold text-white dark:bg-amber-300 dark:text-slate-950">Practise my notebook</button>':''}</div>`;
+    $('#practise-notebook')?.addEventListener('click',()=>{flashcardDeck=[...vocabularyWords];renderVocabularyReview()});
+    return;
+  }
+  const scheduled=reviewWords.some(item=>item.word===word.word);
+  root.innerHTML=`<article class="rounded-2xl border border-indigo-100 bg-white p-5 text-center shadow-sm dark:border-slate-700 dark:bg-slate-950"><p class="text-xs font-bold uppercase tracking-[.14em] text-indigo-700 dark:text-amber-300">${scheduled?'Due review':'Notebook practice'} · Card ${flashcardDeck.length}</p><div class="mt-4 rounded-2xl bg-gradient-to-br from-indigo-50 to-white px-5 py-10 dark:from-slate-800 dark:to-slate-900"><p class="font-serif text-4xl font-black text-indigo-950 dark:text-white">${escapeHtml(word.word)}</p><p class="mt-2 text-sm text-slate-500 dark:text-slate-400">${escapeHtml(word.phonetic||'Say it aloud, then recall the meaning.')}</p></div><div id="flashcard-back" class="mt-4"><button id="flip-flashcard" class="min-h-11 rounded-xl bg-indigo-800 px-5 font-bold text-white dark:bg-amber-300 dark:text-slate-950">Flip card</button></div></article>`;
+  $('#flip-flashcard').onclick=()=>{
+    const back=$('#flashcard-back');
+    back.innerHTML=`<div class="rounded-xl bg-indigo-50 p-4 text-left dark:bg-slate-800"><p class="font-bold text-indigo-950 dark:text-white">${escapeHtml(word.vietnameseMeaning||word.definition||'Add a meaning in your notebook.')}</p>${word.customExample?`<p class="mt-2 text-sm italic text-slate-600 dark:text-slate-300">${escapeHtml(word.customExample)}</p>`:''}</div><p class="mt-4 text-sm font-bold">How well did you recall it?</p><div class="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4"><button data-flashcard-rating="AGAIN" class="min-h-11 rounded-lg border border-rose-200 px-2 text-sm font-bold text-rose-700 dark:border-rose-900 dark:text-rose-300">Again</button><button data-flashcard-rating="HARD" class="min-h-11 rounded-lg border border-amber-200 px-2 text-sm font-bold text-amber-700 dark:border-amber-900 dark:text-amber-300">Hard</button><button data-flashcard-rating="GOOD" class="min-h-11 rounded-lg border border-emerald-200 px-2 text-sm font-bold text-emerald-700 dark:border-emerald-900 dark:text-emerald-300">Good</button><button data-flashcard-rating="EASY" class="min-h-11 rounded-lg border border-sky-200 px-2 text-sm font-bold text-sky-700 dark:border-sky-900 dark:text-sky-300">Easy</button></div>`;
+    back.querySelectorAll('[data-flashcard-rating]').forEach(button=>button.onclick=async()=>{
+      back.querySelectorAll('button').forEach(item=>item.disabled=true);
+      try{
+        await api('/api/vocabulary/'+encodeURIComponent(word.word)+'/review','PUT',{rating:button.dataset.flashcardRating});
+        await api('/api/habits/activity','POST',{type:'VOCABULARY'});
+        reviewWords=reviewWords.filter(item=>item.word!==word.word);
+        flashcardDeck.shift();
+        renderVocabularyReview();
+        refreshHabitSummary();
+      }catch(error){
+        back.insertAdjacentHTML('beforeend',`<p class="mt-2 text-sm font-semibold text-red-700 dark:text-red-300">${escapeHtml(error.message)}</p>`);
+        back.querySelectorAll('button').forEach(item=>item.disabled=false);
+      }
+    });
+  };
+}
+renderVocabularyReview = renderFlashcardDeck;
+function flashcardMeaning(word){return word.vietnameseMeaning||word.definition||'No meaning saved yet';}
+function flashcardChoices(word){
+  const alternatives=vocabularyWords.filter(item=>item.word!==word.word&&flashcardMeaning(item)!==flashcardMeaning(word));
+  const picks=[];
+  while(alternatives.length&&picks.length<3)picks.push(alternatives.splice(Math.floor(Math.random()*alternatives.length),1)[0]);
+  return [word,...picks].sort(()=>Math.random()-.5);
+}
+function renderObjectiveFlashcardDeck(){
+  const root=$('#vocabulary-review');
+  if(!flashcardDeck.length&&reviewWords.length)flashcardDeck=[...reviewWords];
+  const word=flashcardDeck[0];
+  if(!word){
+    const canPractise=vocabularyWords.length>0;
+    root.innerHTML=`<div class="rounded-xl bg-white/80 p-4 text-sm text-slate-600 dark:bg-slate-800 dark:text-slate-300"><p class="font-bold text-emerald-700 dark:text-emerald-300">All caught up for now.</p><p class="mt-1">${canPractise?'You can still practise your full notebook.':'Save words from a lesson and they will appear here when it is time to recall them.'}</p>${canPractise?'<button id="practise-notebook" class="mt-4 min-h-11 rounded-xl bg-indigo-800 px-4 font-bold text-white dark:bg-amber-300 dark:text-slate-950">Practise my notebook</button>':''}</div>`;
+    $('#practise-notebook')?.addEventListener('click',()=>{flashcardDeck=[...vocabularyWords];renderObjectiveFlashcardDeck()});
+    return;
+  }
+  const choices=flashcardChoices(word),scheduled=reviewWords.some(item=>item.word===word.word);
+  root.innerHTML=`<article class="rounded-2xl border border-indigo-100 bg-white p-5 text-center shadow-sm dark:border-slate-700 dark:bg-slate-950"><p class="text-xs font-bold uppercase tracking-[.14em] text-indigo-700 dark:text-amber-300">${scheduled?'Due review':'Notebook practice'} · ${flashcardDeck.length} card${flashcardDeck.length===1?'':'s'} left</p><div class="mt-4 rounded-2xl bg-gradient-to-br from-indigo-50 to-white px-5 py-10 dark:from-slate-800 dark:to-slate-900"><p class="font-serif text-4xl font-black text-indigo-950 dark:text-white">${escapeHtml(word.word)}</p><p class="mt-2 text-sm text-slate-500 dark:text-slate-400">${escapeHtml(word.phonetic||'Recall the meaning before choosing.')}</p></div><p class="mt-5 text-sm font-bold">Choose the meaning</p><div id="flashcard-choices" class="mt-3 grid gap-2 text-left">${choices.map(choice=>`<button data-flashcard-word="${escapeHtml(choice.word)}" class="min-h-11 rounded-xl border border-slate-300 px-4 py-3 font-semibold text-slate-800 hover:border-indigo-500 hover:bg-indigo-50 dark:border-slate-700 dark:text-slate-100 dark:hover:border-amber-300 dark:hover:bg-slate-800">${escapeHtml(flashcardMeaning(choice))}</button>`).join('')}</div><div id="flashcard-feedback" class="mt-3" aria-live="polite"></div></article>`;
+  root.querySelectorAll('[data-flashcard-word]').forEach(button=>button.onclick=async()=>{
+    const correct=button.dataset.flashcardWord===word.word,choicesRoot=$('#flashcard-choices'),feedback=$('#flashcard-feedback');
+    choicesRoot.querySelectorAll('button').forEach(item=>item.disabled=true);
+    feedback.innerHTML=`<p class="rounded-xl p-3 text-sm font-bold ${correct?'bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200':'bg-rose-50 text-rose-800 dark:bg-rose-950/40 dark:text-rose-200'}">${correct?'Correct — this card will return later.':`Correct meaning: ${escapeHtml(flashcardMeaning(word))}`}</p><button id="next-flashcard" class="mt-3 min-h-11 rounded-xl bg-indigo-800 px-5 font-bold text-white dark:bg-amber-300 dark:text-slate-950" disabled>Saving…</button>`;
+    try{
+      await api('/api/vocabulary/'+encodeURIComponent(word.word)+'/review','PUT',{rating:correct?'GOOD':'AGAIN'});
+      await api('/api/habits/activity','POST',{type:'VOCABULARY'});
+      $('#next-flashcard').disabled=false;$('#next-flashcard').textContent='Next card';
+      $('#next-flashcard').onclick=()=>{reviewWords=reviewWords.filter(item=>item.word!==word.word);flashcardDeck.shift();renderObjectiveFlashcardDeck();refreshHabitSummary()};
+    }catch(error){feedback.insertAdjacentHTML('beforeend',`<p class="mt-2 text-sm font-semibold text-red-700 dark:text-red-300">${escapeHtml(error.message)}</p>`);}
+  });
+}
+renderVocabularyReview = renderObjectiveFlashcardDeck;
+function normaliseFlashcardAnswer(value){return String(value||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g,' ');}
+function renderTypedFlashcardDeck(){
+  const root=$('#vocabulary-review');
+  if(!flashcardDeck.length&&reviewWords.length)flashcardDeck=[...reviewWords];
+  const word=flashcardDeck[0];
+  if(!word){
+    const canPractise=vocabularyWords.length>0;
+    root.innerHTML=`<div class="rounded-xl bg-white/80 p-4 text-sm text-slate-600 dark:bg-slate-800 dark:text-slate-300"><p class="font-bold text-emerald-700 dark:text-emerald-300">All caught up for now.</p><p class="mt-1">${canPractise?'You can still practise your full notebook.':'Save words from a lesson and they will appear here when it is time to recall them.'}</p>${canPractise?'<button id="practise-notebook" class="mt-4 min-h-11 rounded-xl bg-indigo-800 px-4 font-bold text-white dark:bg-amber-300 dark:text-slate-950">Practise my notebook</button>':''}</div>`;
+    $('#practise-notebook')?.addEventListener('click',()=>{flashcardDeck=[...vocabularyWords].sort(()=>Math.random()-.5);renderTypedFlashcardDeck()});
+    return;
+  }
+  const scheduled=reviewWords.some(item=>item.word===word.word),meaning=flashcardMeaning(word);
+  root.innerHTML=`<article class="rounded-2xl border border-indigo-100 bg-white p-5 text-center shadow-sm dark:border-slate-700 dark:bg-slate-950"><p class="text-xs font-bold uppercase tracking-[.14em] text-indigo-700 dark:text-amber-300">${scheduled?'Due review':'Notebook practice'} · ${flashcardDeck.length} card${flashcardDeck.length===1?'':'s'} left</p><div class="mt-4 rounded-2xl bg-gradient-to-br from-indigo-50 to-white px-5 py-9 dark:from-slate-800 dark:to-slate-900"><p class="text-xs font-bold uppercase tracking-[.14em] text-slate-500 dark:text-slate-400">Vietnamese meaning</p><p class="mt-3 font-serif text-3xl font-black text-indigo-950 dark:text-white">${escapeHtml(meaning)}</p>${word.customExample?`<p class="mt-4 text-sm italic text-slate-600 dark:text-slate-300">${escapeHtml(word.customExample)}</p>`:''}</div><form id="flashcard-answer-form" class="mt-5"><label class="block text-left text-sm font-bold" for="flashcard-answer">Type the English word</label><div class="mt-2 flex gap-2"><input id="flashcard-answer" autocomplete="off" autocapitalize="none" spellcheck="false" class="min-h-12 min-w-0 flex-1 rounded-xl border border-slate-300 bg-white px-4 text-base font-semibold text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white" placeholder="Your answer" required /><button class="min-h-12 rounded-xl bg-indigo-800 px-4 font-bold text-white dark:bg-amber-300 dark:text-slate-950">Check</button></div></form><div id="flashcard-feedback" class="mt-3" aria-live="polite"></div></article>`;
+  $('#flashcard-answer').focus();
+  $('#flashcard-answer-form').onsubmit=async event=>{
+    event.preventDefault();
+    const answer=$('#flashcard-answer'),correct=normaliseFlashcardAnswer(answer.value)===normaliseFlashcardAnswer(word.word),feedback=$('#flashcard-feedback');
+    answer.disabled=true;event.currentTarget.querySelector('button').disabled=true;
+    feedback.innerHTML=`<div class="rounded-xl p-4 text-left ${correct?'bg-emerald-50 text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-100':'bg-rose-50 text-rose-900 dark:bg-rose-950/40 dark:text-rose-100'}"><p class="font-bold">${correct?'Correct.':'Not quite.'}</p><p class="mt-2 text-sm">Correct answer: <strong>${escapeHtml(word.word)}</strong>${word.phonetic?` · ${escapeHtml(word.phonetic)}`:''}</p><p class="mt-1 text-sm">Meaning: ${escapeHtml(meaning)}</p>${word.customExample?`<p class="mt-2 text-sm italic">${escapeHtml(word.customExample)}</p>`:''}</div><button id="next-flashcard" class="mt-3 min-h-11 rounded-xl bg-indigo-800 px-5 font-bold text-white dark:bg-amber-300 dark:text-slate-950" disabled>Saving…</button>`;
+    try{
+      await api('/api/vocabulary/'+encodeURIComponent(word.word)+'/review','PUT',{rating:correct?'GOOD':'AGAIN'});
+      await api('/api/habits/activity','POST',{type:'VOCABULARY'});
+      $('#next-flashcard').disabled=false;$('#next-flashcard').textContent='Next card';
+      $('#next-flashcard').onclick=()=>{reviewWords=reviewWords.filter(item=>item.word!==word.word);flashcardDeck.shift();renderTypedFlashcardDeck();refreshHabitSummary()};
+    }catch(error){feedback.insertAdjacentHTML('beforeend',`<p class="mt-2 text-sm font-semibold text-red-700 dark:text-red-300">${escapeHtml(error.message)}</p>`);}
+  };
+}
+renderVocabularyReview = renderTypedFlashcardDeck;
+async function refreshHabitSummary(){try{renderHabitSummary(await api('/api/habits/summary'))}catch{renderHabitSummary(null)}}
 function automaticThemeIsDark(){const hour=new Date().getHours();return window.matchMedia?.('(prefers-color-scheme: dark)').matches||hour>=19||hour<7}
 function preferredThemeIsDark(){const saved=localStorage.getItem('theme');return saved==='dark'?true:saved==='light'?false:automaticThemeIsDark()}
 function applyTheme(dark){document.documentElement.classList.toggle('dark',dark);$('#theme-button span').textContent=dark?'light_mode':'dark_mode';$('#theme-button').title=dark?'Use light theme':'Use dark theme';$('#theme-button').setAttribute('aria-label',dark?'Use light theme':'Use dark theme')}
 function bindAddNote(){const form=$('#add-note-form'),wordInput=$('#new-word'),phonetic=$('#new-phonetic'),status=$('#spelling-status');let verified='';const validate=async()=>{const word=wordInput.value.trim().toLowerCase();verified='';phonetic.value='';if(!/^[a-z]+(?:['-][a-z]+)*$/i.test(word)){status.textContent='Spelling mistake';status.className='mt-1 block min-h-4 text-xs font-semibold text-red-600 dark:text-red-400';return false}status.textContent='Checking...';status.className='mt-1 block min-h-4 text-xs font-semibold text-slate-500 dark:text-slate-400';try{const found=await api('/api/vocabulary/lookup?word='+encodeURIComponent(word));verified=found.word;phonetic.value=found.phonetic||'Pronunciation unavailable';status.textContent='Spelling looks good';status.className='mt-1 block min-h-4 text-xs font-semibold text-emerald-700 dark:text-emerald-400';return true}catch(error){status.textContent='Spelling mistake';status.className='mt-1 block min-h-4 text-xs font-semibold text-red-600 dark:text-red-400';return false}};wordInput.oninput=()=>{verified='';phonetic.value='';status.textContent=''};wordInput.onblur=()=>{if(wordInput.value.trim())void validate()};$('#add-note-button').onclick=()=>{form.classList.remove('hidden');form.classList.add('grid');wordInput.focus()};$('#cancel-note-button').onclick=()=>{form.classList.add('hidden');form.classList.remove('grid');form.reset();status.textContent='';verified=''};form.onsubmit=async event=>{event.preventDefault();const word=wordInput.value.trim().toLowerCase();if(verified!==word&&!(await validate()))return;const submit=form.querySelector('button[type="submit"]');submit.disabled=true;try{const saved=await api('/api/vocabulary/manual','POST',{word,phonetic:phonetic.value==='Pronunciation unavailable'?'':phonetic.value,vietnameseMeaning:$('#new-meaning').value,example:$('#new-example').value});vocabularyWords=[saved,...vocabularyWords.filter(item=>item.word!==saved.word)];form.reset();status.textContent='';verified='';form.classList.add('hidden');form.classList.remove('grid');renderNotebook()}finally{submit.disabled=false}}}
-async function init(){bindAddNote();applyTheme(preferredThemeIsDark());window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{if(!localStorage.getItem('theme'))applyTheme(preferredThemeIsDark())});window.setInterval(()=>{if(!localStorage.getItem('theme'))applyTheme(preferredThemeIsDark())},60000);$('#theme-button').onclick=()=>{const dark=!document.documentElement.classList.contains('dark');localStorage.setItem('theme',dark?'dark':'light');applyTheme(dark)};$('#logout-button').onclick=async()=>{try{await api('/api/auth/logout','POST')}finally{location='login.html'}};try{const [me,words,progress,submissions]=await Promise.all([api('/api/auth/me'),api('/api/vocabulary'),api('/api/progress'),api('/api/progress/submissions')]);$('#page-title').textContent='Hi, '+me.displayName;vocabularyWords=words;renderNotebook();renderProgress(progress);renderSubmissions(submissions)}catch(error){if(/401|403/.test(error.message))return location='login.html';$('#page-error').hidden=false;$('#page-error').textContent=error.message}}
+async function loadLessonTitles(){
+  if(lessonTitlesLoading)return lessonTitlesLoading;
+  lessonTitlesLoading=fetch('/data/curriculum.json?v=2').then(response=>response.ok?response.json():Promise.reject(new Error('Curriculum unavailable'))).then(async curriculum=>{
+    const tracks=curriculum.tracks||[];
+    const loaded=await Promise.all(tracks.flatMap(track=>track.lessons.map(async url=>{
+      const response=await fetch('/'+String(url).replace(/^\//,''));
+      if(!response.ok)return null;
+      const lesson=await response.json();
+      return [lesson.id,`${track.level||lesson.level||''}${track.level||lesson.level?' · ':''}${lesson.title}`];
+    })));
+    lessonTitles=Object.fromEntries(loaded.filter(Boolean));
+    renderLearnerProgress(progressItems);
+    renderLearnerSubmissions(submissionItems);
+  }).catch(()=>{lessonTitles={};});
+  return lessonTitlesLoading;
+}
+function renderLearnerProgress(items){
+  progressItems=items||[];
+  const list=$('#progress-list');
+  list.innerHTML=progressItems.length?progressItems.slice(0,5).map(item=>`<div class="flex items-center justify-between gap-3 border-b border-slate-100 py-3 text-sm last:border-0 dark:border-slate-800"><span class="min-w-0 flex-1 truncate font-semibold" title="${escapeHtml(lessonTitles[item.lessonId]||item.lessonId)}">${escapeHtml(lessonTitles[item.lessonId]||'Loading lesson name…')}</span><span class="shrink-0 rounded-full px-2 py-1 text-xs font-bold ${item.completed?'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-200':'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-200'}">${item.completed?'Done':'Step '+item.lastSlide}</span></div>`).join(''):'<p class="text-sm text-slate-500 dark:text-slate-400">No progress yet.</p>';
+  if(progressItems.length&&!lessonTitlesLoading)void loadLessonTitles();
+}
+renderProgress = renderLearnerProgress;
+function submissionSectionLabel(sectionId){
+  const labels={writing:'Writing',speaking:'Speaking',reading:'Reading',listening:'Listening',grammar:'Grammar & Vocabulary'};
+  return labels[sectionId]||String(sectionId||'Practice').replace(/[-_]+/g,' ').replace(/\b\w/g,char=>char.toUpperCase());
+}
+function renderLearnerSubmissions(items){
+  submissionItems=items||[];
+  const list=$('#submission-list');
+  list.innerHTML=submissionItems.length?submissionItems.slice(0,5).map(item=>`<div class="flex items-center justify-between gap-3 border-b border-slate-100 py-3 text-sm last:border-0 dark:border-slate-800"><span class="min-w-0 flex-1"><span class="block truncate font-semibold" title="${escapeHtml(lessonTitles[item.lessonId]||item.lessonId)}">${escapeHtml(lessonTitles[item.lessonId]||'Loading lesson name…')}</span><span class="mt-0.5 block text-xs text-slate-500 dark:text-slate-400">${escapeHtml(submissionSectionLabel(item.sectionId))}</span></span><span class="shrink-0 font-black text-emerald-700 dark:text-emerald-300">${item.total==null?'Sent':item.score+'/'+item.total}</span></div>`).join(''):'<p class="text-sm text-slate-500 dark:text-slate-400">No submissions yet.</p>';
+  if(submissionItems.length&&!lessonTitlesLoading)void loadLessonTitles();
+}
+renderSubmissions = renderLearnerSubmissions;
+async function init(){bindAddNote();applyTheme(preferredThemeIsDark());window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{if(!localStorage.getItem('theme'))applyTheme(preferredThemeIsDark())});window.setInterval(()=>{if(!localStorage.getItem('theme'))applyTheme(preferredThemeIsDark())},60000);$('#theme-button').onclick=()=>{const dark=!document.documentElement.classList.contains('dark');localStorage.setItem('theme',dark?'dark':'light');applyTheme(dark)};$('#logout-button').onclick=async()=>{try{await api('/api/auth/logout','POST')}finally{location='login.html'}};try{const [me,words,progress,submissions,due,habits]=await Promise.all([api('/api/auth/me'),api('/api/vocabulary'),api('/api/progress'),api('/api/progress/submissions'),api('/api/vocabulary/review'),api('/api/habits/summary')]);$('#page-title').textContent='Hi, '+me.displayName;vocabularyWords=words;reviewWords=due;renderNotebook();renderProgress(progress);renderSubmissions(submissions);renderVocabularyReview();renderHabitSummary(habits)}catch(error){if(/401|403/.test(error.message))return location='login.html';$('#page-error').hidden=false;$('#page-error').textContent=error.message}}
 init();

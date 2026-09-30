@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.hoangdm.aptis.security.AppUserPrincipal;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.sql.ResultSet;
@@ -31,13 +32,20 @@ public class VocabularyNotebookController {
   public record ManualWord(@NotBlank @Size(max = 100) String word, @Size(max = 255) String phonetic, @Size(max = 1000) String vietnameseMeaning, @Size(max = 2000) String example) {}
   public record UpdateWord(String vietnameseMeaning, String example) {}
   public record PinUpdate(boolean pinned) {}
+  public enum ReviewRating { AGAIN, HARD, GOOD, EASY }
+  public record ReviewUpdate(@NotNull ReviewRating rating) {}
   public record LookupView(String word, String phonetic) {}
-  public record WordView(String word, String phonetic, String definition, String vietnameseMeaning, String example, String customExample, Instant createdAt, boolean pinned) {}
+  public record WordView(String word, String phonetic, String definition, String vietnameseMeaning, String example, String customExample, Instant createdAt, boolean pinned, Instant reviewDueAt, int reviewIntervalDays, int reviewRepetitions) {}
   private record Lookup(String phonetic, String definition, String vietnameseMeaning) {}
 
   @GetMapping
   public List<WordView> list(@AuthenticationPrincipal AppUserPrincipal principal) {
-    return jdbc.query("select word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned from vocabulary_notebook where user_id = ? order by pinned desc, created_at desc", (rs, row) -> view(rs), principal.user().getId());
+    return jdbc.query("select word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned, review_due_at, review_interval_days, review_repetitions from vocabulary_notebook where user_id = ? order by pinned desc, created_at desc", (rs, row) -> view(rs), principal.user().getId());
+  }
+
+  @GetMapping("/review")
+  public List<WordView> dueForReview(@AuthenticationPrincipal AppUserPrincipal principal) {
+    return jdbc.query("select word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned, review_due_at, review_interval_days, review_repetitions from vocabulary_notebook where user_id=? and review_due_at <= current_timestamp order by review_due_at, created_at limit 20", (rs, row) -> view(rs), principal.user().getId());
   }
 
   @GetMapping("/lookup")
@@ -53,24 +61,34 @@ public class VocabularyNotebookController {
   public WordView save(@RequestBody @Valid SaveWord request, @AuthenticationPrincipal AppUserPrincipal principal) {
     String word = request.word().trim().toLowerCase();
     Lookup found = lookup(word);
-    return jdbc.queryForObject("insert into vocabulary_notebook (user_id, word, phonetic, definition, vietnamese_meaning) values (?, ?, ?, ?, ?) on conflict (user_id, word) do update set phonetic=excluded.phonetic, definition=excluded.definition, vietnamese_meaning=coalesce(vocabulary_notebook.vietnamese_meaning, excluded.vietnamese_meaning) returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned", (rs, row) -> view(rs), principal.user().getId(), word, found.phonetic(), found.definition(), found.vietnameseMeaning());
+    return jdbc.queryForObject("insert into vocabulary_notebook (user_id, word, phonetic, definition, vietnamese_meaning) values (?, ?, ?, ?, ?) on conflict (user_id, word) do update set phonetic=excluded.phonetic, definition=excluded.definition, vietnamese_meaning=coalesce(vocabulary_notebook.vietnamese_meaning, excluded.vietnamese_meaning) returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned, review_due_at, review_interval_days, review_repetitions", (rs, row) -> view(rs), principal.user().getId(), word, found.phonetic(), found.definition(), found.vietnameseMeaning());
   }
 
   @PostMapping("/manual")
   @ResponseStatus(HttpStatus.CREATED)
   public WordView saveManual(@RequestBody @Valid ManualWord request, @AuthenticationPrincipal AppUserPrincipal principal) {
     String word = request.word().trim().toLowerCase();
-    return jdbc.queryForObject("insert into vocabulary_notebook (user_id, word, phonetic, vietnamese_meaning, custom_example) values (?, ?, ?, ?, ?) on conflict (user_id, word) do update set phonetic=excluded.phonetic, vietnamese_meaning=excluded.vietnamese_meaning, custom_example=excluded.custom_example returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned", (rs, row) -> view(rs), principal.user().getId(), word, clean(request.phonetic()), clean(request.vietnameseMeaning()), clean(request.example()));
+    return jdbc.queryForObject("insert into vocabulary_notebook (user_id, word, phonetic, vietnamese_meaning, custom_example) values (?, ?, ?, ?, ?) on conflict (user_id, word) do update set phonetic=excluded.phonetic, vietnamese_meaning=excluded.vietnamese_meaning, custom_example=excluded.custom_example returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned, review_due_at, review_interval_days, review_repetitions", (rs, row) -> view(rs), principal.user().getId(), word, clean(request.phonetic()), clean(request.vietnameseMeaning()), clean(request.example()));
   }
 
   @PutMapping("/{word}")
   public WordView update(@PathVariable String word, @RequestBody UpdateWord update, @AuthenticationPrincipal AppUserPrincipal principal) {
-    return jdbc.queryForObject("update vocabulary_notebook set vietnamese_meaning=?, custom_example=? where user_id=? and word=? returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned", (rs, row) -> view(rs), clean(update.vietnameseMeaning()), clean(update.example()), principal.user().getId(), word.toLowerCase());
+    return jdbc.queryForObject("update vocabulary_notebook set vietnamese_meaning=?, custom_example=? where user_id=? and word=? returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned, review_due_at, review_interval_days, review_repetitions", (rs, row) -> view(rs), clean(update.vietnameseMeaning()), clean(update.example()), principal.user().getId(), word.toLowerCase());
   }
 
   @PutMapping("/{word}/pin")
   public WordView pin(@PathVariable String word, @RequestBody PinUpdate update, @AuthenticationPrincipal AppUserPrincipal principal) {
-    return jdbc.queryForObject("update vocabulary_notebook set pinned=? where user_id=? and word=? returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned", (rs, row) -> view(rs), update.pinned(), principal.user().getId(), word.toLowerCase());
+    return jdbc.queryForObject("update vocabulary_notebook set pinned=? where user_id=? and word=? returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned, review_due_at, review_interval_days, review_repetitions", (rs, row) -> view(rs), update.pinned(), principal.user().getId(), word.toLowerCase());
+  }
+
+  @PutMapping("/{word}/review")
+  public WordView review(@PathVariable String word, @RequestBody @Valid ReviewUpdate update, @AuthenticationPrincipal AppUserPrincipal principal) {
+    int multiplier = switch (update.rating()) { case AGAIN -> 0; case HARD -> 1; case GOOD -> 2; case EASY -> 3; };
+    int firstInterval = switch (update.rating()) { case AGAIN -> 0; case HARD, GOOD -> 1; case EASY -> 4; };
+    String interval = "case when ? = 0 then 0 when ? = 1 then greatest(1, review_interval_days) when review_interval_days = 0 then ? else least(90, review_interval_days * ?) end";
+    String sql = "update vocabulary_notebook set review_repetitions=case when ? = 0 then 0 else review_repetitions + 1 end, review_interval_days=" + interval
+        + ", review_due_at=case when ? = 0 then current_timestamp + interval '10 minutes' else current_timestamp + (" + interval + " * interval '1 day') end where user_id=? and word=? returning word, phonetic, definition, vietnamese_meaning, example, custom_example, created_at, pinned, review_due_at, review_interval_days, review_repetitions";
+    return jdbc.queryForObject(sql, (rs, row) -> view(rs), multiplier, multiplier, multiplier, firstInterval, multiplier, multiplier, multiplier, multiplier, firstInterval, multiplier, principal.user().getId(), word.toLowerCase());
   }
 
   @DeleteMapping("/{word}")
@@ -98,7 +116,7 @@ public class VocabularyNotebookController {
     catch (Exception ignored) { return null; }
   }
 
-  private WordView view(ResultSet rs) throws SQLException { return new WordView(rs.getString(1), normalizePhonetic(rs.getString(2)), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getTimestamp(7).toInstant(), rs.getBoolean(8)); }
+  private WordView view(ResultSet rs) throws SQLException { return new WordView(rs.getString(1), normalizePhonetic(rs.getString(2)), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getTimestamp(7).toInstant(), rs.getBoolean(8), rs.getTimestamp(9).toInstant(), rs.getInt(10), rs.getInt(11)); }
   private String clean(String value) { return value == null || value.isBlank() ? null : value.trim(); }
   private String text(JsonNode node, String field) { return node != null && node.hasNonNull(field) ? node.get(field).asText() : null; }
 

@@ -585,7 +585,12 @@ async function apiWrite(path, method, body) {
 async function syncLessonProgress(lessonId, completed) {
   const section = state.sections[state.currentSlide - 1];
   const lastSlide = section?.lesson?.id === lessonId ? section.sectionIndex + 1 : 1;
-  try { await apiWrite(`/api/progress/lessons/${encodeURIComponent(lessonId)}`, "PUT", { lastSlide, completed }); } catch (e) { /* local storage remains the offline fallback */ }
+  try { await apiWrite(`/api/progress/lessons/${encodeURIComponent(lessonId)}`, "PUT", { lastSlide, completed }); if (completed) await recordStudyActivity("LESSON"); } catch (e) { /* local storage remains the offline fallback */ }
+}
+
+async function recordStudyActivity(type) {
+  if (!state.user) return;
+  try { await apiWrite("/api/habits/activity", "POST", { type }); } catch (e) { /* Study activity never blocks learning. */ }
 }
 
 async function syncDraft(draftKey, content) {
@@ -597,7 +602,7 @@ async function syncDraft(draftKey, content) {
 async function syncSubmission(draftKey, content, score = null, total = null) {
   const [lessonId, sectionId] = draftKey.split(":");
   if (!lessonId || !sectionId) return;
-  try { await apiWrite("/api/progress/submissions", "PUT", { lessonId, sectionId, content, score, total }); } catch (e) { /* The local draft remains available for a later retry. */ }
+  try { await apiWrite("/api/progress/submissions", "PUT", { lessonId, sectionId, content, score, total }); await recordStudyActivity("LESSON"); } catch (e) { /* The local draft remains available for a later retry. */ }
 }
 
 function responseKeyFor(root) {
