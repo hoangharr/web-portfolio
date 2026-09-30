@@ -1479,6 +1479,24 @@ function startFromWelcome(slideNum) {
   goToSlide(slideNum);
 }
 
+function openRequestedLesson() {
+  const request = new URLSearchParams(window.location.search);
+  const lessonId = request.get("lesson");
+  if (!lessonId || !state.user) return false;
+  const requestedSection = request.get("section");
+  const requestedStep = Number(request.get("step"));
+  const index = state.sections.findIndex(section => section.lesson?.id === lessonId && (
+    !requestedSection || section.id === requestedSection ||
+    (Number.isInteger(requestedStep) && section.sectionIndex + 1 === requestedStep)
+  ));
+  if (index < 0) return false;
+  hideWelcome();
+  state.currentSlide = index + 1;
+  updateUI();
+  window.scrollTo({ top: 0, behavior: "instant" });
+  return true;
+}
+
 function moduleProgress(lesson) {
   const stored = state.lessonProgress[lesson.id];
   const current = state.sections[state.currentSlide - 1];
@@ -1992,8 +2010,9 @@ async function loadLesson() {
     await restoreAccountState();
     renderDeck(lessons);
     updateAuthButton();
-    // Show welcome screen; user picks a module (or continues) from there
+    // A dashboard deep link opens the saved lesson/section; otherwise show welcome.
     renderWelcome();
+    openRequestedLesson();
   } catch (error) {
     if (root) {
       root.innerHTML = `

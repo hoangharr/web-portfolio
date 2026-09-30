@@ -121,8 +121,8 @@ async function loadLessonTitles(){
       return [lesson.id,`${track.level||lesson.level||''}${track.level||lesson.level?' · ':''}${lesson.title}`];
     })));
     lessonTitles=Object.fromEntries(loaded.filter(Boolean));
-    renderLearnerProgress(progressItems);
-    renderLearnerSubmissions(submissionItems);
+    renderProgress(progressItems);
+    renderSubmissions(submissionItems);
   }).catch(()=>{lessonTitles={};});
   return lessonTitlesLoading;
 }
@@ -144,5 +144,29 @@ function renderLearnerSubmissions(items){
   if(submissionItems.length&&!lessonTitlesLoading)void loadLessonTitles();
 }
 renderSubmissions = renderLearnerSubmissions;
+function learningTitle(lessonId){
+  const mock=/^aptis-general-mock-(\d+)$/.exec(lessonId||'');
+  return lessonTitles[lessonId]||(mock?`Mock test ${mock[1]}`:'Loading lesson name…');
+}
+function learningHref(lessonId,step,sectionId){
+  if(/^aptis-general-mock-\d+$/.test(lessonId||''))return `tests.html?assessment=${encodeURIComponent(lessonId)}`;
+  const params=new URLSearchParams({lesson:lessonId});
+  if(sectionId)params.set('section',sectionId);else if(step)params.set('step',String(step));
+  return `english.html?${params.toString()}`;
+}
+function renderLinkedProgress(items){
+  progressItems=items||[];
+  const list=$('#progress-list');
+  list.innerHTML=progressItems.length?progressItems.slice(0,5).map(item=>`<a href="${learningHref(item.lessonId,item.lastSlide)}" class="flex items-center justify-between gap-3 rounded-xl border-b border-slate-100 py-3 text-sm last:border-0 hover:bg-indigo-50/70 focus:outline-none focus:ring-2 focus:ring-indigo-400 dark:border-slate-800 dark:hover:bg-slate-800"><span class="min-w-0 flex-1 truncate font-semibold" title="${escapeHtml(learningTitle(item.lessonId))}">${escapeHtml(learningTitle(item.lessonId))}</span><span class="shrink-0 rounded-full px-2 py-1 text-xs font-bold ${item.completed?'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-200':'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-200'}">${item.completed?'Done':'Step '+item.lastSlide}</span></a>`).join(''):'<p class="text-sm text-slate-500 dark:text-slate-400">No progress yet.</p>';
+  if(progressItems.length&&!lessonTitlesLoading)void loadLessonTitles();
+}
+function renderLinkedSubmissions(items){
+  submissionItems=items||[];
+  const list=$('#submission-list');
+  list.innerHTML=submissionItems.length?submissionItems.slice(0,5).map(item=>`<a href="${learningHref(item.lessonId,null,item.sectionId)}" class="flex items-center justify-between gap-3 rounded-xl border-b border-slate-100 py-3 text-sm last:border-0 hover:bg-emerald-50/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:border-slate-800 dark:hover:bg-slate-800"><span class="min-w-0 flex-1"><span class="block truncate font-semibold" title="${escapeHtml(learningTitle(item.lessonId))}">${escapeHtml(learningTitle(item.lessonId))}</span><span class="mt-0.5 block text-xs text-slate-500 dark:text-slate-400">${escapeHtml(submissionSectionLabel(item.sectionId))}</span></span><span class="shrink-0 font-black text-emerald-700 dark:text-emerald-300">${item.total==null?'Sent':item.score+'/'+item.total}</span></a>`).join(''):'<p class="text-sm text-slate-500 dark:text-slate-400">No submissions yet.</p>';
+  if(submissionItems.length&&!lessonTitlesLoading)void loadLessonTitles();
+}
+renderProgress = renderLinkedProgress;
+renderSubmissions = renderLinkedSubmissions;
 async function init(){bindAddNote();applyTheme(preferredThemeIsDark());window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{if(!localStorage.getItem('theme'))applyTheme(preferredThemeIsDark())});window.setInterval(()=>{if(!localStorage.getItem('theme'))applyTheme(preferredThemeIsDark())},60000);$('#theme-button').onclick=()=>{const dark=!document.documentElement.classList.contains('dark');localStorage.setItem('theme',dark?'dark':'light');applyTheme(dark)};$('#logout-button').onclick=async()=>{try{await api('/api/auth/logout','POST')}finally{location='login.html'}};try{const [me,words,progress,submissions,due,habits]=await Promise.all([api('/api/auth/me'),api('/api/vocabulary'),api('/api/progress'),api('/api/progress/submissions'),api('/api/vocabulary/review'),api('/api/habits/summary')]);$('#page-title').textContent='Hi, '+me.displayName;vocabularyWords=words;reviewWords=due;renderNotebook();renderProgress(progress);renderSubmissions(submissions);renderVocabularyReview();renderHabitSummary(habits)}catch(error){if(/401|403/.test(error.message))return location='login.html';$('#page-error').hidden=false;$('#page-error').textContent=error.message}}
 init();

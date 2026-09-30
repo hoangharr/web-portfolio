@@ -7,7 +7,7 @@ const SHELL_FILES = [
   '/index.html',
   '/english.html',
   '/tests.html',
-  '/js/engine.js?v=44',
+  '/js/engine.js?v=45',
   '/js/recommendations.js?v=1',
   '/css/recommendations.css?v=1',
   '/data/recommendations.json?v=4',
@@ -15,7 +15,7 @@ const SHELL_FILES = [
   '/js/mock-store.js?v=1',
   '/js/tests.js?v=15',
   '/dashboard.html',
-  '/js/dashboard.js?v=16',
+  '/js/dashboard.js?v=17',
   '/manifest.json'
 ];
 
