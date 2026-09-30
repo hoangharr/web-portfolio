@@ -1,5 +1,5 @@
 // Bump this version on every deploy to bust the old cache
-const APP_VERSION = 'v58';
+const APP_VERSION = 'v59';
 const CACHE_NAME = `aptis-shell-${APP_VERSION}`;
 
 const SHELL_FILES = [
@@ -103,9 +103,12 @@ self.addEventListener('fetch', event => {
       if (cached) return cached;
       return fetch(request).then(resp => {
         if (resp && resp.ok && resp.type === 'basic') {
+          // Clone before returning the response. Opening the cache is async and
+          // the browser may start consuming the original response meanwhile.
+          const copy = resp.clone();
           caches
             .open(CACHE_NAME)
-            .then(cache => cache.put(request, resp.clone()));
+            .then(cache => cache.put(request, copy));
         }
         return resp;
       });
